@@ -3,6 +3,8 @@
     padding-top: 30px;
     padding-bottom: 30px;
     padding-right: 70px;
+    position: relative;
+    top: 100px;
     background-color: #F2F2F2;
 }
 

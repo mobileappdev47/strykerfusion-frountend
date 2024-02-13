@@ -24,3 +24,10 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+.getstartedbtn {
+    width: fit-content;
+    background-color: #265EE1;
+    color: white;
+    margin-top: 3rem;
+}
