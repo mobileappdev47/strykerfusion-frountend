@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import style from './header.module.css';
+import { motion } from 'framer-motion';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,9 +15,15 @@ function Header() {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  const menuItems = ["How It Works", "Our Products", "Why Us", "Find Us", "Technology"]
+
   return (
     <>
-      <div className={style.maindiv}>
+      <motion.div
+        className={style.maindiv}
+        initial={{ y: -100 }} animate={{ y: 0 }}
+      >
         <nav className={`navbar navbar-expand-lg navbar-light bg-light ${style.header}`}>
           <div className='d-flex align-items-center'>
             <div><img src={logo} alt="" className={`${style.profileimg}`} /></div>
@@ -28,31 +35,19 @@ function Header() {
           </button>
           <div className={`collapse navbar-collapse justify-content-end ${menuOpen ? 'show' : ''}`}>
             <ul className="navbar-nav align-items-center">
-              <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                  How It Works
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                  Our Products
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                  Why Us
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                  Find Us
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                  Technology
-                </Link>
-              </li>
+              {
+                menuItems.map((item, index) => (
+                  <>
+                    <motion.li className="nav-item" key={index} initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}>
+                      <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
+                        {item}
+                      </Link>
+                    </motion.li>
+                  </>
+                ))
+              }
               <li className="nav-item">
                 <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
                   <button className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</button>
@@ -61,7 +56,7 @@ function Header() {
             </ul>
           </div>
         </nav>
-      </div>
+      </motion.div >
     </>
   )
 }
