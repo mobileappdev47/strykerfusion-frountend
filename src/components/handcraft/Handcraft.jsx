@@ -1,17 +1,27 @@
-import React from 'react'
-import style from './handcraft.module.css'
-import craftimg from '../../assets/Case-study__image (2).png'
+import React from 'react';
+import style from './handcraft.module.css';
+import craftimg from '../../assets/Case-study__image (2).png';
+import { motion } from 'framer-motion';
 
 const Handcraft = () => {
+  // Custom ease values for cubic-bezier curve
+  const customEase = [0.6, -0.05, 0.01, 0.99];
+
   return (
     <>
       <div className="row">
         <div className="col-lg-6 col-12 d-flex flex-column justify-content-center">
           <div>
-            <h1 className={style.headingfont}>Handcrafted for </h1>
-            <h1 className={style.headingfont}>Business and Startups</h1>
+            <motion.h1 initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: customEase }} className={style.headingfont}>
+              Handcrafted for
+            </motion.h1>
+            <motion.h1 initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 0.5, ease: customEase }} className={style.headingfont}>
+              Business and Startups
+            </motion.h1>
           </div>
-          <button className={`btn ${style.getstartedbtn}`}> Get Started</button>
+          <motion.button initial={{ y: 100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, delay: 1, ease: customEase }} className={`btn mt-5 ${style.getstartedbtn}`}>
+            Get Started
+          </motion.button>
         </div>
         <div className="col-lg-6 col-12 d-flex">
           <div id="carouselExampleIndicators" className={`carousel slide w-100 ${style.craftimg}`} data-bs-ride="carousel">
@@ -42,9 +52,8 @@ const Handcraft = () => {
           </div>
         </div>
       </div>
-
     </>
-  )
-}
+  );
+};
 
-export default Handcraft
+export default Handcraft;
