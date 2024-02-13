@@ -1,0 +1,75 @@
+.header {
+    background: #FFF;
+    box-shadow: 0px 4px 24px 0px #C0C0C01F;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.headermenu {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 25px;
+    color: #000 !important;
+    margin-left: 50px;
+}
+
+.togglebtn {
+    border: 0;
+}
+
+.togglebtn:focus {
+    box-shadow: none !important;
+}
+
+
+
+@media only screen and (max-width: 1440px) {
+    .headermenu {
+        margin-left: 25px;
+    }
+
+    .getquotebtn {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .headermenu {
+        margin-left: 15px;
+    }
+
+    .getquotebtn {
+        margin-left: 20px;
+    }
+
+    .header {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .profileimg {
+        width: 250px;
+    }
+
+    .getquotebtn {
+        margin-left: 0 !important;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .profileimg {
+        height: 60px;
+        width: 225px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

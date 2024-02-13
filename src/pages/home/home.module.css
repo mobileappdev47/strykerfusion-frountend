@@ -1,0 +1,15 @@
+.maindiv {
+    padding-left: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 70px;
+    background-color: #F2F2F2;
+}
+
+@media only screen and (max-width: 1300px) {
+
+    .maindiv {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
