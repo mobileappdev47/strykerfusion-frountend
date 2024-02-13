@@ -1,0 +1,26 @@
+.card {
+    background-color: #F2F2F2;
+    border: 0;
+}
+
+.maindiv {
+    margin-top: 3rem;
+}
+
+.headingfont {
+    font-size: 34px;
+    font-weight: 700;
+    color: #08132D;
+}
+
+.content {
+    color: #4C5877;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.subcontent {
+    color: #4C5877;
+    font-size: 14px;
+    font-weight: 400;
+}

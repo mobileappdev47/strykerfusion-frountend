@@ -11,7 +11,7 @@ const Handcraft = () => {
             <h1 className={style.headingfont}>Handcrafted for </h1>
             <h1 className={style.headingfont}>Business and Startups</h1>
           </div>
-          <button className={`btn mt-5 ${style.getstartedbtn}`}> Get Started</button>
+          <button className={`btn ${style.getstartedbtn}`}> Get Started</button>
         </div>
         <div className="col-lg-6 col-12 d-flex">
           <div id="carouselExampleIndicators" className={`carousel slide w-100 ${style.craftimg}`} data-bs-ride="carousel">

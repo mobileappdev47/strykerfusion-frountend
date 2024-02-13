@@ -13,14 +13,14 @@ const OurBrand = () => {
             <h1 className={style.heading}>Some of Our Brands</h1>
            <div className='mt-3'>
            <Marquee>
-                <img src={apple} className='m-5' alt='apple' />
-                <img src={reddit} className='m-5' alt='apple' />
-                <img src={testl} className='m-5' alt='apple' />
-                <img src={slack} className='m-5' alt='apple' />
-                <img src={apple} className='m-5' alt='apple' />
-                <img src={reddit} className='m-5' alt='apple' />
-                <img src={testl} className='m-5' alt='apple' />
-                <img src={slack} className='m-5' alt='apple' />
+                <img src={apple} className={style.brands} alt='apple' />
+                <img src={reddit} className={style.brands} alt='apple' />
+                <img src={testl} className={style.brands} alt='apple' />
+                <img src={slack} className={style.brands} alt='apple' />
+                <img src={apple} className={style.brands} alt='apple' />
+                <img src={reddit} className={style.brands} alt='apple' />
+                <img src={testl} className={style.brands} alt='apple' />
+                <img src={slack} className={style.brands} alt='apple' />
             </Marquee>
            </div>
         </div>

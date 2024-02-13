@@ -1,8 +1,35 @@
+.maindiv {
+    margin-top: 2rem;
+}
+
 .learnmorebtn {
     color: #265EE1;
     border: 1px solid #265EE1;
 }
 
 .carousel {
-    width: 7%;
+    width: 2%;
+}
+
+
+@media only screen and (max-width: 576px) {
+    .cardgroup {
+        display: flex;
+        flex-flow: row wrap
+    }
+
+    .card {
+        flex: 1 0 0%;
+        margin: 0 !important;
+    }
+
+    .maindiv {
+        margin-top: 1rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .card {
+        padding: 0.5rem !important;
+    }
 }
