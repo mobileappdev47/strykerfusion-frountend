@@ -11,6 +11,21 @@
     width: 2%;
 }
 
+.headingfont {
+    color: #08132D;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+
+}
+
+.content {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+    color: #4C5877;
+}
 
 @media only screen and (max-width: 576px) {
     .cardgroup {
