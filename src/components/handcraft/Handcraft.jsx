@@ -22,6 +22,12 @@ const Handcraft = () => {
     setPage([page + newDirection, newDirection]);
   };
 
+  const customVariant = {
+    initial: { x: 400, opacity: 0,}, // Initial position with rotation
+    animate: { x: 0, opacity: 1, }, // Final position with no rotation
+    transition: { duration: 0.8, ease: "easeInOut" } // Add your desired transition properties
+  };
+
   return (
     <div className={style.maindiv}>
       <div className="row w-100">

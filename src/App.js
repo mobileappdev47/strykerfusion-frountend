@@ -6,6 +6,8 @@ import Process from './components/process/Process';
 import Revolution from './components/revolution/Revolution';
 import Products from './components/products/Products';
 import AllProducts from './components/allproducts/AllProducts';
+import Register from './components/register/Register';
+import Experience from './components/experience/Experience';
 
 function App() {
   return (
@@ -18,7 +20,9 @@ function App() {
           <Products key={index} />
         </section>
       ))}
-      <section id='allproducts'><AllProducts/></section>
+      <section id='allproducts'><AllProducts /></section>
+
+      <section><Register /> <Experience /></section>
     </>
   );
 }
