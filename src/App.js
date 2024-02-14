@@ -1,20 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Layout from './components/layout/Layout';
-import Home from './pages/home/Home';
+import Handcraft from './components/handcraft/Handcraft';
+import Header from './components/header/Header';
+import OurBrand from './components/ourbrands/OurBrand';
+import Process from './components/process/Process';
+import Revolution from './components/revolution/Revolution';
+import Products from './components/products/Products';
+import AllProducts from './components/allproducts/AllProducts';
 
 function App() {
   return (
     <>
-       <BrowserRouter>
-        <Routes>
-            <Route element={<Layout/>}>
-              <Route path="/" element={<Home/>} />
-            </Route>
-        </Routes>
-      </BrowserRouter>
-   </>
+      <section id='homepage'><Header /><Handcraft /></section>
+      <section id='brandandprocess'><OurBrand /> <Process /></section>
+      <section id='revolution'><Revolution /></section>
+      {[1, 2, 3, 4].map((item, index) => (
+        <section id='products'>
+          <Products key={index} />
+        </section>
+      ))}
+      <section id='allproducts'><AllProducts/></section>
+    </>
   );
 }
 

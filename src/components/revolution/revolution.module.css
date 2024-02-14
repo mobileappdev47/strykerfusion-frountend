@@ -1,10 +1,20 @@
 .card {
     background-color: #F2F2F2;
     border: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .maindiv {
-    margin-top: 3rem;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 70px;
+  padding-right: 70px;
+  background-color: #F2F2F2;
 }
 
 .headingfont {
@@ -30,4 +40,176 @@
     background-color: #265EE1;
     color: white;
     margin-top: 3rem;
+}
+
+.imgheadingfont {
+    font-size: 0.90vw;
+    font-weight: 600;
+}
+
+.imgcontent {
+    font-size: 0.75vw;
+    font-weight: 500;
+}
+
+.contentbox1 {
+    box-shadow: 0px 4px 40px 0px #D8D8D840;
+    background-color: white;
+    width: 12vw;
+    padding: 15px;
+    border-radius: 19px;
+    position: absolute;
+    top: 160px;
+    left: 160px;
+}
+
+.contentbox2 {
+    box-shadow: 0px 4px 40px 0px #D8D8D840;
+    background-color: white;
+    width: 12vw;
+    padding: 15px;
+    border-radius: 19px;
+    position: absolute;
+    bottom: 100px;
+    left: 160px;
+}
+
+.contentbox3 {
+    box-shadow: 0px 4px 40px 0px #D8D8D840;
+    background-color: white;
+    width: 12vw;
+    padding: 15px;
+    border-radius: 19px;
+    position: absolute;
+    right: 150px;
+    top: 300px;
+}
+
+@media only screen and (max-width: 1500px) {
+    .contentbox3 {
+        right: 100px;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .contentbox3 {
+        right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .contentbox1 {
+        top: 200px;
+        left: 100px;
+    }
+    .contentbox2 {
+        left: 100px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .contentbox1 {
+        top: 150px;
+        left: 100px;
+    }
+    .contentbox2 {
+        left: 100px;
+        bottom: 150px;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .contentbox1 {
+        top: 150px;
+        left: 100px;
+    }
+    .contentbox2 {
+        left: 100px;
+        bottom: 150px;
+    }
+    .headingfont{
+        font-size: 28px;
+    }
+    .content{
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .contentbox1 {
+       width: 30vw;
+    }
+    .contentbox2 {
+        width: 30vw;
+    }
+    .contentbox3 {
+        width: 30vw;
+    }
+    .imgheadingfont{
+        font-size: 2vw;
+    }
+    .imgcontent{
+        font-size: 1.5vw;
+    }
+    .contentsec{
+        margin-top: 3rem;
+    }
+    .content{
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .contentbox1 {
+      top: 160px;
+      left: 50px;
+    }
+    .contentbox2 {
+      left: 50px;
+    }
+    .contentbox3 {
+        top: 280px;
+    }
+    .headingfont{
+        font-size: 25px;
+    }
+    .subcontent{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .contentbox1 {
+      top: 160px;
+      left: 50px;
+    }
+    .contentbox2 {
+      left: 50px;
+      bottom: 80px;
+    }
+    .contentbox3 {
+        top: 250px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .contentbox1 {
+      top: 110px;
+      left: 30px;
+    }
+    .contentbox2 {
+      left: 30px;
+      bottom: 50px;
+    }
+    .contentbox3 {
+        top: 200px;
+    }
+}
+@media only screen and (max-width: 320px) {
+    .contentbox1 {
+      top: 100px;
+      left: 30px;
+    }
+    .contentbox2 {
+      left: 30px;
+      bottom: 50px;
+    }
+    .contentbox3 {
+        top: 150px;
+    }
 }

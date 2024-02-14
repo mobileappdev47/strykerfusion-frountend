@@ -21,7 +21,6 @@ function Header() {
   return (
     <>
       <motion.div
-        className={style.maindiv}
         initial={{ y: -100 }} animate={{ y: 0 }}
       >
         <div>

@@ -1,0 +1,61 @@
+.maindiv {
+    height: 100vh;
+    padding-left: 70px;
+    padding-right: 70px;
+    background-color: #F2F2F2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.headingfont {
+    color: #08132D;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.content {
+    color: #4C5877;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.contentbox {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    z-index: 1;
+}
+
+.imageContainer {
+    position: relative;
+}
+
+.imagegradient {
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    border-radius: 8px;
+    z-index: 1;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.headingfontimg {
+    color: #FFFFFF;
+    font-size: 1.5vw;
+    font-weight: 500;
+}
+
+.contentimg {
+    color: #FFFFFF;
+    font-size: 0.5vw;
+    font-weight: 500;
+    border-bottom: 1px solid #FFFFFF;
+    width: fit-content;
+}
+
+.productimage {
+    max-height: 350px;
+}

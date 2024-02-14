@@ -1,10 +1,18 @@
+.maindiv {
+    height: 180px;
+    padding: 10px;
+    padding-left: 70px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-right: 70px;
+    background-color: #F2F2F2;
+}
+
 .heading {
     font-size: 24px;
     font-weight: 600;
     text-align: center;
-    margin-top: 5rem;
     color: #939DB4;
-
 }
 
 .brands {
@@ -12,18 +20,13 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .heading {
-        margin-top: 3rem;
-    }
-    .brands{
+    .brands {
         margin: 1.5rem;
     }
 }
+
 @media only screen and (max-width: 425px) {
-    .heading {
-        margin-top: 3rem;
-    }
-    .brands{
+    .brands {
         margin: 1rem;
         height: 20px;
         width: 70px;

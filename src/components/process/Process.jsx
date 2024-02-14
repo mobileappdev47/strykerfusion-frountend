@@ -48,7 +48,7 @@ const Process = () => {
                 The Process
             </h1>
             <h1 className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br /> eiusmod tempor incididunt</h1>
-            <div id="carouselExampleIndicators1" className="carousel slide" data-bs-ride="carousel">
+            <div id="carouselExampleIndicators1" className="carousel slide px-5" data-bs-ride="carousel">
                 <div className={`carousel-indicators`}>
                     <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>

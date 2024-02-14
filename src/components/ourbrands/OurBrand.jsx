@@ -9,10 +9,9 @@ import reddit from '../../assets/reddit.png'
 
 const OurBrand = () => {
     return (
-        <div className=''>
+        <div className={style.maindiv}>
             <h1 className={style.heading}>Some of Our Brands</h1>
-           <div className='mt-3'>
-           <Marquee>
+            <Marquee>
                 <img src={apple} className={style.brands} alt='apple' />
                 <img src={reddit} className={style.brands} alt='apple' />
                 <img src={testl} className={style.brands} alt='apple' />
@@ -22,7 +21,6 @@ const OurBrand = () => {
                 <img src={testl} className={style.brands} alt='apple' />
                 <img src={slack} className={style.brands} alt='apple' />
             </Marquee>
-           </div>
         </div>
     )
 }
