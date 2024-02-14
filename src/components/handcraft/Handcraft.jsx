@@ -7,6 +7,12 @@ const Handcraft = () => {
   // Custom ease values for cubic-bezier curve
   const customEase = [0.6, -0.05, 0.01, 0.99];
 
+  const customVariant = {
+    initial: { x: 400, opacity: 0,}, // Initial position with rotation
+    animate: { x: 0, opacity: 1, }, // Final position with no rotation
+    transition: { duration: 0.8, ease: "easeInOut" } // Add your desired transition properties
+  };
+
   return (
     <>
       <div className={style.maindiv}>
@@ -24,7 +30,13 @@ const Handcraft = () => {
               Get Started
             </motion.button>
           </div>
-          <motion.div initial={{ y: 200, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.5, ease: customEase }} className="col-lg-6 col-12">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            transition="transition"
+            variants={customVariant}
+            className="col-lg-6 col-12"
+          >
             <div id="carouselExampleIndicators" className={`carousel slide w-100 ${style.craftimg}`} data-bs-ride="carousel">
               <div className="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
