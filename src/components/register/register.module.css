@@ -9,15 +9,17 @@
     left: 0;
     width: 100%;
     z-index: -1;
+    height: 100%;
   }
   
   .image {
     width: 100%;
+    height: 100%;
   }
   
   .content {
     position: relative;
-    top: 300px;
+    top: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,3 +43,4 @@
     color: #FAFAFA;
     padding: 10px 20px;
   }
+  
