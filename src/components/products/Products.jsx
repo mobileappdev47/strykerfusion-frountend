@@ -47,7 +47,7 @@ const Products = ({ index }) => {
             <div className={style.contentbox}>
               <h1 className={style.headingfont}>
                 Growth Tracker
-              </h1>
+              </h1> 
               <h1 className={style.content}>
                 View Project
               </h1>

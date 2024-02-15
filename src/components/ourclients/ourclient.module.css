@@ -1,0 +1,51 @@
+.maindiv {
+    height: 100vh;
+    padding-left: 70px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    padding-right: 70px;
+    background-color: #F2F2F2;
+}
+
+.headingfont {
+    color: #08132D;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.content {
+    color: #4C5877;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.contentclient {
+    color: #FAFAFA;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.active {
+    background-color: #265EE1;
+    height: 50%;
+    border-radius: 8px;
+}
+
+.clientimg {
+    border-radius: 50px;
+}
+
+.clientcontent {
+    color: #4C5877;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.clientname {
+    color: #2D2E2E;
+    font-size: 16px;
+    font-weight: 600;
+}

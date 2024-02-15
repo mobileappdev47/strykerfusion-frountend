@@ -1,0 +1,28 @@
+.maindiv {
+    height: 100vh;
+    background: radial-gradient(50% 50% at 50% 50%, #51A2FC 0%, #0074F3 100%) !important;
+}
+
+.map {
+    height: 100%;
+    width: 100%;
+}
+
+.map g path {
+    stroke: #50A2FC;
+}
+
+.headingfont {
+    color: #FAFAFA;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.content {
+    color: #FAFAFA;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 0;
+}
