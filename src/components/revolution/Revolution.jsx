@@ -6,8 +6,8 @@ const Revolution = () => {
     return (
         <div className={style.maindiv}>
             <div className={`card mb-3 ${style.card}`}>
-                <div className="row g-0">
-                    <div className="col-md-6 col-12 text-center position-relative">
+                <div className="row">
+                    <div className="col-md-6 d-md-inline d-none col-12 text-center position-relative">
                         <img src={revolutionman} className="img-fluid rounded-start" alt="..." />
                         <div className={style.contentbox1}>
                             <h1 className={`${style.imgheadingfont}`}>Develop your dreams</h1>

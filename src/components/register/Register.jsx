@@ -14,8 +14,8 @@ const Register = () => {
                 />
             </div>
             <div className={styles.content}>
-                <h1>Unlock a World of New Possibilities</h1>
-                <p className='w-50'>
+                <h1 className={styles.headingfont}>Unlock a World of New Possibilities</h1>
+                <p className={`${styles.contentfont} w-sm-50 w-100`}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident id, doloremque fugiat minima exercitationem nihil.
                 </p>
                 <div className={`d-flex gap-5`}>

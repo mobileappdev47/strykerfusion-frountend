@@ -4,7 +4,10 @@
     padding-right: 70px;
     background-color: #F2F2F2;
     padding-top: 30px;
-    padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .products {
@@ -13,6 +16,7 @@
 
 .imgsection {
     height: 82vh;
+    width: 58%;
 }
 
 .headingfont {
@@ -38,6 +42,7 @@
 
 .imageContainer {
     position: relative;
+    width: 100%;
 }
 
 .imagegradient {
@@ -67,4 +72,31 @@
 .productimage {
     height: 100%;
     width: 100%;
+}
+
+@media only screen and (max-width: 1440px) {
+    .imgsection {
+        width: 70%;
+    }
+}
+@media only screen and (max-width: 1200px) {
+    .imgsection {
+        width: 75%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .imgsection {
+        width: 85%;
+    }
+}
+@media only screen and (max-width: 900px) {
+    .imgsection {
+        width: 100%;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .maindiv {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }

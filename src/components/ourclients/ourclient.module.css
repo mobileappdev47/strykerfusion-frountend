@@ -56,6 +56,8 @@
     border-radius: 8px;
     position: relative;
     margin: 60px;
+    display: flex;
+    justify-content: center;
 }
 
 .clientimg {
@@ -67,7 +69,6 @@
 .clientsec {
     position: absolute;
     top: 85%;
-    right: 41%;
 }
 
 .clientcontent {
@@ -90,8 +91,52 @@
     background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     border-radius: 50px;
     z-index: 1;
-    
+
 }
+
 .blackAndWhite {
     filter: grayscale(100%);
+}
+
+@media only screen and (max-width: 1600px) {
+    .active {
+        margin: 30px;
+        height: 40%;
+    }
+
+    .notactive {
+        height: 60%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .maindiv {
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .active {
+        margin: 0px;
+        height: 40%;
+    }
+
+    .activecontentclient {
+        font-size: 14px;
+    }
+
+    .notactive {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .clientcontent {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .maindiv {
+        padding: 20px;
+    }
 }

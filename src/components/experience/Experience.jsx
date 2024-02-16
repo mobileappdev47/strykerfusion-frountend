@@ -9,12 +9,12 @@ const Experience = () => {
     return (
         <div className={`${style.maindiv}`}>
             <div className="row">
-                <div className="col-5 d-flex flex-column justify-content-center">
+                <div className="col-sm-5 d-none d-sm-inline  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
                     <h1 className={style.headingfont}>Experience the Difference</h1>
                     <p className={style.content}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Exercitationem, repudiandae delectus ea commodi debitis quaerat cumque assumenda fugit possimus temporibus.</p>
                     <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
                 </div>
-                <div className="col-7">
+                <div className="col-sm-7">
                     <Swiper
                         slidesPerView={'auto'}
                         spaceBetween={30}
@@ -33,9 +33,9 @@ const Experience = () => {
                                     </svg>
 
                                     <div className="card-body">
-                                        <h5 className="card-title">Timely Deliverables</h5>
-                                        <p className="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                                        <a href="#" className="btn text-primary">Read More</a>
+                                        <h1 className={style.cardheading}>Timely Deliverables</h1>
+                                        <p className={style.cardcontent}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                        <a href="#" className="btn p-0 text-primary">Read More</a>
                                     </div>
                                 </div></SwiperSlide>))}
                     </Swiper>

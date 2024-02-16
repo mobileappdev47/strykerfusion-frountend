@@ -47,10 +47,6 @@
         flex: 1 0 0%;
         margin: 0 !important;
     }
-
-    .maindiv {
-        margin-top: 1rem;
-    }
 }
 
 @media only screen and (max-width: 375px) {

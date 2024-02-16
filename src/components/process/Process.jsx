@@ -36,6 +36,18 @@ const Process = () => {
         setNumCards(getNumCards());
     }, [startIndex]);
 
+    useEffect(() => {
+        const handleResize = () => {
+            setNumCards(getNumCards());
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     const handleNext = () => {
         setStartIndex((prevIndex) => Math.min(prevIndex + 1, 2));
     };
