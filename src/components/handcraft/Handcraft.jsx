@@ -107,7 +107,7 @@ const Handcraft = () => {
             </AnimatePresence>
           </div>
         </div>
-        <div className="col-lg-6 col-12 position-relative h-100">
+        <div className="col-lg-6 col-12 position-relative">
           <Swiper
             ref={swiperRef}
             effect={'cube'}

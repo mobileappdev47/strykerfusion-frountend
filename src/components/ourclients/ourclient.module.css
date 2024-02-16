@@ -1,9 +1,9 @@
 .maindiv {
     height: 100vh;
-    padding-left: 70px;
+    padding-left: 100px;
     padding-top: 100px;
     padding-bottom: 80px;
-    padding-right: 70px;
+    padding-right: 100px;
     background-color: #F2F2F2;
 }
 
@@ -21,31 +21,77 @@
     text-align: center;
 }
 
-.contentclient {
+.activecontentclient {
     color: #FAFAFA;
     font-size: 16px;
     font-weight: 400;
     text-align: center;
+    margin-top: 10px;
+}
+
+.contentclient {
+    color: #08132D;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.notactive {
+    background-color: transparent !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 50px;
+    padding-bottom: 0 !important;
 }
 
 .active {
     background-color: #265EE1;
-    height: 50%;
+    height: 35%;
     border-radius: 8px;
+    position: relative;
+    margin: 60px;
 }
 
 .clientimg {
     border-radius: 50px;
+    height: 90px !important;
+    width: 90px !important;
+}
+
+.clientsec {
+    position: absolute;
+    top: 85%;
+    right: 41%;
 }
 
 .clientcontent {
     color: #4C5877;
     font-size: 16px;
     font-weight: 500;
+    margin-top: 10px;
 }
 
 .clientname {
     color: #2D2E2E;
     font-size: 16px;
     font-weight: 600;
+}
+
+.imagegradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    border-radius: 50px;
+    z-index: 1;
+    
+}
+.blackAndWhite {
+    filter: grayscale(100%);
 }

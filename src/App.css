@@ -51,6 +51,7 @@ h1 {
 section {
   height: 100vh;
   scroll-snap-align: center;
+  width: 100%;
 }
 
 .swiper {
@@ -103,7 +104,33 @@ section {
   display: none !important;
 }
 
-.rsm-svg .rsm-marker path{
+.rsm-svg .rsm-marker path {
   fill: #F74445 !important;
   stroke: none !important;
+}
+
+.btn-check:checked+.btn-outline-primary {
+  color: white;
+  background-color: #265EE1;
+  border: none;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #265EE1;
+  border: none;
+}
+
+.btn-check:focus+.btn {
+  box-shadow: none;
+}
+
+.btn-check:focus+.btn-outline-primary {
+  box-shadow: none;
+}
+
+.form-control:focus {
+  background-color: transparent;
+  outline: 0;
+  box-shadow: none;
 }

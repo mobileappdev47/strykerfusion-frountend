@@ -11,6 +11,8 @@ import Register from './components/register/Register';
 import Experience from './components/experience/Experience';
 import Map from './components/map/Map';
 import OurClients from './components/ourclients/OurClients';
+import ContactUs from './components/contactus/ContactUs';
+import Footer from './components/footer/Footer';
 
 function App() {
   const [showProducts, setShowProducts] = useState(true);
@@ -55,6 +57,7 @@ function App() {
       <section id='regexeprience'><Register /> <Experience /></section>
       <section id='map'><Map /></section>
       <section id='ourclient'><OurClients /></section>
+      <section id='contactus'><ContactUs /><Footer/></section>
     </>
   );
 }

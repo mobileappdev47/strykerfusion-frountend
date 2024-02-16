@@ -14,42 +14,38 @@ const OurClients = () => {
             <Swiper
                 slidesPerView={3}
                 spaceBetween={30}
-                pagination={{
-                    clickable: true,
-                }}
                 modules={[Pagination]}
-                className="mySwiper"
+                className="mySwiper mt-5"
             >
-                <SwiperSlide className={style.active}>
-                    <div className='p-5'>
-                        <div>
-                            <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.555664 10.4166V20.7023H10.8414V10.4166H3.98426C3.98426 6.63564 7.06044 3.55946 10.8414 3.55946V0.130859C5.1695 0.130859 0.555664 4.7447 0.555664 10.4166Z" fill="#FAFAFA" />
-                            </svg>
-                            <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.555664 10.4166V20.7023H10.8414V10.4166H3.98426C3.98426 6.63564 7.06044 3.55946 10.8414 3.55946V0.130859C5.1695 0.130859 0.555664 4.7447 0.555664 10.4166Z" fill="#FAFAFA" />
-                            </svg>
-                        </div>
-                        <p className={style.contentclient}>
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                        </p>
-                    </div>
-                    {/* <div>
-                        <div>
-                            <img src={client1} className={style.clientimg} alt="client" />
-                        </div>
-                        <h1 className={style.clientname}>Lora Smith </h1>
-                        <p className={style.clientcontent}>CEO Lixusio</p>
-                    </div> */}
-                </SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
-                <SwiperSlide>Slide 5</SwiperSlide>
-                <SwiperSlide>Slide 6</SwiperSlide>
-                <SwiperSlide>Slide 7</SwiperSlide>
-                <SwiperSlide>Slide 8</SwiperSlide>
-                <SwiperSlide>Slide 9</SwiperSlide>
+                {[...Array(6)].map((_, index) => (
+                    <SwiperSlide key={index} className='bg-transparent'>
+                        {({ isNext }) => (
+                            <div className={isNext ? style.active : style.notactive}>
+                                <div className={isNext ? 'p-5 d-flex flex-column h-100 justify-content-center align-items-center' : 'px-5 pt-5'}>
+                                    <div>
+                                        <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.555664 10.4166V20.7023H10.8414V10.4166H3.98426C3.98426 6.63564 7.06044 3.55946 10.8414 3.55946V0.130859C5.1695 0.130859 0.555664 4.7447 0.555664 10.4166Z" fill={isNext ? "#FAFAFA" : "#4C5877"} />
+                                        </svg>
+                                        <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M0.555664 10.4166V20.7023H10.8414V10.4166H3.98426C3.98426 6.63564 7.06044 3.55946 10.8414 3.55946V0.130859C5.1695 0.130859 0.555664 4.7447 0.555664 10.4166Z" fill={isNext ? "#FAFAFA" : "#4C5877"} />
+                                        </svg>
+                                    </div>
+                                    <p className={isNext ? style.activecontentclient : style.clientcontent}>
+                                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                                    </p>
+                                </div>
+                                <div className={isNext ? style.clientsec : 'mt-5'}>
+                                    <div className='d-flex justify-content-center position-relative'>
+                                        <img src={client1}  className={`${style.clientimg} ${!isNext ? style.blackAndWhite : ''}`} alt="client" />
+                                    </div>
+                                    <h1 className={style.clientname}>Lora Smith </h1>
+                                    <p className={style.clientcontent}>CEO Lixusio</p>
+                                </div>
+                            </div>
+                        )}
+                    </SwiperSlide>
+                ))}
+
             </Swiper>
         </div>
     )

@@ -32,15 +32,24 @@
     .craftimg {
         margin-top: 3rem;
     }
+
+    .getstartedbtn {
+        margin-top: 1rem !important;
+        margin-bottom: 1rem !important;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-    .getstartedbtn {
-        margin-top: 1rem;
-    }
-
     .craftimg {
         margin-top: 2rem;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .maindiv {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
