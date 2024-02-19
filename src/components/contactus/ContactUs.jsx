@@ -1,10 +1,60 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import style from './contactus.module.css'
 import { Button, Form } from 'react-bootstrap'
+import emailjs from "@emailjs/browser";
+import axios from 'axios';
+import { base_url } from '../config/Base_url';
 
 const ContactUs = () => {
+    const ref = useRef()
+    const formRef = useRef();
+    const [error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleemailsend = () => {
+        axios.post(`${base_url}/contact/send`, formData)
+            .then(response => {
+                console.log(response.data);
+                setSuccess(true); // Assuming the email was sent successfully
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                setError(true);
+            });
+    };
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        emailjs
+            .sendForm(
+                process.env.REACT_APP_EMAIL_SERVICE,
+                process.env.REACT_APP_EAMIL_TEMPLATE,
+                formRef.current,
+                process.env.REACT_APP_EMAIL_PUBLIC_KEY
+            )
+            .then(
+                (result) => {
+                    setSuccess(true);
+                },
+                (error) => {
+                    setError(true);
+                }
+            );
+    };
+
+
     return (
-        <div className={style.maindiv}>
+        <div ref={ref} className={style.maindiv}>
             <div className="row h-100 d-flex align-items-center">
                 <div className="col-6">
                     <h1 className={style.headingfont}>Stay Connected & <br />Informed</h1>
@@ -34,59 +84,70 @@ const ContactUs = () => {
                     <div className={style.contactform}>
                         <h1 className={`${style.label}`}>I’m interested in:</h1>
                         <div className="" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autocomplete="off" />
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" />
                             <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio1' >The Products</label>
 
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autocomplete="off" />
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
                             <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio2'>Training</label>
 
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autocomplete="off" />
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" />
                             <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio3'>Web Development</label>
 
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio4" autocomplete="off" />
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio4" autoComplete="off" />
                             <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio4'>Application Development</label>
 
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio5" autocomplete="off" />
+                            <input type="radio" className="btn-check" name="btnradio" id="btnradio5" autoComplete="off" />
                             <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio5'>Other</label>
                         </div>
-                        <Form>
-                            <Form.Group controlId='yourname' className='m-4'>
+                        <Form ref={formRef} onSubmit={sendEmail}>
+                            <Form.Group controlId='name' className='m-4'>
                                 <Form.Label className={`${style.label}`}>Your name</Form.Label>
                                 <Form.Control
+                                    name='name'
                                     type="text"
-                                    placeholder='Enter a your name'
+                                    placeholder='Enter your name'
                                     className={style.inputfield}
+                                    value={formData.name}
+                                    onChange={handleInputChange}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId='youremail' className='m-4'>
+                            <Form.Group controlId='email' className='m-4'>
                                 <Form.Label className={`${style.label}`}>Your email</Form.Label>
                                 <Form.Control
+                                    name='email'
                                     type="text"
                                     placeholder='email@gmail.com'
                                     className={style.inputfield}
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
                                 </Form.Control.Feedback>
                             </Form.Group>
-                            <Form.Group controlId='youremessage' className='m-4'>
+                            <Form.Group controlId='message' className='m-4'>
                                 <Form.Label className={`${style.label}`}>Your message</Form.Label>
                                 <Form.Control
+                                    name='message'
                                     as="textarea" // Use `as="textarea"` to render a textarea element
                                     rows={5}      // Correct attribute is `rows`, not `row`
                                     className={style.inputfieldtextarea}
+                                    value={formData.message}
+                                    onChange={handleInputChange}
                                 />
                                 <Form.Control.Feedback type="invalid">
                                     {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
                                 </Form.Control.Feedback>
                             </Form.Group>
 
-                            <Button className={style.sendbtn} type='button'>
+                            <Button className={style.sendbtn} type='submit' onClick={handleemailsend}>
                                 Send Message
                             </Button>
+                            {error && "Error"}
+                            {success && "Success"}
                         </Form>
                     </div>
                 </div>
