@@ -9,12 +9,13 @@ import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 import { EffectCube, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import axios from 'axios';
+import { base_url } from '../config/Base_url';
 
 const Handcraft = () => {
   const images = [craftimg1, craftimg1, craftimg3];
   const autoSlideDuration = 3000; // 3 seconds
   const swiperRef = useRef(null);
-  const swipeConfidenceThreshold = 10000;
   const [[page, direction], setPage] = useState([0, 0]);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -59,13 +60,33 @@ const Handcraft = () => {
     return () => clearInterval(interval);
   }, [page]);
 
-  const imageIndex = (index) => {
-    return (images.length + (index % images.length)) % images.length;
-  };
-
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
   };
+
+  const [homeData, setHomeData] = useState()
+  const [error, setError] = useState()
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${base_url}/home`);
+      setHomeData(response.data.home);
+    } catch (error) {
+      setError(error);
+      console.error('Error fetching home data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+
+  const wordsInFirstPart = 2;
+  const titleParts = homeData?.title?.split(' ');
+  // Splitting the title into two parts
+  const firstPart = titleParts?.slice(0, wordsInFirstPart).join(' ');
+  const secondPart = titleParts?.slice(wordsInFirstPart).join(' ');
 
   return (
     <div ref={ref} className={style.maindiv}>
@@ -82,7 +103,7 @@ const Handcraft = () => {
                     transition={{ duration: 0.5 }}
                     className={style.headingfont}
                   >
-                    Handcrafted for
+                    {firstPart}
                   </motion.h1>
                   <motion.h1
                     key="heading2"
@@ -91,7 +112,7 @@ const Handcraft = () => {
                     transition={{ duration: 0.5, delay: 0.5 }}
                     className={style.headingfont}
                   >
-                    Business and Startups
+                    {secondPart}
                   </motion.h1>
                   <motion.button
                     key="button"
@@ -130,9 +151,9 @@ const Handcraft = () => {
             }}
             loop={true}
           >
-            {images.map((image, index) => (
+            {homeData?.images?.map((image, index) => (
               <SwiperSlide key={index}>
-                <img src={image} alt={`Slide ${index}`} />
+                <img src={`${base_url}/${image}`} alt={`Slide ${index}`} />
               </SwiperSlide>
             ))}
           </Swiper>

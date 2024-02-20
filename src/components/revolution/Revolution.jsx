@@ -1,13 +1,25 @@
 import React from 'react'
 import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
+import { motion,useInView  } from 'framer-motion'
 
 const Revolution = () => {
+
+    const { ref, inView } = useInView({
+        triggerOnce: true, // Trigger animation only once when element comes into view
+        threshold: 0.5 // Adjust threshold as needed
+    });
+    
     return (
         <div className={style.maindiv}>
             <div className={`card mb-3 ${style.card}`}>
                 <div className="row">
-                    <div className="col-md-6 d-md-inline d-none col-12 text-center position-relative">
+                    <motion.div className="col-md-6 d-md-inline d-none col-12 text-center position-relative"
+                        initial={{ x: -1000 }} // Initial position off-screen to the left
+                        animate={{ x: 0 }}      // Final position
+                        transition={{ duration: 0.5 }}
+                        ref={ref}
+                    >
                         <img src={revolutionman} className="img-fluid rounded-start" alt="..." />
                         <div className={style.contentbox1}>
                             <h1 className={`${style.imgheadingfont}`}>Develop your dreams</h1>
@@ -48,8 +60,13 @@ const Revolution = () => {
                                 </svg>
                                 &nbsp;&nbsp;&nbsp;Prototype</h1>
                         </div>
-                    </div>
-                    <div className={`col-md-6 col-12 d-flex ${style.contentsec}`}>
+                    </motion.div>
+                    <motion.div className={`col-md-6 col-12 d-flex ${style.contentsec}`}
+                        initial={{ x: 1000 }} // Initial position off-screen to the right
+                        animate={{ x: 0 }}    // Final position
+                        transition={{ duration: 0.5 }}
+
+                    >
                         <div className="card-body d-flex flex-column justify-content-center">
                             <h1 className={`card-title ${style.headingfont}`}>Don't Just Level Up, Leap Forward with our Value Revolution</h1>
                             <p className={`card-text mt-4 ${style.content}`}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
@@ -73,7 +90,7 @@ const Revolution = () => {
                                 &nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</p>
                             <button className={`btn mt-5 ${style.getstartedbtn}`}>Learn More</button>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

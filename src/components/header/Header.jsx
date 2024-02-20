@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import style from './header.module.css';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,8 +25,8 @@ function Header() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      {
-        threshold: 0.5,
+      { 
+        threshold: 0,
       }
     );
     if (ref.current) {
@@ -60,6 +60,7 @@ function Header() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                   transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1}} whileTap={{ scale: 0.9 }}
                 >
                   <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
                     {item}

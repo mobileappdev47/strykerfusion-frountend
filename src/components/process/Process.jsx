@@ -4,6 +4,8 @@ import style from './process.module.css';
 import card from '../../assets/card.png';
 import pre from '../../assets/prearrow.png';
 import next from '../../assets/nextarrow.png';
+import { base_url } from '../config/Base_url';
+import axios from 'axios';
 
 const Process = () => {
     const [startIndex, setStartIndex] = useState(0);
@@ -66,9 +68,26 @@ const Process = () => {
         }
     }
 
+    const [process, setProcess] = useState()
+    const [error, setError] = useState()
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${base_url}/process`);
+            setProcess(response?.data?.data);
+        } catch (error) {
+            setError(error);
+            console.error('Error fetching home data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <div ref={ref} className={style.maindiv}>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }}>
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} >
                 <h1 className={style.headingfont}>
                     The Process
                 </h1>
@@ -79,22 +98,31 @@ const Process = () => {
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" className={` ${startIndex === 2 ? 'active' : ''}`} aria-label="Slide 3"></button>
                     </div>
-                    <motion.div className="carousel-inner" initial={{ opacity: 0, y: 100 }} animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }} transition={{ duration: 1 }}>
+                    <motion.div className="carousel-inner"
+                        initial={{ opacity: 0, y: 100 }}
+                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
+                        transition={{ duration: 1 }}
+                    >
                         <div className="carousel-item active">
                             <div className={`card-group ${style.cardgroup}`}>
-                                {[0, 1, 2].map((index) => {
-                                    const cardIndex = startIndex + index;
+                                {process && process.map((item, index) => {
                                     return (
-                                        <motion.div className={`card border-0 bg-white p-4 m-3 ${style.card}`} key={cardIndex} style={{ width: '18rem', borderRadius: '28px' }} initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ delay: index * 0.3 }}>
-                                            <img src={card} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
+                                        <motion.div className={`card border-0 bg-white p-4 m-3 ${style.card}`} key={index}
+                                            style={{ width: '18rem', borderRadius: '28px' }}
+                                            initial={{ opacity: 0 }}
+                                            animate={{ opacity: isVisible ? 1 : 0 }}
+                                            transition={{ delay: index * 0.3 }}
+                                            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                                        >
+                                            <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
                                             <div className="card-body">
-                                                <h5 className="card-title mb-3">{`${cardIndex + 1}Design`}</h5>
-                                                <p className="card-text">{`${cardIndex + 1} Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam`}</p>
+                                                <h5 className="card-title mb-3">{`${item.title}`}</h5>
+                                                <p className="card-text">{`${item.description}`}</p>
                                                 <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
                                             </div>
                                         </motion.div>
                                     );
-                                }).slice(0, numCards)}
+                                })}
                             </div>
                         </div>
                     </motion.div>

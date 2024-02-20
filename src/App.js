@@ -14,6 +14,7 @@ import OurClients from './components/ourclients/OurClients';
 import ContactUs from './components/contactus/ContactUs';
 import Footer from './components/footer/Footer';
 
+
 function App() {
   const [showProducts, setShowProducts] = useState(true);
   const allProductsRef = useRef(null);

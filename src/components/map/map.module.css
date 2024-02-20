@@ -12,6 +12,15 @@
     stroke: #50A2FC;
 }
 
+.mapContainer{
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Adjust the width as needed */
+    height: 100%; /* Adjust the height as needed */
+    margin: 0 auto;
+}
+
 .headingfont {
     color: #FAFAFA;
     font-size: 34px;

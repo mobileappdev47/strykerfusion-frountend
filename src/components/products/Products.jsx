@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import product1 from '../../assets/product1.png';
 import style from './products.module.css';
 import { motion ,useInView} from 'framer-motion';
+import { base_url } from '../config/Base_url';
+import axios from 'axios';
 
 const Products = ({ index }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,6 +31,24 @@ const Products = ({ index }) => {
       }
     };
   }, []);
+
+  const [products, setProducts] = useState()
+  console.log(products);
+    const [error, setError] = useState()
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${base_url}/process`);
+            setProducts(response?.data?.data);
+        } catch (error) {
+            setError(error);
+            console.error('Error fetching home data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData()
+    }, [])
 
   return (
     <>

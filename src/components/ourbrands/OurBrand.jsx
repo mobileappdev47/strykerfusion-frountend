@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './ourbrands.module.css'
 import Marquee from 'react-fast-marquee'
-import apple from '../../assets/apple.png'
-import google from '../../assets/google.png'
-import testl from '../../assets/teslr.png'
-import slack from '../../assets/slack.png'
-import reddit from '../../assets/reddit.png'
+import { base_url } from '../config/Base_url'
+import axios from 'axios'
 
 const OurBrand = () => {
+
+    const [brands, setBrands] = useState()
+    const [error, setError] = useState()
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`${base_url}/ourbrands`);
+            setBrands(response.data?.brand?.brandImages);
+        } catch (error) {
+            setError(error);
+            console.error('Error fetching home data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
     return (
         <div className={style.maindiv}>
             <h1 className={style.heading}>Some of Our Brands</h1>
             <Marquee>
-                <img src={apple} className={style.brands} alt='apple' />
-                <img src={reddit} className={style.brands} alt='apple' />
-                <img src={testl} className={style.brands} alt='apple' />
-                <img src={slack} className={style.brands} alt='apple' />
-                <img src={apple} className={style.brands} alt='apple' />
-                <img src={reddit} className={style.brands} alt='apple' />
-                <img src={testl} className={style.brands} alt='apple' />
-                <img src={slack} className={style.brands} alt='apple' />
+                {
+                    brands?.map((item, index) => (
+                        <img key={index} src={`${base_url}/${item}`} className={style.brands} alt='apple' />
+                    ))
+                }
             </Marquee>
         </div>
     )
