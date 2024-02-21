@@ -48,7 +48,7 @@ function App() {
         }
       },
       {
-        threshold: 0.5,
+        threshold: 0, // Adjust as needed
       }
     );
 
