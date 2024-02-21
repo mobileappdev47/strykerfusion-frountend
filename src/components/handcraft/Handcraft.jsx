@@ -107,7 +107,7 @@ const Handcraft = () => {
                     key="button"
                     initial={{ scale: 1 }} // Initial scale set to 1
                     animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
-                    transition={{ duration: 0.5, delay: 4.3 }}
+                    transition={{ duration: 0.5, delay: 4.5 }}
                     className={`btn mt-5 ${style.getstartedbtn}`}
                   >
                     Get Started
@@ -121,19 +121,6 @@ const Handcraft = () => {
           {homeData && ( // Conditionally render Swiper component
             <Swiper
               ref={swiperRef}
-              effect={'cube'}
-              grabCursor={true}
-              cubeEffect={{
-                shadow: true,
-                slideShadows: true,
-                shadowOffset: 20,
-                shadowScale: 0.94,
-              }}
-              pagination={{
-                clickable: true,
-                type: 'bullets',
-              }}
-              modules={[EffectCube, Pagination]}
               className="mySwiper"
               autoplay={{
                 delay: autoSlideDuration,
@@ -142,8 +129,15 @@ const Handcraft = () => {
               loop={true}
             >
               {homeData.images.map((image, index) => (
-                <SwiperSlide key={index}>
-                  <img src={`${base_url}/${image}`} alt={`Slide ${index}`} />
+                <SwiperSlide key={index} className='bg-transparent d-flex justify-content-center align-items-center'>
+                  <motion.img
+                    src={`${base_url}/${image}`}
+                    alt={`Slide ${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1 }}
+                    whileHover={{ scale: 0.8 }}
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

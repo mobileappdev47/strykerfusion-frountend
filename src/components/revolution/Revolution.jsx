@@ -1,27 +1,44 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
-import { motion,useInView  } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 
 const Revolution = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const ref = useRef(null);
 
-    const { ref, inView } = useInView({
-        triggerOnce: true, // Trigger animation only once when element comes into view
-        threshold: 0.5 // Adjust threshold as needed
-    });
-    
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsVisible(entry.isIntersecting);
+            },
+            {
+                threshold: 0.5,
+            }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
     return (
         <div className={style.maindiv}>
             <div className={`card mb-3 ${style.card}`}>
                 <div className="row">
-                    <motion.div className="col-md-6 d-md-inline d-none col-12 text-center position-relative"
-                        initial={{ x: -1000 }} // Initial position off-screen to the left
-                        animate={{ x: 0 }}      // Final position
-                        transition={{ duration: 0.5 }}
-                        ref={ref}
-                    >
+                    <motion.div className="col-md-6 d-md-inline d-none col-12 text-center position-relative" >
                         <img src={revolutionman} className="img-fluid rounded-start" alt="..." />
-                        <div className={style.contentbox1}>
+                        <motion.div
+                            className={style.contentbox1}
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
                             <h1 className={`${style.imgheadingfont}`}>Develop your dreams</h1>
                             <h1 className={`${style.imgcontent}`}>
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,8 +50,12 @@ const Revolution = () => {
                                     <path d="M12.9722 0.624537C12.7426 0.496789 12.4901 0.41555 12.2291 0.385465C11.9681 0.355379 11.7037 0.377037 11.4511 0.449201C11.1985 0.521365 10.9626 0.642619 10.7568 0.806029C10.5511 0.969439 10.3796 1.1718 10.2522 1.40154L6.53916 8.08354L4.41416 5.95854C4.22967 5.76752 4.00898 5.61515 3.76497 5.51033C3.52096 5.40552 3.25852 5.35034 2.99296 5.34804C2.72741 5.34573 2.46405 5.39633 2.21825 5.49689C1.97246 5.59746 1.74916 5.74596 1.56137 5.93375C1.37359 6.12153 1.22508 6.34484 1.12452 6.59063C1.02396 6.83642 0.973354 7.09978 0.975661 7.36534C0.977969 7.6309 1.03314 7.89334 1.13796 8.13735C1.24278 8.38135 1.39514 8.60204 1.58616 8.78654L5.58616 12.7865C5.96416 13.1655 6.47416 13.3735 7.00016 13.3735L7.27716 13.3535C7.58371 13.3107 7.87612 13.1972 8.13138 13.0221C8.38664 12.847 8.59777 12.6151 8.74816 12.3445L13.7482 3.34454C13.8758 3.11499 13.957 2.86254 13.9871 2.60162C14.0172 2.34069 13.9956 2.07639 13.9235 1.82381C13.8515 1.57124 13.7304 1.33533 13.5671 1.12955C13.4039 0.923779 13.2017 0.752175 12.9722 0.624537Z" fill="#265EE1" />
                                 </svg>
                                 &nbsp;&nbsp;&nbsp;Prototype</h1>
-                        </div>
-                        <div className={style.contentbox2}>
+                        </motion.div>
+                        <motion.div
+                            className={style.contentbox2}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
                             <h1 className={`${style.imgheadingfont}`}>Develop your dreams</h1>
                             <h1 className={`${style.imgcontent}`}>
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -46,8 +67,12 @@ const Revolution = () => {
                                     <path d="M12.9722 0.624537C12.7426 0.496789 12.4901 0.41555 12.2291 0.385465C11.9681 0.355379 11.7037 0.377037 11.4511 0.449201C11.1985 0.521365 10.9626 0.642619 10.7568 0.806029C10.5511 0.969439 10.3796 1.1718 10.2522 1.40154L6.53916 8.08354L4.41416 5.95854C4.22967 5.76752 4.00898 5.61515 3.76497 5.51033C3.52096 5.40552 3.25852 5.35034 2.99296 5.34804C2.72741 5.34573 2.46405 5.39633 2.21825 5.49689C1.97246 5.59746 1.74916 5.74596 1.56137 5.93375C1.37359 6.12153 1.22508 6.34484 1.12452 6.59063C1.02396 6.83642 0.973354 7.09978 0.975661 7.36534C0.977969 7.6309 1.03314 7.89334 1.13796 8.13735C1.24278 8.38135 1.39514 8.60204 1.58616 8.78654L5.58616 12.7865C5.96416 13.1655 6.47416 13.3735 7.00016 13.3735L7.27716 13.3535C7.58371 13.3107 7.87612 13.1972 8.13138 13.0221C8.38664 12.847 8.59777 12.6151 8.74816 12.3445L13.7482 3.34454C13.8758 3.11499 13.957 2.86254 13.9871 2.60162C14.0172 2.34069 13.9956 2.07639 13.9235 1.82381C13.8515 1.57124 13.7304 1.33533 13.5671 1.12955C13.4039 0.923779 13.2017 0.752175 12.9722 0.624537Z" fill="#265EE1" />
                                 </svg>
                                 &nbsp;&nbsp;&nbsp;Prototype</h1>
-                        </div>
-                        <div className={style.contentbox3}>
+                        </motion.div>
+                        <motion.div
+                            className={style.contentbox3}
+                            whileHover={{ scale: 1.2 }}
+                            whileTap={{ scale: 0.9 }}
+                        >
                             <h1 className={`${style.imgheadingfont}`}>Develop your dreams</h1>
                             <h1 className={`${style.imgcontent}`}>
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -59,7 +84,7 @@ const Revolution = () => {
                                     <path d="M12.9722 0.624537C12.7426 0.496789 12.4901 0.41555 12.2291 0.385465C11.9681 0.355379 11.7037 0.377037 11.4511 0.449201C11.1985 0.521365 10.9626 0.642619 10.7568 0.806029C10.5511 0.969439 10.3796 1.1718 10.2522 1.40154L6.53916 8.08354L4.41416 5.95854C4.22967 5.76752 4.00898 5.61515 3.76497 5.51033C3.52096 5.40552 3.25852 5.35034 2.99296 5.34804C2.72741 5.34573 2.46405 5.39633 2.21825 5.49689C1.97246 5.59746 1.74916 5.74596 1.56137 5.93375C1.37359 6.12153 1.22508 6.34484 1.12452 6.59063C1.02396 6.83642 0.973354 7.09978 0.975661 7.36534C0.977969 7.6309 1.03314 7.89334 1.13796 8.13735C1.24278 8.38135 1.39514 8.60204 1.58616 8.78654L5.58616 12.7865C5.96416 13.1655 6.47416 13.3735 7.00016 13.3735L7.27716 13.3535C7.58371 13.3107 7.87612 13.1972 8.13138 13.0221C8.38664 12.847 8.59777 12.6151 8.74816 12.3445L13.7482 3.34454C13.8758 3.11499 13.957 2.86254 13.9871 2.60162C14.0172 2.34069 13.9956 2.07639 13.9235 1.82381C13.8515 1.57124 13.7304 1.33533 13.5671 1.12955C13.4039 0.923779 13.2017 0.752175 12.9722 0.624537Z" fill="#265EE1" />
                                 </svg>
                                 &nbsp;&nbsp;&nbsp;Prototype</h1>
-                        </div>
+                        </motion.div>
                     </motion.div>
                     <motion.div className={`col-md-6 col-12 d-flex ${style.contentsec}`}
                         initial={{ x: 1000 }} // Initial position off-screen to the right
