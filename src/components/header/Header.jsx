@@ -16,7 +16,14 @@ function Header() {
     setDropdownOpen(!dropdownOpen);
   };
 
-  const menuItems = ["How It Works", "Our Products", "Why Us", "Find Us", "Technology"];
+  const menuItems = [
+    { text: "How It Works", link: "brandandprocess" },
+    { text: "Our Products", link: "allproducts" },
+    { text: "Why Us", link: "ourclient" },
+    { text: "Find Us", link: "contactus" },
+    { text: "Technology", link: "regexeprience" }
+  ];
+
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -25,7 +32,7 @@ function Header() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { 
+      {
         threshold: 0,
       }
     );
@@ -60,17 +67,21 @@ function Header() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                   transition={{ delay: index * 0.1 }}
-                  whileHover={{ scale: 1.1}} whileTap={{ scale: 0.9 }}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} // Smooth transition on hover
+                  whileTap={{ scale: 0.95 }}
                 >
-                  <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
-                    {item}
-                  </Link>
+                  <a className={`nav-link ${style.headermenu}`} href={`#${item.link}`} onClick={toggleMenu}>
+                    {item.text}
+                  </a>
                 </motion.li>
               ))}
               <li className="nav-item">
-                <Link className={`nav-link ${style.headermenu}`} to="/" onClick={toggleMenu}>
+                <motion.a className={`nav-link ${style.headermenu}`} href="#contactus" onClick={toggleMenu}
+                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   <button className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</button>
-                </Link>
+                </motion.a>
               </li>
             </ul>
           </div>
