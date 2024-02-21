@@ -82,11 +82,7 @@ const Handcraft = () => {
   }, [])
 
 
-  const wordsInFirstPart = 2;
-  const titleParts = homeData?.title?.split(' ');
-  // Splitting the title into two parts
-  const firstPart = titleParts?.slice(0, wordsInFirstPart).join(' ');
-  const secondPart = titleParts?.slice(wordsInFirstPart).join(' ');
+  const title = homeData?.title;
 
   return (
     <div ref={ref} className={style.maindiv}>
@@ -96,33 +92,35 @@ const Handcraft = () => {
             <AnimatePresence>
               {isVisible && (
                 <>
-                  <motion.h1
-                    key="heading1"
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
+                  <motion.h1 className={style.headingfont}>
+                    {title?.split('').map((char, i) => (
+                      <motion.span
+                        key={i}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{
+                          duration: 0.25,
+                          delay: i * 0.1, // Adjust delay as needed
+                        }}
+                      >
+                        {char}
+                      </motion.span>
+                    ))}
+                  </motion.h1>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className={style.headingfont}
                   >
-                    {firstPart}
-                  </motion.h1>
-                  <motion.h1
-                    key="heading2"
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
-                    className={style.headingfont}
-                  >
-                    {secondPart}
-                  </motion.h1>
-                  <motion.button
-                    key="button"
-                    initial={{ y: 100, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 1 }}
-                    className={`btn mt-5 ${style.getstartedbtn}`}
-                  >
-                    Get Started
-                  </motion.button>
+                    <motion.button
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      key="button"
+                      className={`btn mt-5 ${style.getstartedbtn}`}
+                    >
+                      Get Started
+                    </motion.button>
+                  </motion.div>
                 </>
               )}
             </AnimatePresence>

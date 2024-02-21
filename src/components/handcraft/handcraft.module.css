@@ -15,9 +15,10 @@
     font-size: 3vw;
     font-weight: 700;
     color: #08132D;
+    width: 80%;
 }
 
-.getstartedbtn {
+.getstartedbtn,.getstartedbtn:hover {
     width: fit-content;
     background-color: #265EE1;
     color: white;
