@@ -43,6 +43,12 @@
     font-weight: 600;
 }
 
+.roundedImage{
+    width: 72px !important;
+    height: 72px !important;
+    border-radius: 50% !important;
+}
+
 @media only screen and (max-width: 768px) {
     .headingfont {
         font-size: 28px;

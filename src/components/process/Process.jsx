@@ -84,6 +84,7 @@ const Process = () => {
     useEffect(() => {
         fetchData()
     }, [])
+    
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} >
@@ -112,8 +113,8 @@ const Process = () => {
                                         transition={{ delay: index * 0.3 }}
                                         whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
                                     >
-                                        <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
                                         <div className="card-body">
+                                        <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
                                             <h5 className="card-title mb-3">{`${item.title}`}</h5>
                                             <p className="card-text">{`${item.description}`}</p>
                                             <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
