@@ -107,7 +107,7 @@ const Handcraft = () => {
                     key="button"
                     initial={{ scale: 1 }} // Initial scale set to 1
                     animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
-                    transition={{ duration: 0.5, delay: 1 }}
+                    transition={{ duration: 0.5, delay: 4.3 }}
                     className={`btn mt-5 ${style.getstartedbtn}`}
                   >
                     Get Started
