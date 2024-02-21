@@ -27,7 +27,7 @@ function App() {
         }
       },
       {
-        threshold: 0.5, // Adjust as needed
+        threshold: 0, // Adjust as needed
       }
     );
 
