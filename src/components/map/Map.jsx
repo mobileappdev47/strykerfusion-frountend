@@ -4,31 +4,52 @@ import { useInView } from 'react-intersection-observer';
 import style from './map.module.css';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import jsonfile from '../../assets/features.json';
+import axios from 'axios';
+import { base_url } from '../config/Base_url';
 
 const Map = () => {
     const [isMapVisible, setIsMapVisible] = useState(false);
-    const [areMarkersVisible, setAreMarkersVisible] = useState(false); // State to track if markers are visible
+    const [areMarkersVisible, setAreMarkersVisible] = useState(false);
     const { ref, inView } = useInView({ threshold: 0 });
-    const controls = useAnimation(); // Initialize controls for animations
+    const controls = useAnimation();
+    const [isDataFetched, setIsDataFetched] = useState(false);
+    const [error, setError] = useState('');
+    const [markers, setMarkers] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${base_url}/location`);
+                setIsDataFetched(true);
+                const formattedData = response?.data?.data?.map((item) => ({
+                    locationname: item?.locationname,
+                    coordinates: [item?.coordinates?.lat, item?.coordinates?.long] // Assuming your API response contains latitude and longitude fields
+                }));
+                
+                setMarkers(formattedData);
+            } catch (error) {
+                setError(error.message);
+                console.error('Error fetching map data:', error);
+            }
+        };
+
+        if (!isDataFetched) {
+            fetchData();
+        }
+    }, [isDataFetched]);
 
     useEffect(() => {
         if (inView) {
             setIsMapVisible(true);
-            controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } }); // Start map animation
-            // After the map is fully visible, set a timeout to start animating markers after a delay
+            controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } }); 
             const timeout = setTimeout(() => {
                 setAreMarkersVisible(true);
-            }, 1000); // Adjust the delay as needed
-            return () => clearTimeout(timeout); // Clean up the timeout to prevent memory leaks
+            }, 1000); 
+            return () => clearTimeout(timeout); 
         }
     }, [inView, controls]);
 
-    const markers = [
-        { markerOffset: 15, name: "Indonesia", coordinates: [113.9213, 0.7893] },
-        { markerOffset: 15, name: "India", coordinates: [77.1025, 28.7041] },
-        { markerOffset: 15, name: "Kenya", coordinates: [36.8219, 1.2921] },
-        { markerOffset: 15, name: "Oman", coordinates: [55.9754, 21.4735] },
-    ];
+
 
     return (
         <div className={style.maindiv}>
@@ -39,7 +60,7 @@ const Map = () => {
             <motion.div
                 className={style.mapContainer}
                 ref={ref}
-                whileInView={{opacity:1}}
+                whileInView={{ opacity: 1 }}
                 initial={{ opacity: 0, scale: 0.01 }}
                 animate={controls} // Use controls for animation
             >
@@ -47,7 +68,7 @@ const Map = () => {
                     <Geographies geography={jsonfile}>
                         {({ geographies }) =>
                             geographies.map((geo) => {
-                                const marker = markers.find(marker => marker.name === geo.properties.name);
+                                const marker = markers.find(marker => marker?.locationname === geo.properties?.name);
                                 const fill = marker ? '#0A407D' : '#BCD0E6';
                                 return (
                                     <Geography
@@ -59,8 +80,8 @@ const Map = () => {
                             })
                         }
                     </Geographies>
-                    {areMarkersVisible && markers.map(({ name, coordinates, markerOffset }, index) => (
-                        <Marker key={name} coordinates={coordinates}>
+                    {areMarkersVisible && markers.map(({ locationname, coordinates }, index) => (
+                        <Marker key={locationname} coordinates={coordinates}>
                             <motion.g
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }}
@@ -77,6 +98,7 @@ const Map = () => {
                             </motion.g>
                         </Marker>
                     ))}
+
                 </ComposableMap>
             </motion.div>
         </div>

@@ -51,11 +51,11 @@ const Process = () => {
     }, []);
 
     const handleNext = () => {
-        setStartIndex((prevIndex) => Math.min(prevIndex + 1, 2));
+        setStartIndex(prevIndex => Math.min(prevIndex + 1, process.length - numCards));
     };
 
     const handlePrev = () => {
-        setStartIndex((prevIndex) => Math.max(prevIndex - 1, 0));
+        setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
     };
 
     function getNumCards() {
@@ -68,7 +68,7 @@ const Process = () => {
         }
     }
 
-    const [process, setProcess] = useState()
+    const [process, setProcess] = useState([])
     const [error, setError] = useState()
 
     const fetchData = async () => {
@@ -84,7 +84,6 @@ const Process = () => {
     useEffect(() => {
         fetchData()
     }, [])
-
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} >
@@ -105,24 +104,22 @@ const Process = () => {
                     >
                         <div className="carousel-item active">
                             <div className={`card-group ${style.cardgroup}`}>
-                                {process && process.map((item, index) => {
-                                    return (
-                                        <motion.div className={`card border-0 bg-white p-4 m-3 ${style.card}`} key={index}
-                                            style={{ width: '18rem', borderRadius: '28px' }}
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: isVisible ? 1 : 0 }}
-                                            transition={{ delay: index * 0.3 }}
-                                            whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-                                        >
-                                            <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
-                                            <div className="card-body">
-                                                <h5 className="card-title mb-3">{`${item.title}`}</h5>
-                                                <p className="card-text">{`${item.description}`}</p>
-                                                <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
-                                            </div>
-                                        </motion.div>
-                                    );
-                                })}
+                                {process.slice(startIndex, startIndex + numCards).map((item, index) => (
+                                    <motion.div className={`card border-0 bg-white p-4 m-3 ${style.card}`} key={index}
+                                        style={{ width: '18rem', borderRadius: '28px' }}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: isVisible ? 1 : 0 }}
+                                        transition={{ delay: index * 0.3 }}
+                                        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
+                                    >
+                                        <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top p-3" alt="..." />
+                                        <div className="card-body">
+                                            <h5 className="card-title mb-3">{`${item.title}`}</h5>
+                                            <p className="card-text">{`${item.description}`}</p>
+                                            <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
+                                        </div>
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
                     </motion.div>

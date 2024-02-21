@@ -13,46 +13,91 @@ const ContactUs = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        message: ''
+        message: '',
+        interest: '' // New state for storing the selected radio button value
     });
+    const [errors, setErrors] = useState({ name: '', email: '', message: '', interest: '' });
+    
+    const handleRadioChange = (value) => {
+        setField("interest", value); // Call setField to update the interest field
+    };
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+    const validateForm = () => {
+        const { name, email, message, interest } = formData;
+        const newErrors = {};
+
+        if (!name || name === "") newErrors.name = "Please enter your name";
+        if (!email || email === '') {
+            newErrors.email = 'Please enter the email';
+        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Please enter a valid email address';
+        }
+        if (!message || message === "") newErrors.message = "Please Enter message";
+
+        // Check if interest is not selected
+        if (!interest) {
+            newErrors.interest = "Please select an interest";
+        }
+
+        return newErrors;
+    };
+
+    const setField = (field, value) => {
+        setFormData((prevForm) => ({
+            ...prevForm,
+            [field]: value,
+        }));
+
+        if (!!errors[field]) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                [field]: null,
+            }));
+        }
     };
 
     const handleemailsend = () => {
+        const errors = validateForm();
+        if (Object.keys(errors).length !== 0) {
+            setErrors(errors);
+            return;
+        }
+
         axios.post(`${base_url}/contact/send`, formData)
             .then(response => {
                 console.log(response.data);
-                setSuccess(true); // Assuming the email was sent successfully
+                setSuccess(true);
+                setError(false);
+                setFormData({
+                    name: '',
+                    email: '',
+                    message: '',
+                    interest: ''
+                });
             })
             .catch(error => {
                 console.error('Error:', error);
                 setError(true);
+                setSuccess(false)
             });
     };
-    const sendEmail = (e) => {
-        e.preventDefault();
 
-        emailjs
-            .sendForm(
+    const sendEmail = async (e) => {
+        e.preventDefault();
+        try {
+            await emailjs.sendForm(
                 process.env.REACT_APP_EMAIL_SERVICE,
-                process.env.REACT_APP_EAMIL_TEMPLATE,
+                process.env.REACT_APP_EMAIL_TEMPLATE,
                 formRef.current,
                 process.env.REACT_APP_EMAIL_PUBLIC_KEY
-            )
-            .then(
-                (result) => {
-                    setSuccess(true);
-                },
-                (error) => {
-                    setError(true);
-                }
             );
+            setSuccess(true);
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
-
+    console.log(formData)
     return (
         <div ref={ref} className={style.maindiv}>
             <div className="row h-100 d-flex align-items-center">
@@ -82,24 +127,30 @@ const ContactUs = () => {
                 </div>
                 <div className="col-6 h-100 d-flex justify-content-end">
                     <div className={style.contactform}>
-                        <h1 className={`${style.label}`}>I’m interested in:</h1>
-                        <div className="" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" />
-                            <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio1' >The Products</label>
-
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" />
-                            <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio2'>Training</label>
-
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" />
-                            <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio3'>Web Development</label>
-
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio4" autoComplete="off" />
-                            <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio4'>Application Development</label>
-
-                            <input type="radio" className="btn-check" name="btnradio" id="btnradio5" autoComplete="off" />
-                            <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio5'>Other</label>
-                        </div>
                         <Form ref={formRef} onSubmit={sendEmail}>
+                            <Form.Group controlId='interest' className='m-4'>
+                                <Form.Label className={`${style.label}`}>I’m interested in:</Form.Label>
+                                <div className="d-block">
+                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" onChange={() => handleRadioChange('The Products')} />
+                                    <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio1' >The Products</label>
+
+                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio2" autoComplete="off" onChange={() => handleRadioChange('Training')} />
+                                    <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio2'>Training</label>
+
+                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio3" autoComplete="off" onChange={() => handleRadioChange('Web Development')} />
+                                    <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio3'>Web Development</label>
+
+                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio4" autoComplete="off" onChange={() => handleRadioChange('Application Development')} />
+                                    <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio4'>Application Development</label>
+
+                                    <input type="radio" className="btn-check" name="btnradio" id="btnradio5" autoComplete="off" onChange={() => handleRadioChange('Other')} />
+                                    <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio5'>Other</label>
+                                </div>
+                                <Form.Control.Feedback type="invalid" className='d-inline'>
+                                    {errors.interest && <div className="text-danger">{errors.interest}</div>}
+                                </Form.Control.Feedback>
+                            </Form.Group>
+
                             <Form.Group controlId='name' className='m-4'>
                                 <Form.Label className={`${style.label}`}>Your name</Form.Label>
                                 <Form.Control
@@ -108,10 +159,10 @@ const ContactUs = () => {
                                     placeholder='Enter your name'
                                     className={style.inputfield}
                                     value={formData.name}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => setField("name", e.target.value)}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
+                                <Form.Control.Feedback type="invalid" className='d-inline'>
+                                    {errors.name && <div className="text-danger">{errors.name}</div>}
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId='email' className='m-4'>
@@ -122,10 +173,10 @@ const ContactUs = () => {
                                     placeholder='email@gmail.com'
                                     className={style.inputfield}
                                     value={formData.email}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => setField("email", e.target.value)}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
+                                <Form.Control.Feedback type="invalid" className='d-inline'>
+                                    {errors.email && <div className="text-danger">{errors.email}</div>}
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId='message' className='m-4'>
@@ -136,10 +187,10 @@ const ContactUs = () => {
                                     rows={5}      // Correct attribute is `rows`, not `row`
                                     className={style.inputfieldtextarea}
                                     value={formData.message}
-                                    onChange={handleInputChange}
+                                    onChange={(e) => setField("message", e.target.value)}
                                 />
-                                <Form.Control.Feedback type="invalid">
-                                    {/* {errors.categoryname && <div className="text-danger">{errors.categoryname}</div>} */}
+                                <Form.Control.Feedback type="invalid" className='d-inline'>
+                                    {errors.message && <div className="text-danger">{errors.message}</div>}
                                 </Form.Control.Feedback>
                             </Form.Group>
 
@@ -147,7 +198,7 @@ const ContactUs = () => {
                                 Send Message
                             </Button>
                             {error && "Error"}
-                            {success && "Success"}
+                            {success && "Send your information successfully"}
                         </Form>
                     </div>
                 </div>

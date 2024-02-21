@@ -91,7 +91,7 @@ const Handcraft = () => {
   return (
     <div ref={ref} className={style.maindiv}>
       <div className="row w-100 h-100">
-        <div className="col-lg-6 col-12 d-flex flex-column justify-content-center">
+        <div className="col-lg-6 col-12 d-flex flex-column justify-content-center h-100">
           <div>
             <AnimatePresence>
               {isVisible && (
@@ -128,7 +128,7 @@ const Handcraft = () => {
             </AnimatePresence>
           </div>
         </div>
-        <div className="col-lg-6 col-12 position-relative">
+        <div className="col-lg-6 col-12 position-relative h-100">
           <Swiper
             ref={swiperRef}
             effect={'cube'}

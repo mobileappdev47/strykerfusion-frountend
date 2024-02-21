@@ -3,8 +3,9 @@ import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
 import product1 from '../../assets/product1.png';
 import { useInView } from 'react-intersection-observer';
+import { base_url } from '../config/Base_url';
 
-const Product = ({ index }) => {
+const Product = ({item, index }) => {
   const controls = useAnimation();
   const [ref, inView] = useInView();
 
@@ -32,9 +33,9 @@ const Product = ({ index }) => {
         variants={variants}
       >
         <div className={style.imagegradient}></div>
-        <img src={product1} className={`${style.productimage} img-fluid`} alt='product' />
+        <img src={`${base_url}/${item?.productImage}`}  className={`${style.productimage} img-fluid`} alt='product' />
         <div className={style.contentbox}>
-          <h1 className={style.headingfontimg}>Growth Tracker</h1>
+          <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
           <h1 className={style.contentimg}>View Project</h1>
         </div>
       </motion.div>
@@ -42,7 +43,7 @@ const Product = ({ index }) => {
   );
 };
 
-const AllProducts = () => {
+const AllProducts = ({ products }) => {
   return (
     <div className={style.maindiv}>
       <div className={style.products}>
@@ -50,8 +51,8 @@ const AllProducts = () => {
         <p className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br /> tempor incididunt</p>
       </div>
       <div className={`row ${style.imgsection}`}>
-        {[0, 1, 2, 3].map(index => (
-          <Product key={index} index={index} />
+        {products?.map((item, index) => (
+          <Product key={item?._id} index={index} item={item} />
         ))}
       </div>
     </div>

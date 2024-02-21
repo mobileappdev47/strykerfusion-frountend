@@ -5,10 +5,33 @@ import { Pagination } from 'swiper/modules';
 import client1 from '../../assets/client1.png';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import axios from 'axios';
+import { base_url } from '../config/Base_url';
 
 const OurClients = () => {
     const [slidesPerView, setSlidesPerView] = useState(3);
     const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+    const [client, setClient] = useState([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
+    const [error, setError] = useState('');
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${base_url}/client`);
+                setClient(response?.data?.data || []);
+                setIsDataFetched(true);
+            } catch (error) {
+                setError(error.message);
+                console.error('Error fetching product data:', error);
+            }
+        };
+
+        if (!isDataFetched) {
+            fetchData();
+        }
+    }, [isDataFetched]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -40,7 +63,7 @@ const OurClients = () => {
                 modules={[Pagination]}
                 className="mySwiper mt-5"
             >
-                {[...Array(6)].map((_, index) => (
+                {client?.map((item, index) => (
                     <SwiperSlide key={index} className='bg-transparent'>
                         {({ isNext }) => (
                             <div className={isSmallScreen ? style.active : isNext ? style.active : style.notactive}>
@@ -54,15 +77,15 @@ const OurClients = () => {
                                         </svg>
                                     </div>
                                     <p className={isSmallScreen || isNext ? style.activecontentclient : style.clientcontent}>
-                                        It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+                                        {item?.clientReview}
                                     </p>
                                 </div>
                                 <div className={isSmallScreen || isNext ? style.clientsec : 'mt-5'}>
                                     <div className='d-flex justify-content-center position-relative'>
-                                        <img src={client1} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
+                                        <img src= {`${base_url}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
                                     </div>
-                                    <h1 className={style.clientname}>Lora Smith </h1>
-                                    <p className={style.clientcontent}>CEO Lixusio</p>
+                                    <h1 className={style.clientname}>{item?.clientName} </h1>
+                                    <p className={style.clientcontent}>{item?.clientRole}</p>
                                 </div>
                             </div>
                         )}
