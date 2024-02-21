@@ -49,8 +49,6 @@ const Map = () => {
         }
     }, [inView, controls]);
 
-
-
     return (
         <div className={style.maindiv}>
             <div className='pt-5'>

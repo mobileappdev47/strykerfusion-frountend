@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import style from './handcraft.module.css';
-import craftimg1 from '../../assets/Case-study__image (2).png';
-import craftimg2 from '../../assets/revolutionman.png';
-import craftimg3 from '../../assets/product1.png';
 import 'swiper/css';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
@@ -13,7 +10,6 @@ import axios from 'axios';
 import { base_url } from '../config/Base_url';
 
 const Handcraft = () => {
-  const images = [craftimg1, craftimg1, craftimg3];
   const autoSlideDuration = 3000; // 3 seconds
   const swiperRef = useRef(null);
   const [[page, direction], setPage] = useState([0, 0]);
@@ -42,7 +38,7 @@ const Handcraft = () => {
   }, []);
 
   useEffect(() => {
-    const swiper = swiperRef.current.swiper;
+    const swiper = swiperRef.current?.swiper; // Use optional chaining
     const interval = setInterval(() => {
       if (swiper) {
         swiper.slideNext(); // Auto-slide to the next image
@@ -64,8 +60,8 @@ const Handcraft = () => {
     setPage([page + newDirection, newDirection]);
   };
 
-  const [homeData, setHomeData] = useState()
-  const [error, setError] = useState()
+  const [homeData, setHomeData] = useState();
+  const [error, setError] = useState();
 
   const fetchData = async () => {
     try {
@@ -78,12 +74,12 @@ const Handcraft = () => {
   };
 
   useEffect(() => {
-    fetchData()
-  }, [])
-
+    fetchData();
+  }, []);
 
   const title = homeData?.title;
 
+  // Conditionally render the Swiper component based on the availability of homeData
   return (
     <div ref={ref} className={style.maindiv}>
       <div className="row w-100 h-100">
@@ -107,54 +103,51 @@ const Handcraft = () => {
                       </motion.span>
                     ))}
                   </motion.h1>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
+                  <motion.button
+                    key="button"
+                    initial={{ scale: 1 }} // Initial scale set to 1
+                    animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
+                    transition={{ duration: 0.5, delay: 1 }}
+                    className={`btn mt-5 ${style.getstartedbtn}`}
                   >
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      key="button"
-                      className={`btn mt-5 ${style.getstartedbtn}`}
-                    >
-                      Get Started
-                    </motion.button>
-                  </motion.div>
+                    Get Started
+                  </motion.button>
                 </>
               )}
             </AnimatePresence>
           </div>
         </div>
         <div className="col-lg-6 col-12 position-relative h-100">
-          <Swiper
-            ref={swiperRef}
-            effect={'cube'}
-            grabCursor={true}
-            cubeEffect={{
-              shadow: true,
-              slideShadows: true,
-              shadowOffset: 20,
-              shadowScale: 0.94,
-            }}
-            pagination={{
-              clickable: true,
-              type: 'bullets',
-            }}
-            modules={[EffectCube, Pagination]}
-            className="mySwiper"
-            autoplay={{
-              delay: autoSlideDuration,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-          >
-            {homeData?.images?.map((image, index) => (
-              <SwiperSlide key={index}>
-                <img src={`${base_url}/${image}`} alt={`Slide ${index}`} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          {homeData && ( // Conditionally render Swiper component
+            <Swiper
+              ref={swiperRef}
+              effect={'cube'}
+              grabCursor={true}
+              cubeEffect={{
+                shadow: true,
+                slideShadows: true,
+                shadowOffset: 20,
+                shadowScale: 0.94,
+              }}
+              pagination={{
+                clickable: true,
+                type: 'bullets',
+              }}
+              modules={[EffectCube, Pagination]}
+              className="mySwiper"
+              autoplay={{
+                delay: autoSlideDuration,
+                disableOnInteraction: false,
+              }}
+              loop={true}
+            >
+              {homeData.images.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <img src={`${base_url}/${image}`} alt={`Slide ${index}`} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          )}
         </div>
       </div>
     </div>
@@ -162,3 +155,4 @@ const Handcraft = () => {
 };
 
 export default Handcraft;
+

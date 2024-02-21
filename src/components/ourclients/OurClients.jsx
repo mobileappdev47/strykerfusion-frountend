@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import style from './ourclient.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
-import client1 from '../../assets/client1.png';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import axios from 'axios';

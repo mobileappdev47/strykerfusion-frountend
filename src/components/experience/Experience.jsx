@@ -48,9 +48,11 @@ const Experience = () => {
                         {experience.map((item, index) => (
                             <SwiperSlide className={style.card} key={index}>
                                 <div className={`card border-0`}>
-
-                                    {`${base_url}/${item?.experienceImage}`}
-
+                                    <img
+                                        src={`${base_url}/${item?.experienceImage}`}
+                                        alt=""
+                                        className={style.roundedImage} // Apply a CSS class for styling
+                                    />
                                     <div className="card-body">
                                         <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
                                         <p className={style.cardcontent}>{item?.experienceDescription} </p>
