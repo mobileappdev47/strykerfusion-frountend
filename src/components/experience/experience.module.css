@@ -1,9 +1,8 @@
 .maindiv {
     padding-left: 70px;
-    padding-top: 50px;
-    padding-bottom: 560px;
     padding-right: 70px;
     background-color: #F2F2F2;
+    height: 50vh;
 }
 
 .learnmorebtn {
@@ -27,11 +26,15 @@
 .card {
     text-align: start;
     border: none;
-    padding: 20px;
     border-radius: 19px;
     width: 360px !important;
+    margin-right: 0 !important;
 }
-
+.cardbox{
+    border: 0 !important;
+    border-radius: 19px;
+    padding: 20px;
+}
 .cardcontent {
     color: #4C5877;
     font-size: 14px;

@@ -14,6 +14,7 @@ const Map = () => {
     const controls = useAnimation();
     const [isDataFetched, setIsDataFetched] = useState(false);
     const [error, setError] = useState('');
+    const [locationMain, setLocationMain] = useState([]);
     const [markers, setMarkers] = useState([]);
 
     useEffect(() => {
@@ -25,35 +26,50 @@ const Map = () => {
                     locationname: item?.locationname,
                     coordinates: [item?.coordinates?.lat, item?.coordinates?.long] // Assuming your API response contains latitude and longitude fields
                 }));
-                
+
                 setMarkers(formattedData);
             } catch (error) {
                 setError(error.message);
                 console.error('Error fetching map data:', error);
             }
         };
-
+        const fetchDataLocationMain = async () => {
+            try {
+                const response = await axios.get(`${base_url}/locationmain`);
+                setLocationMain(response?.data?.data)
+                setIsDataFetched(true);
+            } catch (error) {
+                setError(error.message);
+                console.error('Error fetching map data:', error);
+            }
+        };
         if (!isDataFetched) {
             fetchData();
+            fetchDataLocationMain()
         }
     }, [isDataFetched]);
 
     useEffect(() => {
         if (inView) {
             setIsMapVisible(true);
-            controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } }); 
+            controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } });
             const timeout = setTimeout(() => {
                 setAreMarkersVisible(true);
-            }, 1000); 
-            return () => clearTimeout(timeout); 
+            }, 1000);
+            return () => clearTimeout(timeout);
+        } else {
+            setIsMapVisible(false); // Reset state when not in view
+            setAreMarkersVisible(false); // Reset state when not in view
+            controls.start({ opacity: 0, scale: 0.01 }); // Reset animation controls
         }
     }, [inView, controls]);
+
 
     return (
         <div className={style.maindiv}>
             <div className='pt-5'>
-                <h1 className={style.headingfont}>Our Locations</h1>
-                <p className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                <h1 className={style.headingfont}>{locationMain?.locationTitle}</h1>
+                <p className={style.content}>{locationMain?.locationDescription}</p>
             </div>
             <motion.div
                 className={style.mapContainer}

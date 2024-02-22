@@ -12,6 +12,7 @@ const OurClients = () => {
     const [isSmallScreen, setIsSmallScreen] = useState(false);
 
     const [client, setClient] = useState([]);
+    const [clientMain, setClientMain] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
     const [error, setError] = useState('');
 
@@ -26,9 +27,19 @@ const OurClients = () => {
                 console.error('Error fetching product data:', error);
             }
         };
-
+        const fetchClientMain = async () => {
+            try {
+                const response = await axios.get(`${base_url}/clientmain`);
+                setClientMain(response?.data?.data || []);
+                setIsDataFetched(true);
+            } catch (error) {
+                setError(error.message);
+                console.error('Error fetching product data:', error);
+            }
+        };
         if (!isDataFetched) {
             fetchData();
+            fetchClientMain()
         }
     }, [isDataFetched]);
 
@@ -54,8 +65,8 @@ const OurClients = () => {
 
     return (
         <div className={style.maindiv}>
-            <h1 className={style.headingfont}>What Our Clients Say About Us</h1>
-            <p className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+            <h1 className={style.headingfont}>{clientMain?.clientTitle}</h1>
+            <p className={style.content}>{clientMain?.clientDescription}</p>
             <Swiper
                 slidesPerView={slidesPerView}
                 spaceBetween={30}
@@ -81,7 +92,7 @@ const OurClients = () => {
                                 </div>
                                 <div className={isSmallScreen || isNext ? style.clientsec : 'mt-5'}>
                                     <div className='d-flex justify-content-center position-relative'>
-                                        <img src= {`${base_url}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
+                                        <img src={`${base_url}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
                                     </div>
                                     <h1 className={style.clientname}>{item?.clientName} </h1>
                                     <p className={style.clientcontent}>{item?.clientRole}</p>

@@ -12,6 +12,9 @@ const Process = () => {
     const [numCards, setNumCards] = useState(getNumCards());
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
+    const [process, setProcess] = useState([])
+    const [processMain, setProcessMain] = useState([])
+    const [error, setError] = useState()
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -68,8 +71,6 @@ const Process = () => {
         }
     }
 
-    const [process, setProcess] = useState([])
-    const [error, setError] = useState()
 
     const fetchData = async () => {
         try {
@@ -80,18 +81,28 @@ const Process = () => {
             console.error('Error fetching home data:', error);
         }
     };
+    const fetchProcessMain = async () => {
+        try {
+            const response = await axios.get(`${base_url}/processmain`);
+            setProcessMain(response?.data?.data);
+        } catch (error) {
+            setError(error);
+            console.error('Error fetching home data:', error);
+        }
+    };
 
     useEffect(() => {
         fetchData()
+        fetchProcessMain()
     }, [])
 
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} >
                 <h1 className={style.headingfont}>
-                    The Process
+                    {processMain?.processTitle}
                 </h1>
-                <h1 className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br /> eiusmod tempor incididunt</h1>
+                <h1 className={style.content}>{processMain?.processDescription}</h1>
                 <div id="carouselExampleIndicators1" className="carousel slide" data-bs-ride="carousel">
                     <div className={`carousel-indicators`}>
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>

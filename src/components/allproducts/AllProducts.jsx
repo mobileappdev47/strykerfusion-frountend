@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
 import product1 from '../../assets/product1.png';
 import { useInView } from 'react-intersection-observer';
 import { base_url } from '../config/Base_url';
+import axios from 'axios';
 
-const Product = ({item, index }) => {
+const Product = ({ item, index }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView();
+  const [ref, inView] = useInView({ triggerOnce: false });
 
   useEffect(() => {
     if (inView) {
@@ -16,6 +17,8 @@ const Product = ({item, index }) => {
       controls.start('hidden');
     }
   }, [controls, inView]);
+
+  console.log(inView)
 
   const variants = {
     hidden: { opacity: 0, y: index < 2 ? '-100%' : '100%' },
@@ -33,10 +36,9 @@ const Product = ({item, index }) => {
         variants={variants}
       >
         <div className={style.imagegradient}></div>
-        <img src={`${base_url}/${item?.productImage}`}  className={`${style.productimage} img-fluid`} alt='product' />
+        <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
         <div className={style.contentbox}>
           <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
-          <h1 className={style.contentimg}>View Project</h1>
         </div>
       </motion.div>
     </div>
@@ -44,11 +46,28 @@ const Product = ({item, index }) => {
 };
 
 const AllProducts = ({ products }) => {
+  const [productMain, setProductMain] = useState([])
+  const [errors, setErrors] = useState([])
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${base_url}/productmain`);
+      setProductMain(response.data?.data);
+    } catch (error) {
+      setErrors(error);
+      console.error('Error fetching home data:', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData()
+  }, []);
+
   return (
     <div className={style.maindiv}>
       <div className={style.products}>
-        <h1 className={style.headingfont}>Our Products</h1>
-        <p className={style.content}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br /> tempor incididunt</p>
+        <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
+        <p className={style.content}>{productMain?.productDescription}</p>
       </div>
       <div className={`row ${style.imgsection}`}>
         {products?.map((item, index) => (

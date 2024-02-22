@@ -4,13 +4,12 @@ import style from './handcraft.module.css';
 import 'swiper/css';
 import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
-import { EffectCube, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
 
 const Handcraft = () => {
-  const autoSlideDuration = 3000; // 3 seconds
+  const autoSlideDuration = 2000; // 3 seconds
   const swiperRef = useRef(null);
   const [[page, direction], setPage] = useState([0, 0]);
   const [isVisible, setIsVisible] = useState(false);
@@ -120,14 +119,10 @@ const Handcraft = () => {
         <div className="col-lg-6 col-12 position-relative h-100">
           {homeData && ( // Conditionally render Swiper component
             <Swiper
-              ref={swiperRef}
-              className="mySwiper"
-              autoplay={{
-                delay: autoSlideDuration,
-                disableOnInteraction: false,
-              }}
-              loop={true}
-            >
+            ref={swiperRef}
+            className="mySwiper"
+            loop={true}
+          >
               {homeData.images.map((image, index) => (
                 <SwiperSlide key={index} className='bg-transparent d-flex justify-content-center align-items-center'>
                   <motion.img

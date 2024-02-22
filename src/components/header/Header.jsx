@@ -28,6 +28,7 @@ function Header() {
   const ref = useRef(null);
 
   useEffect(() => {
+    // debugger
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -36,6 +37,7 @@ function Header() {
         threshold: 0,
       }
     );
+ 
     if (ref.current) {
       observer.observe(ref.current);
     }

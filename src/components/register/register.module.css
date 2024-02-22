@@ -1,6 +1,11 @@
 .container {
-  position: relative;
   height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/Clip\ path\ group.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .background {
@@ -18,14 +23,13 @@
 }
 
 .content {
-  position: relative;
-  top: 200px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
   text-align: center;
+  width: 50%;
 }
 
 .registerbtn {
@@ -46,23 +50,45 @@
 
 .headingfont {
   color: #08132D;
-  font-size: 2vw;
+  font-size: 34px;
   font-weight: 700;
 }
-.contentfont{
+
+.contentfont {
   color: #08132D;
-  font-size: 1vw;
+  font-size: 20px;
   font-weight: 400;
-  
+
 }
-@media only screen and (max-width: 700px) {
+
+@media only screen and (max-width: 1350px) {
+  .contentfont {
+    font-size: 18px;
+  }
+
   .content {
-    top: 85px;
+    width: 100%;
   }
-  .contentfont{
-    font-size: 3vw;
+
+  .headingfont {
+    font-size:30px;
   }
-  .headingfont{
-    font-size: 4vw;
+}
+@media only screen and (max-width: 600px) {
+  .contentfont {
+    font-size: 16px;
+  }
+
+  .headingfont {
+    font-size:25px;
+  }
+}
+@media only screen and (max-width: 510px) {
+  .contentfont {
+    font-size: 14px;
+  }
+
+  .headingfont {
+    font-size:18px;
   }
 }
