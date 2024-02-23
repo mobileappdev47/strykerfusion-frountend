@@ -133,3 +133,13 @@ section {
   outline: 0;
   box-shadow: none;
 }
+
+.offcanvas-end {
+  width: 325px;
+}
+
+@media only screen and (max-width: 425px) {
+  .offcanvas-end {
+    width: 275px;
+  }
+}

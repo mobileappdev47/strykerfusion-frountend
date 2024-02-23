@@ -64,7 +64,7 @@ const Experience = () => {
     return (
         <div ref={ref} className={`${style.maindiv} py-3 py-xl-5`}>
             <div className="row h-100">
-                <div className="col-sm-5 h-100 d-none d-sm-inline  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
+                <div className="col-lg-5 h-100 d-none d-lg-inline  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
                     <AnimatePresence>
                         {isVisible && (
                             <>
@@ -96,7 +96,7 @@ const Experience = () => {
                         )}
                     </AnimatePresence>
                 </div>
-                <div className="col-sm-7 h-100">
+                <div className="col-lg-7 col-12 h-100">
                     <Swiper
                         slidesPerView={'auto'}
                         spaceBetween={30}
@@ -108,11 +108,12 @@ const Experience = () => {
                             <SwiperSlide className={style.card} key={index}>
                                 <motion.div
                                     key={index}
-                                    style={{ padding: '20px', height: '100%', width: '100%', borderRadius: '28px' }}
+                                    style={{ borderRadius: '28px' }}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: isVisible ? 1 : 0 }}
                                     transition={{ delay: index * 0.3 }}
-                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}>
+                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
+                                    className='h-100 w-100 px-3'>
                                     <div
                                         className={`card ${style.cardbox}`}>
                                         <img

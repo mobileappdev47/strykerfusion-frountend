@@ -19,8 +19,47 @@
     margin-bottom: 0;
     margin-top: 16px;
 }
-.footermenubtn{
+
+.footermenubtn {
     color: #08132D;
     font-size: 16px;
-    font-weight: 600; 
+    font-weight: 600;
+}
+.footermenu{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+}
+@media only screen and (max-width: 990px) {
+    .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+        height: 30vh;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .footermenubtn {
+        padding: 8px;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .footer {
+        height: 40vh;
+    }
+    .footermenu{
+        display: inline;
+    }
+    .footermenubtn{
+        padding: 3px;
+    }
+}
+@media only screen and (max-width: 375px) {
+   .logoimg{
+    height: 40px;
+    width: 140px;
+   }
+
 }

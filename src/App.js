@@ -15,6 +15,7 @@ import ContactUs from './components/contactus/ContactUs';
 import Footer from './components/footer/Footer';
 import axios from 'axios';
 import { base_url } from './components/config/Base_url';
+import ContactUsForm from './components/contactusform/ContactUsForm';
 
 function App() {
   const [showProducts, setShowProducts] = useState(true);
@@ -22,6 +23,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
   const [error, setError] = useState('');
+  const [showNewSection, setShowNewSection] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +65,20 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 990) {
+        setShowNewSection(true);
+      } else {
+        setShowNewSection(false);
+      }
+    };
+
+    handleResize(); // Initial check
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <section id='homepage'><Header /><Handcraft /></section>
@@ -79,6 +95,7 @@ function App() {
       <section id='regexeprience'><Register /> <Experience /></section>
       <section id='map'><Map /></section>
       <section id='ourclient'><OurClients /></section>
+      {showNewSection && <section id='contactusform'><ContactUsForm /></section>}
       <section id='contactus'><ContactUs /><Footer /></section>
     </>
   );

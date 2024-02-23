@@ -1,5 +1,5 @@
 .maindiv {
-    height: calc(100vh - 180px);
+    height: calc(100vh - 200px);
     padding-left: 70px;
     padding-right: 70px;
     background-color: #F2F2F2;
@@ -8,6 +8,11 @@
 .learnmorebtn {
     color: #265EE1;
     border: 1px solid #265EE1;
+    height: 8%;
+    display: flex;
+    align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .carousel {
@@ -19,7 +24,14 @@
     font-size: 34px;
     font-weight: 700;
     text-align: center;
+}
 
+.title {
+    height: 10%;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .content {
@@ -29,14 +41,42 @@
     margin-top: 10px;
     color: #4C5877;
 }
+
+.cardimg {
+    height: 50%;
+}
+
+.cardtext {
+    height: 22%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.caroselwidth {
+    height: 80%;
+}
+
 @media only screen and (max-width: 1000px) {
-    .maindiv{
+    .maindiv {
         padding: 20px;
     }
-    .card{
-        margin:1rem;
+}
+
+@media only screen and (max-width: 990px) {
+    .headingfont {
+        font-size: 25px;
+    }
+
+    .cardtext {
+        font-size: 13px;
+    }
+
+    .content {
+        font-size: 14px;
     }
 }
+
 @media only screen and (max-width: 576px) {
     .cardgroup {
         display: flex;

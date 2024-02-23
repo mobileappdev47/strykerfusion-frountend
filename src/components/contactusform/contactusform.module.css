@@ -1,0 +1,147 @@
+
+.maindiv {
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    align-items: center;
+}
+
+.contactform {
+    background-color: #FFFEFE;
+    height: 70vh;
+    width: 80%;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.intrustedbtn {
+    border: 1px solid #939DB4;
+    border-radius: 50px;
+    color: #939DB4;
+    margin: 8px;
+}
+
+.inputfieldtextarea {
+    border: 2px solid #939DB4 !important;
+    border-radius: 12px;
+}
+
+.label {
+    font-size: 16px;
+    font-weight: 400;
+    color: #4C5877;
+}
+
+.inputfield {
+    border-bottom: 2px solid #939DB4 !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
+.radiobtngroup {
+    display: block;
+}
+
+.sendbtn {
+    width: 100%;
+    background-color: #265EE1;
+    color: #FFFEFE;
+    padding: 12px;
+    border-radius: 4px;
+}
+
+.inputgroup {
+    margin: 1rem;
+}
+
+
+@media (max-height: 800px) {
+    .intrustedbtn {
+        margin: 5px;
+    }
+
+    .inputgroup {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .contactform {
+        height: 100%;
+    }
+    .maindiv{
+        height: 100%;
+    }
+}
+
+
+@media only screen and (max-width: 1130px) {
+    .maindiv {
+        padding: 20px;
+    }
+
+    .contactform {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .headingfont {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .headingfont {
+        font-size: 30px;
+    }
+
+    .contactform {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .inputgroup {
+        margin: 5px;
+    }
+
+    .maindiv {
+        height: 100vh;
+        padding: 10px;
+        padding: 50px;
+        background-color: #F2F2F2;
+    }
+
+}
+
+@media only screen and (max-width: 768px) {
+    .headingfont {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+
+    .contactform {
+        width: 100%;
+    }
+
+    .inputgroup {
+        margin: 5px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .maindiv {
+        padding: 20px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .maindiv {
+        padding: 10px;
+    }
+}

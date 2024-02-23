@@ -2,16 +2,17 @@
     height: calc(100vh - 15vh);
     padding: 10px;
     padding-left: 70px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-right: 70px;
     background-color: #F2F2F2;
 }
 
-.headinfont {
+.headingfont {
     font-size: 34px;
     font-weight: 700;
     color: #08132D;
+    width: 75%;
 }
 
 .content {
@@ -20,69 +21,35 @@
     color: #4C5877;
 }
 
-.contactform {
-    background-color: #FFFEFE;
-    height: 70vh;
-    width: 80%;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-radius: 24px;
+@media only screen and (max-width: 1130px) {
+    .maindiv {
+        padding: 20px;
+    }
+
 }
 
-.intrustedbtn {
-    border: 1px solid #939DB4;
-    border-radius: 50px;
-    color: #939DB4;
-    margin: 10px;
-}
-
-.inputfieldtextarea {
-    border: 2px solid #939DB4 !important;
-    border-radius: 12px;
-}
-
-.label {
-    font-size: 16px;
-    font-weight: 400;
-    color: #4C5877;
-}
-
-.inputfield {
-    border-bottom: 2px solid #939DB4 !important;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    border-radius: 0;
-}
-.radiobtngroup{
-    display: block;
-}
-.sendbtn {
-    width: 100%;
-    background-color: #265EE1;
-    color: #FFFEFE;
-    padding: 15px;
-    border-radius: 4px;
-}
-.inputgroup{
-    margin: 1.5rem;
-}
-@media (max-height: 748px) {
-    .contactform {
+@media only screen and (max-width: 1200px) {
+    .headingfont {
         width: 100%;
     }
-    .intrustedbtn{
-        margin: 5px;
+}
+
+@media only screen and (max-width: 990px) {
+    .headingfont {
+        font-size: 30px;
     }
-    .inputgroup{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+    .maindiv{
+        height: calc(100vh - 30vh);
     }
 }
-@media only screen and (max-width: 1440px) {
-
+@media only screen and (max-width: 768px) {
+    .headingfont {
+        font-size: 20px;
+        margin-bottom: 0;
+    }
+}
+@media only screen and (max-width: 600px) {
+   .maindiv{
+    height: calc(100vh - 40vh);
+   }
 }

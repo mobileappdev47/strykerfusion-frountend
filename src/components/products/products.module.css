@@ -33,3 +33,9 @@
   left: 3%;
   z-index: 1;
 }
+
+@media only screen and (max-width: 990px) {
+  .maindiv{
+    padding: 20px;
+  }
+}

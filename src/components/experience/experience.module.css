@@ -64,3 +64,8 @@
         font-size: 16px;
     }
 }
+@media (max-height: 800px) {
+    .maindiv{
+        padding-bottom: 0 !important;
+    }
+}

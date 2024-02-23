@@ -5,7 +5,6 @@ import { base_url } from '../config/Base_url'
 import axios from 'axios'
 
 const OurBrand = () => {
-
     const [brands, setBrands] = useState()
     const [ourBrands, setOurBrands] = useState()
     const [error, setError] = useState()
@@ -19,6 +18,7 @@ const OurBrand = () => {
             console.error('Error fetching home data:', error);
         }
     };
+
     const fetchOurBrandsMain = async () => {
         try {
             const response = await axios.get(`${base_url}/ourbrandsmain`);
@@ -28,6 +28,7 @@ const OurBrand = () => {
             console.error('Error fetching home data:', error);
         }
     };
+
     useEffect(() => {
         fetchData()
         fetchOurBrandsMain()

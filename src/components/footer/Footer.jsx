@@ -44,12 +44,12 @@ const Footer = () => {
         <motion.div initial={{ y: -100 }} animate={controls}>
             <div className={style.footer} ref={ref}>
                 <div className="row h-100">
-                    <div className="col-6 d-flex flex-column justify-content-center">
+                    <div className="col-sm-4 col-6  col-lg-6 d-flex flex-column justify-content-center">
                         <img src={logo} className={style.logoimg} alt="" />
                         <p className={style.content}>© 2024 StrykerFusion. All Rights Reserved</p>
                     </div>
-                    <div className="col-6 d-flex flex-column justify-content-center">
-                        <div className='d-flex justify-content-end'>
+                    <div className="col-sm-8 col-6 col-lg-6 d-flex flex-column justify-content-center">
+                        <div className={style.footermenu}>
                             {menuItems.map((item, index) => (
                                 <motion.div key={index}
                                     whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
@@ -57,6 +57,7 @@ const Footer = () => {
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                                     transition={{ delay: index * 0.1 }}
+                                    className='text-end'
                                 >
                                     <a href={`#${item.link}`} className={`btn ${style.footermenubtn}`}>{item.text}</a>
                                 </motion.div>

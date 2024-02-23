@@ -62,7 +62,7 @@ const Process = () => {
     };
 
     function getNumCards() {
-        if (window.innerWidth >= 990) {
+        if (window.innerWidth >= 1400) {
             return 3;
         } else if (window.innerWidth >= 768) {
             return 2;
@@ -98,27 +98,27 @@ const Process = () => {
 
     return (
         <div ref={ref} className={style.maindiv}>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} >
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
                 <h1 className={style.headingfont}>
                     {processMain?.processTitle}
                 </h1>
                 <h1 className={style.content}>{processMain?.processDescription}</h1>
-                <div id="carouselExampleIndicators1" className="carousel slide" data-bs-ride="carousel">
+                <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
                     <div className={`carousel-indicators`}>
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" className={` ${startIndex === 2 ? 'active' : ''}`} aria-label="Slide 3"></button>
                     </div>
-                    <motion.div className="carousel-inner"
+                    <motion.div className="carousel-inner h-100"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
                         transition={{ duration: 1 }}
                     >
-                        <div className="carousel-item active">
-                            <div className={`card-group ${style.cardgroup}`}>
+                        <div className="carousel-item active h-100">
+                            <div className={`card-group h-100 ${style.cardgroup}`}>
                                 {process.slice(startIndex, startIndex + numCards).map((item, index) => (
                                     <motion.div
-                                        className={`card border-0 bg-white p-4 m-4 ${style.card}`}
+                                        className={`card border-0 bg-white h-100 p-0 mx-4 ${style.card}`}
                                         key={index}
                                         style={{ width: '18rem', borderRadius: '28px' }}
                                         initial={{ opacity: 0 }}
@@ -126,10 +126,10 @@ const Process = () => {
                                         transition={{ delay: index * 0.3 }}
                                         whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
                                     >
-                                        <div className="card-body">
-                                            <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className="card-img-top" alt="..." />
-                                            <h5 className="card-title mb-3">{`${item.title}`}</h5>
-                                            <p className="card-text">{`${item.description}`}</p>
+                                        <div className="card-body h-100">
+                                            <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top ${style.cardimg}`} alt="..." />
+                                            <h5 className={`card-title ${style.title}`}>{`${item.title}`}</h5>
+                                            <p className={`${style.cardtext} card-text`}>{`${item.description}`}</p>
                                             <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
                                         </div>
                                     </motion.div>

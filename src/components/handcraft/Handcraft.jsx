@@ -82,7 +82,7 @@ const Handcraft = () => {
   return (
     <div ref={ref} className={style.maindiv}>
       <div className="row w-100 h-100">
-        <div className="col-lg-6 col-12 d-flex flex-column justify-content-center h-100">
+        <div className={`col-lg-6 col-12 ${style.contentsection}`}>
           <div>
             <AnimatePresence>
               {isVisible && (
@@ -116,7 +116,7 @@ const Handcraft = () => {
             </AnimatePresence>
           </div>
         </div>
-        <div className="col-lg-6 col-12 position-relative h-100">
+        <div className={`col-lg-6 col-12 ${style.imagesection}`}>
           {homeData && ( // Conditionally render Swiper component
             <Swiper
             ref={swiperRef}

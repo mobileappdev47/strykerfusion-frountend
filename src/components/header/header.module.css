@@ -1,4 +1,3 @@
-
 .header {
     background: #FFF;
     box-shadow: 0px 4px 24px 0px #C0C0C01F;
@@ -16,8 +15,18 @@
     margin-left: 50px;
 }
 
+.togglemenulist {
+    display: contents;
+    text-align: center;
+}
+
 .togglebtn {
     border: 0;
+}
+
+.headermenutoggle {
+    font-size: 16px;
+    padding: 15px;
 }
 
 .togglebtn:focus {
