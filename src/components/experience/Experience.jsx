@@ -64,7 +64,7 @@ const Experience = () => {
     return (
         <div ref={ref} className={`${style.maindiv} py-3 py-xl-5 container-fluid`}>
             <div className="row h-100">
-                <div className="col-lg-5 h-100 d-none d-lg-inline  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
+                <div className="col-lg-5 h-100 d-none d-lg-flex   mb-sm-0 mb-5 d-flex flex-column justify-content-center">
                     <AnimatePresence>
                         {isVisible && (
                             <>
@@ -129,7 +129,7 @@ const Experience = () => {
                                            <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
                                             <p className={style.cardcontent}>{item?.experienceDescription} </p>
                                            </div>
-                                            <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}>Read More</a>
+                                            <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}><p className={style.btntext}>Read More</p></a>
                                         </div>
                                     </div>
                                 </motion.div>

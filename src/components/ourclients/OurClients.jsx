@@ -83,16 +83,18 @@ const OurClients = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-  
+
     return (
         <div ref={ref} className={style.maindiv}>
-            <h1 className={style.headingfont}>{clientMain?.clientTitle}</h1>
-            <p className={style.content}>{clientMain?.clientDescription}</p>
+            <div className={style.clientheading}>
+                <h1 className={style.headingfont}>{clientMain?.clientTitle}</h1>
+                <p className={style.content}>{clientMain?.clientDescription}</p>
+            </div>
             <Swiper
                 slidesPerView={slidesPerView}
                 spaceBetween={30}
                 modules={[Pagination]}
-                className="mySwiper mt-5"
+                className={`mySwiper ${style.clientslider}`}
             >
                 <AnimatePresence>
                     {isVisible && client?.map((item, index) => (

@@ -1,10 +1,10 @@
 .card {
-    background-color: #F2F2F2;
     border: 0;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
 }
 
 .maindiv {

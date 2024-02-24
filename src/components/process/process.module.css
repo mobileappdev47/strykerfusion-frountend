@@ -1,8 +1,10 @@
 .maindiv {
-    height: calc(100vh - 200px);
+    height: calc(100vh - 150px);
     padding-left: 70px;
     padding-right: 70px;
-    background-color: #F2F2F2;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #FAFAFA;
 }
 
 .learnmorebtn {
@@ -24,6 +26,11 @@
     font-size: 34px;
     font-weight: 700;
     text-align: center;
+}
+
+.card {
+    box-shadow: 0px 5.791126251220703px 57.91126251220703px 0px #D8D8D840;
+    background-color: #FFFFFF;
 }
 
 .title {

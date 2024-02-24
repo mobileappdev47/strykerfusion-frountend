@@ -1,10 +1,6 @@
 .maindiv {
     height: 100vh;
-    padding-left: 100px;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    padding-right: 100px;
-    background-color: #F2F2F2;
+    padding: 50px;
 }
 
 .headingfont {
@@ -12,6 +8,14 @@
     font-size: 34px;
     font-weight: 700;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.clientheading {
+    height: 20%;
 }
 
 .content {
@@ -19,6 +23,10 @@
     font-size: 18px;
     font-weight: 400;
     text-align: center;
+}
+
+.clientslider {
+    height: 80%;
 }
 
 .activecontentclient {
@@ -91,7 +99,6 @@
     background: linear-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
     border-radius: 50px;
     z-index: 1;
-
 }
 
 .blackAndWhite {
@@ -138,5 +145,14 @@
 @media only screen and (max-width: 768px) {
     .maindiv {
         padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .headingfont {
+        font-size: 25px;
+    }
+    .content{
+        font-size: 14px;
     }
 }

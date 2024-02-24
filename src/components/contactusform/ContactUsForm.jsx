@@ -12,6 +12,29 @@ const ContactUsForm = () => {
     const [success, setSuccess] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
+    const [rows, setRows] = useState(2); // Initialize rows with 2
+
+    useEffect(() => {
+        const handleResize = () => {
+            const height = window.innerHeight;
+            let newRows;
+
+            // Set rows based on different height conditions
+            if (height < 600) {
+                newRows = 1;
+            } else if (height < 700) {
+                newRows = 2;
+            } else if (height < 800) {
+                newRows = 3;
+            } else {
+                newRows = 5;
+            }
+            setRows(newRows);
+        };
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -200,7 +223,7 @@ const ContactUsForm = () => {
                                     <Form.Control
                                         name='message'
                                         as="textarea" // Use `as="textarea"` to render a textarea element
-                                        rows={4}      // Correct attribute is `rows`, not `row`
+                                        rows={rows} // Correct attribute is `rows`, not `row`
                                         className={style.inputfieldtextarea}
                                         value={formData.message}
                                         onChange={(e) => setField("message", e.target.value)}

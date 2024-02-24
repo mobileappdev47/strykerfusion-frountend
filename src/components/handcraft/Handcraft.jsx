@@ -89,20 +89,24 @@ const Handcraft = () => {
               {isVisible && (
                 <>
                   <motion.h1 className={style.headingfont}>
-                    {title?.split('').map((char, i) => (
+                    {title?.split(' ').map((word, index, array) => (
                       <motion.span
-                        key={i}
+                        key={index}
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{
                           duration: 0.25,
-                          delay: i * 0.1,
+                          delay: index * 0.1,
                         }}
                       >
-                        {char}
+                        {index !== array.length - 1 ? word + ' ' : ''}
+                        {index === array.length - 1 && (
+                          <span className={style.backgroundImageSpan}>{word}</span>
+                        )}
                       </motion.span>
                     ))}
                   </motion.h1>
+
                   <motion.button
                     key="button"
                     initial={{ scale: 1 }}
@@ -115,6 +119,7 @@ const Handcraft = () => {
                 </>
               )}
             </AnimatePresence>
+
           </div>
         </div>
         <div className={`col-lg-6 col-12 ${style.imagesection}`}>

@@ -68,7 +68,7 @@ const AllProducts = ({ products }) => {
         <p className={style.content}>{productMain?.productDescription}</p>
       </div>
       <div className={`row ${style.imgsection}`}>
-        {products?.map((item, index) => (
+        {products?.slice(0, 4)?.map((item, index) => (
           <Product key={item?._id} index={index} item={item} />
         ))}
       </div>

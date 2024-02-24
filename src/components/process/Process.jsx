@@ -62,7 +62,7 @@ const Process = () => {
     };
 
     function getNumCards() {
-        if (window.innerWidth >= 1400) {
+        if (window.innerWidth >= 1000) {
             return 3;
         } else if (window.innerWidth >= 600) {
             return 2;
@@ -122,7 +122,7 @@ const Process = () => {
                             <div className={`card-group h-100 ${style.cardgroup}`}>
                                 {process.slice(startIndex, startIndex + numCards).map((item, index) => (
                                     <motion.div
-                                        className={`card border-0 bg-white h-100 p-0 mx-4 ${style.card}`}
+                                        className={`card border-0 h-100 p-0 mx-4 ${style.card}`}
                                         key={index}
                                         style={{ width: '18rem', borderRadius: '28px' }}
                                         initial={{ opacity: 0 }}
@@ -130,7 +130,7 @@ const Process = () => {
                                         transition={{ delay: index * 0.3 }}
                                         whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
                                     >
-                                        <div className="card-body h-100">
+                                        <div className="card-body p-4 h-100">
                                             <div className={`${style.cardimg}`}>
                                                 <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
                                             </div>

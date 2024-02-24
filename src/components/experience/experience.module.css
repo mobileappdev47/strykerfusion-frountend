@@ -1,8 +1,8 @@
 .maindiv {
     padding-left: 70px;
     padding-right: 70px;
-    background-color: #F2F2F2;
     height: 50vh;
+    background-color: #F2F2F2;
 }
 
 .learnmorebtn {
@@ -30,11 +30,13 @@
     width: 360px !important;
     margin-right: 0 !important;
 }
-.cardbox{
+
+.cardbox {
     border: 0 !important;
     border-radius: 19px;
     padding: 20px;
 }
+
 .cardcontent {
     color: #4C5877;
     font-size: 14px;
@@ -46,34 +48,46 @@
     font-weight: 600;
 }
 
-.roundedImage{
+.roundedImage {
     border-radius: 50% !important;
 }
-.cardimg{
+
+.cardimg {
     height: 30%;
     width: 30%;
 }
-.cardtext{
+
+.cardtext {
     height: 80%;
     overflow: hidden;
 }
-.cardbtn{
+
+.cardbtn {
     height: 20%;
 }
+
+.btntext {
+    border-bottom: 1px solid #265EE1;
+    color: #265EE1;
+}
+
 @media only screen and (max-width: 768px) {
     .headingfont {
         font-size: 28px;
     }
-    .maindiv{
+
+    .maindiv {
         padding-left: 30px;
         padding-right: 30px;
     }
+
     .content {
         font-size: 16px;
     }
 }
+
 @media (max-height: 800px) {
-    .maindiv{
+    .maindiv {
         padding: 1rem !important;
     }
 }

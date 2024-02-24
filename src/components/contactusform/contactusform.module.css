@@ -1,4 +1,3 @@
-
 .maindiv {
     display: flex;
     justify-content: end;
@@ -75,11 +74,27 @@
     .contactform {
         height: 100%;
     }
-    .maindiv{
+
+    .maindiv {
         height: 100%;
     }
 }
 
+@media (max-height: 700px) {
+    .intrustedbtn {
+        font-size: 14px;
+    }
+    .inputfield{
+        font-size: 14px;
+    }
+    .inputgroup {
+        margin-top: 0.75px !important;
+        margin-bottom: 0.75rem !important;
+    }
+    .label{
+        font-size: 14px;
+    }
+}
 
 @media only screen and (max-width: 1130px) {
     .maindiv {
@@ -140,6 +155,7 @@
         padding: 20px;
     }
 }
+
 @media only screen and (max-width: 375px) {
     .maindiv {
         padding: 10px;
