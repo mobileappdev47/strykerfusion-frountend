@@ -62,7 +62,7 @@ const Experience = () => {
         }
     }, [isDataFetched]);
     return (
-        <div ref={ref} className={`${style.maindiv} py-3 py-xl-5`}>
+        <div ref={ref} className={`${style.maindiv} py-3 py-xl-5 container-fluid`}>
             <div className="row h-100">
                 <div className="col-lg-5 h-100 d-none d-lg-inline  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
                     <AnimatePresence>
@@ -115,16 +115,21 @@ const Experience = () => {
                                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
                                     className='h-100 w-100 px-3'>
                                     <div
-                                        className={`card ${style.cardbox}`}>
-                                        <img
-                                            src={`${base_url}/${item?.experienceImage}`}
-                                            alt=""
-                                            className={style.roundedImage} // Apply a CSS class for styling
-                                        />
-                                        <div className="card-body">
-                                            <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
+                                        className={`card h-100 ${style.cardbox}`}>
+                                        <div className={style.cardimg}>
+                                            <img
+                                                src={`${base_url}/${item?.experienceImage}`}
+                                                alt=""
+                                                className={style.roundedImage} // Apply a CSS class for styling
+                                            />
+                                        </div>
+
+                                        <div className="card-body px-0 h-100">
+                                           <div className={style.cardtext}>
+                                           <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
                                             <p className={style.cardcontent}>{item?.experienceDescription} </p>
-                                            <a href="#" className="btn p-0 text-primary">Read More</a>
+                                           </div>
+                                            <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}>Read More</a>
                                         </div>
                                     </div>
                                 </motion.div>

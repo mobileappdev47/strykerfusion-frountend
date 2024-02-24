@@ -9,7 +9,7 @@ import axios from 'axios';
 import { base_url } from '../config/Base_url';
 
 const Handcraft = () => {
-  const autoSlideDuration = 2000; // 3 seconds
+  const autoSlideDuration = 2000;
   const swiperRef = useRef(null);
   const [[page, direction], setPage] = useState([0, 0]);
   const [isVisible, setIsVisible] = useState(false);
@@ -37,19 +37,8 @@ const Handcraft = () => {
   }, []);
 
   useEffect(() => {
-    const swiper = swiperRef.current?.swiper; // Use optional chaining
     const interval = setInterval(() => {
-      if (swiper) {
-        swiper.slideNext(); // Auto-slide to the next image
-      }
-    }, autoSlideDuration);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      paginate(1); // Auto-slide to the next image
+      paginate(1);
     }, autoSlideDuration);
 
     return () => clearInterval(interval);
@@ -60,14 +49,12 @@ const Handcraft = () => {
   };
 
   const [homeData, setHomeData] = useState();
-  const [error, setError] = useState();
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`${base_url}/home`);
       setHomeData(response.data.home);
     } catch (error) {
-      setError(error);
       console.error('Error fetching home data:', error);
     }
   };
@@ -78,7 +65,21 @@ const Handcraft = () => {
 
   const title = homeData?.title;
 
-  // Conditionally render the Swiper component based on the availability of homeData
+  console.log(homeData,)
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiper = swiperRef.current.swiper;
+      const interval = setInterval(() => {
+        if (swiper) {
+          swiper.slideNext();
+        }
+      }, autoSlideDuration);
+
+      return () => clearInterval(interval);
+    }
+  }, [swiperRef.current]);
+
   return (
     <div ref={ref} className={style.maindiv}>
       <div className="row w-100 h-100">
@@ -95,7 +96,7 @@ const Handcraft = () => {
                         animate={{ opacity: 1 }}
                         transition={{
                           duration: 0.25,
-                          delay: i * 0.1, // Adjust delay as needed
+                          delay: i * 0.1,
                         }}
                       >
                         {char}
@@ -104,8 +105,8 @@ const Handcraft = () => {
                   </motion.h1>
                   <motion.button
                     key="button"
-                    initial={{ scale: 1 }} // Initial scale set to 1
-                    animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
+                    initial={{ scale: 1 }}
+                    animate={{ scale: [1, 1.2, 1] }}
                     transition={{ duration: 0.5, delay: 4.5 }}
                     className={`btn mt-5 ${style.getstartedbtn}`}
                   >
@@ -117,13 +118,13 @@ const Handcraft = () => {
           </div>
         </div>
         <div className={`col-lg-6 col-12 ${style.imagesection}`}>
-          {homeData && ( // Conditionally render Swiper component
+          {homeData && (
             <Swiper
-            ref={swiperRef}
-            className="mySwiper"
-            loop={true}
-          >
-              {homeData.images.map((image, index) => (
+              ref={swiperRef}
+              className="mySwiper"
+              loop={true}
+            >
+              {homeData?.images?.map((image, index) => (
                 <SwiperSlide key={index} className='bg-transparent d-flex justify-content-center align-items-center'>
                   <motion.img
                     src={`${base_url}/${image}`}
@@ -144,4 +145,3 @@ const Handcraft = () => {
 };
 
 export default Handcraft;
-

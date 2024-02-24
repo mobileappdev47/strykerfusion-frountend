@@ -44,11 +44,11 @@ const Footer = () => {
         <motion.div initial={{ y: -100 }} animate={controls}>
             <div className={style.footer} ref={ref}>
                 <div className="row h-100">
-                    <div className="col-sm-4 col-6  col-lg-6 d-flex flex-column justify-content-center">
+                    <div className="col-sm-4 col-6  col-lg-4 d-flex flex-column justify-content-center">
                         <img src={logo} className={style.logoimg} alt="" />
                         <p className={style.content}>© 2024 StrykerFusion. All Rights Reserved</p>
                     </div>
-                    <div className="col-sm-8 col-6 col-lg-6 d-flex flex-column justify-content-center">
+                    <div className="col-sm-8 col-6 col-lg-8 d-flex flex-column justify-content-center">
                         <div className={style.footermenu}>
                             {menuItems.map((item, index) => (
                                 <motion.div key={index}

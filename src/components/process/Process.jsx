@@ -64,7 +64,7 @@ const Process = () => {
     function getNumCards() {
         if (window.innerWidth >= 1400) {
             return 3;
-        } else if (window.innerWidth >= 768) {
+        } else if (window.innerWidth >= 600) {
             return 2;
         } else {
             return 1;
@@ -99,16 +99,20 @@ const Process = () => {
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
-                <h1 className={style.headingfont}>
-                    {processMain?.processTitle}
-                </h1>
-                <h1 className={style.content}>{processMain?.processDescription}</h1>
+                <div className='mb-4'>
+                    <h1 className={style.headingfont}>
+                        {processMain?.processTitle}
+                    </h1>
+                    <h1 className={style.content}>{processMain?.processDescription}</h1>
+                </div>
                 <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
-                    <div className={`carousel-indicators`}>
-                        <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" className={` ${startIndex === 2 ? 'active' : ''}`} aria-label="Slide 3"></button>
-                    </div>
+                    {numCards === 3 && (
+                        <div className={`carousel-indicators`}>
+                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" className={` ${startIndex === 2 ? 'active' : ''}`} aria-label="Slide 3"></button>
+                        </div>
+                    )}
                     <motion.div className="carousel-inner h-100"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
@@ -127,7 +131,9 @@ const Process = () => {
                                         whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
                                     >
                                         <div className="card-body h-100">
-                                            <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top ${style.cardimg}`} alt="..." />
+                                            <div className={`${style.cardimg}`}>
+                                                <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
+                                            </div>
                                             <h5 className={`card-title ${style.title}`}>{`${item.title}`}</h5>
                                             <p className={`${style.cardtext} card-text`}>{`${item.description}`}</p>
                                             <button className={`btn ${style.learnmorebtn}`}>Learn More</button>

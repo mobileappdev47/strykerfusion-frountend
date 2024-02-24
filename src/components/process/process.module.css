@@ -48,8 +48,6 @@
 
 .cardtext {
     height: 22%;
-    display: flex;
-    align-items: center;
     overflow: hidden;
 }
 
@@ -68,12 +66,21 @@
         font-size: 25px;
     }
 
+    .card {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
     .cardtext {
         font-size: 13px;
     }
 
     .content {
         font-size: 14px;
+    }
+
+    .maindiv {
+        height: calc(100vh - 150px);
     }
 }
 
@@ -86,6 +93,12 @@
     .card {
         flex: 1 0 0%;
         margin: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .maindiv {
+        height: calc(100vh - 130px);
     }
 }
 
