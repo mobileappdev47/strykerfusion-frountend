@@ -82,7 +82,7 @@ const Header = () => {
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <button className={`btn ms-5 ${style.getquotebtn}`}>Contact Us</button>
+                    <button className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</button>
                   </motion.a>
                 </li>
               </ul>

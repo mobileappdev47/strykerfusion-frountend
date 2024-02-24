@@ -113,18 +113,26 @@
         top: 150px;
         left: 100px;
     }
-
+    .maindiv{
+        padding: 20px;
+    }
     .contentbox2 {
         left: 100px;
         bottom: 150px;
     }
 
     .headingfont {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .subcontent {
+        margin-bottom: 10px !important;
+        margin-top: 10px !important;
     }
 
     .content {
         font-size: 14px;
+        margin-top: 10px !important;
     }
 }
 

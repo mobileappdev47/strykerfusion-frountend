@@ -114,7 +114,7 @@ const Revolution = () => {
                                             transition={{ delay: 1 * 0.3 }}
                                         >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</motion.p>
                                         <motion.p
-                                            className={`card-text mt-4 ${style.subcontent}`}
+                                            className={`card-text  ${style.subcontent}`}
                                             initial={{ opacity: 0, y: 100 }} // Start from above (-100)
                                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
                                             transition={{ delay: 2 * 0.3 }}

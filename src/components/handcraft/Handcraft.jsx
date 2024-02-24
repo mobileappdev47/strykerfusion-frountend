@@ -65,8 +65,6 @@ const Handcraft = () => {
 
   const title = homeData?.title;
 
-  console.log(homeData,)
-
   useEffect(() => {
     if (swiperRef.current) {
       const swiper = swiperRef.current.swiper;

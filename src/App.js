@@ -65,6 +65,7 @@ function App() {
     };
   }, []);
 
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 990) {
@@ -79,13 +80,40 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, []);
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    };
+    handleHashChange();
+    window.addEventListener('hashchange', handleHashChange);
+
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
     <>
       <section id='homepage'><Header /><Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution /></section>
       {showProducts && products.map((item, index) => (
-        <section id='products' key={index}>
+        <section id={`products_${index}`} key={index}>
           <Products item={item} index={index} />
         </section>
       ))}
