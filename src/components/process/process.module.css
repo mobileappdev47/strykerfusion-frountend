@@ -15,6 +15,8 @@
     align-items: center;
     display: flex;
     align-items: center;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .carousel {
@@ -41,12 +43,17 @@
     overflow: hidden;
 }
 
+.contentwidth {
+    width: 40%;
+}
+
 .content {
     font-size: 18px;
     font-weight: 400;
     text-align: center;
     margin-top: 10px;
     color: #4C5877;
+    margin-top: 1.5rem;
 }
 
 .cardimg {
@@ -56,15 +63,36 @@
 .cardtext {
     height: 22%;
     overflow: hidden;
+    color: #4C5877;
+    font-size: 20px;
+    font-weight: 400;
+
 }
 
 .caroselwidth {
     height: 80%;
 }
 
+@media only screen and (max-width: 1300px) {
+    .contentwidth {
+        width: 50%;
+    }
+}
+
 @media only screen and (max-width: 1000px) {
     .maindiv {
         padding: 20px;
+    }
+
+    .contentwidth {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .card {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
     }
 }
 
@@ -95,6 +123,10 @@
     .cardgroup {
         display: flex;
         flex-flow: row wrap
+    }
+
+    .contentwidth {
+        width: 100%;
     }
 
     .card {

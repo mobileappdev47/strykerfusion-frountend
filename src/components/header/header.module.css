@@ -7,11 +7,10 @@
 }
 
 .headermenu {
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
     color: #08132D !important;
     margin-left: 50px;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 .togglemenulist {
@@ -24,17 +23,20 @@
 }
 
 .headermenutoggle {
-    font-size: 16px;
     padding: 15px;
+    font-size: 16px;
 }
 
 .togglebtn:focus {
     box-shadow: none !important;
 }
 
-.getquotebtn{
+.getquotebtn {
     background-color: #265EE1;
-    color: #FFF;
+    color: #FFFFF0;
+    font-size: 14px;
+    font-weight: 600;
+
 }
 
 @media only screen and (max-width: 1440px) {

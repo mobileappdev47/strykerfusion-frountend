@@ -19,7 +19,7 @@ body {
 
 body {
   color: #000;
-  background-color: #FAFAFA ;
+  background-color: #FAFAFA;
 }
 
 a {
@@ -35,9 +35,15 @@ a:hover {
   box-shadow: none;
 }
 
-h1 {
+h1,
+a,
+button {
   font-family: Montserrat, sans-serif;
   /* Apply Montserrat font to h1 elements */
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .carousel-indicators [data-bs-target] {

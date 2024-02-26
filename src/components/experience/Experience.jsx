@@ -129,7 +129,7 @@ const Experience = () => {
                                            <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
                                             <p className={style.cardcontent}>{item?.experienceDescription} </p>
                                            </div>
-                                            <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}><p className={style.btntext}>Read More</p></a>
+                                            <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}><h1 className={style.btntext}>Read More</h1></a>
                                         </div>
                                     </div>
                                 </motion.div>

@@ -99,12 +99,14 @@ const Process = () => {
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
-                <div className='mb-4'>
+               <div className='d-flex justify-content-center align-items-center'>
+               <div className={style.contentwidth}>
                     <h1 className={style.headingfont}>
                         {processMain?.processTitle}
                     </h1>
                     <h1 className={style.content}>{processMain?.processDescription}</h1>
                 </div>
+               </div>
                 <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
                     {numCards === 3 && (
                         <div className={`carousel-indicators`}>
