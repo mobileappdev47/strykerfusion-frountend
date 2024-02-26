@@ -27,13 +27,17 @@ const variants = {
 const Sidebar = () => {
     const [open, setOpen] = useState(false);
 
+    const handleCloseSidebar = () => {
+        setOpen(false);
+    };
+
     return (
         <motion.div className={style.sidebar} animate={open ? "open" : "closed"} >
             <div className=''>
                 <div><img src={logo} alt="" className={`${style.profileimg}`} /></div>
             </div>
             <motion.div className={style.bg} variants={variants}>
-                <Links />
+                <Links handleCloseSidebar={handleCloseSidebar} />
             </motion.div>
             <ToggleButton setOpen={setOpen} />
         </motion.div>

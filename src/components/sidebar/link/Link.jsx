@@ -35,7 +35,11 @@ const itemsVariants = {
   },
 };
 
-const Links = () => {
+const Links = ({ handleCloseSidebar }) => {
+  const handleClick = () => {
+    handleCloseSidebar();
+  };
+
   return (
     <motion.div className={style.links} variants={variants}>
       {items.map((item) => (
@@ -46,6 +50,7 @@ const Links = () => {
           variants={itemsVariants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
+          onClick={handleClick}
         >
           {item?.text}
         </motion.a>

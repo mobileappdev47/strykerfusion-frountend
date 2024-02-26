@@ -1,8 +1,7 @@
 .sidebar {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     color: black;
     background: #FFF;
     box-shadow: 0px 4px 24px 0px #C0C0C01F;
@@ -39,9 +38,6 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    position: fixed;
-    top: 25px;
-    right: 25px;
     background-color: transparent;
     border: none;
     cursor: pointer;
