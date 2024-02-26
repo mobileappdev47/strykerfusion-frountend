@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const Product = ({ item, index }) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: false });
+  const [ref, inView] = useInView({ triggerOnce: true });
 
   useEffect(() => {
     if (inView) {

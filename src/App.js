@@ -90,6 +90,7 @@ function App() {
       }
     }
   }, []);
+
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;

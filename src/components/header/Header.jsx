@@ -5,6 +5,8 @@ import style from './header.module.css';
 import { motion } from 'framer-motion';
 
 const Header = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
 
   const menuItems = [
     { text: "How It Works", link: "brandandprocess" },
@@ -13,9 +15,6 @@ const Header = () => {
     { text: "Find Us", link: "contactus" },
     { text: "Client Speak", link: "ourclient" }
   ];
-
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -26,7 +25,6 @@ const Header = () => {
         threshold: 0,
       }
     );
-
     if (ref.current) {
       observer.observe(ref.current);
     }
@@ -80,4 +78,3 @@ const Header = () => {
 }
 
 export default Header;
-
