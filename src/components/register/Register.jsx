@@ -2,10 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import wave from '../../assets/Clip path group.png';
 import styles from './register.module.css';
+import axios from 'axios';
+import { base_url } from '../config/Base_url';
 
 const Register = () => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
+    const [possibleData, setPossibleData] = useState([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -25,8 +29,21 @@ const Register = () => {
             }
         };
     }, []);
-
-    const text = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident id, doloremque fugiat minima exercitationem nihil.".split(" ");
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${base_url}/possible`);
+                setPossibleData(response?.data?.data || []);
+                setIsDataFetched(true);
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        };
+        if (!isDataFetched) {
+            fetchData();
+        }
+    }, [isDataFetched]);
+    const text = possibleData?.possibleDescription?.split(" ");
 
     return (
         <div ref={ref} className={styles.container} >
@@ -39,9 +56,9 @@ const Register = () => {
                                 initial={{ opacity: 0, y: 100 }} // Start from above (-100)
                                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
                                 transition={{ delay: 0 * 0.5 }}
-                            >Unlock a World of New Possibilities</motion.h1>
+                            >{possibleData?.possibleTitle}</motion.h1>
                             <div className='mb-3'>
-                                {text.map((el, i) => (
+                                {text?.map((el, i) => (
                                     <motion.span
                                         initial={{ opacity: 0 }}
                                         animate={{ opacity: isVisible ? 1 : 0 }}

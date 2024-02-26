@@ -2,9 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
 import { AnimatePresence, motion } from 'framer-motion'
+import axios from 'axios'
+import { base_url } from '../config/Base_url'
 
 const Revolution = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [revolutionData, setRevolutionData] = useState([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
     const ref = useRef(null);
 
     useEffect(() => {
@@ -25,6 +29,21 @@ const Revolution = () => {
             }
         };
     }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(`${base_url}/revolution`);
+                setRevolutionData(response?.data?.data || []);
+                setIsDataFetched(true);
+            } catch (error) {
+                console.error('Error fetching product data:', error);
+            }
+        };
+        if (!isDataFetched) {
+            fetchData();
+        }
+    }, [isDataFetched]);
 
     return (
         <div className={style.maindiv} ref={ref}>
@@ -105,47 +124,29 @@ const Revolution = () => {
                                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
                                             transition={{ delay: 0 * 0.5 }}
                                         >
-                                            Don't Just Level Up, Leap Forward with our Value Revolution
+                                            {revolutionData?.revolutionTitle}
                                         </motion.h1>
                                         <motion.p
                                             className={`card-text mt-4 ${style.content}`}
                                             initial={{ opacity: 0, y: 100 }} // Start from above (-100)
                                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
                                             transition={{ delay: 1 * 0.3 }}
-                                        >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</motion.p>
-                                        <motion.p
-                                            className={`card-text  ${style.subcontent}`}
-                                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                            transition={{ delay: 2 * 0.3 }}
-                                        >
-                                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M8.625 11.9985L12.375 15.7485L21.375 5.99854" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                            &nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</motion.p>
-                                        <motion.p
-                                            className={`card-text ${style.subcontent}`}
-                                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                            transition={{ delay: 3 * 0.3 }}
-                                        >
-                                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M8.625 11.9985L12.375 15.7485L21.375 5.99854" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                            &nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</motion.p>
-                                        <motion.p
-                                            className={`card-text ${style.subcontent}`}
-                                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                            transition={{ delay: 4 * 0.3 }}
-                                        >
-                                            <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M8.625 11.9985L12.375 15.7485L21.375 5.99854" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                            &nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt</motion.p>
+                                        >{revolutionData?.revolutionDescription}</motion.p>
+                                        {revolutionData?.revolutionContent?.split('/').map((text, index) => (
+                                            <motion.p
+                                                key={index}
+                                                className={`card-text ${style.subcontent}`}
+                                                initial={{ opacity: 0, y: 100 }} // Start from above (-100)
+                                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                                transition={{ delay: ((index + 2) * 0.3) + (index * 0.1) }} // Adjust delay based on index
+                                            >
+                                                <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                    <path d="M8.625 11.9985L12.375 15.7485L21.375 5.99854" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                </svg>
+                                                &nbsp;{text}
+                                            </motion.p>
+                                        ))}
                                         <motion.button
                                             className={`btn mt-5 ${style.getstartedbtn}`}
                                             key="button"

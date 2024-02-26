@@ -16,6 +16,7 @@ import Footer from './components/footer/Footer';
 import axios from 'axios';
 import { base_url } from './components/config/Base_url';
 import ContactUsForm from './components/contactusform/ContactUsForm';
+import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
   const [showProducts, setShowProducts] = useState(true);
@@ -109,12 +110,12 @@ function App() {
 
   return (
     <>
-      <section id='homepage'><Header /><Handcraft /></section>
+      <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution /></section>
-      {showProducts && products.map((item, index) => (
-        <section id={`products_${index}`} key={index}>
-          <Products item={item} index={index} />
+      {showProducts && products?.map((product) => (
+        <section id={`product_${product.id}`} key={product?._id}>
+          <Products item={product} />
         </section>
       ))}
       <section id='allproducts' ref={allProductsRef}>
