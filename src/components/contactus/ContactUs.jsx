@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './contactus.module.css'
-import { Link } from 'react-router-dom';
 import ContactUsForm from '../contactusform/ContactUsForm';
 import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
@@ -47,6 +46,7 @@ const ContactUs = () => {
             fetchData();
         }
     }, [isDataFetched]);
+
     return (
         <div ref={ref} className={`${style.maindiv}`}>
             <div className="row h-100 d-flex align-items-center">
@@ -59,7 +59,6 @@ const ContactUs = () => {
                                 transition={{ delay: 0 * 0.4 }} className={style.headingfont}>
                                 {contactData?.mainTitle}
                             </motion.h1>
-
                             <motion.p
                                 initial={{ opacity: 0, x: -100 }} // Start from the left (-100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }} // Move in from left when visible (-20)

@@ -12,7 +12,6 @@ const Experience = () => {
     const [experience, setExperience] = useState([]);
     const [experienceMain, setExperienceMain] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
-    const [error, setError] = useState('');
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
@@ -42,7 +41,6 @@ const Experience = () => {
                 setExperience(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching product data:', error);
             }
         };
@@ -52,7 +50,6 @@ const Experience = () => {
                 setExperienceMain(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching product data:', error);
             }
         };
@@ -61,6 +58,7 @@ const Experience = () => {
             fetchDataExperienceMain()
         }
     }, [isDataFetched]);
+
     return (
         <div ref={ref} className={`${style.maindiv} container-fluid`}>
             <div className="row h-100">

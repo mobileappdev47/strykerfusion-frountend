@@ -7,14 +7,12 @@ import axios from 'axios'
 const OurBrand = () => {
     const [brands, setBrands] = useState()
     const [ourBrands, setOurBrands] = useState()
-    const [error, setError] = useState()
 
     const fetchData = async () => {
         try {
             const response = await axios.get(`${base_url}/ourbrands`);
             setBrands(response.data?.brand?.brandImages);
         } catch (error) {
-            setError(error);
             console.error('Error fetching home data:', error);
         }
     };
@@ -24,7 +22,6 @@ const OurBrand = () => {
             const response = await axios.get(`${base_url}/ourbrandsmain`);
             setOurBrands(response.data?.data);
         } catch (error) {
-            setError(error);
             console.error('Error fetching home data:', error);
         }
     };

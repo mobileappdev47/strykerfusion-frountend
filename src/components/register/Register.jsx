@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import wave from '../../assets/Clip path group.png';
 import styles from './register.module.css';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
@@ -29,6 +28,7 @@ const Register = () => {
             }
         };
     }, []);
+
     useEffect(() => {
         const fetchData = async () => {
             try {

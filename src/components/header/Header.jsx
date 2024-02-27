@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import style from './header.module.css';
 import { motion } from 'framer-motion';

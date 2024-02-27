@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion'; // Import useAnimation hook
+import { motion, useAnimation } from 'framer-motion'; 
 import { useInView } from 'react-intersection-observer';
 import style from './map.module.css';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
@@ -13,7 +13,6 @@ const Map = () => {
     const { ref, inView } = useInView({ threshold: 0 });
     const controls = useAnimation();
     const [isDataFetched, setIsDataFetched] = useState(false);
-    const [error, setError] = useState('');
     const [locationMain, setLocationMain] = useState([]);
     const [markers, setMarkers] = useState([]);
 
@@ -29,7 +28,6 @@ const Map = () => {
 
                 setMarkers(formattedData);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching map data:', error);
             }
         };
@@ -39,7 +37,6 @@ const Map = () => {
                 setLocationMain(response?.data?.data)
                 setIsDataFetched(true);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching map data:', error);
             }
         };
@@ -58,9 +55,9 @@ const Map = () => {
             }, 1000);
             return () => clearTimeout(timeout);
         } else {
-            setIsMapVisible(false); // Reset state when not in view
-            setAreMarkersVisible(false); // Reset state when not in view
-            controls.start({ opacity: 0, scale: 0.01 }); // Reset animation controls
+            setIsMapVisible(false); 
+            setAreMarkersVisible(false); 
+            controls.start({ opacity: 0, scale: 0.01 }); 
         }
     }, [inView, controls]);
 

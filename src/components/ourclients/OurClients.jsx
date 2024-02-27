@@ -14,7 +14,6 @@ const OurClients = () => {
     const [client, setClient] = useState([]);
     const [clientMain, setClientMain] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
-    const [error, setError] = useState('');
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
 
@@ -24,7 +23,7 @@ const OurClients = () => {
                 setIsVisible(entry.isIntersecting);
             },
             {
-                threshold: 0.5, // Adjust threshold as needed
+                threshold: 0.5,
             }
         );
         if (ref.current) {
@@ -44,7 +43,6 @@ const OurClients = () => {
                 setClient(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching product data:', error);
             }
         };
@@ -54,7 +52,6 @@ const OurClients = () => {
                 setClientMain(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
-                setError(error.message);
                 console.error('Error fetching product data:', error);
             }
         };
@@ -100,7 +97,7 @@ const OurClients = () => {
                     {isVisible && client?.map((item, index) => (
                         <SwiperSlide key={index} className='bg-transparent'>
                             {({ isNext }) => (
-                                <motion.div // Wrap your content with motion.div and apply animation properties
+                                <motion.div 
                                     initial={{ opacity: 0, scale: 0.5 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     transition={{

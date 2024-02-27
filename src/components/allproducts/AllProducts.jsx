@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
-import product1 from '../../assets/product1.png';
 import { useInView } from 'react-intersection-observer';
 import { base_url } from '../config/Base_url';
 import axios from 'axios';
@@ -48,14 +47,12 @@ const Product = ({ item, index }) => {
 
 const AllProducts = ({ products }) => {
   const [productMain, setProductMain] = useState([])
-  const [errors, setErrors] = useState([])
 
   const fetchData = async () => {
     try {
       const response = await axios.get(`${base_url}/productmain`);
       setProductMain(response.data?.data);
     } catch (error) {
-      setErrors(error);
       console.error('Error fetching home data:', error);
     }
   };

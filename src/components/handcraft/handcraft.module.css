@@ -55,11 +55,8 @@
     height: 100%;
     background-image: url('../../assets/wordbackground.png');
     background-size: cover;
-    /* Adjust background properties as needed */
     opacity: 0.5;
-    /* Adjust opacity as needed */
     z-index: -1;
-    /* Ensure the background image is behind the text */
 }
 
 @media only screen and (max-width: 990px) {

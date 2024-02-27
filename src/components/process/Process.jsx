@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import style from './process.module.css';
-import card from '../../assets/card.png';
 import pre from '../../assets/prearrow.png';
 import next from '../../assets/nextarrow.png';
 import { base_url } from '../config/Base_url';
@@ -14,7 +13,6 @@ const Process = () => {
     const ref = useRef(null);
     const [process, setProcess] = useState([])
     const [processMain, setProcessMain] = useState([])
-    const [error, setError] = useState()
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -70,14 +68,12 @@ const Process = () => {
             return 1;
         }
     }
-
-
+    
     const fetchData = async () => {
         try {
             const response = await axios.get(`${base_url}/process`);
             setProcess(response?.data?.data);
         } catch (error) {
-            setError(error);
             console.error('Error fetching home data:', error);
         }
     };
@@ -86,7 +82,6 @@ const Process = () => {
             const response = await axios.get(`${base_url}/processmain`);
             setProcessMain(response?.data?.data);
         } catch (error) {
-            setError(error);
             console.error('Error fetching home data:', error);
         }
     };

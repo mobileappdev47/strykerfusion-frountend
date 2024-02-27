@@ -61,12 +61,12 @@ const ContactUsForm = () => {
         name: '',
         email: '',
         message: '',
-        interest: '' // New state for storing the selected radio button value
+        interest: '' 
     });
     const [errors, setErrors] = useState({ name: '', email: '', message: '', interest: '' });
 
     const handleRadioChange = (value) => {
-        setField("interest", value); // Call setField to update the interest field
+        setField("interest", value);
     };
 
     const validateForm = () => {
@@ -80,8 +80,6 @@ const ContactUsForm = () => {
             newErrors.email = 'Please enter a valid email address';
         }
         if (!message || message === "") newErrors.message = "Please Enter message";
-
-        // Check if interest is not selected
         if (!interest) {
             newErrors.interest = "Please select an interest";
         }

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/logo.png';
 import style from './footer.module.css'
-import { Link } from 'react-router-dom';
 import { motion, useAnimation } from 'framer-motion'
 
 const Footer = () => {
@@ -59,7 +58,7 @@ const Footer = () => {
                                     transition={{ delay: index * 0.1 }}
                                     className='text-end'
                                 >
-                                    <a href={`#${item.link}`} className={`btn`}><h1 className={`${style.footermenubtn}`}>{item.text}</h1></a>
+                                    <a href={`#${item.link} `} className={`btn ${style.footermenubtn}`}>{item.text}</a>
                                 </motion.div>
                             ))}
                         </div>
@@ -105,10 +104,3 @@ const Footer = () => {
 }
 
 export default Footer;
-
-
-
-
-
-
-// {/*  */}

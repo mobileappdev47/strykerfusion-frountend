@@ -53,8 +53,8 @@ const Revolution = () => {
                         <img src={revolutionman} className="img-fluid rounded-start" alt="..." />
                         <motion.div
                             className={style.contentbox1}
-                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                            initial={{ opacity: 0, y: 100 }} 
+                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                             transition={{ delay: 0 * 0.5 }}
                             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                             whileTap={{ scale: 0.95 }}
@@ -74,8 +74,8 @@ const Revolution = () => {
                         </motion.div>
                         <motion.div
                             className={style.contentbox2}
-                            initial={{ opacity: 0, x: 100 }} // Start from above (-100)
-                            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                            initial={{ opacity: 0, x: 100 }} 
+                            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }} 
                             transition={{ delay: 1 * 0.5 }}
                             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                             whileTap={{ scale: 0.95 }}
@@ -120,25 +120,25 @@ const Revolution = () => {
                                     <>
                                         <motion.h1
                                             className={`card-title ${style.headingfont}`}
-                                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                            initial={{ opacity: 0, y: 100 }} 
+                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
                                             transition={{ delay: 0 * 0.5 }}
                                         >
                                             {revolutionData?.revolutionTitle}
                                         </motion.h1>
                                         <motion.p
                                             className={`card-text mt-4 ${style.content}`}
-                                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                            initial={{ opacity: 0, y: 100 }} 
+                                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
                                             transition={{ delay: 1 * 0.3 }}
                                         >{revolutionData?.revolutionDescription}</motion.p>
                                         {revolutionData?.revolutionContent?.split('/').map((text, index) => (
                                             <motion.div
                                                 key={index}
                                                 className={`card-text d-flex mb-3 align-items-center ${style.subcontent}`}
-                                                initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                                transition={{ delay: ((index + 2) * 0.3) + (index * 0.1) }} // Adjust delay based on index
+                                                initial={{ opacity: 0, y: 100 }} 
+                                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
+                                                transition={{ delay: ((index + 2) * 0.3) + (index * 0.1) }} 
                                             >
                                                 <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -150,8 +150,8 @@ const Revolution = () => {
                                         <motion.button
                                             className={`btn mt-5 ${style.learnmorebtn}`}
                                             key="button"
-                                            initial={{ scale: 1 }} // Initial scale set to 1
-                                            animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
+                                            initial={{ scale: 1 }} 
+                                            animate={{ scale: [1, 1.2, 1] }} 
                                             transition={{ duration: 0.5, delay: 2 }}
                                         >Learn More</motion.button>
                                     </>
