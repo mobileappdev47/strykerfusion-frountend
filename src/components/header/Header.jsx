@@ -40,7 +40,7 @@ const Header = () => {
         <div>
           <nav ref={ref} className={`navbar navbar-expand-lg navbar-light bg-light ${style.header}`}>
             <div className='d-flex align-items-center'>
-              <div><img src={logo} alt="" className={`${style.profileimg}`} /></div>
+              <a href='/'><img src={logo} alt="" className={`${style.profileimg}`} /></a>
             </div>
             <div className={`collapse navbar-collapse justify-content-end`}>
               <ul className="navbar-nav align-items-center">

@@ -61,7 +61,7 @@ const ContactUsForm = () => {
         name: '',
         email: '',
         message: '',
-        interest: '' 
+        interest: ''
     });
     const [errors, setErrors] = useState({ name: '', email: '', message: '', interest: '' });
 
@@ -150,7 +150,7 @@ const ContactUsForm = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: 100 }} // Start from the right (100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
-                                transition={{ delay: 0 * 0.5 }}>
+                                transition={{ delay: 0 * 0.2 }}>
                                 <Form.Group controlId='interest' className={style.inputgroup}>
                                     <Form.Label className={`${style.label} ${formData.interest && style.active}`}>I’m interested in:</Form.Label>
                                     <div className={style.radiobtngroup}>
@@ -177,7 +177,7 @@ const ContactUsForm = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: 100 }} // Start from the right (100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
-                                transition={{ delay: 1 * 0.5 }}>
+                                transition={{ delay: 1 * 0.2 }}>
                                 <Form.Group controlId='name' className={`${style.inputgroup} ${style.flexinput}  `}>
                                     <Form.Label className={`${style.label} ${formData.name && style.active}`}>Your name</Form.Label>
                                     <Form.Control
@@ -196,7 +196,7 @@ const ContactUsForm = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: 100 }} // Start from the right (100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
-                                transition={{ delay: 2 * 0.5 }}>
+                                transition={{ delay: 2 * 0.2 }}>
                                 <Form.Group controlId='email' className={`${style.inputgroup} ${style.flexinput} p-lg-0`}>
                                     <Form.Label className={`${style.label} ${formData.email && style.active}`}>Your email</Form.Label>
                                     <Form.Control
@@ -215,7 +215,7 @@ const ContactUsForm = () => {
                             <motion.div
                                 initial={{ opacity: 0, x: 100 }} // Start from the right (100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
-                                transition={{ delay: 3 * 0.5 }}>
+                                transition={{ delay: 3 * 0.2 }}>
                                 <Form.Group controlId='message' className={style.inputgroup}>
                                     <Form.Label className={`${style.label} ${formData.message && style.active}`}>Your message</Form.Label>
                                     <Form.Control
@@ -235,7 +235,7 @@ const ContactUsForm = () => {
                             <motion.div
                                 initial={{ scale: 1 }} // Initial scale set to 1
                                 animate={{ scale: [1, 1.1, 1] }} // Animate scale to 1.1 when in view
-                                transition={{ duration: 0.5, delay: 0.5 * 4 }}>
+                                transition={{ duration: 0.5, delay: 0.2 * 4 }}>
                                 <Button className={style.sendbtn} type='submit' onClick={handleemailsend}>
                                     Send Message
                                 </Button>
