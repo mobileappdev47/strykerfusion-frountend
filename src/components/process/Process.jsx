@@ -11,8 +11,8 @@ const Process = () => {
     const [numCards, setNumCards] = useState(getNumCards());
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
-    const [process, setProcess] = useState([])
-    const [processMain, setProcessMain] = useState([])
+    const [process, setProcess] = useState([]);
+    const [processMain, setProcessMain] = useState([]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -68,46 +68,60 @@ const Process = () => {
             return 1;
         }
     }
-    
+
+    const handleIndicatorClick = (index) => {
+        setStartIndex(index);
+    };
+
     const fetchData = async () => {
         try {
             const response = await axios.get(`${base_url}/process`);
-            setProcess(response?.data?.data);
+            setProcess(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
         }
     };
+
     const fetchProcessMain = async () => {
         try {
             const response = await axios.get(`${base_url}/processmain`);
-            setProcessMain(response?.data?.data);
+            setProcessMain(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
         }
     };
 
     useEffect(() => {
-        fetchData()
-        fetchProcessMain()
-    }, [])
+        fetchData();
+        fetchProcessMain();
+    }, []);
 
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
-               <div className='d-flex justify-content-center align-items-center'>
-               <div className={style.contentwidth}>
-                    <h1 className={style.headingfont}>
-                        {processMain?.processTitle}
-                    </h1>
-                    <h1 className={style.content}>{processMain?.processDescription}</h1>
+                <div className='d-flex justify-content-center align-items-center'>
+                    <div className={style.contentwidth}>
+                        <h1 className={style.headingfont}>
+                            {processMain?.processTitle}
+                        </h1>
+                        <h1 className={style.content}>{processMain?.processDescription}</h1>
+                    </div>
                 </div>
-               </div>
                 <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
                     {numCards === 3 && (
                         <div className={`carousel-indicators`}>
-                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" className={` ${startIndex === 0 ? 'active' : ''}`} aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" className={` ${startIndex === 1 ? 'active' : ''}`} aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" className={` ${startIndex === 2 ? 'active' : ''}`} aria-label="Slide 3"></button>
+                            {process.slice(0, process?.length - 2).map((item, index) => (
+                                <button
+                                    key={index}
+                                    type="button"
+                                    data-bs-target="#carouselExampleIndicators1"
+                                    data-bs-slide-to={index}    
+                                    className={`${startIndex === index ? 'active' : ''}`}
+                                    aria-current="true"
+                                    aria-label={`Slide ${index + 1}`}
+                                    onClick={() => handleIndicatorClick(index)}
+                                ></button>
+                            ))}
                         </div>
                     )}
                     <motion.div className="carousel-inner h-100"

@@ -5,10 +5,10 @@ import { base_url } from '../config/Base_url';
 import axios from 'axios';
 
 const Products = ({ item, index }) => {
-  const [productMain, setProductMain] = useState([])
+  const [productMain, setProductMain] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
-
+  console.log(index)
   const { ref: inViewRef } = useInView({
     triggerOnce: true,
     threshold: 0.5,
@@ -43,16 +43,18 @@ const Products = ({ item, index }) => {
   };
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   return (
     <>
       <div className={style.maindiv}>
-        <div className={style.products}>
-          <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
-          <p className={style.content}>{productMain?.productDescription}</p>
-        </div>
+        {index === 0 && (
+          <div className={style.products}>
+            <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
+            <p className={style.content}>{productMain?.productDescription}</p>
+          </div>
+        )}
         <div className={`${style.imgsection}`}>
           <div ref={inViewRef} className='h-100'>
             <motion.div
@@ -60,7 +62,7 @@ const Products = ({ item, index }) => {
               className={`h-100`}
               key={index}
               initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
+              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 10 }}
               transition={{ duration: 0.5 }}
             >
               <div className='position-relative h-100 w-100'>
@@ -79,7 +81,6 @@ const Products = ({ item, index }) => {
           </div>
         </div>
       </div>
-
     </>
   );
 };

@@ -19,7 +19,6 @@ import ContactUsForm from './components/contactusform/ContactUsForm';
 import Sidebar from './components/sidebar/Sidebar';
 
 function App() {
-  const [showProducts, setShowProducts] = useState(true);
   const allProductsRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
@@ -42,30 +41,6 @@ function App() {
       fetchData();
     }
   }, [isDataFetched]);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setShowProducts(false);
-        }
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-
-    if (allProductsRef.current) {
-      observer.observe(allProductsRef.current);
-    }
-
-    return () => {
-      if (allProductsRef.current) {
-        observer.unobserve(allProductsRef.current);
-      }
-    };
-  }, []);
-
 
   useEffect(() => {
     const handleResize = () => {
@@ -114,9 +89,9 @@ function App() {
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution /></section>
-      {showProducts && products?.map((product) => (
+      {products?.map((product, index) => (
         <section id={`product_${product?._id}`} key={product?._id}>
-          <Products item={product} />
+          <Products item={product} index={index} />
         </section>
       ))}
       <section id='allproducts' ref={allProductsRef}>

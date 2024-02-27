@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './ourclient.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import axios from 'axios';
@@ -90,8 +90,9 @@ const OurClients = () => {
             <Swiper
                 slidesPerView={slidesPerView}
                 spaceBetween={30}
-                modules={[Pagination]}
+                modules={[Navigation, Pagination]}
                 className={`mySwiper ${style.clientslider}`}
+                navigation={true} 
             >
                 <AnimatePresence>
                     {isVisible && client?.map((item, index) => (
@@ -106,7 +107,7 @@ const OurClients = () => {
                                             delay: 0.5 * index,
                                             ease: [0, 0.71, 0.2, 1.01],
                                         }}
-                                        
+
                                     >
                                         <div className={isSmallScreen ? style.active : isNext ? style.active : style.notactive}>
                                             <div className={isSmallScreen ? 'p-lg-5 p-2 p-sm-5 text-center d-flex flex-column h-100 justify-content-center align-items-center' : isNext ? ' text-center p-lg-5 p-5 p-sm-2 d-flex flex-column h-100 justify-content-center align-items-center' : 'px-xl-5 text-center p-0 pt-5'}>
@@ -122,15 +123,14 @@ const OurClients = () => {
                                                     {item?.clientReview}
                                                 </p>
                                             </div>
-                                            
-                                        </div>
-                                        <div className={isSmallScreen || isNext ? style.clientsec : 'mt-5'}>
+                                            <div className={isSmallScreen || isNext ? style.clientsec : 'mt-5'}>
                                                 <div className='d-flex justify-content-center position-relative'>
                                                     <img src={`${base_url}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
                                                 </div>
                                                 <h1 className={style.clientname}>{item?.clientName} </h1>
                                                 <p className={style.clientcontent}>{item?.clientRole}</p>
                                             </div>
+                                        </div>
                                     </motion.div>
                                 </>
                             )}
