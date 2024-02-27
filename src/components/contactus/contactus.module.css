@@ -51,3 +51,8 @@
     height: calc(100vh - 40vh);
    }
 }
+@media only screen and (max-width: 375px) {
+  .content{
+    font-size: 14px;
+  }
+ }

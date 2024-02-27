@@ -67,11 +67,15 @@
     .getstartedbtn {
         margin-top: 1rem !important;
         margin-bottom: 1rem !important;
+        font-size: 15px;
     }
 
-    .contentsection,
+    .contentsection {
+        height: 30%;
+    }
+
     .imagesection {
-        height: 50%;
+        height: 70%;
     }
 }
 
@@ -100,7 +104,9 @@
     .getstartedbtn {
         margin-top: 1rem;
     }
-
+    .getstartedbtn{
+        font-size: 14px;
+    }
     .maindiv {
         padding: 0;
     }

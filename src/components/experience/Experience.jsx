@@ -66,20 +66,22 @@ const Experience = () => {
                     <AnimatePresence>
                         {isVisible && (
                             <>
-                                <motion.h1
-                                    initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                    animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                    transition={{ delay: 0 * 0.5 }}
-                                    className={style.headingfont}>
-                                    {experienceMain?.experienceTitle}
-                                </motion.h1>
+                                <div className=' overflow-hidden'>
+                                    <motion.h1
+                                        initial={{ opacity: 0, y: 100 }} // Start from above (-100)
+                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                        transition={{ delay: 0 * 0.5 }}
+                                        className={style.headingfont}>
+                                        {experienceMain?.experienceTitle}
+                                    </motion.h1>
 
-                                <motion.p initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                    animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
-                                    transition={{ delay: 1 * 0.5 }}
-                                    className={style.content}>
-                                    {experienceMain?.experienceDescription}
-                                </motion.p>
+                                    <motion.p initial={{ opacity: 0, y: 100 }} // Start from above (-100)
+                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                        transition={{ delay: 1 * 0.5 }}
+                                        className={style.content}>
+                                        {experienceMain?.experienceDescription}
+                                    </motion.p>
+                                </div>
 
                                 <motion.button
                                     key="button"
@@ -97,7 +99,7 @@ const Experience = () => {
                 <div className="col-lg-7 col-12 h-100">
                     <div className={style.imagegradient}></div>
                     <Swiper
-                        slidesPerView={'auto'}
+                        slidesPerView={window.innerWidth < 425 ? 1 : 'auto'}
                         spaceBetween={30}
                         navigation={true}
                         modules={[Navigation]}
@@ -124,10 +126,10 @@ const Experience = () => {
                                         </div>
 
                                         <div className="card-body px-0 h-100">
-                                           <div className={style.cardtext}>
-                                           <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
-                                            <p className={style.cardcontent}>{item?.experienceDescription} </p>
-                                           </div>
+                                            <div className={style.cardtext}>
+                                                <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
+                                                <p className={style.cardcontent}>{item?.experienceDescription} </p>
+                                            </div>
                                             <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}><h1 className={style.btntext}>Read More</h1></a>
                                         </div>
                                     </div>

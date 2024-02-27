@@ -6,8 +6,6 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
 }
 
 html,
@@ -56,8 +54,6 @@ p {
 }
 
 section {
-  height: 100vh;
-  scroll-snap-align: start;
   width: 100%;
 }
 
@@ -68,9 +64,6 @@ section {
 
 .swiper-slide {
   font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .swiper-slide img {
@@ -83,6 +76,7 @@ section {
 .swiper-button-next:after,
 .swiper-button-prev:after {
   font-size: 30px !important;
+  font-weight: 700;
   color: #fff;
   display: flex;
   justify-content: center;

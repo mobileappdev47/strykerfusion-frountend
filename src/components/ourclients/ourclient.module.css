@@ -148,11 +148,18 @@
     }
 }
 
+@media only screen and (max-width: 990px) {
+    .activecontentclient {
+        overflow: hidden;
+    }
+}
+
 @media only screen and (max-width: 600px) {
     .headingfont {
         font-size: 25px;
     }
-    .content{
+
+    .content {
         font-size: 14px;
     }
 }

@@ -60,16 +60,18 @@
         padding: 3px;
     }
 }
+
 @media only screen and (max-width: 375px) {
-    .footermenubtn{
+    .footermenubtn {
         font-size: 12px;
     }
 
-}
-@media only screen and (max-width: 375px) {
+    .content {
+        font-size: 14px;
+    }
+
     .logoimg {
         height: 40px;
         width: 140px;
     }
-
 }
