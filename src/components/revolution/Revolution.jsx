@@ -133,9 +133,9 @@ const Revolution = () => {
                                             transition={{ delay: 1 * 0.3 }}
                                         >{revolutionData?.revolutionDescription}</motion.p>
                                         {revolutionData?.revolutionContent?.split('/').map((text, index) => (
-                                            <motion.p
+                                            <motion.div
                                                 key={index}
-                                                className={`card-text ${style.subcontent}`}
+                                                className={`card-text d-flex mb-3 align-items-center ${style.subcontent}`}
                                                 initial={{ opacity: 0, y: 100 }} // Start from above (-100)
                                                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
                                                 transition={{ delay: ((index + 2) * 0.3) + (index * 0.1) }} // Adjust delay based on index
@@ -144,11 +144,11 @@ const Revolution = () => {
                                                     <path d="M21.3751 13.4986C20.6251 17.2486 17.7978 20.779 13.8291 21.5684C9.86043 22.3579 5.83311 20.5118 3.84055 16.99C1.848 13.4682 2.33991 9.06537 5.06059 6.07014C7.78128 3.0749 12.3751 2.24858 16.1251 3.74858" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                     <path d="M8.625 11.9985L12.375 15.7485L21.375 5.99854" stroke="#265EE1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                                 </svg>
-                                                &nbsp;{text}
-                                            </motion.p>
+                                                &nbsp;&nbsp;&nbsp;<p className='mb-0'>{text}</p>
+                                            </motion.div>
                                         ))}
                                         <motion.button
-                                            className={`btn mt-5 ${style.getstartedbtn}`}
+                                            className={`btn mt-5 ${style.learnmorebtn}`}
                                             key="button"
                                             initial={{ scale: 1 }} // Initial scale set to 1
                                             animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view

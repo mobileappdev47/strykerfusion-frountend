@@ -111,22 +111,22 @@ function App() {
 
   return (
     <>
-      <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
-      <section id='brandandprocess'><OurBrand /> <Process /></section>
-      <section id='revolution'><Revolution /></section>
-      {showProducts && products?.map((product) => (
-        <section id={`product_${product.id}`} key={product?._id}>
-          <Products item={product} />
+        <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
+        <section id='brandandprocess'><OurBrand /> <Process /></section>
+        <section id='revolution'><Revolution /></section>
+        {showProducts && products?.map((product) => (
+          <section id={`product_${product.id}`} key={product?._id}>
+            <Products item={product} />
+          </section>
+        ))}
+        <section id='allproducts' ref={allProductsRef}>
+          <AllProducts products={products} />
         </section>
-      ))}
-      <section id='allproducts' ref={allProductsRef}>
-        <AllProducts products={products} />
-      </section>
-      <section id='regexeprience'><Register /> <Experience /></section>
-      <section id='map'><Map /></section>
-      <section id='ourclient'><OurClients /></section>
-      {showNewSection && <section id='contactusform'><ContactUsForm /></section>}
-      <section id='contactus'><ContactUs /><Footer /></section>
+        <section id='regexeprience'><Register /> <Experience /></section>
+        <section id='map'><Map /></section>
+        <section id='ourclient'><OurClients /></section>
+        {showNewSection && <section id='contactusform'><ContactUsForm /></section>}
+        <section id='contactus'><ContactUs /><Footer /></section>
     </>
   );
 }

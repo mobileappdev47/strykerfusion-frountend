@@ -110,7 +110,7 @@ const OurClients = () => {
                                     }}
                                     className={isSmallScreen ? style.active : isNext ? style.active : style.notactive}
                                 >
-                                    <div className={isSmallScreen ? 'p-lg-5 p-5 p-sm-2 d-flex flex-column h-100 justify-content-center align-items-center' : isNext ? 'p-lg-5 p-5 p-sm-2 d-flex flex-column h-100 justify-content-center align-items-center' : 'px-xl-5 p-0 pt-5'}>
+                                    <div className={isSmallScreen ? 'p-lg-5 p-5 p-sm-2 text-center d-flex flex-column h-100 justify-content-center align-items-center' : isNext ? ' text-center p-lg-5 p-5 p-sm-2 d-flex flex-column h-100 justify-content-center align-items-center' : 'px-xl-5 text-center p-0 pt-5'}>
                                         <div>
                                             <svg width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M0.555664 10.4166V20.7023H10.8414V10.4166H3.98426C3.98426 6.63564 7.06044 3.55946 10.8414 3.55946V0.130859C5.1695 0.130859 0.555664 4.7447 0.555664 10.4166Z" fill={isSmallScreen || isNext ? "#FAFAFA" : "#4C5877"} />

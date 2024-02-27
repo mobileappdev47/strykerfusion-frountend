@@ -11,7 +11,7 @@ const Footer = () => {
         { text: "Why Us", link: "ourclient" },
         { text: "Find Us", link: "contactus" },
         { text: "Technology", link: "regexeprience" }
-      ];
+    ];
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const controls = useAnimation();
@@ -59,7 +59,7 @@ const Footer = () => {
                                     transition={{ delay: index * 0.1 }}
                                     className='text-end'
                                 >
-                                    <a href={`#${item.link}`} className={`btn ${style.footermenubtn}`}>{item.text}</a>
+                                    <a href={`#${item.link}`} className={`btn`}><h1 className={`${style.footermenubtn}`}>{item.text}</h1></a>
                                 </motion.div>
                             ))}
                         </div>

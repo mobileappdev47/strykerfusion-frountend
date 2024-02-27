@@ -81,7 +81,7 @@ const Handcraft = () => {
   return (
     <div ref={ref} className={style.maindiv}>
       <div className="row w-100 h-100">
-        <div className={`col-lg-6 col-12 ${style.contentsection}`}>
+        <div className={`col-lg-5 col-12 ${style.contentsection}`}>
           <div>
             <AnimatePresence>
               {isVisible && (
@@ -120,6 +120,7 @@ const Handcraft = () => {
 
           </div>
         </div>
+        <div className='col-lg-1'></div>
         <div className={`col-lg-6 col-12 ${style.imagesection}`}>
           {homeData && (
             <Swiper

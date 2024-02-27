@@ -11,6 +11,9 @@
 
 .products {
     height: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .imgsection {
@@ -73,34 +76,48 @@
     width: 100%;
 }
 
+.imgcontent {
+    color: #FFFFFF;
+    font-size: 12px;
+    width: fit-content;
+    font-weight: 500;
+    border-bottom: 1px solid #FFFFFF;
+}
+
 @media only screen and (max-width: 1440px) {
     .imgsection {
         width: 70%;
     }
 }
+
 @media only screen and (max-width: 1200px) {
     .imgsection {
         width: 75%;
     }
 }
+
 @media only screen and (max-width: 1000px) {
     .imgsection {
         width: 85%;
     }
 }
+
 @media only screen and (max-width: 900px) {
     .imgsection {
         width: 100%;
     }
 }
+
 @media only screen and (max-width: 990px) {
-    .headingfont{
+    .headingfont {
         font-size: 25px;
     }
-    .content{
+
+    .content {
         font-size: 14px;
     }
 }
+
 @media only screen and (max-width: 600px) {
     .maindiv {
         padding-left: 20px;

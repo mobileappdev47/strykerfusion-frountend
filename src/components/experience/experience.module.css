@@ -1,6 +1,7 @@
 .maindiv {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 60px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     height: 50vh;
     background-color: #F2F2F2;
 }
@@ -35,6 +36,16 @@
     border: 0 !important;
     border-radius: 19px;
     padding: 20px;
+}
+
+.imagegradient {
+    position: absolute;
+    width: 13%;
+    height: 45%;
+    background: linear-gradient(270deg, #F2F2F2 17.6%, rgba(242, 242, 242, 0) 100%);
+    border-radius: 8px;
+    z-index: 2;
+    right: 0;
 }
 
 .cardcontent {
@@ -85,11 +96,5 @@
 
     .content {
         font-size: 16px;
-    }
-}
-
-@media (max-height: 800px) {
-    .maindiv {
-        padding: 1rem !important;
     }
 }

@@ -37,6 +37,9 @@ const Product = ({ item, index }) => {
         <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
         <div className={style.contentbox}>
           <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
+          <h1 className={style.imgcontent}>
+            View Project
+          </h1>
         </div>
       </motion.div>
     </div>
@@ -66,6 +69,7 @@ const AllProducts = ({ products }) => {
       <div className={style.products}>
         <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
         <p className={style.content}>{productMain?.productDescription}</p>
+
       </div>
       <div className={`row ${style.imgsection}`}>
         {products?.slice(0, 4)?.map((item, index) => (

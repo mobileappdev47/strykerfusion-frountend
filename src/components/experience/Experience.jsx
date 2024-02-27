@@ -62,9 +62,9 @@ const Experience = () => {
         }
     }, [isDataFetched]);
     return (
-        <div ref={ref} className={`${style.maindiv} py-3 py-xl-5 container-fluid`}>
+        <div ref={ref} className={`${style.maindiv} container-fluid`}>
             <div className="row h-100">
-                <div className="col-lg-5 h-100 d-none d-lg-flex   mb-sm-0 mb-5 d-flex flex-column justify-content-center">
+                <div className="col-lg-5 h-100 d-none d-lg-flex position-relative  mb-sm-0 mb-5 d-flex flex-column justify-content-center">
                     <AnimatePresence>
                         {isVisible && (
                             <>
@@ -97,6 +97,7 @@ const Experience = () => {
                     </AnimatePresence>
                 </div>
                 <div className="col-lg-7 col-12 h-100">
+                    <div className={style.imagegradient}></div>
                     <Swiper
                         slidesPerView={'auto'}
                         spaceBetween={30}
@@ -113,7 +114,7 @@ const Experience = () => {
                                     animate={{ opacity: isVisible ? 1 : 0 }}
                                     transition={{ delay: index * 0.3 }}
                                     whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
-                                    className='h-100 w-100 px-3'>
+                                    className={`h-100 w-100 px-3`}>
                                     <div
                                         className={`card h-100 ${style.cardbox}`}>
                                         <div className={style.cardimg}>

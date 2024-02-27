@@ -154,7 +154,7 @@ const ContactUsForm = () => {
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
                                 transition={{ delay: 0 * 0.5 }}>
                                 <Form.Group controlId='interest' className={style.inputgroup}>
-                                    <Form.Label className={`${style.label}`}>I’m interested in:</Form.Label>
+                                    <Form.Label className={`${style.label} ${formData.interest && style.active}`}>I’m interested in:</Form.Label>
                                     <div className={style.radiobtngroup}>
                                         <input type="radio" className="btn-check" name="btnradio" id="btnradio1" autoComplete="off" onChange={() => handleRadioChange('The Products')} />
                                         <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio1' >The Products</label>
@@ -180,13 +180,13 @@ const ContactUsForm = () => {
                                 initial={{ opacity: 0, x: 100 }} // Start from the right (100)
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
                                 transition={{ delay: 1 * 0.5 }}>
-                                <Form.Group controlId='name' className={`${style.inputgroup} ${style.flexinput} `}>
-                                    <Form.Label className={`${style.label}`}>Your name</Form.Label>
+                                <Form.Group controlId='name' className={`${style.inputgroup} ${style.flexinput}  `}>
+                                    <Form.Label className={`${style.label} ${formData.name && style.active}`}>Your name</Form.Label>
                                     <Form.Control
                                         name='name'
                                         type="text"
                                         placeholder='Enter your name'
-                                        className={style.inputfield}
+                                        className={formData.name ? style.inputfieldactive : style.inputfield}
                                         value={formData.name}
                                         onChange={(e) => setField("name", e.target.value)}
                                     />
@@ -200,12 +200,12 @@ const ContactUsForm = () => {
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
                                 transition={{ delay: 2 * 0.5 }}>
                                 <Form.Group controlId='email' className={`${style.inputgroup} ${style.flexinput} p-lg-0`}>
-                                    <Form.Label className={`${style.label}`}>Your email</Form.Label>
+                                    <Form.Label className={`${style.label} ${formData.email && style.active}`}>Your email</Form.Label>
                                     <Form.Control
                                         name='email'
                                         type="text"
                                         placeholder='email@gmail.com'
-                                        className={style.inputfield}
+                                        className={formData.email ? style.inputfieldactive : style.inputfield}
                                         value={formData.email}
                                         onChange={(e) => setField("email", e.target.value)}
                                     />
@@ -219,12 +219,12 @@ const ContactUsForm = () => {
                                 animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -100 }} // Move in from right to left when visible (-100)
                                 transition={{ delay: 3 * 0.5 }}>
                                 <Form.Group controlId='message' className={style.inputgroup}>
-                                    <Form.Label className={`${style.label}`}>Your message</Form.Label>
+                                    <Form.Label className={`${style.label} ${formData.message && style.active}`}>Your message</Form.Label>
                                     <Form.Control
                                         name='message'
                                         as="textarea" // Use `as="textarea"` to render a textarea element
                                         rows={rows} // Correct attribute is `rows`, not `row`
-                                        className={style.inputfieldtextarea}
+                                        className={formData.message ? style.activeinputfieldtextarea : style.inputfieldtextarea}
                                         value={formData.message}
                                         onChange={(e) => setField("message", e.target.value)}
                                     />

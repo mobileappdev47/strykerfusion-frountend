@@ -28,6 +28,11 @@
     border-radius: 12px;
 }
 
+.activeinputfieldtextarea {
+    border: 2px solid #265EE1 !important;
+    border-radius: 12px;
+}
+
 .label {
     font-size: 16px;
     font-weight: 400;
@@ -42,31 +47,51 @@
     border-radius: 0;
 }
 
+.inputfieldactive {
+    border-bottom: 2px solid #265EE1 !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+}
+
 .radiobtngroup {
     display: block;
+}
+
+.active {
+    color: #265EE1;
 }
 
 .sendbtn {
     width: 100%;
     background-color: #265EE1;
-    color: #FFFEFE;
     padding: 12px;
     border-radius: 4px;
+    color: #FFFFF0;
+    font-size: 18px;
+    font-weight: 600;
+
 }
 
 .inputgroup {
     margin: 1rem;
 }
 
-
+@media (max-height: 700px){
+    .inputgroup{
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important; 
+    }
+}
 @media (max-height: 800px) {
     .intrustedbtn {
         margin: 5px;
     }
 
     .inputgroup {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        margin-top: 1.4rem;
+        margin-bottom: 1.4rem;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
@@ -80,18 +105,21 @@
     }
 }
 
-@media (max-height: 700px) {
+@media (max-height: 700px) and (max-width: 1200px) {
     .intrustedbtn {
         font-size: 14px;
     }
-    .inputfield{
+
+    .inputfield {
         font-size: 14px;
     }
+
     .inputgroup {
-        margin-top: 0.75px !important;
-        margin-bottom: 0.75rem !important;
+        margin-top: 0.75px ;
+        margin-bottom: 0.75rem ;
     }
-    .label{
+
+    .label {
         font-size: 14px;
     }
 }
