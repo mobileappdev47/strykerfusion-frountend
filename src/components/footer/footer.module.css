@@ -54,14 +54,18 @@
 
     .footermenu {
         display: inline;
-        font-size: 12px;
     }
 
     .footermenubtn {
         padding: 3px;
     }
 }
+@media only screen and (max-width: 375px) {
+    .footermenubtn{
+        font-size: 12px;
+    }
 
+}
 @media only screen and (max-width: 375px) {
     .logoimg {
         height: 40px;
