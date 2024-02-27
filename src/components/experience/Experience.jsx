@@ -101,7 +101,9 @@ const Experience = () => {
                     <Swiper
                         slidesPerView={window.innerWidth < 425 ? 1 : 'auto'}
                         spaceBetween={30}
-                        navigation={true}
+                        navigation={{
+                            nextEl: '.swiper-button-next',
+                        }}
                         modules={[Navigation]}
                         className="mySwiper"
                     >
@@ -113,22 +115,23 @@ const Experience = () => {
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: isVisible ? 1 : 0 }}
                                     transition={{ delay: index * 0.3 }}
-                                    whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
-                                    className={`h-100 w-100 px-3`}>
-                                    <div
-                                        className={`card h-100 ${style.cardbox}`}>
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.5 }}
+                                    className={`h-100 w-100 px-3`}
+                                >
+                                    <div className={`card h-100 ${style.cardbox}`}>
                                         <div className={style.cardimg}>
                                             <img
                                                 src={`${base_url}/${item?.experienceImage}`}
                                                 alt=""
-                                                className={style.roundedImage} // Apply a CSS class for styling
+                                                className={style.roundedImage}
                                             />
                                         </div>
 
                                         <div className="card-body px-0 h-100">
                                             <div className={style.cardtext}>
                                                 <h1 className={style.cardheading}>{item?.experienceTitle}</h1>
-                                                <p className={style.cardcontent}>{item?.experienceDescription} </p>
+                                                <p className={style.cardcontent}>{item?.experienceDescription}</p>
                                             </div>
                                             <a href="#" className={`${style.cardbtn} btn p-0 text-primary`}><h1 className={style.btntext}>Read More</h1></a>
                                         </div>
@@ -136,7 +139,9 @@ const Experience = () => {
                                 </motion.div>
                             </SwiperSlide>
                         ))}
+                        <div className="swiper-button-next"></div>
                     </Swiper>
+
                 </div>
             </div>
         </div>

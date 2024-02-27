@@ -97,13 +97,6 @@ section {
   height: 48px !important;
 }
 
-.swiper-button-prev.swiper-button-disabled {
-  display: none !important;
-}
-
-.swiper-button-next.swiper-button-disabled {
-  display: none !important;
-}
 
 .rsm-svg .rsm-marker path {
   fill: #F74445 !important;
