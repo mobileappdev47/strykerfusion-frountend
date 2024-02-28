@@ -107,7 +107,7 @@ const ContactUsForm = () => {
             setErrors(errors);
             return;
         }
-
+        console.log("click");
         axios.post(`${base_url}/contact/send`, formData)
             .then(response => {
                 setSuccess(true);
@@ -116,7 +116,7 @@ const ContactUsForm = () => {
                     name: '',
                     email: '',
                     message: '',
-                    interest: ''
+                    interest: '' 
                 });
             })
             .catch(error => {
