@@ -133,7 +133,7 @@ const Process = () => {
                             <div className={`card-group h-100 ${style.cardgroup}`}>
                                 {process.slice(startIndex, startIndex + numCards).map((item, index) => (
                                     <motion.div
-                                        className={`card border-0 h-100 p-0 mx-4 ${style.card}`}
+                                        className={`card mx-4 ${style.card}`}
                                         key={index}
                                         style={{ width: '18rem', borderRadius: '28px' }}
                                         initial={{ opacity: 0 }}
