@@ -17,13 +17,14 @@ import axios from 'axios';
 import { base_url } from './components/config/Base_url';
 import ContactUsForm from './components/contactusform/ContactUsForm';
 import Sidebar from './components/sidebar/Sidebar';
+import { Tooltip } from 'react-tooltip';
 
 function App() {
   const allProductsRef = useRef(null);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
-  const [error, setError] = useState('');
   const [showNewSection, setShowNewSection] = useState(false);
+  const [content, setContent] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +33,6 @@ function App() {
         setProducts(response?.data?.data || []);
         setIsDataFetched(true);
       } catch (error) {
-        setError(error.message);
         console.error('Error fetching product data:', error);
       }
     };
@@ -50,7 +50,6 @@ function App() {
         setShowNewSection(false);
       }
     };
-
     handleResize(); // Initial check
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -98,7 +97,10 @@ function App() {
         <AllProducts products={products} />
       </section>
       <section id='regexeprience'><Register /> <Experience /></section>
-      <section id='map'><Map /></section>
+      <section id='map'>
+        <Map setTooltipContent={setContent} />
+        <Tooltip id="my-tooltip" >{content}</Tooltip>
+      </section>
       <section id='ourclient'><OurClients /></section>
       {showNewSection && <section id='contactusform'><ContactUsForm /></section>}
       <section id='contactus'><ContactUs /><Footer /></section>

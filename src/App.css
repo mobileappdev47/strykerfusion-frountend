@@ -5,9 +5,6 @@
   box-sizing: border-box;
 }
 
-html {
-}
-
 html,
 body {
   height: 100%;
@@ -38,7 +35,6 @@ h1,
 a,
 button {
   font-family: Montserrat, sans-serif;
-  /* Apply Montserrat font to h1 elements */
 }
 
 p {
@@ -96,7 +92,6 @@ section {
   width: 48px !important;
   height: 48px !important;
 }
-
 
 .rsm-svg .rsm-marker path {
   fill: #F74445 !important;

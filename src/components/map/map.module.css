@@ -12,7 +12,11 @@
     stroke: #50A2FC;
 }
 
-.mapContainer {
+.mapContainer svg g path:focus {
+    outline: transparent;
+}
+
+.mapContainer{
     display: flex;
     justify-content: center;
     align-items: center;

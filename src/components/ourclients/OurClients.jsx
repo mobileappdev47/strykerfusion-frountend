@@ -92,7 +92,7 @@ const OurClients = () => {
                 spaceBetween={30}
                 modules={[Navigation, Pagination]}
                 className={`mySwiper ${style.clientslider}`}
-                navigation={true} 
+                navigation={true}
             >
                 <AnimatePresence>
                     {isVisible && client?.map((item, index) => (
@@ -106,9 +106,7 @@ const OurClients = () => {
                                             duration: 0.8,
                                             delay: 0.5 * index,
                                             ease: [0, 0.71, 0.2, 1.01],
-                                        }}
-
-                                    >
+                                        }} >
                                         <div className={isSmallScreen ? style.active : isNext ? style.active : style.notactive}>
                                             <div className={isSmallScreen ? 'p-lg-5 p-2 p-sm-5 text-center d-flex flex-column h-100 justify-content-center align-items-center' : isNext ? ' text-center p-lg-5 p-5 p-sm-2 d-flex flex-column h-100 justify-content-center align-items-center' : 'px-xl-5 text-center p-0 pt-5'}>
                                                 <div>
