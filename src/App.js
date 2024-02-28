@@ -21,26 +21,9 @@ import { Tooltip } from 'react-tooltip';
 
 function App() {
   const allProductsRef = useRef(null);
-  const [products, setProducts] = useState([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
   const [showNewSection, setShowNewSection] = useState(false);
   const [content, setContent] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${base_url}/product`);
-        setProducts(response?.data?.data || []);
-        setIsDataFetched(true);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
-
-    if (!isDataFetched) {
-      fetchData();
-    }
-  }, [isDataFetched]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,15 +38,6 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -88,13 +62,8 @@ function App() {
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution /></section>
-      {products?.map((product, index) => (
-        <section id={`product_${product?._id}`} key={product?._id}>
-          <Products item={product} index={index} />
-        </section>
-      ))}
-      <section id='allproducts' ref={allProductsRef}>
-        <AllProducts products={products} />
+      <section id={`product`}>
+        <Products />
       </section>
       <section id='regexeprience'><Register /> <Experience /></section>
       <section id='map'>

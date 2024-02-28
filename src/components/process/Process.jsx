@@ -108,22 +108,6 @@ const Process = () => {
                     </div>
                 </div>
                 <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
-                    {numCards === 3 && (
-                        <div className={`carousel-indicators`}>
-                            {process.slice(0, process?.length - 2).map((item, index) => (
-                                <button
-                                    key={index}
-                                    type="button"
-                                    data-bs-target="#carouselExampleIndicators1"
-                                    data-bs-slide-to={index}    
-                                    className={`${startIndex === index ? 'active' : ''}`}
-                                    aria-current="true"
-                                    aria-label={`Slide ${index + 1}`}
-                                    onClick={() => handleIndicatorClick(index)}
-                                ></button>
-                            ))}
-                        </div>
-                    )}
                     <motion.div className="carousel-inner h-100"
                         initial={{ opacity: 0, y: 100 }}
                         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
@@ -163,6 +147,22 @@ const Process = () => {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
+                {numCards === 3 && (
+                    <div className={`carousel-indicators mb-0`}>
+                        {process.slice(0, process?.length - 2).map((item, index) => (
+                            <button
+                                key={index}
+                                type="button"
+                                data-bs-target="#carouselExampleIndicators1"
+                                data-bs-slide-to={index}
+                                className={`${startIndex === index ? 'active' : ''}`}
+                                aria-current="true"
+                                aria-label={`Slide ${index + 1}`}
+                                onClick={() => handleIndicatorClick(index)}
+                            ></button>
+                        ))}
+                    </div>
+                )}
             </motion.div>
         </div>
     );

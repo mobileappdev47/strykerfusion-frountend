@@ -1,13 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import style from './products.module.css';
 import { motion, useInView } from 'framer-motion';
 import { base_url } from '../config/Base_url';
 import axios from 'axios';
+import classnames from "classnames";
 
-const Products = ({ item, index }) => {
+const Products = () => {
   const [productMain, setProductMain] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
+  const [products, setProducts] = useState([]);
+  const [isDataFetched, setIsDataFetched] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${base_url}/product`);
+        setProducts(response?.data?.data || []);
+        setIsDataFetched(true);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    if (!isDataFetched) {
+      fetchData();
+    }
+  }, [isDataFetched]);
 
   const { ref: inViewRef } = useInView({
     triggerOnce: true,
@@ -46,42 +65,88 @@ const Products = ({ item, index }) => {
     fetchData();
   }, []);
 
+  const [visibleImagesMap, setVisibleImagesMap] = useState(
+    products.reduce((map, image) => { // Corrected the method name to 'reduce'
+      map[image] = false;
+      return map;
+    }, {})
+  );
+
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = document.documentElement.scrollTop;
+      const viewportHeight = window.innerHeight;
+
+      const newVisibleImagesMap = products?.reduce((map, image) => { // Corrected the method name to 'reduce'
+        map[image] = scrollTop >= image * viewportHeight;
+        return map;
+      }, {});
+
+      setVisibleImagesMap(newVisibleImagesMap);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
     <>
-      <div className={style.maindiv}>
-        {index === 0 && (
-          <div className={style.products}>
-            <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
-            <p className={style.content}>{productMain?.productDescription}</p>
+      <div className={style.app}>
+        <div className={` ${style.sticky} `}>
+          {/* <div className={style.products}>
+          <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
+          <p className={style.content}>{productMain?.productDescription}</p>
+        </div> */}
+          <div className={style.frame}>
+            {products?.map((item, index) => (
+              <div className={`${style.imgsection}`} key={index}>
+                <div ref={inViewRef} className='h-100'>
+                  <div className='position-relative'>
+                    <div className={style.imagegradient}></div>
+                    <img
+                      className={classnames(`${style.image}`, `image_${products}`, {
+                        image_visible: visibleImagesMap[products]
+                      })}
+                      src={`${base_url}/${item?.productImage}`} alt='product' />
+
+                    <div className={style.contentbox}>
+                      <h1 className={style.imgheadingfont}>
+                        {item?.productTitle}
+                      </h1>
+                      <h1 className={style.imgcontent}>
+                        View Project
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-        )}
-        <div className={`${style.imgsection}`}>
-          <div ref={inViewRef} className='h-100'>
-            <motion.div
-              ref={ref}
-              className={`h-100`}
-              key={index}
-              initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 10 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className='position-relative h-100 w-100'>
+          {/* <div className={`row ${style.imgsection}`}>
+          {products?.slice(0, 4)?.map((item, index) => (
+            <div ref={ref} className="col-6 px-1 pb-3 px-sm-3 h-50 d-flex justify-content-center align-items-center">
+              <motion.div
+                className={`${style.imageContainer} h-100`}
+              >
                 <div className={style.imagegradient}></div>
-                <img className='h-100 w-100' src={`${base_url}/${item?.productImage}`} alt='product' />
+                <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
                 <div className={style.contentbox}>
-                  <h1 className={style.imgheadingfont}>
-                    {item?.productTitle}
-                  </h1>
+                  <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
                   <h1 className={style.imgcontent}>
                     View Project
                   </h1>
                 </div>
-              </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
+          ))}
+        </div> */}
         </div>
       </div>
     </>
+
   );
 };
 
