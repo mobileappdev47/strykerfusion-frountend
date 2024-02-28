@@ -1,5 +1,5 @@
 .maindiv {
-    height: 100vh;
+    height: fit-content;
     padding: 50px;
 }
 
@@ -142,6 +142,7 @@
     }
 }
 
+
 @media only screen and (max-width: 768px) {
     .maindiv {
         padding: 20px;
@@ -158,8 +159,15 @@
     .headingfont {
         font-size: 25px;
     }
-
+    .maindiv {
+        height: 80vh;
+     }
     .content {
         font-size: 14px;
     }
+}
+@media only screen and (max-width: 425px) {
+    .maindiv {
+        height: 60vh;
+     }
 }

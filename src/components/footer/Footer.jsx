@@ -50,16 +50,16 @@ const Footer = () => {
                     <div className="col-sm-8 col-6 col-lg-8 d-flex flex-column justify-content-center">
                         <div className={style.footermenu}>
                             {menuItems.map((item, index) => (
-                                <motion.a key={index}
+                                <motion.div key={index}
+                                    className='text-end'
                                     whileHover={{ scale: 1.1, transition: { duration: 0.3 } }}
                                     whileTap={{ scale: 0.95 }}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                                     transition={{ delay: index * 0.1 }}
-                                    className='text-end'
                                 >
                                     <a href={`#${item.link} `} className={`btn ${style.footermenubtn}`}>{item.text}</a>
-                                </motion.a>
+                                </motion.div>
                             ))}
                         </div>
                         <div className='d-flex gap-3 justify-content-end mt-3 align-items-center'>

@@ -8,7 +8,7 @@ const Products = ({ item, index }) => {
   const [productMain, setProductMain] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
-  console.log(index)
+
   const { ref: inViewRef } = useInView({
     triggerOnce: true,
     threshold: 0.5,
