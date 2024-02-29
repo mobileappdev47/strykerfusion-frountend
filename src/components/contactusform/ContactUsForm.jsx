@@ -10,8 +10,6 @@ const ContactUsForm = () => {
     const formRef = useRef();
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [isVisible, setIsVisible] = useState(false);
-    const ref = useRef(null);
     const [rows, setRows] = useState(2); // Initialize rows with 2
 
     useEffect(() => {
@@ -121,26 +119,26 @@ const ContactUsForm = () => {
     };
 
     return (
-        <div className={style.maindiv} ref={ref}>
+        <div className={style.maindiv}>
             <div className={style.contactform}>
                 <Form ref={formRef} onSubmit={sendEmail} className='w-100'>
                     <div>
                         <Form.Group controlId='interest' className={style.inputgroup}>
                             <Form.Label className={`${style.label} ${formData.interest && style.active}`}>I’m interested in:</Form.Label>
                             <div className={style.radiobtngroup}>
-                                <input type="radio" className="btn-check" name="interest" id="btnradio1" autoComplete="off" onChange={() => handleRadioChange('The Products')} />
+                                <input type="radio" className="btn-check" name="interest1" id="btnradio1" autoComplete="off" onChange={() => handleRadioChange('The Products')} />
                                 <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio1' >The Products</label>
 
-                                <input type="radio" className="btn-check" name="interest" id="btnradio2" autoComplete="off" onChange={() => handleRadioChange('Training')} />
+                                <input type="radio" className="btn-check" name="interest2" id="btnradio2" autoComplete="off" onChange={() => handleRadioChange('Training')} />
                                 <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio2'>Training</label>
 
-                                <input type="radio" className="btn-check" name="interest" id="btnradio3" autoComplete="off" onChange={() => handleRadioChange('Web Development')} />
+                                <input type="radio" className="btn-check" name="interest3" id="btnradio3" autoComplete="off" onChange={() => handleRadioChange('Web Development')} />
                                 <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio3'>Web Development</label>
 
-                                <input type="radio" className="btn-check" name="interest" id="btnradio4" autoComplete="off" onChange={() => handleRadioChange('Application Development')} />
+                                <input type="radio" className="btn-check" name="interest4" id="btnradio4" autoComplete="off" onChange={() => handleRadioChange('Application Development')} />
                                 <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio4'>Application Development</label>
 
-                                <input type="radio" className="btn-check" name="interest" id="btnradio5" autoComplete="off" onChange={() => handleRadioChange('Other')} />
+                                <input type="radio" className="btn-check" name="interest5" id="btnradio5" autoComplete="off" onChange={() => handleRadioChange('Other')} />
                                 <label className={`btn btn-outline-primary ${style.intrustedbtn}`} htmlFor='btnradio5'>Other</label>
                             </div>
                             <Form.Control.Feedback type="invalid" className='d-inline'>
