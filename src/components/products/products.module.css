@@ -7,12 +7,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100vh;
 }
 
 .products {
-  position: sticky;
-  top: 0px;
-  z-index: 111;
   width: 100%;
   height: 20vh;
   background-color: #FAFAFA;
@@ -20,6 +18,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 20%;
 }
 
 .headingfont {
@@ -37,8 +36,9 @@
 }
 
 .imgsection {
-  height: 80%;
+  height: 100%;
   width: 58%;
+  scroll-snap-align: center;
 }
 
 .imagegradient {
@@ -109,6 +109,30 @@
   font-weight: 500;
   border-bottom: 1px solid #FFFFFF;
   width: fit-content;
+}
+
+.scrollsection {
+  scroll-snap-align: center;
+}
+
+.parentscrolldiv {
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  height: 80%;
+  overflow: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.parentscrolldiv {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.parentscrolldiv::-webkit-scrollbar {
+  width: 0;
 }
 
 @media only screen and (max-width: 1440px) {
