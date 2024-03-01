@@ -1,5 +1,5 @@
 .maindiv {
-    height: 100vh;
+    height: 100%;
     background: radial-gradient(50% 50% at 50% 50%, #51A2FC 0%, #0074F3 100%) !important;
 }
 

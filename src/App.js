@@ -62,13 +62,13 @@ function App() {
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution /></section>
-      <section id={`product`}>
+      <section id='product'>
         <Products />
       </section>
       <section id='regexeprience'><Register /> <Experience /></section>
       <section id='map'>
         <Map setTooltipContent={setContent} />
-        <Tooltip id="my-tooltip" >{content}</Tooltip>
+        <Tooltip id="my-tooltip" >{content}</Tooltip> 
       </section>
       <section id='ourclient'><OurClients /></section>
       {showNewSection && <section id='contactusform'><ContactUsForm /></section>}

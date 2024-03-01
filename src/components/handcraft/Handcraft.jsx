@@ -9,7 +9,7 @@ import axios from 'axios';
 import { base_url } from '../config/Base_url';
 
 const Handcraft = () => {
-  const autoSlideDuration = 2000;
+  const autoSlideDuration = 10000;
   const swiperRef = useRef(null);
   const [[page, direction], setPage] = useState([0, 0]);
   const [isVisible, setIsVisible] = useState(false);

@@ -10,6 +10,21 @@ const Products = () => {
   const ref = useRef(null);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
+  const [scrollSnapEnabled, setScrollSnapEnabled] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollSnapEnabled(false);
+      setTimeout(() => {
+        setScrollSnapEnabled(true);
+      }, 1000);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,7 +55,6 @@ const Products = () => {
         }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -57,7 +71,7 @@ const Products = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(visibleIndex)
+
   return (
     <>
       <div className={style.maindiv}>
@@ -65,7 +79,7 @@ const Products = () => {
           <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
           <p className={style.content}>{productMain?.productDescription}</p>
         </div>
-        <div className={style.parentscrolldiv} ref={ref}>
+        <div className={style.parentscrolldiv} style={{ scrollSnapType: scrollSnapEnabled ? 'y mandatory' : 'none' }} ref={ref}>
           <AnimatePresence>
             {products?.map((item, index) => (
               <motion.div
@@ -90,9 +104,14 @@ const Products = () => {
           </AnimatePresence>
 
           <AnimatePresence>
-            {visibleIndex > 0 && (
-              <div className={`row ${style.imgsection}`}>
-                {products?.slice(0, 4)?.map((item, index) => (
+            {products?.reduce((chunks, item, index) => {
+              if (index % 4 === 0) {
+                chunks.push(products.slice(index, index + 4));
+              }
+              return chunks;
+            }, []).map((chunk, chunkIndex) => (
+              <div className={`row ${style.imgsection}`} key={chunkIndex}>
+                {chunk.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, y: 100 }}
@@ -112,8 +131,9 @@ const Products = () => {
                   </motion.div>
                 ))}
               </div>
-            )}
+            ))}
           </AnimatePresence>
+
         </div>
       </div>
     </>

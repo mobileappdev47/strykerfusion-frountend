@@ -1,14 +1,10 @@
 .card {
-    border: 0;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: transparent;
+    border: none;
 }
 
 .maindiv {
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -184,75 +180,19 @@
         padding-left: 20px;
         padding-right: 20px;
     }
-}
-
-@media only screen and (max-width: 600px) {
-    .contentbox1 {
-        top: 160px;
-        left: 50px;
-    }
-
-    .contentbox2 {
-        left: 50px;
-    }
-
-    .contentbox3 {
-        top: 280px;
-    }
-
     .headingfont {
         font-size: 25px;
     }
-
+    
     .subcontent {
         font-size: 12px;
     }
 }
 
-@media only screen and (max-width: 450px) {
-    .contentbox1 {
-        top: 160px;
-        left: 50px;
-    }
-
-    .contentbox2 {
-        left: 50px;
-        bottom: 80px;
-    }
-
-    .contentbox3 {
-        top: 250px;
+@media only screen and (max-width: 425px) {
+    .headingfont{
+        font-size: 20px;
     }
 }
 
-@media only screen and (max-width: 375px) {
-    .contentbox1 {
-        top: 110px;
-        left: 30px;
-    }
 
-    .contentbox2 {
-        left: 30px;
-        bottom: 50px;
-    }
-
-    .contentbox3 {
-        top: 200px;
-    }
-}
-
-@media only screen and (max-width: 320px) {
-    .contentbox1 {
-        top: 100px;
-        left: 30px;
-    }
-
-    .contentbox2 {
-        left: 30px;
-        bottom: 50px;
-    }
-
-    .contentbox3 {
-        top: 150px;
-    }
-}

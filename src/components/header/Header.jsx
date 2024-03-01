@@ -12,7 +12,7 @@ const Header = () => {
     { text: "Our Products", link: "product" },
     { text: "Why Us", link: "regexeprience" },
     { text: "Find Us", link: "contactus" },
-    { text: "Client Speak", link: "ourclient" }
+    { text: "Client Speake", link: "ourclient" }
   ];
 
   useEffect(() => {

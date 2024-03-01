@@ -6,10 +6,10 @@ import { motion, useAnimation } from 'framer-motion'
 const Footer = () => {
     const menuItems = [
         { text: "How It Works", link: "brandandprocess" },
-        { text: "Our Products", link: "allproducts" },
-        { text: "Why Us", link: "ourclient" },
+        { text: "Our Products", link: "product" },
+        { text: "Why Us", link: "regexeprience" },
         { text: "Find Us", link: "contactus" },
-        { text: "Technology", link: "regexeprience" }
+        { text: "Client Speake", link: "ourclient" }
     ];
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);

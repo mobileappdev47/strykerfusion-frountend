@@ -120,7 +120,7 @@ const Revolution = () => {
                         </motion.div>
                     </div>
                     <div className={`col-md-6 col-12 d-flex ${style.contentsec}`} >
-                        <div className="card-body d-flex flex-column justify-content-center">
+                        <div className="card-body d-flex flex-column justify-content-center p-0 p-sm-3">
                             <AnimatePresence>
                                 {isVisible && (
                                     <>

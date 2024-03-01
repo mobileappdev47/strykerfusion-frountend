@@ -116,7 +116,6 @@
 }
 
 .parentscrolldiv {
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   height: 80%;
   overflow: auto;
@@ -145,10 +144,12 @@
   .imgsection {
     width: 75%;
   }
-  .allimgsection{
+
+  .allimgsection {
     width: 100%;
   }
 }
+
 @media only screen and (max-width: 1000px) {
   .imgsection {
     width: 85%;
@@ -195,6 +196,10 @@
 
   .headingfontimg {
     font-size: 18px !important;
+  }
+
+  .products {
+    height: 35%;
   }
 }
 
