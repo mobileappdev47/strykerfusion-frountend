@@ -125,7 +125,7 @@ const Products = () => {
                       <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
                       <div className={style.contentbox}>
                         <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
-                        <h1 className={style.allimgcontent}>View Project</h1>
+                        <h1 className={style.allimgcontent}>View Projects</h1>
                       </div>
                     </div>
                   </motion.div>
