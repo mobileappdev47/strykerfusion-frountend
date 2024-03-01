@@ -20,6 +20,13 @@
     font-weight: 600;
 }
 
+.processdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+}
+
 .carousel {
     width: 2%;
 }
@@ -37,7 +44,7 @@
     background-color: #FFFFFF;
     border: none;
     height: 100%;
-    padding: 0 ;
+    padding: 0;
 }
 
 .title {

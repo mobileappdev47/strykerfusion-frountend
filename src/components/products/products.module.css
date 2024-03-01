@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 }
 
 .products {
@@ -145,8 +145,10 @@
   .imgsection {
     width: 75%;
   }
+  .allimgsection{
+    width: 100%;
+  }
 }
-
 @media only screen and (max-width: 1000px) {
   .imgsection {
     width: 85%;

@@ -9,7 +9,7 @@ const Header = () => {
 
   const menuItems = [
     { text: "How It Works", link: "brandandprocess" },
-    { text: "Our Products", link: "allproducts" },
+    { text: "Our Products", link: "product" },
     { text: "Why Us", link: "regexeprience" },
     { text: "Find Us", link: "contactus" },
     { text: "Client Speak", link: "ourclient" }

@@ -99,7 +99,7 @@ const Process = () => {
     return (
         <div ref={ref} className={style.maindiv}>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
-                <div className='d-flex justify-content-center align-items-center'>
+                <div className={style.processdiv}>
                     <div className={style.contentwidth}>
                         <h1 className={style.headingfont}>
                             {processMain?.processTitle}

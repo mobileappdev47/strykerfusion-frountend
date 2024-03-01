@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './products.module.css';
-import { AnimatePresence, motion, useAnimation, useInView } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { base_url } from '../config/Base_url';
 import axios from 'axios';
 
 const Products = () => {
   const [productMain, setProductMain] = useState([]);
-  const [isVisible, setIsVisible] = useState(false);
+  const [visibleIndex, setVisibleIndex] = useState(0); // Track the index of the visible item
   const ref = useRef(null);
   const [products, setProducts] = useState([]);
   const [isDataFetched, setIsDataFetched] = useState(false);
@@ -27,28 +27,22 @@ const Products = () => {
     }
   }, [isDataFetched]);
 
-  const { ref: inViewRef } = useInView({
-    triggerOnce: true,
-    threshold: 0.5,
-  });
-
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0.5,
-      }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      const elements = document.querySelectorAll('.product-item');
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        const { top, height } = element.getBoundingClientRect();
+        if (top + height > scrollPosition) {
+          setVisibleIndex(i); // Update visibleIndex based on scroll position
+          break;
+        }
       }
     };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const fetchData = async () => {
@@ -59,14 +53,11 @@ const Products = () => {
       console.error('Error fetching home data:', error);
     }
   };
-  console.log(isVisible)
+
   useEffect(() => {
     fetchData();
   }, []);
-
-  const controls = useAnimation();
-
-  console.log(isVisible)
+  console.log(visibleIndex)
   return (
     <>
       <div className={style.maindiv}>
@@ -74,59 +65,58 @@ const Products = () => {
           <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
           <p className={style.content}>{productMain?.productDescription}</p>
         </div>
-        <div className={style.parentscrolldiv} ref={ref} >
-          {products?.map((item, index) => (
-            <AnimatePresence>
-              {isVisible && (
-                <div
-                  className={`${style.imgsection}  py-4 px-sm-3`} key={index} id={`product_${item._id}`}
-                >
-                  <motion.div initial={{ opacity: 0, y: 100 }}
-                    animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 10 }}
-                    transition={{ duration: 0.5 }} className={` position-relative h-100`}>
-                    <div className={style.imagegradient}></div>
-                    <img
-                      className={`h-100 w-100`}
-                      src={`${base_url}/${item?.productImage}`} alt='product' />
-
-                    <div className={style.contentbox}>
-                      <h1 className={style.imgheadingfont}>
-                        {item?.productTitle}
-                      </h1>
-                      <h1 className={style.imgcontent}>
-                        View Project
-                      </h1>
-                    </div>
-                  </motion.div>
-                </div>
-              )}
-            </AnimatePresence>
-          ))}
+        <div className={style.parentscrolldiv} ref={ref}>
           <AnimatePresence>
-            {isVisible && (
+            {products?.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 100 }}
+                animate={{ opacity: visibleIndex === index ? 1 : 1, y: visibleIndex === index ? 10 : 10 }}
+                transition={{ duration: 0.5 }}
+                className={`product-item ${style.imgsection}  my-4 mx-sm-3`}
+              >
+                <div className={style.imagegradient}></div>
+                <img
+                  className={`h-100 w-100`}
+                  src={`${base_url}/${item?.productImage}`}
+                  alt='product'
+                />
+                <div className={style.contentbox}>
+                  <h1 className={style.imgheadingfont}>{item?.productTitle}</h1>
+                  <h1 className={style.imgcontent}>View Project</h1>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {visibleIndex > 0 && (
               <div className={`row ${style.imgsection}`}>
                 {products?.slice(0, 4)?.map((item, index) => (
-                  <div ref={ref} className="col-6 px-1 pb-3 px-sm-3 h-50 d-flex justify-content-center align-items-center">
-                    <motion.div
-                      className={`${style.imageContainer} h-100`}
-                    >
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 100 }}
+                    transition={{ duration: 0.5 }}
+                    className="col-6 px-1 pb-3 px-sm-3 h-50 d-flex justify-content-center align-items-center"
+                  >
+                    <div className={`${style.imageContainer} h-100`}>
                       <div className={style.imagegradient}></div>
                       <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
                       <div className={style.contentbox}>
                         <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
-                        <h1 className={style.allimgcontent}>
-                          View Project
-                        </h1>
+                        <h1 className={style.allimgcontent}>View Project</h1>
                       </div>
-                    </motion.div>
-                  </div>
+                    </div>
+                  </motion.div>
                 ))}
-              </div>)}
+              </div>
+            )}
           </AnimatePresence>
         </div>
       </div>
     </>
-
   );
 };
 
