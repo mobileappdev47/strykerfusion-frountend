@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './contactus.module.css'
 import ContactUsForm from '../contactusform/ContactUsForm';
-import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
 

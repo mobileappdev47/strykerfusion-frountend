@@ -57,6 +57,7 @@ const Map = ({ setTooltipContent, sectionAlignFalse }) => {
             setAreMarkersVisible(false);
             controls.start({ opacity: 0, scale: 0.01 });
         }
+        // eslint-disable-next-line
     }, [inView, controls]);
 
 

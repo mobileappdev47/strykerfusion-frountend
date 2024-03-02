@@ -4,7 +4,6 @@ import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
 import { base_url } from '../config/Base_url'
 import emailjs from "@emailjs/browser";
-import { motion, AnimatePresence } from 'framer-motion';
 
 const ContactUsForm = () => {
     const formRef = useRef();
