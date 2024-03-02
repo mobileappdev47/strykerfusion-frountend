@@ -4,7 +4,7 @@ import styles from './register.module.css';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
 
-const Register = () => {
+const Register = ({ sectionAlign }) => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const [possibleData, setPossibleData] = useState([]);
@@ -14,6 +14,9 @@ const Register = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    sectionAlign(); // Call the callback function when Revolution is in view
+                }
             },
             {
                 threshold: 0.5, // Adjust threshold as needed

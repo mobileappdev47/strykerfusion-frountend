@@ -18,12 +18,30 @@ import { base_url } from './components/config/Base_url';
 import ContactUsForm from './components/contactusform/ContactUsForm';
 import Sidebar from './components/sidebar/Sidebar';
 import { Tooltip } from 'react-tooltip';
+import ProductsHeader from './components/productsheader/ProductsHeader';
 
 function App() {
   const allProductsRef = useRef(null);
   const [showNewSection, setShowNewSection] = useState(false);
   const [content, setContent] = useState("");
+  const [products, setProducts] = useState([]);
+  const [isDataFetched, setIsDataFetched] = useState(false);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`${base_url}/product`);
+        setProducts(response?.data?.data || []);
+        setIsDataFetched(true);
+      } catch (error) {
+        console.error('Error fetching product data:', error);
+      }
+    };
+
+    if (!isDataFetched) {
+      fetchData();
+    }
+  }, [isDataFetched]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,18 +75,57 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const [isSectionAlign, setIsSectionAlign] = useState(false);
+
+  useEffect(() => {
+    const htmlTag = document.documentElement;
+    const sectionTags = document.querySelectorAll('section');
+
+    if (isSectionAlign) {
+      htmlTag.style.scrollSnapType = 'y mandatory';
+      sectionTags.forEach(section => {
+        section.style.scrollSnapAlign = 'center';
+      });
+    } else {
+      htmlTag.style.scrollSnapType = ''; // Reset scroll snap type if not aligned
+      sectionTags.forEach(section => {
+        section.style.scrollSnapAlign = 'none';
+      });
+    }
+  }, [isSectionAlign]);
+
+
+  const handleSectionAlign = () => {
+    setIsSectionAlign(true);
+  };
+  const handleSectionAlignFalse = () => {
+    setIsSectionAlign(false);
+  };
+  
+  console.log(isSectionAlign, "--------")
+
   return (
     <>
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
-      <section id='revolution'><Revolution /></section>
-      <section id='product'>
-        <Products />
-      </section>
-      <section id='regexeprience'><Register /> <Experience /></section>
+      <section id='revolution'><Revolution sectionAlign={handleSectionAlign} /></section>
+      <div className='position-relative'>
+        <ProductsHeader />
+        {products.map((item, index) => (
+          <>
+            <section key={index} id={`product`}>
+              <Products item={item} index={index} />
+            </section>
+          </>
+        ))}
+        <section id={`allproduct`}>
+          <AllProducts products={products} sectionAlign={handleSectionAlign} />
+        </section>
+      </div>
+      <section id='regexeprience'><Register sectionAlign={handleSectionAlign} /> <Experience /></section>
       <section id='map'>
-        <Map setTooltipContent={setContent} />
-        <Tooltip id="my-tooltip" >{content}</Tooltip> 
+        <Map setTooltipContent={setContent} sectionAlignFalse={handleSectionAlignFalse} />
+        <Tooltip id="my-tooltip" >{content}</Tooltip>
       </section>
       <section id='ourclient'><OurClients /></section>
       {showNewSection && <section id='contactusform'><ContactUsForm /></section>}

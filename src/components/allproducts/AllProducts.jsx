@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
 import { useInView } from 'react-intersection-observer';
@@ -6,6 +6,7 @@ import { base_url } from '../config/Base_url';
 import axios from 'axios';
 
 const Product = ({ item, index }) => {
+
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: true });
 
@@ -47,6 +48,27 @@ const Product = ({ item, index }) => {
 
 const AllProducts = ({ products }) => {
   const [productMain, setProductMain] = useState([])
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0,
+      }
+    );
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
 
   const fetchData = async () => {
     try {
@@ -61,13 +83,9 @@ const AllProducts = ({ products }) => {
     fetchData()
   }, []);
 
+  console.log(products)
   return (
     <div className={style.maindiv}>
-      <div className={style.products}>
-        <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
-        <p className={style.content}>{productMain?.productDescription}</p>
-
-      </div>
       <div className={`row ${style.imgsection}`}>
         {products?.slice(0, 4)?.map((item, index) => (
           <Product key={item?._id} index={index} item={item} />

@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
 import { base_url } from '../config/Base_url'
 
-const Revolution = () => {
+const Revolution = ({ sectionAlign }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [revolutionData, setRevolutionData] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
@@ -15,6 +15,9 @@ const Revolution = () => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
+                if (entry.isIntersecting) {
+                    sectionAlign(); // Call the callback function when Revolution is in view
+                }
             },
             {
                 threshold: 0.5, // Adjust threshold as needed

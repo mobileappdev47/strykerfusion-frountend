@@ -8,32 +8,10 @@
   justify-content: center;
   flex-direction: column;
   height: 100%;
+  position: relative;
 }
 
-.products {
-  width: 100%;
-  height: 20vh;
-  background-color: #FAFAFA;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 20%;
-}
 
-.headingfont {
-  color: #08132D;
-  font-size: 34px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.content {
-  color: #4C5877;
-  font-size: 18px;
-  font-weight: 400;
-  text-align: center;
-}
 
 .imgsection {
   height: 100%;
@@ -111,14 +89,14 @@
   width: fit-content;
 }
 
-.scrollsection {
+/* .scrollsection {
   scroll-snap-align: center;
-}
+} */
 
 .parentscrolldiv {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   height: 80%;
-  overflow: auto;
+  /* overflow: auto; */
   width: 100%;
   display: flex;
   flex-direction: column;
