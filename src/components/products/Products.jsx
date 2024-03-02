@@ -3,7 +3,7 @@ import style from './products.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { base_url } from '../config/Base_url';
 
-const Products = ({ item, index }) => {
+const Products = ({ item, index, sectionAlign }) => {
 
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -12,7 +12,9 @@ const Products = ({ item, index }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
-    
+        if (entry.isIntersecting) {
+          sectionAlign(); 
+        }
       },
       {
         threshold: 0,
@@ -30,15 +32,14 @@ const Products = ({ item, index }) => {
 
   return (
     <>
-      <div className={style.maindiv}>
-        <div className={style.parentscrolldiv} ref={ref}>
+      <div className={style.maindiv} ref={ref}>
           <AnimatePresence>
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: isVisible ? 1 : 1, y: isVisible ? 10 : 10 }}
               transition={{ duration: 0.5 }}
-              className={`product-item ${style.imgsection}  my-4 mx-sm-3`}
+              className={`product-item ${style.imgsection}  mb-4 mx-sm-3`}
             >
               <div className={style.imagegradient}></div>
               <img
@@ -85,7 +86,6 @@ const Products = ({ item, index }) => {
           </AnimatePresence> */}
 
         </div>
-      </div>
     </>
   );
 };

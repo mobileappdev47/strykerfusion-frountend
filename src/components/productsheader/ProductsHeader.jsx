@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import style from './products.module.css'
+import style from './productsheader.module.css'
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
 

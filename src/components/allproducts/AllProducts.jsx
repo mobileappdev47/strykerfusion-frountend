@@ -83,7 +83,6 @@ const AllProducts = ({ products }) => {
     fetchData()
   }, []);
 
-  console.log(products)
   return (
     <div className={style.maindiv}>
       <div className={`row ${style.imgsection}`}>

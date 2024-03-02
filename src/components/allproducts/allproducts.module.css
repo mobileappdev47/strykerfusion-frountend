@@ -1,10 +1,7 @@
 .maindiv {
-    height: 100vh;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 30px;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     flex-direction: column;
 }
@@ -17,8 +14,8 @@
 }
 
 .imgsection {
-    height: 82vh;
-    width: 58%;
+    height: 80vh;
+    width: 50%;
 }
 
 .headingfont {
