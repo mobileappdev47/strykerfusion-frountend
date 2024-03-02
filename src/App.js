@@ -101,27 +101,29 @@ function App() {
   const handleSectionAlignFalse = () => {
     setIsSectionAlign(false);
   };
-  
-  console.log(isSectionAlign, "--------")
 
   return (
     <>
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
-      <section id='revolution'><Revolution sectionAlign={handleSectionAlign} /></section>
+      <section id='revolution'><Revolution sectionAlignFalse={handleSectionAlignFalse} /></section>
+
       <div className='position-relative'>
         <ProductsHeader />
-        {products.map((item, index) => (
-          <>
-            <section key={index} id={`product`}>
-              <Products item={item} index={index} />
-            </section>
-          </>
-        ))}
+        <div>
+          {products.map((item, index) => (
+            <>
+              <section key={index} id={`product`}>
+                <Products item={item} index={index} sectionAlign={handleSectionAlign} />
+              </section>
+            </>
+          ))}
+        </div>
         <section id={`allproduct`}>
           <AllProducts products={products} sectionAlign={handleSectionAlign} />
         </section>
       </div>
+
       <section id='regexeprience'><Register sectionAlign={handleSectionAlign} /> <Experience /></section>
       <section id='map'>
         <Map setTooltipContent={setContent} sectionAlignFalse={handleSectionAlignFalse} />

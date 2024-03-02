@@ -3,7 +3,7 @@ import style from './products.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { base_url } from '../config/Base_url';
 
-const Products = ({ item, index }) => {
+const Products = ({ item, index, sectionAlign }) => {
 
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -12,7 +12,9 @@ const Products = ({ item, index }) => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
-    
+        if (entry.isIntersecting) {
+          sectionAlign(); 
+        }
       },
       {
         threshold: 0,

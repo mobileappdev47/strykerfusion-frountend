@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
 import { base_url } from '../config/Base_url'
 
-const Revolution = ({ sectionAlign }) => {
+const Revolution = ({ sectionAlignFalse }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [revolutionData, setRevolutionData] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
@@ -16,7 +16,7 @@ const Revolution = ({ sectionAlign }) => {
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
                 if (entry.isIntersecting) {
-                    sectionAlign(); // Call the callback function when Revolution is in view
+                    sectionAlignFalse(); // Call the callback function when Revolution is in view
                 }
             },
             {
