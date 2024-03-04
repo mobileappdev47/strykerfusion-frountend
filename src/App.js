@@ -21,7 +21,7 @@ import { Tooltip } from 'react-tooltip';
 import ProductsHeader from './components/productsheader/ProductsHeader';
 
 function App() {
-  const allProductsRef = useRef(null);
+  const [isSectionAlign, setIsSectionAlign] = useState(false);
   const [showNewSection, setShowNewSection] = useState(false);
   const [content, setContent] = useState("");
   const [products, setProducts] = useState([]);
@@ -56,26 +56,38 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const handleHashChange = () => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        const isProductSection = element.id === 'product';
+        if (isProductSection) {
+          setIsSectionAlign(false);
+        }
+
+        if (isProductSection) {
+          setTimeout(() => setIsSectionAlign(true), 1000);
+        }
+      }
+    }
+  };
+
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      } else {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    };
     handleHashChange();
     window.addEventListener('hashchange', handleHashChange);
-
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
-  const [isSectionAlign, setIsSectionAlign] = useState(false);
+
+  const handleSectionAlign = () => {
+    setIsSectionAlign(true);
+  };
+
+  const handleSectionAlignFalse = () => {
+    setIsSectionAlign(false);
+  };
 
   useEffect(() => {
     const htmlTag = document.documentElement;
@@ -94,39 +106,35 @@ function App() {
     }
   }, [isSectionAlign]);
 
-
-  const handleSectionAlign = () => {
-    setIsSectionAlign(true);
-  };
-  const handleSectionAlignFalse = () => {
-    setIsSectionAlign(false);
-  };
+  console.log(isSectionAlign)
 
   return (
     <>
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution sectionAlignFalse={handleSectionAlignFalse} /></section>
-
       <div className='position-relative'>
         <ProductsHeader />
         <div>
           {products.map((item, index) => (
-            <>
-              <section key={index} id={`product`}>
-                <Products item={item} index={index} sectionAlign={handleSectionAlign} />
-              </section>
-            </>
+            <section key={`product-${index}`} id={`product`}>
+              <Products item={item} index={index} sectionAlign={handleSectionAlign} />
+            </section>
           ))}
         </div>
-        <section id={`allproduct`}>
-          <AllProducts products={products} sectionAlign={handleSectionAlign} />
-        </section>
+        {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
+          <section key={`allproduct-${index}`} id={`allproduct-${index}`}>
+            <AllProducts
+              key={`batch-${batchIndex}`}
+              products={products.slice(batchIndex * 4, (batchIndex + 1) * 4)}
+              sectionAlign={handleSectionAlign}
+            />
+          </section>
+        ))}
       </div>
-
       <section id='regexeprience'><Register sectionAlign={handleSectionAlign} /> <Experience /></section>
       <section id='map'>
-        <Map setTooltipContent={setContent} sectionAlignFalse={handleSectionAlignFalse} />
+        <Map sectionAlign={handleSectionAlignFalse} setTooltipContent={setContent} />
         <Tooltip id="my-tooltip" >{content}</Tooltip>
       </section>
       <section id='ourclient'><OurClients /></section>

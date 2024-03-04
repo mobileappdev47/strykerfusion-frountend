@@ -15,7 +15,7 @@ const Register = ({ sectionAlign }) => {
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
                 if (entry.isIntersecting) {
-                    sectionAlign(); // Call the callback function when Revolution is in view
+                    sectionAlign(); // Call the callback function when Register is in view
                 }
             },
             {
@@ -27,12 +27,10 @@ const Register = ({ sectionAlign }) => {
         }
         return () => {
             if (ref.current) {
-                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };
-        // eslint-disable-next-line
-    }, []);
+    }, [sectionAlign]);
 
     useEffect(() => {
         const fetchData = async () => {

@@ -6,8 +6,9 @@ import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps
 import jsonfile from '../../assets/features.json';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
+import { geoWinkel3 } from "d3-geo-projection";
 
-const Map = ({ setTooltipContent, sectionAlignFalse }) => {
+const Map = ({ setTooltipContent, sectionAlign }) => {
     const [areMarkersVisible, setAreMarkersVisible] = useState(false);
     const { ref, inView } = useInView({ threshold: 0 });
     const controls = useAnimation();
@@ -50,7 +51,7 @@ const Map = ({ setTooltipContent, sectionAlignFalse }) => {
             controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } });
             const timeout = setTimeout(() => {
                 setAreMarkersVisible(true);
-                sectionAlignFalse()
+                sectionAlign()
             }, 1000);
             return () => clearTimeout(timeout);
         } else {
@@ -60,7 +61,12 @@ const Map = ({ setTooltipContent, sectionAlignFalse }) => {
         // eslint-disable-next-line
     }, [inView, controls]);
 
+    const width = 800;
+    const height = 600;
 
+    const projection = geoWinkel3()
+        .translate([width / 2, height / 2])
+        .scale(180);
     return (
         <div className={style.maindiv}>
             <div className='pt-5'>
@@ -76,6 +82,8 @@ const Map = ({ setTooltipContent, sectionAlignFalse }) => {
                 animate={controls}
             >
                 <ComposableMap className={style.map}>
+
+
                     <Geographies geography={jsonfile}>
                         {({ geographies }) =>
                             geographies.map((geo) => {

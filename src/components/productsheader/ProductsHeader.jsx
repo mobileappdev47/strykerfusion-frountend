@@ -18,6 +18,7 @@ const ProductsHeader = () => {
     useEffect(() => {
         fetchData();
     }, []);
+
     return (
         <>
             <div className={style.products}>

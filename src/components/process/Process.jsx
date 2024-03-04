@@ -5,6 +5,10 @@ import pre from '../../assets/prearrow.png';
 import next from '../../assets/nextarrow.png';
 import { base_url } from '../config/Base_url';
 import axios from 'axios';
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Process = () => {
     const [startIndex, setStartIndex] = useState(0);
@@ -13,6 +17,7 @@ const Process = () => {
     const ref = useRef(null);
     const [process, setProcess] = useState([]);
     const [processMain, setProcessMain] = useState([]);
+    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -54,11 +59,14 @@ const Process = () => {
 
     const handleNext = () => {
         setStartIndex(prevIndex => Math.min(prevIndex + 1, process.length - numCards));
+        setActiveSlideIndex(prevIndex => prevIndex + 1); // Update activeSlideIndex
     };
 
     const handlePrev = () => {
         setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
+        setActiveSlideIndex(prevIndex => prevIndex - 1); // Update activeSlideIndex
     };
+
 
     function getNumCards() {
         if (window.innerWidth >= 1000) {
@@ -99,7 +107,9 @@ const Process = () => {
 
     return (
         <div ref={ref} className={style.maindiv}>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} exit={{ opacity: 0 }} className='h-100' >
+            <motion.div
+                initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 1 }} exit={{ opacity: 0 }}
+                className='h-100' >
                 <div className={style.processdiv}>
                     <div className={style.contentwidth}>
                         <h1 className={style.headingfont}>
@@ -108,23 +118,30 @@ const Process = () => {
                         <h1 className={style.content}>{processMain?.processDescription}</h1>
                     </div>
                 </div>
-                <div id="carouselExampleIndicators1" className={`carousel slide  ${style.caroselwidth}`} data-bs-ride="carousel">
-                    <motion.div className="carousel-inner h-100"
-                        initial={{ opacity: 0, y: 100 }}
-                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 100 }}
-                        transition={{ duration: 1 }}
-                    >
-                        <div className="carousel-item active h-100">
-                            <div className={`card-group h-100 ${style.cardgroup}`}>
-                                {process.slice(startIndex, startIndex + numCards).map((item, index) => (
+                <Swiper
+                    slidesPerView={numCards}
+                    spaceBetween={30}
+                    modules={[Navigation, Pagination]}
+                    className={`mySwiper ${style.caroselwidth}`}
+                    navigation={true}
+                    pagination={{ clickable: true }} // Enable clickable pagination
+                >
+                    {process.map((item, index) => (
+                        <SwiperSlide key={index} className='h-100'>
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: isVisible ? 1 : 1 }}
+                                transition={{ duration: 0.3 }}
+                                className='h-100'
+                            >
+                                <div className={`card-group h-100 ${style.cardgroup}`}>
                                     <motion.div
                                         className={`card mx-4 ${style.card}`}
-                                        key={index}
                                         style={{ width: '18rem', borderRadius: '28px' }}
                                         initial={{ opacity: 0 }}
-                                        animate={{ opacity: isVisible ? 1 : 0 }}
+                                        animate={{ opacity: isVisible ? 1 : 1 }}
                                         transition={{ delay: index * 0.3 }}
-                                        whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.5 }}
+                                        whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.5 }}
                                     >
                                         <div className="card-body p-4 h-100">
                                             <div className={`${style.cardimg}`}>
@@ -135,35 +152,12 @@ const Process = () => {
                                             <button className={`btn ${style.learnmorebtn}`}>Learn More</button>
                                         </div>
                                     </motion.div>
-                                ))}
-                            </div>
-                        </div>
-                    </motion.div>
-                    <button className={`carousel-control-prev ${style.carousel}`} type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="prev" onClick={handlePrev}>
-                        <span className="" aria-hidden="true"> <motion.img src={pre} alt="..." initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ delay: 0.5 }} /></span>
-                        <span className="visually-hidden">Previous</span>
-                    </button>
-                    <button className={`carousel-control-next ${style.carousel}`} type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide="next" onClick={handleNext}>
-                        <span className="" aria-hidden="true"><motion.img src={next} alt="..." initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ delay: 0.5 }} /></span>
-                        <span className="visually-hidden">Next</span>
-                    </button>
-                </div>
-                {numCards === 3 && (
-                    <div className={`carousel-indicators mb-0`}>
-                        {process.slice(0, process?.length - 2).map((item, index) => (
-                            <button
-                                key={index}
-                                type="button"
-                                data-bs-target="#carouselExampleIndicators1"
-                                data-bs-slide-to={index}
-                                className={`${startIndex === index ? 'active' : ''}`}
-                                aria-current="true"
-                                aria-label={`Slide ${index + 1}`}
-                                onClick={() => handleIndicatorClick(index)}
-                            ></button>
-                        ))}
-                    </div>
-                )}
+                                </div>
+                            </motion.div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+
             </motion.div>
         </div>
     );

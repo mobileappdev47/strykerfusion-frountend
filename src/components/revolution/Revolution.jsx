@@ -54,10 +54,10 @@ const Revolution = ({ sectionAlignFalse }) => {
         <div className={style.maindiv} ref={ref}>
             <div className={`card mb-3 w-100 ${style.card}`}>
                 <div className="row w-100">
-                    <div className="col-md-6 d-md-inline d-none col-12 text-center position-relative" >
+                    <div className="col-md-6 col-12 text-center position-relative" >
                         <motion.img
                             initial={{ opacity: 0, y: 100 }}
-                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 10 }}
+                            animate={{ opacity: isVisible ? 1 : 1, y: isVisible ? 0 : 10 }}
                             transition={{ duration: 0.5 }}
                             src={revolutionman}
                             className=""

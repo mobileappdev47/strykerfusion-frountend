@@ -104,6 +104,7 @@ const Experience = () => {
                         spaceBetween={30}
                         navigation={{
                             nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev'
                         }}
                         modules={[Navigation]}
                         className="mySwiper"
@@ -140,7 +141,8 @@ const Experience = () => {
                                 </motion.div>
                             </SwiperSlide>
                         ))}
-                        <div className="swiper-button-next"></div>
+                        <div className={`swiper-button-next ${style.btndisable}`}></div>
+                        <div className={`swiper-button-prev ${style.btndisable}`}></div>
                     </Swiper>
 
                 </div>
