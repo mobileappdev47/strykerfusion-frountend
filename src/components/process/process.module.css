@@ -1,5 +1,5 @@
 .maindiv {
-    height: calc(100vh - 150px);
+    height: 80%;
     padding-left: 60px;
     padding-right: 60px;
     padding-top: 30px;
@@ -135,9 +135,6 @@
         font-size: 14px;
     }
 
-    .maindiv {
-        height: calc(100vh - 150px);
-    }
 }
 
 @media only screen and (max-width: 576px) {
@@ -157,9 +154,7 @@
 }
 
 @media only screen and (max-width: 425px) {
-    .maindiv {
-        height: calc(100vh - 130px);
-    }
+
 }
 
 @media only screen and (max-width: 375px) {

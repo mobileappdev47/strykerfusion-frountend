@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Handcraft from './components/handcraft/Handcraft';
 import Header from './components/header/Header';
@@ -123,7 +123,7 @@ function App() {
           ))}
         </div>
         {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
-          <section key={`allproduct-${index}`} id={`allproduct-${index}`}>
+          <section key={`allproduct`} id={`allproduct`}>
             <AllProducts
               key={`batch-${batchIndex}`}
               products={products.slice(batchIndex * 4, (batchIndex + 1) * 4)}

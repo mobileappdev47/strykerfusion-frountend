@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import style from './map.module.css';
-import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
 import jsonfile from '../../assets/features.json';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
@@ -69,7 +69,7 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
         .scale(180);
     return (
         <div className={style.maindiv}>
-            <div className='pt-5'>
+            <div className={style.ourlocation}>
                 <h1 className={style.headingfont}>{locationMain?.locationTitle}</h1>
                 <p className={style.content}>{locationMain?.locationDescription}</p>
             </div>
@@ -81,9 +81,16 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
                 initial={{ opacity: 0, scale: 0.01 }}
                 animate={controls}
             >
-                <ComposableMap className={style.map}>
-
-
+                <ComposableMap
+                    height={500}
+                    projection="geoMercator"
+                    projectionConfig={{
+                        rotate: [-10, 0, 0],
+                        center: [0, 30],
+                        scale: 100,
+                        parallels: [0, 0]
+                    }}
+                    className='h-100 w-100'>
                     <Geographies geography={jsonfile}>
                         {({ geographies }) =>
                             geographies.map((geo) => {
@@ -125,7 +132,6 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
                             </motion.g>
                         </Marker>
                     ))}
-
                 </ComposableMap>
             </motion.div>
         </div>

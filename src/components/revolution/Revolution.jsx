@@ -52,15 +52,15 @@ const Revolution = ({ sectionAlignFalse }) => {
 
     return (
         <div className={style.maindiv} ref={ref}>
-            <div className={`card mb-3 w-100 ${style.card}`}>
-                <div className="row w-100">
+            <div className={`card mb-3 ${style.card}`}>
+                <div className="row">
                     <div className="col-md-6 col-12 text-center position-relative" >
                         <motion.img
                             initial={{ opacity: 0, y: 100 }}
                             animate={{ opacity: isVisible ? 1 : 1, y: isVisible ? 0 : 10 }}
                             transition={{ duration: 0.5 }}
                             src={revolutionman}
-                            className=""
+                            className={`${style.imgwidth}`}
                             alt="..." />
                         <motion.div
                             className={style.contentbox1}
@@ -126,8 +126,8 @@ const Revolution = ({ sectionAlignFalse }) => {
                     </div>
                     <div className={`col-md-6 col-12 d-flex ${style.contentsec}`} >
                         <div className="card-body d-flex flex-column justify-content-center p-0 p-sm-3">
-                            <AnimatePresence>
-                                {isVisible && (
+                            {/* <AnimatePresence>
+                                {isVisible && ( */}
                                     <>
                                         <motion.h1
                                             className={`card-title ${style.headingfont}`}
@@ -166,8 +166,8 @@ const Revolution = ({ sectionAlignFalse }) => {
                                             transition={{ duration: 0.5, delay: 2 }}
                                         >Learn More</motion.button>
                                     </>
-                                )}
-                            </AnimatePresence>
+                                {/* )}
+                            </AnimatePresence> */}
                         </div>
                     </div>
                 </div>
