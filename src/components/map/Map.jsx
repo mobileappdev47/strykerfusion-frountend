@@ -77,14 +77,14 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
                 >
                     <ComposableMap
                         height={700}
-                        width={window.innerWidth > 768 ? 1000 : 700}
+                        width={1000}
                         projection="geoMercator"
                         projectionConfig={{
                             rotate: [-10, 0, 0],
                             center: [0, 30]
                         }}
 
-                        className='h-100 w-100'
+                        className='h-100'
                     >
                         <Geographies geography={jsonfile}>
                             {({ geographies }) =>

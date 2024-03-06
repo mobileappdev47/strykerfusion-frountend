@@ -82,7 +82,7 @@
     }
 
     .mapContainer {
-        width: 950px;
+        width: 700px;
     }
 
     .map {
@@ -90,25 +90,14 @@
     }
 }
 
-@media only screen and (max-width: 400px) {
-    .mapContainer {
-        width: 850px;
-    }
-}
-
 @media only screen and (max-width: 375px) {
     .mapContainer {
-        width: 700px;
-    }
-}
-@media only screen and (max-width: 360px) {
-    .mapContainer {
-        width: 750px;
+        width: 500px;
     }
 }
 
 @media only screen and (max-width: 320px) {
     .mapContainer {
-        width: 500px;
+        width: 400px;
     }
 }
