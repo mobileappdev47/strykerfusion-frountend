@@ -17,6 +17,10 @@
     scrollbar-width: none;
 }
 
+.mapwidth {
+    height: 100%;
+}
+
 .map::-webkit-scrollbar {
     display: none;
 }
@@ -68,43 +72,21 @@
     }
 }
 
-@media only screen and (max-width: 768px) {
-    .mapContainer {
-        width: 1000px;
-    }
-
-    .map {
-        overflow: auto;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .mapContainer {
-        width: 600px;
-    }
-
-    .map {
-        overflow: hidden;
-    }
-}
-
-@media only screen and (max-width: 500px) {
-    .mapContainer {
-        width: 600px;
-    }
-
-    .map {
-        overflow: auto;
-    }
-}
-
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 450px) {
     .headingfont {
         font-size: 20px;
     }
 
     .content {
         font-size: 14px;
+    }
+
+    .mapContainer {
+        width: 800px;
+    }
+
+    .map {
+        overflow: auto;
     }
 }
 

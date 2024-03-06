@@ -106,8 +106,6 @@ function App() {
     }
   }, [isSectionAlign]);
 
-  console.log(isSectionAlign)
-
   return (
     <>
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
