@@ -199,35 +199,88 @@
     .headingfont {
         font-size: 20px;
     }
+
     .imgwidth {
         width: 100%;
     }
 
-    .contentbox1,.contentbox2 {
-       left: 75px;  
+    .contentbox1,
+    .contentbox2 {
+        left: 75px;
     }
 
     .contentbox3 {
-      top: 220px;
+        top: 220px;
     }
 }
+
 @media only screen and (max-width: 400px) {
-.imgcontent{
-    margin-bottom: 5px;
-}
-    .contentbox1{
+    .imgcontent {
+        margin-bottom: 5px;
+    }
+
+    .contentbox1 {
         top: 130px;
         left: 70px;
         padding: 12px;
     }
+
     .contentbox2 {
         bottom: 90px;
-       left: 70px;  
-       padding: 12px;
+        left: 70px;
+        padding: 12px;
     }
 
     .contentbox3 {
-      top: 220px;
-      padding: 12px;
+        top: 220px;
+        padding: 12px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .contentbox1 {
+        top: 100px;
+        left: 30px;
+        padding: 10px;
+        width: 40vw;
+    }
+
+    .contentbox2 {
+        bottom: 40px;
+        left: 30px;
+        padding: 10px;
+        width: 40vw;
+
+    }
+
+    .imgheadingfont {
+        font-size: 10px;
+    }
+
+    .imgcontent {
+        margin-bottom: 0;
+        font-size: 8px;
+    }
+
+    .contentbox3 {
+        top: 150px;
+        right: 0;
+        width: 40vw;
+    }
+}
+
+@media only screen and (max-width: 265px) {
+    .contentbox1 {
+        top: 80px;
+        left: 0;
+    }
+
+    .contentbox2 {
+        bottom: 40px;
+        left: 0;
+    }
+
+    .contentbox3 {
+        top: 130px;
     }
 }

@@ -3,13 +3,16 @@
     justify-content: end;
     width: 100%;
     align-items: center;
+margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .contactform {
     background-color: #FFFEFE;
-    height: 70vh;
     width: 80%;
     padding-left: 30px;
+padding-top: 30px;
+    padding-bottom: 30px;
     padding-right: 30px;
     border-radius: 24px;
     display: flex;
@@ -155,7 +158,6 @@
     }
 
     .maindiv {
-        height: 100vh;
         padding: 10px;
         padding: 50px;
         background-color: #F2F2F2;
@@ -182,10 +184,6 @@
     .inputgroup {
         margin: 5px;
     }
-}
-
-@media only screen and (max-width: 400px) {
-
 }
 
 @media only screen and (max-width: 375px) {

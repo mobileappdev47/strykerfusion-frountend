@@ -19,7 +19,7 @@ const Products = ({ item, index, sectionAlign }) => {
         }
       },
       {
-        threshold: 0.5, 
+        threshold: 0, 
       }
     );
 
@@ -35,7 +35,7 @@ const Products = ({ item, index, sectionAlign }) => {
   }, [controls, sectionAlign]);
 
   const variants = {
-    hidden: { opacity: 1, y: -100, scale: 1 },
+    hidden: { opacity: 1, y: 1, scale: 1 },
     visible: { opacity: 1, y: 1, scale: 1 },
   };
 

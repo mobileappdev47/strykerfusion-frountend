@@ -137,6 +137,10 @@ section {
   width: 325px;
 }
 
+#regexeprience .swiper-button-disabled {
+  display: none;
+}
+
 #product,
 #allproduct,
 #regexeprience,
@@ -145,14 +149,25 @@ section {
   height: 100vh;
 }
 
+@media only screen and (max-width: 600px) {
+
+  #map {
+    height: 60vh;
+  }
+}
 
 @media only screen and (max-width: 425px) {
   .offcanvas-end {
     width: 275px;
   }
 
-  #brandandprocess {
-    height: 115vh;
+  #ourclient .swiper-button-next,
+  #ourclient .swiper-button-prev {
+    top: var(--swiper-navigation-top-offset, 65%) !important;
+  }
+
+  #regexeprience .swiper-button-disabled {
+    display: inline;
   }
 }
 

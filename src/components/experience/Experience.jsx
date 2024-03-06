@@ -100,8 +100,8 @@ const Experience = () => {
                 <div className="col-lg-7 col-12 h-100">
                     <div className={style.imagegradient}></div>
                     <Swiper
-                        slidesPerView={window.innerWidth < 425 ? 1 : 'auto'}
-                        spaceBetween={30}
+                        slidesPerView={(experience.length === 1 && window.innerWidth < 500) ? 1 : 'auto'}
+                        spaceBetween={(window.innerWidth < 500) ? 0 : 30}
                         navigation={{
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev'
@@ -141,10 +141,9 @@ const Experience = () => {
                                 </motion.div>
                             </SwiperSlide>
                         ))}
-                        <div className={`swiper-button-next ${style.btndisable}`}></div>
-                        <div className={`swiper-button-prev ${style.btndisable}`}></div>
+                        <div className={`swiper-button-next`}></div>
+                        <div className={`swiper-button-prev`}></div>
                     </Swiper>
-
                 </div>
             </div>
         </div>

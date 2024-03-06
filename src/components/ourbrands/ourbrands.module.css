@@ -34,7 +34,6 @@
     .maindiv {
         padding: 20px;
         padding-bottom: 0;
-        height: 150px;
     }
 }
 
@@ -53,13 +52,12 @@
 }
 
 @media only screen and (max-width: 425px) {
+    .maindiv{
+        height: 15%;
+    }
     .brands {
         margin: 1rem;
         height: 30px;
         width: 70px;
-    }
-
-    .maindiv {
-        height: 130px;
     }
 }

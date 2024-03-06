@@ -58,82 +58,76 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
             setAreMarkersVisible(false);
             controls.start({ opacity: 0, scale: 0.01 });
         }
-        // eslint-disable-next-line
     }, [inView, controls]);
 
-    const width = 800;
-    const height = 600;
-
-    const projection = geoWinkel3()
-        .translate([width / 2, height / 2])
-        .scale(180);
     return (
         <div className={style.maindiv}>
             <div className={style.ourlocation}>
                 <h1 className={style.headingfont}>{locationMain?.locationTitle}</h1>
                 <p className={style.content}>{locationMain?.locationDescription}</p>
             </div>
-            <motion.div
-                className={style.mapContainer}
-                ref={ref}
-                data-tip=""
-                whileInView={{ opacity: 1 }}
-                initial={{ opacity: 0, scale: 0.01 }}
-                animate={controls}
-            >
-                <ComposableMap
-                    height={500}
-                    projection="geoMercator"
-                    projectionConfig={{
-                        rotate: [-10, 0, 0],
-                        center: [0, 30],
-                        scale: 100,
-                        parallels: [0, 0]
-                    }}
-                    className='h-100 w-100'>
-                    <Geographies geography={jsonfile}>
-                        {({ geographies }) =>
-                            geographies.map((geo) => {
-                                const marker = markers.find(marker => marker?.locationname === geo.properties?.name);
-                                const fill = marker ? '#0A407D' : '#BCD0E6';
-                                return (
-                                    <Geography
-                                        key={geo.rsmKey}
-                                        geography={geo}
-                                        fill={fill}
-                                        data-tooltip-id={marker ? "my-tooltip" : ""}
-                                        onMouseEnter={(event) => {
-                                            setTooltipContent(geo.properties.name, event);
-                                        }}
-                                        onMouseLeave={() => {
-                                            setTooltipContent("");
-                                        }}
-                                    />
-                                );
-                            })
-                        }
-                    </Geographies>
-                    {areMarkersVisible && markers.map(({ locationname, coordinates }, index) => (
-                        <Marker
-                            key={locationname}
-                            coordinates={coordinates}>
-                            <motion.g
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }}
-                                transition={{ duration: 1, delay: index * 0.5, ease: [0.25, 1, 0.5, 1] }}
-                            >
-                                <motion.path
-                                    d="M14 7C14 6.08075 13.8189 5.1705 13.4672 4.32122C13.1154 3.47194 12.5998 2.70026 11.9497 2.05025C11.2997 1.40024 10.5281 0.884626 9.67878 0.532843C8.8295 0.18106 7.91925 0 7 0C6.08075 0 5.17049 0.18106 4.32122 0.532843C3.47194 0.884626 2.70026 1.40024 2.05025 2.05025C1.40024 2.70026 0.884626 3.47194 0.532843 4.32122C0.18106 5.1705 -1.36979e-08 6.08075 0 7C0 8.387 0.409 9.677 1.105 10.765H1.097L7 20L12.903 10.765H12.896C13.6169 9.64158 14.0001 8.33481 14 7ZM7 10C6.20435 10 5.44129 9.68393 4.87868 9.12132C4.31607 8.55871 4 7.79565 4 7C4 6.20435 4.31607 5.44129 4.87868 4.87868C5.44129 4.31607 6.20435 4 7 4C7.79565 4 8.55871 4.31607 9.12132 4.87868C9.68393 5.44129 10 6.20435 10 7C10 7.79565 9.68393 8.55871 9.12132 9.12132C8.55871 9.68393 7.79565 10 7 10Z"
+            <div className={style.map}>
+                <motion.div
+                    className={style.mapContainer}
+                    ref={ref}
+                    data-tip=""
+                    whileInView={{ opacity: 1 }}
+                    initial={{ opacity: 0, scale: 0.01 }}
+                    animate={controls}
+                >
+                    <ComposableMap
+                        height={(window.innerWidth > 1024) ? 700 : (window.innerWidth > 800) ? 1200 : 800}
+                        projection="geoMercator"
+                        projectionConfig={{
+                            rotate: [-10, 0, 0],
+                            center: [0, 30]
+                        }}
+                        className='h-100 w-100'
+                    >
+                        <Geographies geography={jsonfile}>
+                            {({ geographies }) =>
+                                geographies.map((geo) => {
+                                    const marker = markers.find(marker => marker?.locationname === geo.properties?.name);
+                                    const fill = marker ? '#0A407D' : '#BCD0E6';
+                                    return (
+                                        <Geography
+                                            key={geo.rsmKey}
+                                            geography={geo}
+                                            fill={fill}
+                                            data-tooltip-id={marker ? "my-tooltip" : ""}
+                                            onMouseEnter={(event) => {
+                                                setTooltipContent(geo.properties.name, event);
+                                            }}
+                                            onMouseLeave={() => {
+                                                setTooltipContent("");
+                                            }}
+                                        />
+                                    );
+                                })
+                            }
+                        </Geographies>
+                        {areMarkersVisible && markers.map(({ locationname, coordinates }, index) => (
+                            <Marker
+                                key={locationname}
+                                coordinates={coordinates}>
+                                <motion.g
                                     initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }} // Change color with opacity animation and custom easing
-                                    transition={{ duration: 1, delay: index * 0.5, ease: [0.25, 1, 0.5, 1] }} // Delay each marker animation with easing
-                                    whileInView={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }}
-                                />
-                            </motion.g>
-                        </Marker>
-                    ))}
-                </ComposableMap>
-            </motion.div>
+                                    animate={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }}
+                                    transition={{ duration: 1, delay: index * 0.5, ease: [0.25, 1, 0.5, 1] }}
+                                >
+                                    <motion.path
+                                        d="M14 7C14 6.08075 13.8189 5.1705 13.4672 4.32122C13.1154 3.47194 12.5998 2.70026 11.9497 2.05025C11.2997 1.40024 10.5281 0.884626 9.67878 0.532843C8.8295 0.18106 7.91925 0 7 0C6.08075 0 5.17049 0.18106 4.32122 0.532843C3.47194 0.884626 2.70026 1.40024 2.05025 2.05025C1.40024 2.70026 0.884626 3.47194 0.532843 4.32122C0.18106 5.1705 -1.36979e-08 6.08075 0 7C0 8.387 0.409 9.677 1.105 10.765H1.097L7 20L12.903 10.765H12.896C13.6169 9.64158 14.0001 8.33481 14 7ZM7 10C6.20435 10 5.44129 9.68393 4.87868 9.12132C4.31607 8.55871 4 7.79565 4 7C4 6.20435 4.31607 5.44129 4.87868 4.87868C5.44129 4.31607 6.20435 4 7 4C7.79565 4 8.55871 4.31607 9.12132 4.87868C9.68393 5.44129 10 6.20435 10 7C10 7.79565 9.68393 8.55871 9.12132 9.12132C8.55871 9.68393 7.79565 10 7 10Z"
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }} // Change color with opacity animation and custom easing
+                                        transition={{ duration: 1, delay: index * 0.5, ease: [0.25, 1, 0.5, 1] }} // Delay each marker animation with easing
+                                        whileInView={{ opacity: 1, transition: { duration: 0.5, ease: [0.25, 1, 0.5, 1] } }}
+                                    />
+                                </motion.g>
+                            </Marker>
+                        ))}
+                    </ComposableMap>
+                </motion.div>
+            </div>
         </div>
     );
 }

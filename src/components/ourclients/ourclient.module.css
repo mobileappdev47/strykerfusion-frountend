@@ -167,7 +167,7 @@
     }
 
     .maindiv {
-        height: 80vh;
+        height: 60vh;
     }
 
     .content {
@@ -177,6 +177,29 @@
 
 @media only screen and (max-width: 425px) {
     .maindiv {
-        height: 70vh;
+        height: 60vh;
+    }
+
+    .clientheading {
+        height: 30%;
+    }
+
+    .clientslider {
+        height: 70%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .headingfont {
+        font-size: 20px;
+    }
+
+    .content,
+    .activecontentclient {
+        font-size: 12px;
+    }
+    .clientimg{
+        height: 80px !important;
+        width: 80px !important;
     }
 }
