@@ -82,21 +82,28 @@
     }
 
     .mapContainer {
-        width: 900px;
+        width: 950px;
     }
 
     .map {
         overflow: auto;
     }
 }
+
 @media only screen and (max-width: 400px) {
     .mapContainer {
-        width: 750px;
+        width: 850px;
     }
 }
+
 @media only screen and (max-width: 375px) {
     .mapContainer {
-        width: 600px;
+        width: 700px;
+    }
+}
+@media only screen and (max-width: 360px) {
+    .mapContainer {
+        width: 750px;
     }
 }
 
