@@ -145,23 +145,6 @@ section {
   height: 100vh;
 }
 
-@media only screen and (max-width: 766px) {
-  #revolution {
-    height: 200vh;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  #revolution {
-    height: 180vh;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  #revolution {
-    height: 210vh;
-  }
-}
 
 @media only screen and (max-width: 425px) {
   .offcanvas-end {
@@ -171,10 +154,6 @@ section {
   #brandandprocess {
     height: 115vh;
   }
-
-  #revolution {
-    height: 130vh;
-  }
 }
 
 @media only screen and (max-width: 375px) {
@@ -182,7 +161,4 @@ section {
     width: 275px;
   }
 
-  #revolution {
-    height: 180vh;
-  }
 }

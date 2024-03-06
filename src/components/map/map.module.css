@@ -3,12 +3,9 @@
     background: radial-gradient(50% 50% at 50% 50%, #51A2FC 0%, #0074F3 100%) !important;
 }
 
-.map {
-    height: 100%;
-}
-
-.map g path {
+.mapContainer g path {
     stroke: #50A2FC;
+    stroke-width: 0.5px;
 }
 
 .mapContainer svg g path:focus {
