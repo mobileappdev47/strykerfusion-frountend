@@ -48,6 +48,16 @@ const Revolution = ({ sectionAlignFalse }) => {
         }
     }, [isDataFetched]);
 
+    // useEffect(() => {
+    //     let timeout;
+    //     if (isVisible) {s
+    //         timeout = setTimeout(() => {
+    //             sectionAlignFalse();
+    //         }, 300);
+    //     }
+    //     return () => clearTimeout(timeout);
+    // }, [isVisible, sectionAlign]);
+
     return (
         <div className={style.maindiv} ref={ref}>
             <div className={`card mb-3 ${style.card}`}>

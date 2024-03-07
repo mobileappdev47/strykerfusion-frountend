@@ -14,6 +14,7 @@ const Register = ({ sectionAlign }) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
+                sectionAlign()
             },
             {
                 threshold: 0,
@@ -29,16 +30,16 @@ const Register = ({ sectionAlign }) => {
         };
     }, []);
 
-    useEffect(() => {
-        let timeout;
-        if (isVisible) {
-            timeout = setTimeout(() => {
-                sectionAlign();
-            }, 500);
-        }
+    // useEffect(() => {
+    //     let timeout;
+    //     if (isVisible) {
+    //         timeout = setTimeout(() => {
+    //             sectionAlign();
+    //         }, 500);
+    //     }
 
-        return () => clearTimeout(timeout);
-    }, [isVisible, sectionAlign]);
+    //     return () => clearTimeout(timeout);
+    // }, [isVisible, sectionAlign]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -64,8 +65,8 @@ const Register = ({ sectionAlign }) => {
                         <>
                             <motion.h1
                                 className={styles.headingfont}
-                                initial={{ opacity: 0, y: 100 }} 
-                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
+                                initial={{ opacity: 0, y: 100 }}
+                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                                 transition={{ delay: 0 * 0.5 }}
                             >{possibleData?.possibleTitle}</motion.h1>
                             <div className='mb-3'>
