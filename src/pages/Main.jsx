@@ -22,89 +22,61 @@ import ContactUs from '../components/contactus/ContactUs';
 const Main = () => {
 
     const [isSectionAlign, setIsSectionAlign] = useState(false);
-  const [showNewSection, setShowNewSection] = useState(false);
-  const [content, setContent] = useState("");
-  const [products, setProducts] = useState([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${base_url}/product`);
-        setProducts(response?.data?.data || []);
-        setIsDataFetched(true);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
+    const [showNewSection, setShowNewSection] = useState(false);
+    const [content, setContent] = useState("");
+    const [products, setProducts] = useState([]);
+    const [isDataFetched, setIsDataFetched] = useState(false);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(`${base_url}/product`);
+          setProducts(response?.data?.data || []);
+          setIsDataFetched(true);
+        } catch (error) {
+          console.error('Error fetching product data:', error);
+        }
+      };
+  
+      if (!isDataFetched) {
+        fetchData();
       }
+    }, [isDataFetched]);
+  
+    useEffect(() => {
+      const handleResize = () => {
+        if (window.innerWidth <= 990) {
+          setShowNewSection(true);
+        } else {
+          setShowNewSection(false);
+        }
+      };
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    const handleSectionAlign = () => {
+      setIsSectionAlign(true);
     };
-
-    if (!isDataFetched) {
-      fetchData();
-    }
-  }, [isDataFetched]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 990) {
-        setShowNewSection(true);
+  
+    const handleSectionAlignFalse = () => {
+      setIsSectionAlign(false);
+    };
+  
+    useEffect(() => {
+      const sectionTags = document.querySelectorAll('section');
+  
+      if (isSectionAlign) {
+        sectionTags.forEach(section => {
+          section.style.scrollSnapAlign = 'center';
+        });
       } else {
-        setShowNewSection(false);
+        sectionTags.forEach(section => {
+          section.style.scrollSnapAlign = 'none';
+        });
       }
-    };
-    handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const handleHashChange = () => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const isProductSection = element.id === 'product';
-        if (isProductSection) {
-          setIsSectionAlign(false);
-        }
-
-        if (isProductSection) {
-          setTimeout(() => setIsSectionAlign(true), 1000);
-        }
-      }
-    }
-  };
-
-
-  useEffect(() => {
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
-
-  const handleSectionAlign = () => {
-    setIsSectionAlign(true);
-  };
-
-  const handleSectionAlignFalse = () => {
-    setIsSectionAlign(false);
-  };
-
-  useEffect(() => {
-    const htmlTag = document.documentElement;
-    const sectionTags = document.querySelectorAll('section');
-
-    if (isSectionAlign) {
-      htmlTag.style.scrollSnapType = 'y mandatory';
-      sectionTags.forEach(section => {
-        section.style.scrollSnapAlign = 'center';
-      });
-    } else {
-      htmlTag.style.scrollSnapType = ''; // Reset scroll snap type if not aligned
-      sectionTags.forEach(section => {
-        section.style.scrollSnapAlign = 'none';
-      });
-    }
-  }, [isSectionAlign]);
+    }, [isSectionAlign]);
 
   return (
     <>
@@ -112,11 +84,11 @@ const Main = () => {
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution sectionAlignFalse={handleSectionAlignFalse} /></section>
       <div className='position-relative'>
-        <ProductsHeader />
+        <ProductsHeader sectionAlign={handleSectionAlign} />
         <div>
           {products.map((item, index) => (
             <section key={`product-${index}`} id={`product`}>
-              <Products item={item} index={index} sectionAlign={handleSectionAlign} />
+              <Products item={item} index={index} />
             </section>
           ))}
         </div>

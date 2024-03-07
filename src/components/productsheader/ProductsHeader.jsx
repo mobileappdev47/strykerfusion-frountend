@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './productsheader.module.css'
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 import { useAnimation } from 'framer-motion';
-import { isVisible } from '@testing-library/user-event/dist/utils';
 
 const ProductsHeader = ({ sectionAlign }) => {
     const [productMain, setProductMain] = useState([]);

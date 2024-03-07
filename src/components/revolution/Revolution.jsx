@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import axios from 'axios'
 import { base_url } from '../../config/Base_url'
 

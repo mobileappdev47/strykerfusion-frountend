@@ -41,7 +41,7 @@ const LoginAd = () => {
 
                 alert("login successfully");
 
-                    navigate('/home');
+                    navigate('/admin/home');
             } catch (error) {
                 setError(error?.response?.data?.message);
             }

@@ -5,7 +5,7 @@ export default function PrivateRoutes() {
 
     // Check if the token is expired or user is not an admin, then redirect to login
     if (!authToken) {
-        return <Navigate to="/login" />;
+        return <Navigate to="/admin/login" />;
     }
 
     return <Outlet />;

@@ -1,24 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Handcraft from './components/handcraft/Handcraft';
-import Header from './components/header/Header';
-import OurBrand from './components/ourbrands/OurBrand';
-import Process from './components/process/Process';
-import Revolution from './components/revolution/Revolution';
-import Products from './components/products/Products';
-import AllProducts from './components/allproducts/AllProducts';
-import Register from './components/register/Register';
-import Experience from './components/experience/Experience';
-import Map from './components/map/Map';
-import OurClients from './components/ourclients/OurClients';
-import ContactUs from './components/contactus/ContactUs';
-import Footer from './components/footer/Footer';
-import axios from 'axios';
-import { base_url } from './config/Base_url';
-import ContactUsForm from './components/contactusform/ContactUsForm';
-import Sidebar from './components/sidebar/Sidebar';
-import { Tooltip } from 'react-tooltip';
-import ProductsHeader from './components/productsheader/ProductsHeader';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoutes from './privateroute/PrivateRoute';
 import HomeAd from './adminpages/homead/HomeAd';
@@ -36,62 +17,7 @@ import Layout from '../src/admincomponents/layout/Layout';
 import Main from './pages/Main';
 
 function App() {
-  const [isSectionAlign, setIsSectionAlign] = useState(false);
-  const [showNewSection, setShowNewSection] = useState(false);
-  const [content, setContent] = useState("");
-  const [products, setProducts] = useState([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${base_url}/product`);
-        setProducts(response?.data?.data || []);
-        setIsDataFetched(true);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
-
-    if (!isDataFetched) {
-      fetchData();
-    }
-  }, [isDataFetched]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 990) {
-        setShowNewSection(true);
-      } else {
-        setShowNewSection(false);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const handleSectionAlign = () => {
-    setIsSectionAlign(true);
-  };
-
-  const handleSectionAlignFalse = () => {
-    setIsSectionAlign(false);
-  };
-
-  useEffect(() => {
-    const sectionTags = document.querySelectorAll('section');
-
-    if (isSectionAlign) {
-      sectionTags.forEach(section => {
-        section.style.scrollSnapAlign = 'center';
-      });
-    } else {
-      sectionTags.forEach(section => {
-        section.style.scrollSnapAlign = 'none';
-      });
-    }
-  }, [isSectionAlign]);
+  
 
   return (
     <>
@@ -111,7 +37,7 @@ function App() {
               <Route path="/admin/revolution" element={<RevolutionAd />} />
             </Route>
           </Route>
-          <Route path="/login" element={<LoginAd />} />
+          <Route path="/admin/login" element={<LoginAd />} />
           <Route path='/' element={<Main />} />
         </Routes>
       </BrowserRouter>
