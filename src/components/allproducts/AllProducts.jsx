@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
 import { useInView } from 'react-intersection-observer';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 import axios from 'axios';
 
 const Product = ({ item, index }) => {

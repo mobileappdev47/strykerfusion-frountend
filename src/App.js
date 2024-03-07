@@ -14,11 +14,26 @@ import OurClients from './components/ourclients/OurClients';
 import ContactUs from './components/contactus/ContactUs';
 import Footer from './components/footer/Footer';
 import axios from 'axios';
-import { base_url } from './components/config/Base_url';
+import { base_url } from './config/Base_url';
 import ContactUsForm from './components/contactusform/ContactUsForm';
 import Sidebar from './components/sidebar/Sidebar';
 import { Tooltip } from 'react-tooltip';
 import ProductsHeader from './components/productsheader/ProductsHeader';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import PrivateRoutes from './privateroute/PrivateRoute';
+import HomeAd from './adminpages/homead/HomeAd';
+import ProductAd from './adminpages/productad/ProductAd';
+import ProcessAd from './adminpages/processad/ProcessAd';
+import ExperienceAd from './adminpages/experiencead/ExperienceAd';
+import BrandAd from './adminpages/brandad/BrandAd';
+import ClientAd from './adminpages/clientad/ClientAd';
+import LocationAd from './adminpages/locationad/LocationAd';
+import ContactAd from './adminpages/contactad/ContactAd';
+import PossibleAd from './adminpages/possiblead/PossibleAd';
+import RevolutionAd from './adminpages/revolutionad/RevolutionAd';
+import LoginAd from './adminpages/loginad/LoginAd';
+import Layout from '../src/admincomponents/layout/Layout';
+import Main from './pages/Main';
 
 function App() {
   const [isSectionAlign, setIsSectionAlign] = useState(false);
@@ -108,36 +123,26 @@ function App() {
 
   return (
     <>
-      <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
-      <section id='brandandprocess'><OurBrand /> <Process /></section>
-      <section id='revolution'><Revolution sectionAlignFalse={handleSectionAlignFalse} /></section>
-      <div className='position-relative'>
-        <ProductsHeader />
-        <div>
-          {products.map((item, index) => (
-            <section key={`product-${index}`} id={`product`}>
-              <Products item={item} index={index} sectionAlign={handleSectionAlign} />
-            </section>
-          ))}
-        </div>
-        {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
-          <section key={`allproduct`} id={`allproduct`}>
-            <AllProducts
-              key={`batch-${batchIndex}`}
-              products={products.slice(batchIndex * 4, (batchIndex + 1) * 4)}
-              sectionAlign={handleSectionAlign}
-            />
-          </section>
-        ))}
-      </div>
-      <section id='regexeprience'><Register sectionAlign={handleSectionAlign} /> <Experience /></section>
-      <section id='map'>
-        <Map sectionAlign={handleSectionAlignFalse} setTooltipContent={setContent} />
-        <Tooltip id="my-tooltip" >{content}</Tooltip>
-      </section>
-      <section id='ourclient'><OurClients /></section>
-      {showNewSection && <section id='contactusform'><ContactUsForm /></section>}
-      <section id='contactus'><ContactUs /><Footer /></section>
+      <BrowserRouter>
+        <Routes>
+          <Route exec element={<PrivateRoutes />}>
+            <Route element={<Layout />}>
+              <Route path="/admin/home" element={<HomeAd />} />
+              <Route path="/admin/product" element={<ProductAd />} />
+              <Route path="/admin/process" element={<ProcessAd />} />
+              <Route path="/admin/experience" element={<ExperienceAd />} />
+              <Route path="/admin/brand" element={<BrandAd />} />
+              <Route path="/admin/client" element={<ClientAd />} />
+              <Route path="/admin/location" element={<LocationAd />} />
+              <Route path="/admin/contact" element={<ContactAd />} />
+              <Route path="/admin/possible" element={<PossibleAd />} />
+              <Route path="/admin/revolution" element={<RevolutionAd />} />
+            </Route>
+          </Route>
+          <Route path="/login" element={<LoginAd />} />
+          <Route path='/' element={<Main />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

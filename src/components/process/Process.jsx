@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import style from './process.module.css';
 import pre from '../../assets/prearrow.png';
 import next from '../../assets/nextarrow.png';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 import axios from 'axios';
 import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';

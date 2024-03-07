@@ -6,7 +6,7 @@ import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const Experience = () => {
     const [experience, setExperience] = useState([]);

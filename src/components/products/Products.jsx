@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import style from './products.module.css';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const Products = ({ item, index, sectionAlign }) => {
 

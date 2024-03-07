@@ -6,7 +6,7 @@ import 'swiper/css/effect-cube';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const Handcraft = () => {
   const autoSlideDuration = 5000;

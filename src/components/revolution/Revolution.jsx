@@ -3,7 +3,7 @@ import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
 import { AnimatePresence, motion } from 'framer-motion'
 import axios from 'axios'
-import { base_url } from '../config/Base_url'
+import { base_url } from '../../config/Base_url'
 
 const Revolution = ({ sectionAlignFalse }) => {
     const [isVisible, setIsVisible] = useState(false);

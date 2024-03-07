@@ -1,0 +1,23 @@
+.buttonedit{
+    padding: 5px 20px;
+    background-color: #90B8F8;
+    border: none;
+    border-radius: 10px;
+    color: #27374D;
+}
+
+.buttondelete{
+    padding: 5px 20px;
+    background-color: #FF9898;
+    border: none;
+    border-radius: 10px;
+    color: #27374D;
+}
+
+.buttonadd{
+    padding: 5px 20px;
+    background-color: #519872;
+    border: none;
+    border-radius: 10px;
+    color: #27374D;
+}

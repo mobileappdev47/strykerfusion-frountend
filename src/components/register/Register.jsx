@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './register.module.css';
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const Register = ({ sectionAlign }) => {
     const [isVisible, setIsVisible] = useState(false);

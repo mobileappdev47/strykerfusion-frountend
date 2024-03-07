@@ -5,8 +5,7 @@ import style from './map.module.css';
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
 import jsonfile from '../../assets/features.json';
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
-import { geoWinkel3 } from "d3-geo-projection";
+import { base_url } from '../../config/Base_url';
 
 const Map = ({ setTooltipContent, sectionAlign }) => {
     const [areMarkersVisible, setAreMarkersVisible] = useState(false);

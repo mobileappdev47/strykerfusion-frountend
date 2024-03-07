@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from './contactus.module.css'
 import ContactUsForm from '../contactusform/ContactUsForm';
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const ContactUs = () => {
     const ref = useRef(null);

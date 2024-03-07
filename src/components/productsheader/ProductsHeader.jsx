@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import style from './productsheader.module.css'
 import axios from 'axios';
-import { base_url } from '../config/Base_url';
+import { base_url } from '../../config/Base_url';
 
 const ProductsHeader = () => {
     const [productMain, setProductMain] = useState([]);
