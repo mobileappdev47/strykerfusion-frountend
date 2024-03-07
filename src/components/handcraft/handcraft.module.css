@@ -101,6 +101,12 @@
 }
 
 @media only screen and (max-width: 425px) {
+    .headingfont{
+        font-size: 7vw;
+    }
+    .getstartedbtn{
+        font-size: 16px;
+    }
     .getstartedbtn {
         margin-top: 1rem;
     }

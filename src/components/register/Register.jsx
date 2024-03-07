@@ -14,12 +14,9 @@ const Register = ({ sectionAlign }) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
-                if (entry.isIntersecting) {
-                    sectionAlign(); // Call the callback function when Register is in view
-                }
             },
             {
-                threshold: 0.5, // Adjust threshold as needed
+                threshold: 0, // Adjust threshold as needed
             }
         );
         if (ref.current) {
@@ -30,7 +27,18 @@ const Register = ({ sectionAlign }) => {
                 observer.unobserve(ref.current);
             }
         };
-    }, [sectionAlign]);
+    }, []);
+
+    useEffect(() => {
+        let timeout;
+        if (isVisible) {
+            timeout = setTimeout(() => {
+                sectionAlign();
+            }, 500);
+        }
+
+        return () => clearTimeout(timeout);
+    }, [isVisible, sectionAlign]);
 
     useEffect(() => {
         const fetchData = async () => {

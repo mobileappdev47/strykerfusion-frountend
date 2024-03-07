@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/logo.png';
 import style from './header.module.css';
 import { motion } from 'framer-motion';
+import { Link } from 'react-scroll';
 
 const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
     }
     return () => {
       if (ref.current) {
-        // eslint-disable-next-line
+// eslint-disable-next-line
         observer.unobserve(ref.current);
       }
     };
@@ -55,18 +56,18 @@ const Header = () => {
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} // Smooth transition on hover
                     whileTap={{ scale: 0.95 }}
                   >
-                    <a className={`nav-link ${style.headermenu}`} href={`#${item.link}`} >
+                    <Link className={`nav-link ${style.headermenu}`} to={`${item.link}`} smooth={true} duration={500} >
                       {item.text}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
                 <li className="nav-item">
-                  <motion.a className={`nav-link ${style.headermenu}`} href="#contactus"
+                  <motion.div className={`nav-link ${style.headermenu}`} 
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <button className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</button>
-                  </motion.a>
+                    <Link to='contactus' className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</Link>
+                  </motion.div>
                 </li>
               </ul>
             </div>

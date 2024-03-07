@@ -6,37 +6,9 @@
     flex-direction: column;
 }
 
-.products {
-    height: 15vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
 .imgsection {
     height: 80vh;
     width: 50%;
-}
-
-.headingfont {
-    color: #08132D;
-    font-size: 34px;
-    font-weight: 700;
-    text-align: center;
-}
-
-.content {
-    color: #4C5877;
-    font-size: 18px;
-    font-weight: 400;
-    text-align: center;
-}
-
-.contentbox {
-    position: absolute;
-    bottom: 5%;
-    left: 3%;
-    z-index: 1;
 }
 
 .imageContainer {
@@ -54,23 +26,22 @@
     width: 100%;
 }
 
+.productimage {
+    height: 100%;
+    width: 100%;
+}
+
+.contentbox {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    z-index: 1;
+}
+
 .headingfontimg {
     color: #FFFFFF;
     font-size: 1.5vw;
     font-weight: 500;
-}
-
-.contentimg {
-    color: #FFFFFF;
-    font-size: 0.5vw;
-    font-weight: 500;
-    border-bottom: 1px solid #FFFFFF;
-    width: fit-content;
-}
-
-.productimage {
-    height: 100%;
-    width: 100%;
 }
 
 .imgcontent {
@@ -106,19 +77,28 @@
     }
 }
 
-@media only screen and (max-width: 990px) {
-    .headingfont {
-        font-size: 25px;
-    }
-    
-    .content {
-        font-size: 14px;
+@media only screen and (max-width: 768px) {
+    .headingfontimg{
+        font-size: 20px;
     }
 }
-
 @media only screen and (max-width: 600px) {
     .maindiv {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .headingfontimg{
+        font-size: 15px;
+    }
+    .imgcontent{
+        font-size: 12px;
+    }
+}
+@media only screen and (max-width: 425px) {
+    .headingfontimg{
+        font-size: 12px;
+    }
+    .imgcontent{
+        font-size: 8px;
     }
 }
