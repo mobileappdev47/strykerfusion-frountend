@@ -16,7 +16,7 @@ const Register = ({ sectionAlign }) => {
                 setIsVisible(entry.isIntersecting);
             },
             {
-                threshold: 0, // Adjust threshold as needed
+                threshold: 0,
             }
         );
         if (ref.current) {
@@ -64,8 +64,8 @@ const Register = ({ sectionAlign }) => {
                         <>
                             <motion.h1
                                 className={styles.headingfont}
-                                initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                initial={{ opacity: 0, y: 100 }} 
+                                animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
                                 transition={{ delay: 0 * 0.5 }}
                             >{possibleData?.possibleTitle}</motion.h1>
                             <div className='mb-3'>

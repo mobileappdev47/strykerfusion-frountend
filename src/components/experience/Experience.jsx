@@ -68,15 +68,15 @@ const Experience = () => {
                             <>
                                 <div className=' overflow-hidden'>
                                     <motion.h1
-                                        initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                        initial={{ opacity: 0, y: 100 }} 
+                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
                                         transition={{ delay: 0 * 0.5 }}
                                         className={style.headingfont}>
                                         {experienceMain?.experienceTitle}
                                     </motion.h1>
 
-                                    <motion.p initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} // Move up when visible (-20)
+                                    <motion.p initial={{ opacity: 0, y: 100 }} 
+                                        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }} 
                                         transition={{ delay: 1 * 0.5 }}
                                         className={style.content}>
                                         {experienceMain?.experienceDescription}
@@ -85,8 +85,8 @@ const Experience = () => {
 
                                 <motion.button
                                     key="button"
-                                    initial={{ scale: 1 }} // Initial scale set to 1
-                                    animate={{ scale: [1, 1.2, 1] }} // Animate scale to 1.1 when in view
+                                    initial={{ scale: 1 }}
+                                    animate={{ scale: [1, 1.2, 1] }} 
                                     transition={{ duration: 0.5, delay: 2.5 }}
                                     className={`btn mt-5 ${style.learnmorebtn}`}
                                 >

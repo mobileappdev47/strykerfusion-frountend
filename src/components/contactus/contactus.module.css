@@ -1,5 +1,4 @@
 .maindiv {
-    /* height: calc(100vh - 15vh); */
     padding: 10px;
     padding-left: 70px;
     padding-top: 10px;
@@ -36,20 +35,12 @@
     .headingfont {
         font-size: 30px;
     }
-    .maindiv{
-        /* height: calc(100vh - 30vh); */
-    }
 }
 @media only screen and (max-width: 768px) {
     .headingfont {
         font-size: 20px;
         margin-bottom: 0;
     }
-}
-@media only screen and (max-width: 600px) {
-   .maindiv{
-    /* height: calc(100vh - 40vh); */
-   }
 }
 @media only screen and (max-width: 375px) {
   .content{
