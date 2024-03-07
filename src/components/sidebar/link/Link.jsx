@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import style from '../sidebar.module.css'
+import { Link } from "react-scroll";
 
 const items = [
   { text: "How It Works", link: "brandandprocess" },
@@ -43,17 +44,16 @@ const Links = ({ handleCloseSidebar }) => {
   return (
     <motion.div className={style.links} variants={variants}>
       {items.map((item) => (
-        <motion.a
-          href={`#${item?.link}`}
+        <motion.div
           className={style.sidebarmenu}
           key={item?.link}
           variants={itemsVariants}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
-          onClick={handleClick}
+
         >
-          {item?.text}
-        </motion.a>
+          <Link to={`${item?.link}`} onClick={handleClick}>{item?.text}</Link>
+        </motion.div>
       ))}
     </motion.div>
   );

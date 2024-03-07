@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import style from './map.module.css';
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 'react-simple-maps';
+import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import jsonfile from '../../assets/features.json';
 import axios from 'axios';
 import { base_url } from '../config/Base_url';
-import { geoWinkel3 } from "d3-geo-projection";
 
 const Map = ({ setTooltipContent, sectionAlign }) => {
     const [areMarkersVisible, setAreMarkersVisible] = useState(false);

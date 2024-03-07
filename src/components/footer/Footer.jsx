@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import logo from '../../assets/logo.png';
 import style from './footer.module.css'
 import { motion, useAnimation } from 'framer-motion'
+import { Link } from 'react-scroll';
 
 const Footer = () => {
     const menuItems = [
@@ -33,8 +34,7 @@ const Footer = () => {
             observer.observe(ref.current);
         }
         return () => {
-            if (ref.current) {
-                // eslint-disable-next-line
+            if (ref.current) { 
                 observer.unobserve(ref.current);
             }
         };
@@ -59,7 +59,7 @@ const Footer = () => {
                                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                                     transition={{ delay: index * 0.1 }}
                                 >
-                                    <a href={`#${item.link} `} className={`btn ${style.footermenubtn}`}>{item.text}</a>
+                                    <Link to={`${item.link}`} className={`btn ${style.footermenubtn}`}>{item.text}</Link>
                                 </motion.div>
                             ))}
                         </div>

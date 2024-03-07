@@ -51,35 +51,10 @@ function App() {
         setShowNewSection(false);
       }
     };
-    handleResize(); // Initial check
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  const handleHashChange = () => {
-    const hash = window.location.hash;
-    if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        const isProductSection = element.id === 'product';
-        if (isProductSection) {
-          setIsSectionAlign(false);
-        }
-
-        if (isProductSection) {
-          setTimeout(() => setIsSectionAlign(true), 1000);
-        }
-      }
-    }
-  };
-
-
-  useEffect(() => {
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
-
 
   const handleSectionAlign = () => {
     setIsSectionAlign(true);
@@ -90,16 +65,13 @@ function App() {
   };
 
   useEffect(() => {
-    const htmlTag = document.documentElement;
     const sectionTags = document.querySelectorAll('section');
 
     if (isSectionAlign) {
-      htmlTag.style.scrollSnapType = 'y mandatory';
       sectionTags.forEach(section => {
         section.style.scrollSnapAlign = 'center';
       });
     } else {
-      htmlTag.style.scrollSnapType = ''; // Reset scroll snap type if not aligned
       sectionTags.forEach(section => {
         section.style.scrollSnapAlign = 'none';
       });
@@ -112,14 +84,12 @@ function App() {
       <section id='brandandprocess'><OurBrand /> <Process /></section>
       <section id='revolution'><Revolution sectionAlignFalse={handleSectionAlignFalse} /></section>
       <div className='position-relative'>
-        <ProductsHeader />
-        <div>
-          {products.map((item, index) => (
-            <section key={`product-${index}`} id={`product`}>
-              <Products item={item} index={index} sectionAlign={handleSectionAlign} />
-            </section>
-          ))}
-        </div>
+        <ProductsHeader sectionAlign={handleSectionAlign}/>
+        {products.map((item, index) => (
+          <section key={`product-${index}`} id={`product`}>
+            <Products item={item} index={index}  />
+          </section>
+        ))}
         {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
           <section key={`allproduct`} id={`allproduct`}>
             <AllProducts

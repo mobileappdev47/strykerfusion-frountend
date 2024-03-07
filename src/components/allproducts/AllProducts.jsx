@@ -3,7 +3,6 @@ import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
 import { useInView } from 'react-intersection-observer';
 import { base_url } from '../config/Base_url';
-import axios from 'axios';
 
 const Product = ({ item, index }) => {
 
@@ -47,41 +46,6 @@ const Product = ({ item, index }) => {
 };
 
 const AllProducts = ({ products }) => {
-  const [productMain, setProductMain] = useState([])
-  const [isVisible, setIsVisible] = useState(false);
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-      }
-    );
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
-    return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
-    };
-  }, []);
-
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(`${base_url}/productmain`);
-      setProductMain(response.data?.data);
-    } catch (error) {
-      console.error('Error fetching home data:', error);
-    }
-  };
-
-  useEffect(() => {
-    fetchData()
-  }, []);
 
   return (
     <div className={style.maindiv}>
