@@ -6,8 +6,44 @@
 }
 
 html {
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
   scroll-behavior: smooth;
+  transition: scroll-snap-type 0.1s ease-in-out; /* Add a transition */
+}
+
+
+/* Define animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(1000px); /* Move element down */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Move element to its original position */
+  }
+}
+
+section {
+  animation: fadeIn 0.5s ease forwards;
+  scroll-snap-align: start;
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 html,
@@ -54,9 +90,7 @@ p {
   bottom: -44px;
 }
 
-section {
-  width: 100%;
-}
+
 
 
 .swiper {
@@ -152,6 +186,10 @@ section {
 #map,
 #brandandprocess {
   height: 100vh;
+}
+
+.scrollproduct{
+  scroll-snap-type: y mandatory;
 }
 
 @media only screen and (max-width: 600px) {
