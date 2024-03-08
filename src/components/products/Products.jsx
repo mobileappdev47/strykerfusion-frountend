@@ -3,18 +3,17 @@ import style from './products.module.css';
 import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 import { base_url } from '../../config/Base_url';
 
-const Products = ({ item, index }) => {
+const Products = ({ item, index, sectionAlign }) => {
 
   const controls = useAnimation();
   const ref = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
         if (entry.isIntersecting) {
           controls.start('visible');
+          sectionAlign()
         } else {
           controls.start('hidden');
         }
@@ -34,7 +33,6 @@ const Products = ({ item, index }) => {
       }
     };
   }, [controls]);
-
 
   const variants = {
     hidden: { opacity: 1, y: 1, scale: 1 },

@@ -31,7 +31,6 @@ const Handcraft = () => {
 
     return () => {
       if (ref.current) {
-        // eslint-disable-next-line
         observer.unobserve(ref.current);
       }
     };
@@ -43,7 +42,6 @@ const Handcraft = () => {
     }, autoSlideDuration);
 
     return () => clearInterval(interval);
-    // eslint-disable-next-line
   }, [page]);
 
   const paginate = (newDirection) => {
@@ -78,7 +76,6 @@ const Handcraft = () => {
 
       return () => clearInterval(interval);
     }
-    // eslint-disable-next-line
   }, [swiperRef.current]);
 
   return (

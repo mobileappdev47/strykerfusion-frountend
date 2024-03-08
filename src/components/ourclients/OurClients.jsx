@@ -31,7 +31,6 @@ const OurClients = () => {
         }
         return () => {
             if (ref.current) {
-                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };
@@ -97,7 +96,6 @@ const OurClients = () => {
             >
                 <AnimatePresence>
                     {
-                        // isVisible && 
                         client?.map((item, index) => (
                             <SwiperSlide key={index} className='bg-transparent'>
                                 {({ isNext }) => (

@@ -16,11 +16,11 @@ const Revolution = ({ sectionAlignFalse }) => {
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
                 if (entry.isIntersecting) {
-                    sectionAlignFalse(); // Call the callback function when Revolution is in view
+                    sectionAlignFalse(); 
                 }
             },
             {
-                threshold: 0.5, // Adjust threshold as needed
+                threshold: 0.5, 
             }
         );
         if (ref.current) {
@@ -28,11 +28,9 @@ const Revolution = ({ sectionAlignFalse }) => {
         }
         return () => {
             if (ref.current) {
-                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };
-        // eslint-disable-next-line
     }, []);
 
     useEffect(() => {
@@ -49,6 +47,16 @@ const Revolution = ({ sectionAlignFalse }) => {
             fetchData();
         }
     }, [isDataFetched]);
+
+    // useEffect(() => {
+    //     let timeout;
+    //     if (isVisible) {s
+    //         timeout = setTimeout(() => {
+    //             sectionAlignFalse();
+    //         }, 300);
+    //     }
+    //     return () => clearTimeout(timeout);
+    // }, [isVisible, sectionAlign]);
 
     return (
         <div className={style.maindiv} ref={ref}>
@@ -105,8 +113,8 @@ const Revolution = ({ sectionAlignFalse }) => {
                         </motion.div>
                         <motion.div
                             className={style.contentbox3}
-                            initial={{ opacity: 0, y: 100 }} // Start from above (-100)
-                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }} // Move up when visible (-20)
+                            initial={{ opacity: 0, y: 100 }} 
+                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                             transition={{ delay: 2 * 0.5 }}
                             whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                             whileTap={{ scale: 0.95 }}

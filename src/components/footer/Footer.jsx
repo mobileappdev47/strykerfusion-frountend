@@ -10,7 +10,7 @@ const Footer = () => {
         { text: "Our Products", link: "product" },
         { text: "Why Us", link: "regexeprience" },
         { text: "Find Us", link: "contactus" },
-        { text: "Client Speake", link: "ourclient" }
+        { text: "Client Speak", link: "ourclient" }
     ];
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);

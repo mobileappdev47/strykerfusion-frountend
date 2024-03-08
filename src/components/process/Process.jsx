@@ -11,13 +11,11 @@ import 'swiper/css/navigation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Process = () => {
-    const [startIndex, setStartIndex] = useState(0);
     const [numCards, setNumCards] = useState(getNumCards());
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const [process, setProcess] = useState([]);
     const [processMain, setProcessMain] = useState([]);
-    const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -35,15 +33,11 @@ const Process = () => {
 
         return () => {
             if (ref.current) {
-                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };
     }, []);
 
-    useEffect(() => {
-        setNumCards(getNumCards());
-    }, [startIndex]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -57,17 +51,6 @@ const Process = () => {
         };
     }, []);
 
-    const handleNext = () => {
-        setStartIndex(prevIndex => Math.min(prevIndex + 1, process.length - numCards));
-        setActiveSlideIndex(prevIndex => prevIndex + 1); // Update activeSlideIndex
-    };
-
-    const handlePrev = () => {
-        setStartIndex(prevIndex => Math.max(prevIndex - 1, 0));
-        setActiveSlideIndex(prevIndex => prevIndex - 1); // Update activeSlideIndex
-    };
-
-
     function getNumCards() {
         if (window.innerWidth >= 1000) {
             return 3;
@@ -77,10 +60,6 @@ const Process = () => {
             return 1;
         }
     }
-
-    const handleIndicatorClick = (index) => {
-        setStartIndex(index);
-    };
 
     const fetchData = async () => {
         try {
@@ -124,7 +103,7 @@ const Process = () => {
                     modules={[Navigation, Pagination]}
                     className={`mySwiper ${style.caroselwidth}`}
                     navigation={true}
-                    pagination={{ clickable: true }} // Enable clickable pagination
+                    pagination={{ clickable: true }}
                 >
                     {process.map((item, index) => (
                         <SwiperSlide key={index} className='h-100'>

@@ -13,7 +13,7 @@ const Header = () => {
     { text: "Our Products", link: "product" },
     { text: "Why Us", link: "regexeprience" },
     { text: "Find Us", link: "contactus" },
-    { text: "Client Speake", link: "ourclient" }
+    { text: "Client Speak", link: "ourclient" }
   ];
 
   useEffect(() => {
@@ -30,7 +30,6 @@ const Header = () => {
     }
     return () => {
       if (ref.current) {
-// eslint-disable-next-line
         observer.unobserve(ref.current);
       }
     };

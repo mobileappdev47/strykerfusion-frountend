@@ -35,7 +35,7 @@ const Sidebar = () => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('user');
 
-        navigate('/login');
+        navigate('/admin/login');
     };
 
     const cancelLogout = () => {

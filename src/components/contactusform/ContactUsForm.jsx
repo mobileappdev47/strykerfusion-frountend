@@ -9,7 +9,7 @@ const ContactUsForm = () => {
     const formRef = useRef();
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [rows, setRows] = useState(2); // Initialize rows with 2
+    const [rows, setRows] = useState(2); 
 
     useEffect(() => {
         const handleResize = () => {
