@@ -13,8 +13,9 @@ const Register = ({ sectionAlign }) => {
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                setIsVisible(entry.isIntersecting);
-                sectionAlign()
+                if (entry.isIntersecting) {
+                    sectionAlign()
+                }
             },
             {
                 threshold: 0,

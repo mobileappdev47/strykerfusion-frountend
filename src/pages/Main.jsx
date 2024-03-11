@@ -77,7 +77,9 @@ const Main = () => {
       });
     }
   }, [isSectionAlign]);
-  console.log(isSectionAlign)
+  
+  // console.log(isSectionAlign)
+
   return (
     <>
       <section id='homepage'>{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
@@ -88,7 +90,7 @@ const Main = () => {
         <div>
           {products.map((item, index) => (
             <section key={`product-${index}`} id={`product`}>
-              <Products sectionAlign={handleSectionAlign}  item={item} index={index} />
+              <Products sectionAlign={handleSectionAlign} item={item} index={index} />
             </section>
           ))}
         </div>
