@@ -3,7 +3,7 @@ import style from './productsheader.module.css'
 import axios from 'axios';
 import { base_url } from '../../config/Base_url';
 
-const ProductsHeader = () => {
+const ProductsHeader = ({handleMouseEnter, handleMouseLeave}) => {
     const [productMain, setProductMain] = useState([]);
 
     const fetchData = async () => {
@@ -21,7 +21,8 @@ const ProductsHeader = () => {
 
     return (
         <>
-            <div className={style.products}>
+            <div className={style.products} onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}>
                 <h1 className={style.headingfont}>{productMain?.productTitle}</h1>
                 <p className={style.content}>{productMain?.productDescription}</p>
             </div>

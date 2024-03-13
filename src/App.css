@@ -11,25 +11,12 @@
 
 html {
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Ensures smooth scrolling */
   transition: scroll-snap-type 1.5s ease-in-out; /* Add a transition */
 }
 
 .scroll-snap-center {
   scroll-snap-align: start;
-}
-
-
-/* Define animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(1000px); /* Move element down */
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0); /* Move element to its original position */
-  }
 }
 
 ::-webkit-scrollbar {

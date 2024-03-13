@@ -74,17 +74,17 @@ const Main = () => {
 
   return (
     <>
-      <section id="homepage">{showNewSection ? <Sidebar /> : <Header setIsDelaying={setIsDelaying}/>}<Handcraft /></section>
+      <section id="homepage">{showNewSection ? <Sidebar /> : <Header setIsDelaying={setIsDelaying} />}<Handcraft /></section>
       <section id="brandandprocess"><OurBrand /> <Process /></section>
       <section id="revolution" className="product-section" handleMouseEnter={handleProductMouseEnter}
         handleMouseLeave={handleProductMouseLeave}><Revolution /></section>
-      <div className="position-relative">
+        <div className='position-relative'>
         <ProductsHeader />
         {products.map((item, index) => (
-          <section key={`product-${index}`} className="product-section" id='product'>
-            <Products item={item} index={index} handleMouseEnter={handleProductMouseEnter}
-              handleMouseLeave={handleProductMouseLeave} />
-          </section>
+            <section key={`product-${index}`} className="product-section" id='product'>
+              <Products item={item} index={index} handleMouseEnter={handleProductMouseEnter}
+                handleMouseLeave={handleProductMouseLeave} />
+            </section>
         ))}
         {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
           <section key={`allproduct-${index}`} className="product-section" id='allproduct'>
@@ -96,15 +96,15 @@ const Main = () => {
             />
           </section>
         ))}
-      </div>
+        </div>
       <section id="regexeprience" className="product-section"><Register /> <Experience /></section>
       <section id="map">
-        <Map setContent={setContent} />
+        <Map setTooltipContent={setContent} />
         <Tooltip id="my-tooltip">{content}</Tooltip>
       </section>
       <section id="ourclient"><OurClients /></section>
       {showNewSection && <section id="contactusform"><ContactUsForm /></section>}
-      <section id="contactus"><ContactUs /><Footer setIsDelaying={setIsDelaying}/></section>
+      <section id="contactus"><ContactUs /><Footer setIsDelaying={setIsDelaying} /></section>
     </>
   );
 };

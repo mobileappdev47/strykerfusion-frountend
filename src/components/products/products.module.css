@@ -7,7 +7,9 @@
 }
 
 .imgsection {
-  height: 75%;
+  position: relative;
+  top: 0px;
+  height: 85%;
 }
 
 .imagegradient {
@@ -41,11 +43,6 @@
   cursor: pointer;
 }
 
-.imageContainer {
-  position: relative;
-  width: 100%;
-}
-
 .productimage {
   height: 100%;
   width: 100%;
@@ -55,21 +52,6 @@
   color: #FFFFFF;
   font-size: 20px;
   font-weight: 500;
-}
-
-.allimgsection {
-  height: 82vh;
-  width: 58%;
-}
-
-
-.allimgcontent {
-  color: #FFFFFF;
-  font-size: 14px;
-  width: fit-content;
-  font-weight: 500;
-  border-bottom: 1px solid #FFFFFF;
-  cursor: pointer;
 }
 
 .contentimg {
