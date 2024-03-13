@@ -59,7 +59,7 @@ const Header = ({ setIsDelaying }) => { // Accept setIsDelaying as a prop
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                     transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} // Smooth transition on hover
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} 
                     whileTap={{ scale: 0.95 }}
                   >
                     <Link
