@@ -47,7 +47,7 @@ const Products = ({ item, index, handleMouseEnter, handleMouseLeave }) => {
           animate={controls}
           variants={variants}
           transition={{ duration: 0.5 }}
-          className={`product-item ${style.imgsection}  mb-4 mx-sm-3`}
+          className={`product-item ${style.imgsection} mb-4 mx-sm-3`}
         >
           <div className={style.imagegradient}></div>
           <img

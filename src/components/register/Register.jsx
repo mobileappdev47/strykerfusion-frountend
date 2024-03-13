@@ -4,7 +4,7 @@ import styles from './register.module.css';
 import axios from 'axios';
 import { base_url } from '../../config/Base_url';
 
-const Register = ({ sectionAlign }) => {
+const Register = () => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);
     const [possibleData, setPossibleData] = useState([]);
@@ -14,7 +14,6 @@ const Register = ({ sectionAlign }) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
-                // sectionAlign()
             },
             {
                 threshold: 0,
@@ -29,17 +28,6 @@ const Register = ({ sectionAlign }) => {
             }
         };
     }, []);
-
-    // useEffect(() => {
-    //     let timeout;
-    //     if (isVisible) {
-    //         timeout = setTimeout(() => {
-    //             sectionAlign();
-    //         }, 500);
-    //     }
-
-    //     return () => clearTimeout(timeout);
-    // }, [isVisible, sectionAlign]);
 
     useEffect(() => {
         const fetchData = async () => {

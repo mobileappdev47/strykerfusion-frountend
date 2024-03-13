@@ -99,7 +99,7 @@ const Main = () => {
       </div>
       <section id="regexeprience" className="product-section"><Register /> <Experience /></section>
       <section id="map">
-        <Map setTooltipContent={setContent} />
+        <Map setContent={setContent} />
         <Tooltip id="my-tooltip">{content}</Tooltip>
       </section>
       <section id="ourclient"><OurClients /></section>

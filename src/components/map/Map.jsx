@@ -7,7 +7,7 @@ import jsonfile from '../../assets/features.json';
 import axios from 'axios';
 import { base_url } from '../../config/Base_url';
 
-const Map = ({ setTooltipContent, sectionAlign }) => {
+const Map = ({ setTooltipContent }) => {
     const [areMarkersVisible, setAreMarkersVisible] = useState(false);
     const { ref, inView } = useInView({ threshold: 0 });
     const controls = useAnimation();
@@ -50,7 +50,6 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
             controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } });
             const timeout = setTimeout(() => {
                 setAreMarkersVisible(true);
-                // sectionAlign()
             }, 1000);
             return () => clearTimeout(timeout);
         } else {

@@ -1,5 +1,5 @@
 .maindiv {
-  height: 90%;
+  height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .imgsection {
-  height: 74%;
+  height: 75%;
 }
 
 .imagegradient {

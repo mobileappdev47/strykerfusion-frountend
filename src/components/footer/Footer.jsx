@@ -41,11 +41,10 @@ const Footer = ({ setIsDelaying }) => {
     }, [controls]);
 
     const handleMenuClick = () => {
-        setIsDelaying(true); // Set isDelaying to true when a menu item is clicked
-        console.log("sdfsfsdfdf");
+        setIsDelaying(true); 
         setTimeout(() => {
-          setIsDelaying(false); // After a delay, set isDelaying back to false
-        }, 500); // 2 seconds delay
+          setIsDelaying(false);
+        }, 550); 
       };
 
     return (
