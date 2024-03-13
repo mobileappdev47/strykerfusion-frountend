@@ -14,7 +14,7 @@ const Register = ({ sectionAlign }) => {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
-                sectionAlign()
+                // sectionAlign()
             },
             {
                 threshold: 0,

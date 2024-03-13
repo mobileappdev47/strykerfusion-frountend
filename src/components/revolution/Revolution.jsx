@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import axios from 'axios'
 import { base_url } from '../../config/Base_url'
 
-const Revolution = ({ sectionAlignFalse }) => {
+const Revolution = ({ sectionAlignFalse, handleMouseEnter, handleMouseLeave }) => {
     const [isVisible, setIsVisible] = useState(false);
     const [revolutionData, setRevolutionData] = useState([]);
     const [isDataFetched, setIsDataFetched] = useState(false);
@@ -16,7 +16,7 @@ const Revolution = ({ sectionAlignFalse }) => {
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
                 if (entry.isIntersecting) {
-                    sectionAlignFalse(); 
+                    // sectionAlignFalse(); 
                 }
             },
             {
@@ -59,7 +59,8 @@ const Revolution = ({ sectionAlignFalse }) => {
     // }, [isVisible, sectionAlign]);
 
     return (
-        <div className={style.maindiv} ref={ref}>
+        <div className={style.maindiv} ref={ref} onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}>
             <div className={`card mb-3 ${style.card}`}>
                 <div className="row">
                     <div className="col-md-6 col-12 text-center position-relative" >

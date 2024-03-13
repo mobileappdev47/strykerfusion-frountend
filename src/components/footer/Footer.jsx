@@ -4,7 +4,7 @@ import style from './footer.module.css'
 import { motion, useAnimation } from 'framer-motion'
 import { Link } from 'react-scroll';
 
-const Footer = () => {
+const Footer = ({ setIsDelaying }) => {
     const menuItems = [
         { text: "How It Works", link: "brandandprocess" },
         { text: "Our Products", link: "product" },
@@ -40,6 +40,14 @@ const Footer = () => {
         };
     }, [controls]);
 
+    const handleMenuClick = () => {
+        setIsDelaying(true); // Set isDelaying to true when a menu item is clicked
+        console.log("sdfsfsdfdf");
+        setTimeout(() => {
+          setIsDelaying(false); // After a delay, set isDelaying back to false
+        }, 500); // 2 seconds delay
+      };
+
     return (
         <motion.div initial={{ y: -100 }} animate={controls}>
             <div className={style.footer} ref={ref}>
@@ -59,7 +67,7 @@ const Footer = () => {
                                     animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                                     transition={{ delay: index * 0.1 }}
                                 >
-                                    <Link to={`${item.link}`} className={`btn ${style.footermenubtn}`}>{item.text}</Link>
+                                    <Link to={`${item.link}`} className={`btn ${style.footermenubtn}`} onClick={handleMenuClick}>{item.text}</Link>
                                 </motion.div>
                             ))}
                         </div>

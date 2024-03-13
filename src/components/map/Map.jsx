@@ -50,7 +50,7 @@ const Map = ({ setTooltipContent, sectionAlign }) => {
             controls.start({ opacity: 1, scale: 1, transition: { duration: 1, ease: [0.25, 1, 0.5, 1] } });
             const timeout = setTimeout(() => {
                 setAreMarkersVisible(true);
-                sectionAlign()
+                // sectionAlign()
             }, 1000);
             return () => clearTimeout(timeout);
         } else {

@@ -46,10 +46,11 @@ const Product = ({ item, index }) => {
   );
 };
 
-const AllProducts = ({ products }) => {
+const AllProducts = ({ products, handleMouseEnter, handleMouseLeave }) => {
 
   return (
-    <div className={style.maindiv}>
+    <div className={style.maindiv} onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}>
       <div className={`row ${style.imgsection}`}>
         {products?.slice(0, 4)?.map((item, index) => (
           <Product key={item?._id} index={index} item={item} />

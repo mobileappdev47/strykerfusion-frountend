@@ -12,7 +12,11 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
-  transition: scroll-snap-type 0.1s ease-in-out; /* Add a transition */
+  transition: scroll-snap-type 1.5s ease-in-out; /* Add a transition */
+}
+
+.scroll-snap-center {
+  scroll-snap-align: start;
 }
 
 
@@ -26,12 +30,6 @@ html {
     opacity: 1;
     transform: translateY(0); /* Move element to its original position */
   }
-}
-
-section {
-  animation: fadeIn 0.5s ease forwards;
-  scroll-snap-align: start;
-  width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -93,9 +91,6 @@ p {
   border-radius: 50%;
   bottom: -44px;
 }
-
-
-
 
 .swiper {
   width: 100%;
@@ -190,10 +185,6 @@ p {
 #map,
 #brandandprocess {
   height: 100vh;
-}
-
-.scrollproduct{
-  scroll-snap-type: y mandatory;
 }
 
 @media only screen and (max-width: 600px) {

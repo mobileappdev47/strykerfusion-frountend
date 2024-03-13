@@ -4,7 +4,7 @@ import style from './header.module.css';
 import { motion } from 'framer-motion';
 import { Link } from 'react-scroll';
 
-const Header = () => {
+const Header = ({ setIsDelaying }) => { // Accept setIsDelaying as a prop
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -35,6 +35,13 @@ const Header = () => {
     };
   }, []);
 
+  const handleMenuClick = () => {
+    setIsDelaying(true); 
+    setTimeout(() => {
+      setIsDelaying(false); // After a delay, set isDelaying back to false
+    }, 500); // 2 seconds delay
+  };
+
   return (
     <>
       <motion.div initial={{ y: -100 }} animate={{ y: isVisible ? 0 : -20 }}>
@@ -55,17 +62,24 @@ const Header = () => {
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }} // Smooth transition on hover
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link className={`nav-link ${style.headermenu}`} to={`${item.link}`} smooth={true} duration={500} >
+                    <Link
+                      className={`nav-link ${style.headermenu}`}
+                      to={item.link}
+                      smooth={true}
+                      duration={500}
+                      onClick={handleMenuClick} // Call handleMenuClick when a menu item is clicked
+                    >
                       {item.text}
                     </Link>
                   </motion.li>
                 ))}
                 <li className="nav-item">
-                  <motion.div className={`nav-link ${style.headermenu}`} 
+                  <motion.div
+                    className={`nav-link ${style.headermenu}`}
                     whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <Link to='contactus' className={`btn btn-primary ms-5 ${style.getquotebtn}`}>Contact Us</Link>
+                    <Link to='contactus' className={`btn btn-primary ms-5 ${style.getquotebtn}`} onClick={handleMenuClick}>Contact Us</Link>
                   </motion.div>
                 </li>
               </ul>
