@@ -12,16 +12,16 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth; /* Ensures smooth scrolling */
-  transition: scroll-snap-type 1.5s ease-in-out; /* Add a transition */
+  transition: scroll-snap-type 1.5s cubic-bezier(0.33, 1, 0.68, 1); /* Apply custom easing */
 }
 
+/* Smooth scrolling for elements with class .scroll-snap-center */
 .scroll-snap-center {
   scroll-snap-align: start;
 }
 
 .product-section{
-  scroll-behavior: smooth;
-  transition: scroll-snap-type 1.5s ease-in-out;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {

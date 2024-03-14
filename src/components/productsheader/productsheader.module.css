@@ -1,8 +1,10 @@
 .products {
     position: sticky;
-    top: 0;
+    top: 0px;
     z-index: 111;
-    padding-top: 5px;
+    margin-top: 70px;
+    padding-top: 20px;
+    padding-bottom: 0px;
     background-color: #4C5877;
     width: 100%;
     background-color: #FAFAFA;
@@ -14,14 +16,14 @@
 
 .headingfont {
     color: #08132D;
-    font-size: 34px;
+    font-size: 32px;
     font-weight: 700;
     text-align: center;
 }
 
 .content {
     color: #4C5877;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
     text-align: center;
 }

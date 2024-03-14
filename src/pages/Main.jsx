@@ -80,7 +80,8 @@ const Main = () => {
       <section id="revolution" className="product-section" handleMouseEnter={handleProductMouseEnter}
         handleMouseLeave={handleProductMouseLeave}><Revolution /></section>
       <div className='position-relative'>
-        <ProductsHeader />
+        <ProductsHeader handleMouseEnter={handleProductMouseEnter}
+          handleMouseLeave={handleProductMouseLeave} />
         {products.map((item, index) => (
           <section key={`product-${index}`} className="product-section" id='product'>
             <Products item={item} index={index} handleMouseEnter={handleProductMouseEnter}

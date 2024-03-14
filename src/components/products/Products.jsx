@@ -6,7 +6,7 @@ import { base_url } from '../../config/Base_url';
 const Products = ({ item, index, handleMouseEnter, handleMouseLeave }) => {
   const controls = useAnimation();
   const ref = useRef(null);
-  const [scrollDirection, setScrollDirection] = useState('down');
+  const [scrollDirection, setScrollDirection] = useState('up');
   const prevScrollY = useRef(0);
 
   useEffect(() => {
@@ -54,20 +54,18 @@ const Products = ({ item, index, handleMouseEnter, handleMouseLeave }) => {
 
   const variants = {
     hidden: {
-      clipPath: scrollDirection === 'down' ? "circle(500px at 50% 0%)" : "circle(500px at 50% 100%)",
-      opacity: 0.4,
+      clipPath: scrollDirection === 'down' ? "circle(600px at 50% 100%)" : "circle(600px at 50% 0%)",
       transition: {
         opacity: { duration: 0.3 }, // Keep opacity duration constant for smoothness
         type: 'spring',
         stiffness: 200, // Lower stiffness for smoother animation
         damping: 25, // Increase damping for smoother animation
-        delay: 0.5,
+        delay: .4,
         ease: [0.33, 1, 0.68, 1], // Custom easing
       },
     },
     visible: {
       clipPath: scrollDirection === 'down' ? "circle(1200px at 50% 0%)" : "circle(1200px at 50% 100%)",
-      opacity: 1,
       transition: {
         opacity: { duration: 0.3 }, // Keep opacity duration constant for smoothness
         type: 'spring',
@@ -82,7 +80,7 @@ const Products = ({ item, index, handleMouseEnter, handleMouseLeave }) => {
     <div style={{ height: '100%' }} ref={ref}>
       <div className={`${style.maindiv}`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         <motion.div
-          initial="hidden"
+          initial="hidden" // If it's the first image and scrolling down, set it to visible without animation
           animate={controls}
           variants={variants}
           transition={{ duration: 0.5 }} // Adjust duration for smoother animation
