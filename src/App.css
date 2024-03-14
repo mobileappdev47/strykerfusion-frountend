@@ -19,6 +19,11 @@ html {
   scroll-snap-align: start;
 }
 
+.product-section{
+  scroll-behavior: smooth;
+  transition: scroll-snap-type 1.5s ease-in-out;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }

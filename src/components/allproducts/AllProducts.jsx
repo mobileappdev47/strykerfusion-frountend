@@ -1,27 +1,81 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import style from './allproducts.module.css';
-import { useInView } from 'react-intersection-observer';
 import { base_url } from '../../config/Base_url';
-import axios from 'axios';
 
 const Product = ({ item, index }) => {
-
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: true });
+  const ref = useRef(null);
+  const [scrollDirection, setScrollDirection] = useState('down');
+  const prevScrollY = useRef(0);
 
   useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > prevScrollY.current) {
+        setScrollDirection('down');
+      } else {
+        setScrollDirection('up');
+      }
+
+      prevScrollY.current = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          controls.start('visible');
+        } else {
+          controls.start('hidden');
+        }
+      },
+      {
+        threshold: 0.5, // Adjust the threshold as needed
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-  }, [controls, inView]);
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [controls]);
 
   const variants = {
-    hidden: { opacity: 0, y: index < 2 ? '-100%' : '100%' },
-    visible: { opacity: 1, y: '0%', transition: { duration: 0.5, staggerChildren: 0.1 } },
-    exit: { opacity: 0, y: index < 2 ? '100%' : '-100%', transition: { duration: 0.5 } }
+    hidden: {
+      clipPath: scrollDirection === 'down' ? "circle(500px at 50% 0%)" : "circle(500px at 50% 100%)",
+      opacity: 0.4,
+      transition: {
+        opacity: { duration: 0.3 }, // Keep opacity duration constant for smoothness
+        type: 'spring',
+        stiffness: 200, // Lower stiffness for smoother animation
+        damping: 25, // Increase damping for smoother animation
+        delay: 0.5,
+        ease: [0.33, 1, 0.68, 1], // Custom easing
+      },
+    },
+    visible: {
+      clipPath: scrollDirection === 'down' ? "circle(1200px at 50% 0%)" : "circle(1200px at 50% 100%)",
+      opacity: 1,
+      transition: {
+        opacity: { duration: 0.3 }, // Keep opacity duration constant for smoothness
+        type: 'spring',
+        stiffness: 20, // Lower stiffness for smoother animation
+        damping: 25, // Increase damping for smoother animation
+        ease: [0.33, 1, 0.68, 1], // Custom easing
+      },
+    },
   };
 
   return (
@@ -30,7 +84,6 @@ const Product = ({ item, index }) => {
         className={`${style.imageContainer} h-100`}
         initial="hidden"
         animate={controls}
-        exit="exit"
         variants={variants}
       >
         <div className={style.imagegradient}></div>
@@ -47,12 +100,10 @@ const Product = ({ item, index }) => {
 };
 
 const AllProducts = ({ products, handleMouseEnter, handleMouseLeave }) => {
-
   return (
-    <div className={style.maindiv} onMouseEnter={handleMouseEnter}
-    onMouseLeave={handleMouseLeave}>
+    <div className={style.maindiv} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <div className={`row ${style.imgsection}`}>
-        {products?.slice(0, 4)?.map((item, index) => (
+        {products?.map((item, index) => (
           <Product key={item?._id} index={index} item={item} />
         ))}
       </div>
