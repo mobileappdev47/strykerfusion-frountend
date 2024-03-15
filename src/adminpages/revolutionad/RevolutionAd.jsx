@@ -21,7 +21,7 @@ const RevolutionAd = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/revolution`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/revolution`);
             setRevolutionData(response.data.data);
         } catch (error) {
             setError(error);
@@ -67,7 +67,7 @@ const RevolutionAd = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/revolution/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/revolution/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -112,7 +112,7 @@ const RevolutionAd = () => {
                     revolutionContent: formData.revolutionContent
                 };
 
-                await axios.post(`${base_url}/revolution`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/revolution`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -162,7 +162,7 @@ const RevolutionAd = () => {
                     revolutionContent: formData.revolutionContent
                 };
 
-                await axios.put(`${base_url}/revolution/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/revolution/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();

@@ -32,7 +32,7 @@ const Register = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/possible`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/possible`);
                 setPossibleData(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {

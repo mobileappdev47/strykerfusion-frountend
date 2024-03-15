@@ -39,7 +39,7 @@ const OurClients = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/client`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/client`);
                 setClient(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
@@ -48,7 +48,7 @@ const OurClients = () => {
         };
         const fetchClientMain = async () => {
             try {
-                const response = await axios.get(`${base_url}/clientmain`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/clientmain`);
                 setClientMain(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
@@ -124,7 +124,7 @@ const OurClients = () => {
                                                 </div>
                                                 <div className={isSmallScreen || isNext ? style.clientsec : 'mt-5'}>
                                                     <div className='d-flex justify-content-center position-relative'>
-                                                        <img src={`${base_url}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
+                                                        <img src={`${process.env.REACT_APP_BASE_URL}/${item?.clientImage}`} className={`${style.clientimg} ${!isSmallScreen && !isNext ? style.blackAndWhite : ''}`} alt="client" />
                                                     </div>
                                                     <h1 className={style.clientname}>{item?.clientName} </h1>
                                                     <p className={style.clientcontent}>{item?.clientRole}</p>

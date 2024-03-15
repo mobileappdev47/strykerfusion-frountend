@@ -23,7 +23,7 @@ const ContactAd = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/contact`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/contact`);
             setContactData(response.data.data);
         } catch (error) {
             setError(error);
@@ -74,7 +74,7 @@ const ContactAd = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/contact/delete`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/contact/delete`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -133,7 +133,7 @@ const ContactAd = () => {
                     address: formData.address
                 };
 
-                await axios.post(`${base_url}/contact`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/contact`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -197,7 +197,7 @@ const ContactAd = () => {
                     address: formData.address
                 };
 
-                await axios.put(`${base_url}/contact/update`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/contact/update`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();

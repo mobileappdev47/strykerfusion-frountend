@@ -31,7 +31,7 @@ const AdClientCard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/client`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/client`);
             setClientCardData(response.data.data);
             setLoading(false)
         } catch (error) {
@@ -88,7 +88,7 @@ const AdClientCard = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/client/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/client/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -140,7 +140,7 @@ const AdClientCard = () => {
                 formDataToSend.append('clientReview', formData.clientReview);
                 formDataToSend.append('image', formData.image);
 
-                await axios.post(`${base_url}/client`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/client`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -196,7 +196,7 @@ const AdClientCard = () => {
                 formDataToSend.append('clientReview', formData.clientReview);
                 formDataToSend.append('image', formData.image);
 
-                await axios.put(`${base_url}/client/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/client/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -243,7 +243,7 @@ const AdClientCard = () => {
                         {
                             clientcardData && clientcardData.map((item, index) => (
                                 <Card key={index} style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" style={{ width: '10rem' }} src={`${base_url}/${item?.clientImage}`} />
+                                    <Card.Img variant="top" style={{ width: '10rem' }} src={`${process.env.REACT_APP_BASE_URL}/${item?.clientImage}`} />
                                     <Card.Body>
                                         <Card.Title>{item?.clientName}</Card.Title>
                                         <Card.Text>{item?.clientRole}</Card.Text>

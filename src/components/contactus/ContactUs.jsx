@@ -12,7 +12,7 @@ const ContactUs = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/contact`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/contact`);
                 setContactData(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {

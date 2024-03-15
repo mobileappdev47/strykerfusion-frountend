@@ -21,7 +21,7 @@ const ClientAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/clientmain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/clientmain`);
       setClientData(response.data.data);
     } catch (error) {
       setError(error);
@@ -65,7 +65,7 @@ const ClientAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/clientmain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/clientmain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -102,7 +102,7 @@ const ClientAd = () => {
           clientDescription: formData.clientDescription
         };
 
-        await axios.post(`${base_url}/clientmain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/clientmain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -144,7 +144,7 @@ const ClientAd = () => {
           clientDescription: formData.clientDescription
         };
 
-        await axios.put(`${base_url}/clientmain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/clientmain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();

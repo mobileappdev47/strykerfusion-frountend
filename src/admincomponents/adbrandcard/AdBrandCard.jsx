@@ -21,7 +21,7 @@ const AdBrandCard = () => {
     });
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/ourbrands`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/ourbrands`);
             setBrandcardData(response.data.brand);
             setLoading(false)
         } catch (error) {
@@ -61,7 +61,7 @@ const AdBrandCard = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/ourbrands/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/ourbrands/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -92,7 +92,7 @@ const AdBrandCard = () => {
                     formDataToSend.append('images', formData.images[i]);
                 }
 
-                await axios.post(`${base_url}/ourbrands`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/ourbrands`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -125,7 +125,7 @@ const AdBrandCard = () => {
                     formDataToSend.append('images', formData.images[i]);
                 }
 
-                await axios.put(`${base_url}/ourbrands/update/${editItemId}`, formDataToSend); // Use PUT request to update item
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/ourbrands/update/${editItemId}`, formDataToSend); // Use PUT request to update item
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -164,7 +164,7 @@ const AdBrandCard = () => {
                     <div className='d-flex gap-3 mt-4'>
                         {brandcardData?.brandImages?.map((item, index) => (
                             <div key={index}>
-                                <img src={`${base_url}/${item}`} className='img-fluid w-50' alt={`home ${index}`} />
+                                <img src={`${process.env.REACT_APP_BASE_URL}/${item}`} className='img-fluid w-50' alt={`home ${index}`} />
                             </div>
                         ))}
                     </div>

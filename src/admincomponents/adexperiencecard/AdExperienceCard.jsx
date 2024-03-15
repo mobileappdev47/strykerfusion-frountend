@@ -29,7 +29,7 @@ const AdExperienceCard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/experience`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/experience`);
             setExperienceCardData(response.data.data);
             setLoading(false)
         } catch (error) {
@@ -84,7 +84,7 @@ const AdExperienceCard = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/experience/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/experience/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -128,7 +128,7 @@ const AdExperienceCard = () => {
                 formDataToSend.append('experienceDescription', formData.experienceDescription);
                 formDataToSend.append('image', formData.image);
 
-                await axios.post(`${base_url}/experience`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/experience`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -175,7 +175,7 @@ const AdExperienceCard = () => {
                 formDataToSend.append('experienceDescription', formData.experienceDescription);
                 formDataToSend.append('image', formData.image);
 
-                await axios.put(`${base_url}/experience/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/experience/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -220,7 +220,7 @@ const AdExperienceCard = () => {
                         {
                             experiencecardData && experiencecardData.map((item, index) => (
                                 <Card key={index} style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" style={{ width: '6rem' }} src={`${base_url}/${item?.experienceImage}`} />
+                                    <Card.Img variant="top" style={{ width: '6rem' }} src={`${process.env.REACT_APP_BASE_URL}/${item?.experienceImage}`} />
                                     <Card.Body>
                                         <Card.Title>{item?.experienceTitle}</Card.Title>
                                         <Card.Text>{item?.experienceDescription}</Card.Text>

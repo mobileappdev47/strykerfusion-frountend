@@ -84,7 +84,7 @@ const ContactUsForm = () => {
             setErrors(errors);
             return;
         }
-        axios.post(`${base_url}/contact/send`, formData)
+        axios.post(`${process.env.REACT_APP_BASE_URL}/contact/send`, formData)
             .then(response => {
                 setSuccess(true);
                 setError(false);

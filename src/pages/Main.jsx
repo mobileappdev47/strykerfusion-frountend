@@ -31,7 +31,7 @@ const Main = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${base_url}/product`);
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product`);
         setProducts(response?.data?.data || []);
         setIsDataFetched(true);
       } catch (error) {

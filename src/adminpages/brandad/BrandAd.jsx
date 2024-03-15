@@ -20,7 +20,7 @@ const BrandAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/ourbrandsmain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/ourbrandsmain`);
       setBrandData(response.data.data);
     } catch (error) {
       setError(error);
@@ -63,7 +63,7 @@ const BrandAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/ourbrandsmain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/ourbrandsmain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -92,7 +92,7 @@ const BrandAd = () => {
           brandTitle: formData.brandTitle,
         };
 
-        await axios.post(`${base_url}/ourbrandsmain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/ourbrandsmain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -126,7 +126,7 @@ const BrandAd = () => {
           brandTitle: formData.brandTitle,
         };
 
-        await axios.put(`${base_url}/ourbrandsmain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/ourbrandsmain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();

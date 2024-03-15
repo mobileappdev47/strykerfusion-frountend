@@ -10,7 +10,7 @@ const OurBrand = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/ourbrands`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/ourbrands`);
             setBrands(response.data?.brand?.brandImages);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -19,7 +19,7 @@ const OurBrand = () => {
 
     const fetchOurBrandsMain = async () => {
         try {
-            const response = await axios.get(`${base_url}/ourbrandsmain`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/ourbrandsmain`);
             setOurBrands(response.data?.data);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -37,7 +37,7 @@ const OurBrand = () => {
             <Marquee>
                 {
                     brands?.map((item, index) => (
-                        <img key={index} src={`${base_url}/${item}`} className={style.brands} alt='apple' />
+                        <img key={index} src={`${process.env.REACT_APP_BASE_URL}/${item}`} className={style.brands} alt='apple' />
                     ))
                 }
             </Marquee>

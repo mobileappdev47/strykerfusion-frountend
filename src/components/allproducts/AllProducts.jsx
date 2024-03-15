@@ -87,7 +87,7 @@ const Product = ({ item, index }) => {
         variants={variants}
       >
         <div className={style.imagegradient}></div>
-        <img src={`${base_url}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
+        <img src={`${process.env.REACT_APP_BASE_URL}/${item?.productImage}`} className={`${style.productimage} img-fluid`} alt='product' />
         <div className={style.contentbox}>
           <h1 className={style.headingfontimg}>{item?.productTitle}</h1>
           <h1 className={style.imgcontent}>

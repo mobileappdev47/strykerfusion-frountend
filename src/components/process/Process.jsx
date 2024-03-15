@@ -63,7 +63,7 @@ const Process = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/process`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/process`);
             setProcess(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -72,7 +72,7 @@ const Process = () => {
 
     const fetchProcessMain = async () => {
         try {
-            const response = await axios.get(`${base_url}/processmain`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/processmain`);
             setProcessMain(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -124,7 +124,7 @@ const Process = () => {
                                     >
                                         <div className="card-body p-4 h-100">
                                             <div className={`${style.cardimg}`}>
-                                                <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
+                                                <img src={`${process.env.REACT_APP_BASE_URL}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
                                             </div>
                                             <h5 className={`card-title ${style.title}`}>{`${item.title}`}</h5>
                                             <p className={`${style.cardtext} card-text`}>{`${item.description}`}</p>

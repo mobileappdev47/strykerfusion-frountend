@@ -27,7 +27,7 @@ const AdProductCard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/product`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product`);
             setProductData(response.data.data);
             setLoading(false)
         } catch (error) {
@@ -77,7 +77,7 @@ const AdProductCard = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/product/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/product/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -113,7 +113,7 @@ const AdProductCard = () => {
                 formDataToSend.append('productTitle', formData.productTitle);
                 formDataToSend.append('image', formData.image);
 
-                await axios.post(`${base_url}/product`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/product`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -152,7 +152,7 @@ const AdProductCard = () => {
                 formDataToSend.append('productTitle', formData.productTitle);
                 formDataToSend.append('image', formData.image);
 
-                await axios.put(`${base_url}/product/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/product/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -196,7 +196,7 @@ const AdProductCard = () => {
                         {
                             productData && productData.map((item, index) => (
                                 <Card key={index} style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src={`${base_url}/${item?.productImage}`} />
+                                    <Card.Img variant="top" src={`${process.env.REACT_APP_BASE_URL}/${item?.productImage}`} />
                                     <Card.Body>
                                         <Card.Title>{item?.productTitle}</Card.Title>
                                         <div className='mt-4 d-flex gap-3'>

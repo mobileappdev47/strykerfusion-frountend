@@ -37,7 +37,7 @@ const Experience = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/experience`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/experience`);
                 setExperience(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
@@ -46,7 +46,7 @@ const Experience = () => {
         };
         const fetchDataExperienceMain = async () => {
             try {
-                const response = await axios.get(`${base_url}/experiencemain`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/experiencemain`);
                 setExperienceMain(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {
@@ -123,7 +123,7 @@ const Experience = () => {
                                     <div className={`card h-100 ${style.cardbox}`}>
                                         <div className={style.cardimg}>
                                             <img
-                                                src={`${base_url}/${item?.experienceImage}`}
+                                                src={`${process.env.REACT_APP_BASE_URL}/${item?.experienceImage}`}
                                                 alt=""
                                                 className={style.roundedImage}
                                             />

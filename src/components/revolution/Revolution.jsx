@@ -36,7 +36,7 @@ const Revolution = ({ sectionAlignFalse, handleMouseEnter, handleMouseLeave }) =
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/revolution`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/revolution`);
                 setRevolutionData(response?.data?.data || []);
                 setIsDataFetched(true);
             } catch (error) {

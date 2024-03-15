@@ -21,7 +21,7 @@ const ProductAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/productmain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/productmain`);
       setProductData(response.data.data);
     } catch (error) {
       setError(error);
@@ -65,7 +65,7 @@ const ProductAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/productmain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/productmain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -102,7 +102,7 @@ const ProductAd = () => {
           productDescription: formData.productDescription
         };
 
-        await axios.post(`${base_url}/productmain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/productmain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -144,7 +144,7 @@ const ProductAd = () => {
           productDescription: formData.productDescription
         };
 
-        await axios.put(`${base_url}/productmain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/productmain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -195,7 +195,7 @@ const ProductAd = () => {
         <div className='d-flex gap-3 mt-4'>
           {productData?.images?.map((item, index) => (
             <div key={index}>
-              <img src={`${base_url}/${item}`} className='img-fluid w-50' alt={`product ${index}`} />
+              <img src={`${process.env.REACT_APP_BASE_URL}/${item}`} className='img-fluid w-50' alt={`product ${index}`} />
             </div>
           ))}
         </div>

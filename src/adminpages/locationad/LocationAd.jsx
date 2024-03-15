@@ -21,7 +21,7 @@ const LocationAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/locationmain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/locationmain`);
       setLocationData(response.data.data);
     } catch (error) {
       setError(error);
@@ -65,7 +65,7 @@ const LocationAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/locationmain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/locationmain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -102,7 +102,7 @@ const LocationAd = () => {
           locationDescription: formData.locationDescription
         };
 
-        await axios.post(`${base_url}/locationmain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/locationmain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -144,7 +144,7 @@ const LocationAd = () => {
           locationDescription: formData.locationDescription
         };
 
-        await axios.put(`${base_url}/locationmain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/locationmain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();

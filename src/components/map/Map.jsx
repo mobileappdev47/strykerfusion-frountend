@@ -18,7 +18,7 @@ const Map = ({ setTooltipContent }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${base_url}/location`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/location`);
                 setIsDataFetched(true);
                 const formattedData = response?.data?.data?.map((item) => ({
                     locationname: item?.locationname,
@@ -32,7 +32,7 @@ const Map = ({ setTooltipContent }) => {
         };
         const fetchDataLocationMain = async () => {
             try {
-                const response = await axios.get(`${base_url}/locationmain`);
+                const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/locationmain`);
                 setLocationMain(response?.data?.data)
                 setIsDataFetched(true);
             } catch (error) {

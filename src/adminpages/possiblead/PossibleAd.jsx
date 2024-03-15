@@ -20,7 +20,7 @@ const PossibleAd = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/possible`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/possible`);
             setPossibleData(response.data.data);
         } catch (error) {
             setError(error);
@@ -64,7 +64,7 @@ const PossibleAd = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/possible/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/possible/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -101,7 +101,7 @@ const PossibleAd = () => {
                     possibleDescription: formData.possibleDescription
                 };
 
-                await axios.post(`${base_url}/possible`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/possible`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -143,7 +143,7 @@ const PossibleAd = () => {
                     possibleDescription: formData.possibleDescription
                 };
 
-                await axios.put(`${base_url}/possible/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/possible/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -193,7 +193,7 @@ const PossibleAd = () => {
                 <div className='d-flex gap-3 mt-4'>
                     {possibleData?.images?.map((item, index) => (
                         <div key={index}>
-                            <img src={`${base_url}/${item}`} className='img-fluid w-50' alt={`product ${index}`} />
+                            <img src={`${process.env.REACT_APP_BASE_URL}/${item}`} className='img-fluid w-50' alt={`product ${index}`} />
                         </div>
                     ))}
                 </div>

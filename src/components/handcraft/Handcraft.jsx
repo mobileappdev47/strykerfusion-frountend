@@ -52,7 +52,7 @@ const Handcraft = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/home`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/home`);
       setHomeData(response.data.home);
     } catch (error) {
       console.error('Error fetching home data:', error);
@@ -131,7 +131,7 @@ const Handcraft = () => {
               {homeData?.images?.map((image, index) => (
                 <SwiperSlide key={index} className='bg-transparent d-flex justify-content-center align-items-center'>
                   <motion.img
-                    src={`${base_url}/${image}`}
+                    src={`${process.env.REACT_APP_BASE_URL}/${image}`}
                     alt={`Slide ${index}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}

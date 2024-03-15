@@ -29,7 +29,7 @@ const AdProcessCard = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/process`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/process`);
             setProcessCardData(response.data.data);
             setLoading(false)
         } catch (error) {
@@ -84,7 +84,7 @@ const AdProcessCard = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`${base_url}/process/delete/${deleteItemId}`);
+            await axios.delete(`${process.env.REACT_APP_BASE_URL}/process/delete/${deleteItemId}`);
             setShowDeleteModal(false);
             setShowSuccessModal(true);
             fetchData();
@@ -128,7 +128,7 @@ const AdProcessCard = () => {
                 formDataToSend.append('description', formData.description);
                 formDataToSend.append('image', formData.image);
 
-                await axios.post(`${base_url}/process`, formDataToSend);
+                await axios.post(`${process.env.REACT_APP_BASE_URL}/process`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -175,7 +175,7 @@ const AdProcessCard = () => {
                 formDataToSend.append('description', formData.description);
                 formDataToSend.append('image', formData.image);
 
-                await axios.put(`${base_url}/process/update/${editItemId}`, formDataToSend);
+                await axios.put(`${process.env.REACT_APP_BASE_URL}/process/update/${editItemId}`, formDataToSend);
                 setShowSuccessModal(true);
                 handleCloseModal();
                 fetchData();
@@ -222,7 +222,7 @@ const AdProcessCard = () => {
                         {
                             processcardData && processcardData.map((item, index) => (
                                 <Card key={index} style={{ width: '18rem' }}>
-                                    <Card.Img variant="top" src={`${base_url}/${item?.image}`} />
+                                    <Card.Img variant="top" src={`${process.env.REACT_APP_BASE_URL}/${item?.image}`} />
                                     <Card.Body>
                                         <Card.Title>{item?.title}</Card.Title>
                                         <Card.Text>{item?.description}</Card.Text>

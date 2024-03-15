@@ -21,7 +21,7 @@ const ExperienceAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/experiencemain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/experiencemain`);
       setExperienceData(response.data.data);
     } catch (error) {
       setError(error);
@@ -65,7 +65,7 @@ const ExperienceAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/experiencemain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/experiencemain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -102,7 +102,7 @@ const ExperienceAd = () => {
           experienceDescription: formData.experienceDescription
         };
 
-        await axios.post(`${base_url}/experiencemain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/experiencemain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -144,7 +144,7 @@ const ExperienceAd = () => {
           experienceDescription: formData.experienceDescription
         };
 
-        await axios.put(`${base_url}/experiencemain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/experiencemain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();

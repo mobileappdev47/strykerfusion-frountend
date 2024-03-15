@@ -31,7 +31,7 @@ const LoginAd = () => {
         validationSchema: validationSchema,
         onSubmit: async (values) => {
             try {
-                const response = await axios.post(`${base_url}/user/login-user`, {
+                const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login-user`, {
                     email: values.email,
                     password: values.password,
                 });

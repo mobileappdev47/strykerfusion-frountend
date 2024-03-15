@@ -8,7 +8,7 @@ const ProductsHeader = ({handleMouseEnter, handleMouseLeave}) => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${base_url}/productmain`);
+            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/productmain`);
             setProductMain(response.data?.data);
         } catch (error) {
             console.error('Error fetching home data:', error);

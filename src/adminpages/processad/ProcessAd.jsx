@@ -21,7 +21,7 @@ const ProcessAd = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${base_url}/processmain`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/processmain`);
       setProcessData(response.data.data);
     } catch (error) {
       setError(error);
@@ -65,7 +65,7 @@ const ProcessAd = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`${base_url}/processmain/delete/${deleteItemId}`);
+      await axios.delete(`${process.env.REACT_APP_BASE_URL}/processmain/delete/${deleteItemId}`);
       setShowDeleteModal(false);
       setShowSuccessModal(true);
       fetchData();
@@ -102,7 +102,7 @@ const ProcessAd = () => {
           processDescription: formData.processDescription
         };
 
-        await axios.post(`${base_url}/processmain`, formDataToSend);
+        await axios.post(`${process.env.REACT_APP_BASE_URL}/processmain`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();
@@ -144,7 +144,7 @@ const ProcessAd = () => {
           processDescription: formData.processDescription
         };
 
-        await axios.put(`${base_url}/processmain/update/${editItemId}`, formDataToSend);
+        await axios.put(`${process.env.REACT_APP_BASE_URL}/processmain/update/${editItemId}`, formDataToSend);
         setShowSuccessModal(true);
         handleCloseModal();
         fetchData();

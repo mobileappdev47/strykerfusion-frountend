@@ -89,7 +89,7 @@ const Products = ({ item, index, handleMouseEnter, handleMouseLeave }) => {
           <div className={style.imagegradient}></div>
           <motion.img
             className={`h-100 w-100`}
-            src={`${base_url}/${item?.productImage}`}
+            src={`${process.env.REACT_APP_BASE_URL}/${item?.productImage}`}
             alt='product'
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
