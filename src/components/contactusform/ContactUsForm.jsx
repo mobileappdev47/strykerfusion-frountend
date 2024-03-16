@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import style from './contactusform.module.css'
 import { Button, Form } from 'react-bootstrap'
 import axios from 'axios'
-import { base_url } from '../../config/Base_url'
 import emailjs from "@emailjs/browser";
 
 const ContactUsForm = () => {

@@ -9,19 +9,24 @@
   --bs-gutter-x: 0 !important;
 }
 
-html {
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth; /* Ensures smooth scrolling */
-  transition: scroll-snap-type 1.5s cubic-bezier(0.33, 1, 0.68, 1); /* Apply custom easing */
+html.lenis, html.lenis body {
+  height: auto;
 }
 
-/* Smooth scrolling for elements with class .scroll-snap-center */
-.scroll-snap-center {
-  scroll-snap-align: start;
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
 }
 
-.product-section{
-  height: 100%;
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 ::-webkit-scrollbar {
@@ -171,12 +176,12 @@ p {
   display: none;
 }
 
-#product,
 #allproduct,
 #regexeprience,
 #map,
 #brandandprocess {
   height: 100vh;
+  position: sticky;
 }
 
 @media only screen and (max-width: 600px) {

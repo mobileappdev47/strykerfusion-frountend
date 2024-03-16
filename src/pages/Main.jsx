@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { base_url } from '../config/Base_url';
+import React, { useEffect, useState} from 'react';
 import Sidebar from '../components/sidebar/Sidebar';
 import Header from '../components/header/Header';
 import Handcraft from '../components/handcraft/Handcraft';
@@ -8,7 +7,6 @@ import OurBrand from '../components/ourbrands/OurBrand';
 import Revolution from '../components/revolution/Revolution';
 import ProductsHeader from '../components/productsheader/ProductsHeader';
 import Products from '../components/products/Products';
-import AllProducts from '../components/allproducts/AllProducts';
 import Register from '../components/register/Register';
 import Experience from '../components/experience/Experience';
 import Map from '../components/map/Map';
@@ -17,32 +15,15 @@ import OurClients from '../components/ourclients/OurClients';
 import ContactUsForm from '../components/contactusform/ContactUsForm';
 import Footer from '../components/footer/Footer';
 import ContactUs from '../components/contactus/ContactUs';
-import axios from 'axios';
+import Lenis from '@studio-freight/lenis';
+import ZoomParallax from '../components/zoomparallax/ZoomParallax';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import gsap from 'gsap';
 
 const Main = () => {
-
   const [showNewSection, setShowNewSection] = useState(false);
   const [content, setContent] = useState('');
-  const [products, setProducts] = useState([]);
-  const [isDataFetched, setIsDataFetched] = useState(false);
-  const [isDelaying, setIsDelaying] = useState(false);
-  const [visibleProductIndex, setVisibleProductIndex] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product`);
-        setProducts(response?.data?.data || []);
-        setIsDataFetched(true);
-      } catch (error) {
-        console.error('Error fetching product data:', error);
-      }
-    };
-
-    if (!isDataFetched) {
-      fetchData();
-    }
-  }, [isDataFetched]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,47 +38,30 @@ const Main = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const handleProductMouseEnter = () => {
-    if (!isDelaying) { // Check if delaying is false before adding the class
-      const productSections = document.querySelectorAll('.product-section');
-      productSections.forEach(section => {
-        section.classList.add('scroll-snap-center');
-      });
-    }
-  };
-
-  const handleProductMouseLeave = () => {
-    const productSections = document.querySelectorAll('.product-section');
-    productSections.forEach(section => {
-      section.classList.remove('scroll-snap-center');
+  useEffect(() => {
+    const lenis = new Lenis();
+    lenis.on('scroll', () => {
     });
-  };
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    gsap.ticker.lagSmoothing(0);
+  }, []);
 
   return (
     <>
-      <section id="homepage">{showNewSection ? <Sidebar /> : <Header setIsDelaying={setIsDelaying} />}<Handcraft /></section>
+      <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
       <section id="brandandprocess"><OurBrand /> <Process /></section>
-      <section id="revolution" className="product-section" handleMouseEnter={handleProductMouseEnter}
-        handleMouseLeave={handleProductMouseLeave}><Revolution /></section>
+      <section id="revolution" className="product-section"><Revolution /></section>
       <div className='position-relative'>
-        <ProductsHeader handleMouseEnter={handleProductMouseEnter}
-          handleMouseLeave={handleProductMouseLeave} />
-        {products.map((item, index) => (
-          <section key={`product-${index}`} className="product-section" id='product'>
-            <Products item={item} index={index} handleMouseEnter={handleProductMouseEnter}
-              handleMouseLeave={handleProductMouseLeave} />
-          </section>
-        ))}
-        {[...Array(Math.ceil(products.length / 4)).keys()].map((batchIndex, index) => (
-          <section key={`allproduct-${index}`} className="product-section" id='allproduct'>
-            <AllProducts
-              key={`batch-${batchIndex}`}
-              products={products.slice(batchIndex * 4, (batchIndex + 1) * 4)}
-              handleMouseEnter={handleProductMouseEnter}
-              handleMouseLeave={handleProductMouseLeave}
-            />
-          </section>
-        ))}
+        <ProductsHeader />
+        <section key={`product`} className="product-section" id='product'>
+          <Products />
+        </section>
       </div>
       <section id="regexeprience" className="product-section"><Register /> <Experience /></section>
       <section id="map">
@@ -106,7 +70,9 @@ const Main = () => {
       </section>
       <section id="ourclient"><OurClients /></section>
       {showNewSection && <section id="contactusform"><ContactUsForm /></section>}
-      <section id="contactus"><ContactUs /><Footer setIsDelaying={setIsDelaying} /></section>
+      <section id="contactus"><ContactUs /><Footer /></section>
+      {/* <ZoomParallax /> */}
+
     </>
   );
 };

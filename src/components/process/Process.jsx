@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import style from './process.module.css';
-import pre from '../../assets/prearrow.png';
-import next from '../../assets/nextarrow.png';
 import { base_url } from '../../config/Base_url';
 import axios from 'axios';
 import { Pagination, Navigation } from 'swiper/modules';
@@ -63,7 +61,7 @@ const Process = () => {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/process`);
+            const response = await axios.get(`${base_url}/process`);
             setProcess(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -72,7 +70,7 @@ const Process = () => {
 
     const fetchProcessMain = async () => {
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/processmain`);
+            const response = await axios.get(`${base_url}/processmain`);
             setProcessMain(response?.data?.data || []);
         } catch (error) {
             console.error('Error fetching home data:', error);
@@ -124,7 +122,7 @@ const Process = () => {
                                     >
                                         <div className="card-body p-4 h-100">
                                             <div className={`${style.cardimg}`}>
-                                                <img src={`${process.env.REACT_APP_BASE_URL}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
+                                                <img src={`${base_url}/${item.image}`} style={{ borderRadius: '9px' }} className={`card-img-top h-100 `} alt="..." />
                                             </div>
                                             <h5 className={`card-title ${style.title}`}>{`${item.title}`}</h5>
                                             <p className={`${style.cardtext} card-text`}>{`${item.description}`}</p>

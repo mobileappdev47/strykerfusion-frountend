@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@bsmnt/scrollytelling": "^0.3.3",
     "@emailjs/browser": "^4.1.0",
     "@gsap/react": "^2.1.0",
     "@studio-freight/hamo": "^0.6.28",
@@ -17,6 +18,7 @@
     "clsx": "^2.1.0",
     "formik": "^2.4.5",
     "framer-motion": "^11.0.3",
+    "gsap": "^3.12.5",
     "locomotive-scroll": "^5.0.0-beta.11",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.1",
@@ -29,6 +31,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
     "react-scroll-motion": "^0.3.3",
+    "react-scroll-parallax": "^3.4.5",
     "react-simple-maps": "^3.0.0",
     "react-tooltip": "^5.26.3",
     "swiper": "^11.0.6",

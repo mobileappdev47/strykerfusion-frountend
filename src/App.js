@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import PrivateRoutes from './privateroute/PrivateRoute';
@@ -17,7 +17,7 @@ import Layout from '../src/admincomponents/layout/Layout';
 import Main from './pages/Main';
 
 function App() {
-
+  
 
   return (
     <>
