@@ -19,6 +19,7 @@ import Lenis from '@studio-freight/lenis';
 import ZoomParallax from '../components/zoomparallax/ZoomParallax';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
+import AllProducts from '../components/allproducts/AllProducts';
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -52,6 +53,8 @@ const Main = () => {
     gsap.ticker.lagSmoothing(0);
   }, []);
 
+  
+
   return (
     <>
       <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
@@ -59,11 +62,11 @@ const Main = () => {
       <section id="revolution" className="product-section"><Revolution /></section>
       <div className='position-relative'>
         <ProductsHeader />
-        <section key={`product`} className="product-section" id='product'>
+        <section key={`product`} className="mt-0" id='product'>
           <Products />
         </section>
       </div>
-      <section id="regexeprience" className="product-section"><Register /> <Experience /></section>
+      <section id="regexeprience" className="mt-5"><Register /> <Experience /></section>
       <section id="map">
         <Map setTooltipContent={setContent} />
         <Tooltip id="my-tooltip">{content}</Tooltip>
