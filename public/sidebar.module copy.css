@@ -1,0 +1,92 @@
+.sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    background: #FFF;
+    box-shadow: 0px 4px 24px 0px #C0C0C01F;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 100px;
+}
+
+.bg {
+    z-index: 999;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 400px;
+    background-color: white;
+    opacity: 0.9;
+}
+
+.links {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.button {
+    z-index: 999;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 1300px) {
+    .sidebar {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .profileimg {
+        width: 250px;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .profileimg {
+        height: 60px;
+        width: 225px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .sidebar {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .bg {
+        width: 76%;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .bg {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .button{
+        right: 10px;
+    }
+    .profileimg {
+        height: 50px;
+        width: 175px;
+    }
+}

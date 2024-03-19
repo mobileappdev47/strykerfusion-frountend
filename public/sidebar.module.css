@@ -1,0 +1,214 @@
+.sidebarmain{
+    background-color: #27374D;
+}
+
+.bggradient {
+    background: #DDE6ED;
+    color: #27374D !important;
+    padding: 7PX;
+}
+
+.bggradient svg path {
+    stroke: #27374D !important;
+}
+
+.marginlogo {
+    background-color: #DDE6ED;
+    margin-bottom: 2rem;
+}
+
+.logoimage{
+    width: 250px;
+}
+
+.startpadding {
+    padding-left: 4rem;
+}
+
+.userinfo {
+    margin: 85px 70px;
+}
+
+.closebtn {
+    border: 1px solid #5B93FF;
+    color: #5B93FF;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 7px 25px;
+}
+
+.createbtn {
+    border: 1px solid #5B93FF;
+    color: white;
+    border-radius: 10px;
+    background-color: #5B93FF;
+    padding: 7px 25px;
+}
+
+.toggle {
+    font-size: 30px;
+}
+
+.sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.open {
+    transform: translateX(0);
+    position: fixed;
+    width: inherit;
+    top: 0;
+    bottom: 0;
+}
+
+.navlinkpadding {
+    padding: 7px;
+}
+
+.closed {
+    transform: translateX(-100%);
+}
+
+@media (max-width: 1440px) {
+    .startpadding {
+        padding-left: 3rem;
+    }
+
+    .marginlogo {
+        margin-bottom: 0.5rem !important;
+    }
+
+    .navlinkpadding {
+        padding: 3px !important;
+    }
+
+    .bggradient {
+        padding: 3px !important;
+    }
+
+    .userinfo {
+        margin-top: 4rem !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .startpadding {
+        padding-left: 4rem;
+    }
+
+    .fontSizeRouter {
+        font-size: 20px;
+    }
+
+    .marginlogo {
+        margin-bottom: 10px !important;
+    }
+}
+
+@media (max-width: 850px) {
+    .userinfo {
+        display: none !important;
+    }
+
+    .sidebarmenu {
+        text-align: center;
+    }
+
+    .startpadding {
+        padding-left: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .toggleheader {
+        margin-left: 30px !important;
+    }
+
+    .togglemenu {
+        margin-left: 50px !important;
+    }
+}
+
+@media (max-width: 765px) {
+    .sideBarDiv {
+        width: 50% !important;
+    }
+
+    .startpadding {
+        display: inline-flex !important;
+        padding: 0;
+    }
+
+    .toggleheader {
+        margin-left: 60px;
+    }
+
+    .togglemenu {
+        margin-left: 80px;
+    }
+
+    .userinfo {
+        display: none !important;
+    }
+
+    .fontSizeRouter {
+        display: none !important;
+    }
+
+    .togglebtn {
+        padding: 0;
+        margin: 0;
+    }
+
+    .togglebtn svg {
+        font-size: 25px;
+        color: rgb(154, 154, 169);
+    }
+
+    .marginlogo {
+        margin-top: 1rem !important;
+        margin-bottom: 0 !important;
+    }
+
+    .sidebarMenu {
+        display: none;
+    }
+
+    .toggle {
+        position: absolute;
+        left: 22rem;
+    }
+}
+
+@media (max-width: 425px) {
+
+    .toggleheader {
+        margin-left: 0 !important;
+    }
+
+    .togglemenu {
+        margin-left: 20px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .toggle {
+        position: absolute;
+        left: 16rem;
+    }
+
+    .sideBarDiv {
+        width: 65% !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .toggle {
+        position: absolute;
+        left: 16rem;
+    }
+
+    .fontSizeRouter {
+        font-size: 10px;
+    }
+}

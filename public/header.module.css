@@ -1,0 +1,90 @@
+.header {
+    background: #FFF;
+    box-shadow: 0px 4px 24px 0px #C0C0C01F;
+    padding-left: 60px;
+    padding-right: 60px;
+    height: 100px;
+}
+
+.headermenu {
+    color: #08132D !important;
+    margin-left: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.togglemenulist {
+    display: contents;
+    text-align: center;
+}
+
+.togglebtn {
+    border: 0;
+}
+
+.headermenutoggle {
+    padding: 15px;
+    font-size: 16px;
+}
+
+.togglebtn:focus {
+    box-shadow: none !important;
+}
+
+.getquotebtn {
+    background-color: #265EE1;
+    color: #FFFFF0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 1440px) {
+    .headermenu {
+        margin-left: 25px;
+    }
+
+    .getquotebtn {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .headermenu {
+        margin-left: 15px;
+    }
+
+    .getquotebtn {
+        margin-left: 20px;
+    }
+
+    .header {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .profileimg {
+        width: 250px;
+    }
+
+    .getquotebtn {
+        margin-left: 0 !important;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .profileimg {
+        height: 60px;
+        width: 225px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
