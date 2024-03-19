@@ -1,1 +1,1 @@
-export const base_url = 'https://strykerfusion-api.appdevelop.in/api'
+export const base_url = 'http://64.227.155.157/api'
