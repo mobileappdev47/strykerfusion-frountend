@@ -3,7 +3,6 @@ import style from './revolution.module.css'
 import revolutionman from '../../assets/revolutionman.png'
 import { motion } from 'framer-motion'
 import axios from 'axios'
-import { base_url } from '../../config/Base_url'
 
 const Revolution = ({ sectionAlignFalse, handleMouseEnter, handleMouseLeave }) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -16,7 +15,6 @@ const Revolution = ({ sectionAlignFalse, handleMouseEnter, handleMouseLeave }) =
             ([entry]) => {
                 setIsVisible(entry.isIntersecting);
                 if (entry.isIntersecting) {
-                    // sectionAlignFalse(); 
                 }
             },
             {
@@ -28,6 +26,7 @@ const Revolution = ({ sectionAlignFalse, handleMouseEnter, handleMouseLeave }) =
         }
         return () => {
             if (ref.current) {
+                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };

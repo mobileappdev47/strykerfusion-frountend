@@ -5,7 +5,6 @@ import style from './map.module.css';
 import { ComposableMap, Geographies, Geography, Marker } from 'react-simple-maps';
 import jsonfile from '../../assets/features.json';
 import axios from 'axios';
-import { base_url } from '../../config/Base_url';
 
 const Map = ({ setTooltipContent }) => {
     const [areMarkersVisible, setAreMarkersVisible] = useState(false);

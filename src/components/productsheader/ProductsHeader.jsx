@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './productsheader.module.css'
 import axios from 'axios';
-import { base_url } from '../../config/Base_url';
 
 const ProductsHeader = ({handleMouseEnter, handleMouseLeave}) => {
     const [productMain, setProductMain] = useState([]);

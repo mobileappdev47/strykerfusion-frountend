@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { base_url } from '../../config/Base_url';
 import axios from 'axios';
 import { Button, Form, Modal, Alert } from 'react-bootstrap';
 import styles from './experiencead.module.css';

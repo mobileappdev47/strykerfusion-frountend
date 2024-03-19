@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import style from './ourbrands.module.css'
 import Marquee from 'react-fast-marquee'
-import { base_url } from '../../config/Base_url'
 import axios from 'axios'
 
 const OurBrand = () => {

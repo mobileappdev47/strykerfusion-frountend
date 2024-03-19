@@ -7,7 +7,6 @@ import { FaRegEye } from "react-icons/fa";
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import logo from '../../assets/logo.png'
-import { base_url } from '../../config/Base_url';
 
 const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),

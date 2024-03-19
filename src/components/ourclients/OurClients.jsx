@@ -5,7 +5,6 @@ import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import axios from 'axios';
-import { base_url } from '../../config/Base_url';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const OurClients = () => {
@@ -31,6 +30,7 @@ const OurClients = () => {
         }
         return () => {
             if (ref.current) {
+                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };

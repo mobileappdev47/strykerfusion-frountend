@@ -16,10 +16,8 @@ import ContactUsForm from '../components/contactusform/ContactUsForm';
 import Footer from '../components/footer/Footer';
 import ContactUs from '../components/contactus/ContactUs';
 import Lenis from '@studio-freight/lenis';
-import ZoomParallax from '../components/zoomparallax/ZoomParallax';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
-import AllProducts from '../components/allproducts/AllProducts';
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);

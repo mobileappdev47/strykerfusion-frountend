@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import styles from './register.module.css';
 import axios from 'axios';
-import { base_url } from '../../config/Base_url';
 
 const Register = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -24,6 +23,7 @@ const Register = () => {
         }
         return () => {
             if (ref.current) {
+                // eslint-disable-next-line
                 observer.unobserve(ref.current);
             }
         };
