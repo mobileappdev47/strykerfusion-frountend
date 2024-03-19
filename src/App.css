@@ -184,6 +184,7 @@ p {
   position: sticky;
 }
 
+
 @media only screen and (max-width: 600px) {
   #map {
     height: 90vh;

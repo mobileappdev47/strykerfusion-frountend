@@ -20,9 +20,15 @@ const Products = () => {
   }, []);
 
   const container = useRef(null);
-  const { scrollYProgress, scrollX } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: container,
     offset: ['start start', 'end end']
+  });
+
+  const container1 = useRef(null);
+  const { scrollY } = useScroll({
+    target: container1,
+    offset: ['start end', 'start start']
   });
 
   const scales = [
@@ -37,19 +43,15 @@ const Products = () => {
 
   const tops = [
     useTransform(scrollYProgress, [0, 1], ['30%', '0%']),
+    useTransform(scrollYProgress, [0, 1], ['50%', '0%']),
+    useTransform(scrollYProgress, [0, 1], ['30%', '0%']),
+    useTransform(scrollYProgress, [0, 1], ['30%', '0%']),
+    useTransform(scrollYProgress, [0, 1], ['50%', '0%']),
   ]
 
   const bottoms = [
     useTransform(scrollYProgress, [0, 1], ['100%', '30%'])
   ]
-
-  const heights = [
-    useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-  ];
-
-  const widths = [
-    useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-  ];
 
   const opacities = [
     useTransform(scrollYProgress, [1, 1, 1], [1, 1, 1]),
@@ -62,34 +64,50 @@ const Products = () => {
   // Rearrange the products array to place the last image at the beginning
   const rearrangedProducts = products.length > 0 ? [products[products.length - 1], ...products.slice(0, products.length - 1)] : [];
   const firstMapProducts = products.slice(0, products.length - 1);
-
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.5 },
+    visible: { opacity: 1, scale: 1 }
+  };
+  
   return (
     <>
       <div>
-        {firstMapProducts.map((product, index) => (
-          <div key={index}>
-            <div className={`${style.maindiv}`}>
-              <div className={`product-item ${style.imgsection} mb-4 mx-sm-3`}>
-                <div className={style.imagegradient}></div>
-                <img
-                  className={`h-100 w-100`}
-                  src={`${process.env.REACT_APP_BASE_URL}/${product?.productImage}`}
-                  alt='product'
-                />
-                <div className={style.contentbox}>
-                  <h1 className={style.imgheadingfont}>{product?.productTitle}</h1>
-                  <h1 className={style.imgcontent}>View Project</h1>
-                </div>
+        <div>
+          {firstMapProducts.map((product, index) => (
+            <div key={index}>
+              <div className={`${style.maindiv}`}>
+              <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  variants={imageVariants}
+                  transition={{ duration: 0.5 }}
+                  className={`${style.imgsection} mx-sm-3`}>
+                  <div className=''>
+                    <div className={style.imagegradient}></div>
+                    <img
+                      className={style.singleproimg}
+                      src={`${process.env.REACT_APP_BASE_URL}/${product?.productImage}`}
+                      alt='product'
+                    />
+                  </div>
+                  <div className={style.contentbox}>
+                    <h1 className={style.imgheadingfont}>{product?.productTitle}</h1>
+                    <h1 className={style.imgcontent}>View Project</h1>
+                  </div>
+                </motion.div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <div ref={container} className={style.container}>
           <div className={`row ${style.sticky}`}>
             {rearrangedProducts?.map(({ productImage, productTitle }, index) => (
               <motion.div
                 key={index}
-                style={{ scale: scales[index], opacity: opacities[index], top: tops[index], bottom: bottoms[index]}}
+                style={{
+                  scale: scales[index],
+                  opacity: opacities[index], top: tops[index], bottom: bottoms[index]
+                }}
                 className={`${style.el}`}
               >
                 <div className={style.imageContainer} >

@@ -1,6 +1,6 @@
+
 .maindiv {
   padding-top: 0px;
-  height: 100%;
   display: flex;
   justify-content: end;
   align-items: center;
@@ -9,15 +9,20 @@
 
 .imgsection {
   position: relative;
-  top: -10px;
-  height: 70%;
-  width: 70%;
+  /* top: -10px; */
+  height: 93vh;
+  width: 100%;
+}
+
+.singleproimg{
+  width: 100%;
+  height: 93vh;
 }
 
 .imagegradient {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
   border-radius: 8px;
   z-index: 1;
@@ -161,7 +166,7 @@
 /* all product css  */
 .container {
   height: 300vh;
-  position: relative;
+  position: sticky;
 }
 
 .sticky{
