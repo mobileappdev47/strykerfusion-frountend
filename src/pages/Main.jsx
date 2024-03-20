@@ -72,8 +72,6 @@ const Main = () => {
       <section id="ourclient"><OurClients /></section>
       {showNewSection && <section id="contactusform"><ContactUsForm /></section>}
       <section id="contactus"><ContactUs /><Footer /></section>
-      {/* <ZoomParallax /> */}
-
     </>
   );
 };
