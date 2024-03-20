@@ -28,7 +28,7 @@ const SingleProduct = () => {
     useEffect(() => {
         if (products.length > 0) {
             let ctx = gsap.context(() => {
-                gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 0.5 });
+                gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 1 });
 
                 const animation = gsap.to(".photo:not(:first-child)", {
                     opacity: 1,
@@ -52,6 +52,8 @@ const SingleProduct = () => {
     }, [products]);
 
     const firstMapProducts = products.slice(0, products.length - 1);
+
+    console.log(firstMapProducts);
 
     return (
         <React.Fragment>

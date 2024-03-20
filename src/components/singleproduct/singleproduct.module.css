@@ -26,14 +26,12 @@
   height: 100%;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
   border-radius: 8px;
-  z-index: 1;
   }
   
   .contentbox {
     position: absolute;
     bottom: 5%;
     left: 3%;
-    z-index: 1;
   }
   
   .imgheadingfont {
