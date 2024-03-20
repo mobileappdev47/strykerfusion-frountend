@@ -1,4 +1,5 @@
 
+
 .maindiv {
   padding-top: 0px;
   display: flex;
@@ -9,7 +10,7 @@
 
 .imgsection {
   position: relative;
-  /* top: -10px; */
+  top: -10px;
   height: 93vh;
   width: 100%;
 }
@@ -165,8 +166,7 @@
 
 /* all product css  */
 .container {
-  height: 300vh;
-  position: sticky;
+  height: 350vh;
 }
 
 .sticky{

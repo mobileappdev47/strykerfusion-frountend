@@ -5,7 +5,10 @@
   "dependencies": {
     "@bsmnt/scrollytelling": "^0.3.3",
     "@emailjs/browser": "^4.1.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
     "@gsap/react": "^2.1.0",
+    "@mui/material": "^5.15.14",
     "@studio-freight/hamo": "^0.6.28",
     "@studio-freight/lenis": "^1.0.39",
     "@studio-freight/react-lenis": "^0.0.45",

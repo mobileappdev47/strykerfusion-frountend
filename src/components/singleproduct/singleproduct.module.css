@@ -1,0 +1,165 @@
+
+  .maindiv {
+    padding-top: 0px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .imgsection {
+    position: relative;
+  /* top: -10px; */
+  height: 85vh;
+  width: 100%;
+  }
+  
+  .singleproimg{
+    width: 100%;
+    height: 85vh;
+  }
+
+  .imagegradient {
+    position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  border-radius: 8px;
+  z-index: 1;
+  }
+  
+  .contentbox {
+    position: absolute;
+    bottom: 5%;
+    left: 3%;
+    z-index: 1;
+  }
+  
+  .imgheadingfont {
+    color: #FFFFFF;
+    font-size: 34px;
+    font-weight: 500;
+  }
+  
+  .imgcontent {
+    color: #FFFFFF;
+    font-size: 14px;
+    width: fit-content;
+    font-weight: 500;
+    border-bottom: 1px solid #FFFFFF;
+    cursor: pointer;
+  }
+  
+  .productimage {
+    height: 100%;
+    width: 100%;
+  }
+  
+  .headingfontimg {
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  
+  .contentimg {
+    color: #FFFFFF;
+    font-size: 0.5vw;
+    font-weight: 500;
+    border-bottom: 1px solid #FFFFFF;
+    width: fit-content;
+  }
+  
+  @media only screen and (max-width: 1200px) {
+    .allimgsection {
+      width: 100%;
+    }
+  }
+  
+    @media only screen and (max-width: 990px) {
+      .headingfontimg {
+        font-size: 20px !important;
+      }
+  
+      .headingfont {
+        font-size: 28px;
+      }
+  
+      .allimgcontent {
+        font-size: 12px;
+      }
+  
+      .content {
+        font-size: 14px;
+      }
+  
+      .maindiv {
+        padding: 20px;
+      }
+  
+      .imgcontent {
+        font-size: 12px;
+      }
+  
+    }
+  
+    @media only screen and (max-width: 600px) {
+      .maindiv {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+  
+      .headingfontimg {
+        font-size: 18px !important;
+      }
+  
+      .products {
+        height: 35%;
+      }
+    }
+  
+    @media only screen and (max-width: 425px) {
+      .imgheadingfont {
+        font-size: 18px;
+      }
+  
+      .headingfontimg {
+        font-size: 14px !important;
+        margin-bottom: 2px;
+      }
+  
+      .headingfont {
+        font-size: 25px;
+      }
+  
+      .content {
+        font-size: 13px;
+      }
+  
+      .allimgcontent {
+        font-size: 10px;
+      }
+    }
+  
+    @media only screen and (max-width: 320px) {
+      .imgheadingfont {
+        font-size: 14px;
+      }
+  
+      .headingfontimg {
+        font-size: 10px !important;
+        margin-bottom: 2px;
+      }
+  
+      .headingfont {
+        font-size: 25px;
+      }
+  
+      .imgcontent {
+        font-size: 10px;
+      }
+  
+      .allimgcontent {
+        font-size: 8px;
+      }
+    }
