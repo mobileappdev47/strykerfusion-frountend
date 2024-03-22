@@ -80,7 +80,20 @@
   }
 }
 
+@media only screen and (max-width:768px) {
+  .container{
+    position: relative;
+    top: -20%;
+    height: 60%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
+  .container{
+    position: relative;
+    top: -20%;
+    height: 60%;
+  }
   .contentfont {
     font-size: 16px;
   }
@@ -91,6 +104,10 @@
 }
 
 @media only screen and (max-width: 510px) {
+  .container{
+    position: relative;
+    top: -25%;
+  }
   .contentfont {
     font-size: 14px;
   }
@@ -101,7 +118,6 @@
 }
 
 @media only screen and (max-width: 425px) {
-
   .registerbtn,
   .contactbtn {
     font-size: 14px;

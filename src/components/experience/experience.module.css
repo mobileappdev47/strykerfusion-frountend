@@ -2,8 +2,10 @@
     padding-left: 60px;
     padding-top: 30px;
     padding-bottom: 30px;
-    height: 50%;
+    height: 60%;
     background-color: #F2F2F2;
+    /* position: relative; */
+    /* top: -10%; */
 }
 
 .learnmorebtn {
@@ -41,7 +43,7 @@
 .imagegradient {
     position: absolute;
     width: 13%;
-    height: 45%;
+    height: 25%;
     background: linear-gradient(270deg, #F2F2F2 17.6%, rgba(242, 242, 242, 0) 100%);
     border-radius: 8px;
     z-index: 2;
@@ -75,6 +77,7 @@
 
 .cardbtn {
     height: 20%;
+    margin-bottom: 10px;
 }
 
 .btntext {
@@ -85,6 +88,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .maindiv{
+        position: relative;
+        top: -20%;
+    }
     .headingfont {
         font-size: 28px;
     }
