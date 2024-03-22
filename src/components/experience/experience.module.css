@@ -101,7 +101,7 @@
 
 @media only screen and (max-width: 425px) {
     .card {
-        width: 100% !important;
+        width: 340px !important;
     }
 
     .imagegradient {

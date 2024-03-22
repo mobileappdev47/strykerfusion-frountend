@@ -34,7 +34,8 @@ const SingleProduct = () => {
                     opacity: 1,
                     scale: 1,
                     duration: 1,
-                    stagger: 1
+                    stagger: 1,
+                    interval: 1.5
                 });
 
                 ScrollTrigger.create({
@@ -52,8 +53,6 @@ const SingleProduct = () => {
     }, [products]);
 
     const firstMapProducts = products.slice(0, products.length - 1);
-
-    console.log(firstMapProducts);
 
     return (
         <React.Fragment>
@@ -83,8 +82,8 @@ const SingleProduct = () => {
                 <Box
                     className="rightblock"
                     sx={{
-                        width: "100%",
-                        height: "100%",
+                        width: "100vw",
+                        height: "65vh",
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "center"
@@ -92,11 +91,9 @@ const SingleProduct = () => {
                 >
                     <Box
                         sx={{
-                            width: "69.8vw",
+                            width: "98vw",
                             height: "40vh",
                             position: "relative",
-                            top: "30%",
-                            left: "15%",
                             "& .photo": {
                                 position: "absolute",
                                 width: "100%",
@@ -113,7 +110,7 @@ const SingleProduct = () => {
                                 <div key={index}>
                                     <div className={`${style.maindiv}`}>
                                         <div
-                                            className={`${style.imgsection} mx-sm-3`}>
+                                            className={`${style.imgsection}`}>
                                             <div className={style.imagegradient}></div>
                                             <img
                                                 className={style.singleproimg}

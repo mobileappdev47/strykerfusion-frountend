@@ -123,7 +123,7 @@ const Handcraft = () => {
           </div>
         </div>
         <div className='col-xl-1 d-xl-flex d-none'></div>
-        <div className={`col-xl-6 col-lg-6  col-12 ${style.imagesection}`}>
+        <div className={`col-xl-6 col-lg-6 col-12 ${style.imagesection}`}>
           {homeData && (
             <Swiper
               ref={swiperRef}

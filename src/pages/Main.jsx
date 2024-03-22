@@ -18,6 +18,7 @@ import ContactUs from '../components/contactus/ContactUs';
 import Lenis from '@studio-freight/lenis';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
+import HeroBanner from '../components/herobanner/HeroBanner';
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -54,8 +55,8 @@ const Main = () => {
   
 
   return (
-    <>
-      <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}<Handcraft /></section>
+    <div className='container-fluid'>
+      <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}<HeroBanner /></section>
       <section id="brandandprocess"><OurBrand /> <Process /></section>
       <section id="revolution" className="product-section"><Revolution /></section>
       <div className='position-relative'>
@@ -72,7 +73,7 @@ const Main = () => {
       <section id="ourclient"><OurClients /></section>
       {showNewSection && <section id="contactusform"><ContactUsForm /></section>}
       <section id="contactus"><ContactUs /><Footer /></section>
-    </>
+    </div>
   );
 };
 
