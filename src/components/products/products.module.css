@@ -133,6 +133,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .container {
+    height: 250vh;
+  }
   .el .imageContainer {
     position: relative;
     bottom: 10vh;
@@ -172,9 +175,42 @@
   }
 }
 @media only screen and (max-width: 600px) {
-  .maindiv {
-      padding-left: 20px;
-      padding-right: 20px;
+  .container {
+    height: 200vh;
+  }
+  .el .imageContainer {
+    position: relative;
+    bottom: 10vh;
+    width: 25vw;
+    height: 20vh;
+  }
+  
+  .el:nth-of-type(2) .imageContainer {
+    top: 13vh;
+    left: -27vw;
+    width: 25vw;
+    height: 20vh;
+  }
+  
+  .el:nth-of-type(3) .imageContainer {
+    top: -10vh;
+    left: -27vw;
+    width: 25vw;
+    height: 20vh;
+  }
+  
+  .el:nth-of-type(4) .imageContainer {
+    top: -10vh;
+    left: 27.5vw;
+    width: 25vw;
+    height: 20vh;
+  }
+  
+  .el:nth-of-type(5) .imageContainer {
+    top: 13vh;
+    left: 0vw;
+    width: 25vw;
+    height: 20vh;
   }
   .headingfontimg{
       font-size: 12px !important;
@@ -184,6 +220,9 @@
   }
 }
 @media only screen and (max-width: 425px) {
+  .container {
+    height: 150vh;
+  }
   .headingfontimg{
       font-size: 12px !important;
   }
