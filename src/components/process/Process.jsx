@@ -110,7 +110,7 @@ const Process = () => {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: isVisible ? 1 : 1 }}
                                 transition={{ duration: 0.3 }}
-                                className='h-100'
+                                className={`h-100 ${style.processcard}`}
                             >
                                 <div className={`card-group h-100 ${style.cardgroup}`}>
                                     <motion.div

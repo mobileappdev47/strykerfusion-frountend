@@ -96,7 +96,7 @@ const Experience = () => {
                         )}
                     </AnimatePresence>
                 </div>
-                <div className="col-lg-7 col-12 col-md-12 col-sm-12 h-100">
+                <div className="col-lg-7 col-md-12 col-sm-12 col-12 h-100">
                     <div className={style.imagegradient}></div>
                     <Swiper
                         slidesPerView={(experience.length === 1 && window.innerWidth < 500) ? 1 : 'auto'}
