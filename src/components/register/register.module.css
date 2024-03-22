@@ -106,7 +106,8 @@
 @media only screen and (max-width: 510px) {
   .container{
     position: relative;
-    top: -25%;
+    top: -40%;
+    height: 70%;
   }
   .contentfont {
     font-size: 14px;

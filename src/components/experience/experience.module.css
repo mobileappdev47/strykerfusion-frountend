@@ -2,10 +2,10 @@
     padding-left: 60px;
     padding-top: 30px;
     padding-bottom: 30px;
-    height: 60%;
+    height: 50%;
     background-color: #F2F2F2;
     position: relative;
-    top: -10%;
+    top: 0%;
 }
 
 .learnmorebtn {
@@ -71,13 +71,13 @@
 }
 
 .cardtext {
-    height: 80%;
+    height: 60%;
     overflow: hidden;
 }
 
 .cardbtn {
+    margin-top: 5px;
     height: 20%;
-    margin-bottom: 10px;
 }
 
 .btntext {
@@ -95,7 +95,9 @@
     .headingfont {
         font-size: 28px;
     }
-
+    .cardtext{
+        height: 80%;
+    }
     .maindiv {
         padding-left: 10px;
         padding-right: 10px;
@@ -106,11 +108,20 @@
     }
 }
 
+@media only screen and (max-width: 510px) {
+    .maindiv{
+        position: relative;
+        top: -30%;
+    }
+}
+
 @media only screen and (max-width: 425px) {
     .card {
         width: 340px !important;
     }
-
+    .cardtext{
+        height: 60%;
+    }
     .imagegradient {
         display: none;
     }
