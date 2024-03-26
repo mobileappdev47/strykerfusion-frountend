@@ -7,7 +7,7 @@
     position: relative;
     z-index: -20;
     top: 100px;
-    /* margin-bottom: 10vh; */
+    margin-bottom: 80px !important;
 }
 
 .skymain{
@@ -38,19 +38,7 @@
     justify-content: center;
     text-transform: uppercase;
     color: white;
-    width: 400px;
-}
-
-.textimg{
-    width: 50vw;
-}
-
-.quoteimg{
     width: 40vw;
-}
-
-.authorimg{
-    width: 8vw;
 }
 
 .sky1{
@@ -68,8 +56,11 @@
     }
 }
 
-/* @media only screen and (max-width: 520px) {
-    .herobanner{
-        margin-bottom: 20px;
-    }
-} */
+@media only screen and (max-width: 768px) {
+    /* .skycontent{
+        width: ;
+    } */
+    /* .sky1 {
+        bottom: 5vh;
+    } */
+}

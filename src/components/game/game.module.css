@@ -6,7 +6,7 @@
     width: 98vw;
     position: relative;
     z-index: -20;
-    /* margin-bottom: 10vh; */
+    margin-bottom: 6vh;
 }
 
 .gamemain{
@@ -69,8 +69,8 @@
     }
 }
 
-/* @media only screen and (max-width: 520px) {
+@media only screen and (max-width: 768px) {
     .herobanner{
-        margin-bottom: 20px;
+        margin-bottom: 70px;
     }
-} */
+}

@@ -40,17 +40,6 @@
     color: white;
 }
 
-.textimg{
-    width: 50vw;
-}
-
-.quoteimg{
-    width: 40vw;
-}
-
-.authorimg{
-    width: 8vw;
-}
 
 @media only screen and (min-width: 1300px) {
     .flybanner{
@@ -58,8 +47,18 @@
     }
 }
 
-/* @media only screen and (max-width: 520px) {
-    .herobanner{
-        margin-bottom: 20px;
+@media only screen and (max-width: 768px) {
+    .flybanner{
+        margin-bottom: 70px;
     }
-} */
+    .flycontent{
+        width: 70vw;
+        right: -20vw;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .flybanner{
+        margin-bottom: 80px;
+    }
+}

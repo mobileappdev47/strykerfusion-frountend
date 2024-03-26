@@ -7,7 +7,7 @@
     position: relative;
     z-index: -20;
     top: 60px;
-    /* margin-bottom: 10vh; */
+    margin-bottom: 5vh;
 }
 
 .livemain{
@@ -41,26 +41,24 @@
     width: 50vw;
 }
 
-.textimg{
-    width: 50vw;
-}
-
-.quoteimg{
-    width: 40vw;
-}
-
-.authorimg{
-    width: 8vw;
-}
-
 @media only screen and (min-width: 1300px) {
     .livebanner{
         margin-bottom: 20px;
     }
 }
 
-/* @media only screen and (max-width: 520px) {
-    .herobanner{
-        margin-bottom: 20px;
+@media only screen and (max-width: 768px) {
+    .livecontent{
+        bottom: 71vh;
+        left: 45vw;
     }
-} */
+    .livecontent h1{
+        font-size: 4vh !important;
+    }
+    .livecontent h5{
+        font-size: 2vh !important;
+    }
+    .livecontent p{
+        font-size: 1vh;
+    }
+}

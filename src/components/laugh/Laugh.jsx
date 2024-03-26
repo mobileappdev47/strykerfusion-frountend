@@ -13,7 +13,6 @@ import laugh8 from '../../assets/laugh8.png'
 import laugh9 from '../../assets/laugh9.png'
 
 
-
 const Laugh = () => {
     const [isVisible, setIsVisible] = useState(false);
     const ref = useRef(null);

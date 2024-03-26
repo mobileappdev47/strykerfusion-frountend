@@ -7,7 +7,7 @@
     position: relative;
     z-index: -20;
     top: 60px;
-    /* margin-bottom: 10vh; */
+    margin-bottom: 4vh;
 }
 
 .laughmain{
@@ -127,8 +127,44 @@
     }
 }
 
-/* @media only screen and (max-width: 520px) {
-    .herobanner{
-        margin-bottom: 20px;
+@media only screen and (max-width: 768px) {
+    .laughcontent{
+        width: 50vw;
+        left: 50vw;
+        bottom: 95vh;
     }
-} */
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+    .laugh2{
+        top: -5vh;
+        left: -1vw;
+    }
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+    .laugh1{
+        top: 10vh;
+        left: 5vw;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .laughbanner{
+        margin-bottom: 7vh;
+    }
+}

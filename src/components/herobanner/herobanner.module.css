@@ -52,8 +52,26 @@
     }
 }
 
-/* @media only screen and (max-width: 520px) {
+@media only screen and (max-width: 768px) {
     .herobanner{
-        margin-bottom: 20px;
+        margin-bottom: 50px;
     }
-} */
+    .quoteimg{
+        width: 50vw;
+    }
+    .authorimg{
+        width: 10vw;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    .herobanner{
+        margin-bottom: 60px;
+    }
+    .quoteimg{
+        width: 60vw;
+    }
+    .authorimg{
+        width: 12vw;
+    }
+}
