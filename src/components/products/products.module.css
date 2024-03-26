@@ -4,6 +4,7 @@
 /* all product css  */
 .container {
   height: 350vh;
+  margin-top: 20px;
 }
 
 .sticky{
@@ -11,6 +12,7 @@
   overflow: hidden;
   top: 0;
   height: 100vh;
+  width: 98vw;
 }
 
 .el {

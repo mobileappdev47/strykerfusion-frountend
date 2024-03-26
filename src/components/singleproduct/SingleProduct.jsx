@@ -35,7 +35,7 @@ const SingleProduct = () => {
 
                 const animation = gsap.to(".photo:not(:first-child)", {
                     // opacity: 1,
-                    display: "flex",
+                    display: "",
                     scale: 1,
                     duration: 1,
                     stagger: 1,

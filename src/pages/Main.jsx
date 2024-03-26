@@ -64,7 +64,7 @@ const Main = () => {
     <div className='container-fluid'>
       <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}
         <HeroBanner />
-        <Express />
+        <Express /> 
         <Game />
         <Fly />
         <Laugh />
