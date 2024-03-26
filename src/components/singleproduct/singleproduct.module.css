@@ -10,9 +10,9 @@
   
   .imgsection {
     position: relative;
-  /* top: -10px; */
-  height: 85vh;
-  width: 100%;
+  top: -120px;
+  height: 100vh;
+  width: 99vw;
   }
   
   .singleproimg{

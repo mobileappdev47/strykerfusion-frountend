@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import style from './herobanner.module.css'
 import heroimg from '../../assets/herobanner.png'
-import herotext from '../../assets/text1.png'
-import quote from '../../assets/quote.png'
-import author from '../../assets/author.png'
+import herotext from '../../assets/herotext.png'
+import quote from '../../assets/heroquote.png'
+import author from '../../assets/heroauthor.png'
 import { motion } from 'framer-motion'
 
 

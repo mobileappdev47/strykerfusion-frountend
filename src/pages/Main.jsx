@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/sidebar/Sidebar';
 import Header from '../components/header/Header';
 import Handcraft from '../components/handcraft/Handcraft';
@@ -19,6 +19,12 @@ import Lenis from '@studio-freight/lenis';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import HeroBanner from '../components/herobanner/HeroBanner';
+import Express from '../components/express/Express';
+import Game from '../components/game/Game';
+import Fly from '../components/fly/Fly';
+import Laugh from '../components/laugh/Laugh';
+import Live from '../components/live/Live';
+import Sky from '../components/sky/Sky';
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -52,11 +58,19 @@ const Main = () => {
     gsap.ticker.lagSmoothing(0);
   }, []);
 
-  
+
 
   return (
     <div className='container-fluid'>
-      <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}<HeroBanner /></section>
+      <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}
+        <HeroBanner />
+        <Express />
+        <Game />
+        <Fly />
+        <Laugh />
+        <Live />
+        <Sky />
+      </section>
       <section id="brandandprocess"><OurBrand /> <Process /></section>
       <section id="revolution" className="product-section"><Revolution /></section>
       <div className='position-relative'>

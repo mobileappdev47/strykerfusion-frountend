@@ -1,5 +1,5 @@
 .products {
-    position: sticky;
+    /* position: sticky; */
     top: 0px;
     z-index: 111;
     margin-top: 70px;

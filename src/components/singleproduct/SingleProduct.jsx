@@ -24,14 +24,18 @@ const SingleProduct = () => {
 
         fetchData();
     }, []);
-
+    const totalContentHeight = 1000; 
+    const proportion = 0.2; 
+    const endValue = totalContentHeight * proportion;
+    
     useEffect(() => {
         if (products.length > 0) {
             let ctx = gsap.context(() => {
-                gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 1 });
+                gsap.set(".photo:not(:first-child)", { display: "none", scale: 1 });
 
                 const animation = gsap.to(".photo:not(:first-child)", {
-                    opacity: 1,
+                    // opacity: 1,
+                    display: "flex",
                     scale: 1,
                     duration: 1,
                     stagger: 1,
@@ -41,7 +45,7 @@ const SingleProduct = () => {
                 ScrollTrigger.create({
                     trigger: ".gallery",
                     start: "top top",
-                    end: "bottom bottom",
+                    end: `bottom bottom`,
                     pin: ".rightblock",
                     animation: animation,
                     scrub: true
@@ -51,6 +55,7 @@ const SingleProduct = () => {
             return () => ctx.revert();
         }
     }, [products]);
+
 
     const firstMapProducts = products.slice(0, products.length - 1);
 
