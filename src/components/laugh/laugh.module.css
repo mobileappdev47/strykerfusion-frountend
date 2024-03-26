@@ -30,7 +30,7 @@
 .laughcontent{
     position: relative;
     bottom: 92vh;
-    left: 68%;
+    left: 65vw;
     display: flex;
     gap: 5px;
     flex-direction: column;
@@ -55,8 +55,8 @@
 
 .laugh1{
     position: absolute;
-    top: 14.8%;
-    left: 5%;
+    top: 14.8vh;
+    left: 5vw;
     width: 80vw;
     height: 80vh;
     z-index: 5;
@@ -64,31 +64,31 @@
 
 .laugh2{
     position: absolute;
-    top: 5%;
-    left: -1%;
+    top: 5vh;
+    left: -1vw;
     width: 80vw;
     height: 80vh;
 }
 
 .laugh3{
     position: absolute;
-    top: 10%;
-    left: 5%;
+    top: 10vh;
+    left: 5vw;
     width: 80vw;
     height: 80vh;
     z-index: 3;
 }
 .laugh4{
     position: absolute;
-    top: 5%;
+    top: 5vh;
     left: 6vw;
     width: 80vw;
     height: 80vh;
 }
 .laugh5{
     position: absolute;
-    top: 15%;
-    left: 5%;
+    top: 15vh;
+    left: 5vw;
     width: 80vw;
     height: 80vh;
 }
