@@ -55,8 +55,8 @@
 
 .laugh1{
     position: absolute;
-    top: 14.8vh;
-    left: 5vw;
+    top: 14.8%;
+    left: 5%;
     width: 80vw;
     height: 80vh;
     z-index: 5;
@@ -64,59 +64,59 @@
 
 .laugh2{
     position: absolute;
-    top: 5vh;
-    left: 0vw;
+    top: 5%;
+    left: 0%;
     width: 80vw;
     height: 80vh;
 }
 
 .laugh3{
     position: absolute;
-    top: 10vh;
-    left: 5vw;
+    top: 10%;
+    left: 5%;
     width: 80vw;
     height: 80vh;
     z-index: 3;
 }
 .laugh4{
     position: absolute;
-    top: 5vh;
-    left: 6vw;
+    top: 5%;
+    left: 6%;
     width: 80vw;
     height: 80vh;
 }
 .laugh5{
     position: absolute;
-    top: 15vh;
-    left: 5vw;
+    top: 15%;
+    left: 5%;
     width: 80vw;
     height: 80vh;
 }
 .laugh6{
     position: absolute;
-    top: 10vh;
-    left: 8vw;
+    top: 10%;
+    left: 8%;
     width: 80vw;
     height: 80vh;
 }
 .laugh7{
     position: absolute;
-    top: 15vh;
-    left: 0vw;
+    top: 15%;
+    left: 0%;
     width: 80vw;
     height: 80vh;
 }
 .laugh8{
     position: absolute;
-    top: 13vh;
-    left: 5vw;
+    top: 13%;
+    left: 5%;
     width: 80vw;
     height: 80vh;
 }
 .laugh9{
     position: absolute;
-    top: 15vh;
-    left: 18vw;
+    top: 15%;
+    left: 18%;
     width: 80vw;
     height: 80vh;
 }
@@ -125,46 +125,56 @@
     .laughbanner{
         margin-bottom: 20px;
     }
+    .laugh1{
+        top: 6%;
+        left: 5%;
+    }
+    .laugh9{
+        top: 6%;
+    left: 18%;
+    }
 }
 
 @media only screen and (max-width: 768px) {
     .laughcontent{
-        width: 60vw;
+        width: 50vw;
         left: 50vw;
-        bottom: 100vh;
+        bottom: 95vh;
     }
     .laugh1{
-        top: 10vh;
-        left: 5vw;
+        top: 10%;
+        left: 5%;
     }
-    .laugh2{
-        top: -5vh;
-        left: -1vw;
-    }
-    .laugh1{
-        top: 10vh;
-        left: 5vw;
-    }
-    .laugh1{
-        top: 10vh;
-        left: 5vw;
-    }
-    .laugh1{
-        top: 10vh;
-        left: 5vw;
-    }
-    .laugh1{
-        top: 10vh;
-        left: 5vw;
-    }
-    .laugh1{
-        top: 10vh;
-        left: 5vw;
+    .laugh9{
+        top: 10%;
+        left: 18%;
     }
 }
 
 @media only screen and (max-width: 510px) {
     .laughbanner{
-        margin-bottom: 7vh;
+        margin-bottom: 8vh;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .laugh1{
+        top: 9%;
+        left: 5%;
+    }
+    .laugh9{
+        top: 9%;
+        left: 18%;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .laugh1{
+        top: 7%;
+        left: 5%;
+    }
+    .laugh9{
+        top: 7%;
+        left: 18%;
     }
 }

@@ -57,13 +57,13 @@ const Laugh = () => {
                             animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 1, delay: isVisible ? 1 : 0 }} // Delay transition until isVisible becomes true
                         >
-                            <motion.h1 className='me-5 fs-1' initial={{ x: '8%' }} animate={{ x: isVisible ? '0%' : '8%' }} transition={{ duration: 0.5, delay: isVisible ? 1.5 : 0 }}>
+                            <motion.h1 className='me-5 fs-1' initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 0.5, delay: isVisible ? 1.5 : 0 }}>
                                 Power to Laugh
                             </motion.h1>
-                            <motion.h5 className='fs-3' initial={{ x: '8%' }} animate={{ x: isVisible ? '0%' : '8%' }} transition={{ duration: 0.8, delay: isVisible ? 1.8 : 0 }}>
+                            <motion.h5 className='fs-3' initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 0.8, delay: isVisible ? 1.8 : 0 }}>
                                 "Laughter is an instant Vacation!"
                             </motion.h5>
-                            <motion.p className='uppercase' initial={{ x: '8%' }} animate={{ x: isVisible ? '0%' : '8%' }} transition={{ duration: 1, delay: isVisible ? 2.1 : 0 }}>
+                            <motion.p className='uppercase' initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 1, delay: isVisible ? 2.1 : 0 }}>
                                 -Milton Berle-
                             </motion.p>
                         </motion.div>
