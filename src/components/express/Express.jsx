@@ -58,15 +58,15 @@ const Express = () => {
                         <motion.img src={express7} alt="" className={style.express7} initial={{ opacity: 0 }} animate={{ opacity: isVisible ? 1 : 0 }} transition={{ duration: 1, delay: 2.2 }} />
                         {/* Text Animations */}
                         <motion.h1
-                            initial={{ x: -100, opacity: 0 }}
-                            animate={{ x: isVisible ? 0 : -10, opacity: isVisible ? 1 : 0 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 1, delay: 2.4 }}
                         >
                             Power to Express
                         </motion.h1>
                         <motion.h5
-                            initial={{ x: 100, opacity: 0 }}
-                            animate={{ x: isVisible ? 0 : 10, opacity: isVisible ? 1 : 0 }}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 1, delay: 2.6 }}
                         >
                             Unlock your Truth, Be All of You!
