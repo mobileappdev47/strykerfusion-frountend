@@ -7,7 +7,7 @@
     position: relative;
     z-index: -20;
     top: -0px;
-    margin-bottom: 18vh;
+    margin-bottom: 23vh;
 }
 
 .express{
@@ -39,59 +39,59 @@
 }
 .express1{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 }
 
 .express2{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 
 }
 
 .express3{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 
 }
 .express4{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 
 }
 .express5{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 
 }
 .express6{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 
 }
 .express7{
     position: absolute;
-    bottom: 58%;
+    bottom: 55%;
     width: 80vw;
     height: 80vh;
-    left: 19%;
+    left: 18%;
 }
 
 @media only screen and (min-width: 1300px) {
@@ -99,6 +99,9 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .expressmain{
+        margin-bottom: 100px;
+    }
     .express1{
         position: absolute;
         bottom: 68%;

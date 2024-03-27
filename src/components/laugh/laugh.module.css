@@ -129,9 +129,9 @@
 
 @media only screen and (max-width: 768px) {
     .laughcontent{
-        width: 50vw;
+        width: 60vw;
         left: 50vw;
-        bottom: 95vh;
+        bottom: 100vh;
     }
     .laugh1{
         top: 10vh;

@@ -31,11 +31,11 @@ const SingleProduct = () => {
     useEffect(() => {
         if (products.length > 0) {
             let ctx = gsap.context(() => {
-                gsap.set(".photo:not(:first-child)", { display: "none", scale: 1 });
+                gsap.set(".photo:not(:first-child)", { opacity: 0, scale: 1 });
 
                 const animation = gsap.to(".photo:not(:first-child)", {
-                    // opacity: 1,
-                    display: "",
+                    opacity: 1,
+                    // display: "",
                     scale: 1,
                     duration: 1,
                     stagger: 1,
