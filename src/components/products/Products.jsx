@@ -34,22 +34,6 @@ const Products = () => {
     useTransform(scrollYProgress, [0, 1], [4, 1])
   ];
 
-  const widths = [
-    // useTransform(scrollYProgress, [0, 1], ['100%', '100%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-  ]
-
-  const heights = [
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-    // useTransform(scrollYProgress, [0, 1], ['100%', '0%']),
-  ]
-
   const tops = [
     useTransform(scrollYProgress, [0, 1], ['31%', '0%']),
     useTransform(scrollYProgress, [0, 1], ['50%', '0%']),
@@ -82,9 +66,6 @@ const Products = () => {
   const rearrangedProducts = products.length > 0 ? [products[products.length - 1], ...products.slice(0, products.length - 1)] : [];
   const contentBoxTop = useTransform(tops[3], ["31px", "0px"], ['50px', '31px'])
 
-  // console.log(rearrangedProducts);
-
-  // const contentBoxLeft = useTransform(scrollYProgress, progress => progress === 0 ? '0%' : '0');
   return (
     <>
       <div>
@@ -97,8 +78,6 @@ const Products = () => {
                 style={{
                   scale: scales[index],
                   opacity: opacities[index], top: tops[index], bottom: bottoms[index],
-                  width: widths[index],
-                  height: heights[index],
                   fontSize: fontSizes[index]
                 }}
                 className={`${style.el}`}
