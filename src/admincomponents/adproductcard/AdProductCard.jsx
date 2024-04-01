@@ -35,7 +35,7 @@ const AdProductCard = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => {       
         fetchData();
     }, []);
 

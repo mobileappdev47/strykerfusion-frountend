@@ -1,4 +1,4 @@
-.laughbanner{
+.laughbanner {
     height: calc(100vh - 100px);
     display: flex;
     justify-content: center;
@@ -6,31 +6,29 @@
     width: 100%;
     position: relative;
     z-index: -20;
-    top: 60px;
-    margin-bottom: 4vh;
+    /* top: 60px; */
+    /* margin-bottom: 4vh; */
 }
 
-.laughmain{
-    height: 100vh;
+.laughmain {
+    height: 100%;
     width: 100%;
 }
 
-.imgSection{
+.imgSection {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 105vh;
+    height: 100%;
 }
 
-.laughimg{
-    height: 100vh;
-    width: 100%;
+.laughimg {
     object-fit: cover;
 }
 
-.laughcontent{
-    position: relative;
-    bottom: 92vh;
+.laughcontent {
+    position: absolute;
+    top: 60px;
     left: 65vw;
     display: flex;
     gap: 5px;
@@ -42,19 +40,19 @@
     width: 30vw;
 }
 
-.textimg{
+.textimg {
     width: 50vw;
 }
 
-.quoteimg{
+.quoteimg {
     width: 40vw;
 }
 
-.authorimg{
+.authorimg {
     width: 8vw;
 }
 
-.laugh1{
+.laugh1 {
     position: absolute;
     top: 14.8%;
     left: 5%;
@@ -63,7 +61,7 @@
     z-index: 5;
 }
 
-.laugh2{
+.laugh2 {
     position: absolute;
     top: 5%;
     left: 0%;
@@ -71,7 +69,7 @@
     height: 80vh;
 }
 
-.laugh3{
+.laugh3 {
     position: absolute;
     top: 10%;
     left: 5%;
@@ -79,102 +77,198 @@
     height: 80vh;
     z-index: 3;
 }
-.laugh4{
+
+.laugh4 {
     position: absolute;
     top: 5%;
     left: 6%;
     width: 80vw;
     height: 80vh;
 }
-.laugh5{
+
+.laugh5 {
     position: absolute;
     top: 15%;
     left: 5%;
     width: 80vw;
     height: 80vh;
 }
-.laugh6{
+
+.laugh6 {
     position: absolute;
     top: 10%;
     left: 8%;
     width: 80vw;
     height: 80vh;
 }
-.laugh7{
+
+.laugh7 {
     position: absolute;
     top: 25%;
     left: 1%;
     width: 80vw;
     height: 80vh;
 }
-.laugh8{
+
+.laugh8 {
     position: absolute;
     top: 13%;
     left: 5%;
     width: 80vw;
     height: 80vh;
 }
-.laugh9{
+
+.laugh9 {
     position: absolute;
-    top: 50%;
+    bottom: 0;
     width: 80vw;
     height: 80vh;
 }
 
+@media only screen and (max-width: 1300px) {
+
+    .heading {
+        font-size: 40px !important;
+    }
+
+    .content {
+        font-size: 16px !important;
+    }
+}
+
 @media only screen and (min-width: 1300px) {
-    .laughbanner{
+    .laughbanner {
         margin-bottom: 20px;
     }
-    .laugh1{
+
+    .laugh1 {
         top: 14.8%;
         left: 5%;
     }
-    .laugh9{
-        top: 14.5%;
+
+    .laugh9 {
         left: 18.4%;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .laughcontent{
+    .laughcontent {
         width: 50vw;
         left: 50vw;
-        bottom: 95vh;
+        top: 30px;
     }
-    .laugh1{
+
+    .laugh4 {
+        top: 12%;
+    }
+
+    .laugh6 {
+        top: 15%;
+    }
+
+    .laugh8 {
+        top: 22%;
+    }
+
+    .laugh2,
+    .laugh3,
+    .laugh4,
+    .laugh5,
+    .laugh6,
+    .laugh7,
+    .laugh8,
+    .laugh9 {
+        height: 60vh;
+    }
+
+    .laugh1 {
         top: 10%;
         left: 5%;
     }
-    .laugh9{
-        top: 10%;
+
+    .laugh9 {
         left: 18%;
+    }
+
+    .heading {
+        font-size: 30px !important;
+    }
+
+    .content {
+        font-size: 14px !important;
     }
 }
 
 @media only screen and (max-width: 510px) {
-    .laughbanner{
+    .laughbanner {
         margin-bottom: 8vh;
     }
+
+    .heading {
+        font-size: 26px !important;
+    }
+
+    .content {
+        font-size: 12px !important;
+    }
+
+    .laugh1 {
+        width: 90%;
+    }
+
+    .laugh2,
+    .laugh3,
+    .laugh5,
+    .laugh7 {
+        left: 0;
+    }
+
+    .laugh4,
+    .laugh6,
+    .laugh8,
+    .laugh9 {
+        right: 0;
+        left: auto;
+    }
+
+    .laugh2,
+    .laugh3,
+    .laugh4,
+    .laugh5,
+    .laugh6,
+    .laugh7,
+    .laugh8,
+    .laugh9 {
+        width: 100%;
+    }
+
 }
 
 @media only screen and (max-width: 480px) {
-    .laugh1{
+    .laugh1 {
         top: 9%;
         left: 5%;
     }
-    .laugh9{
-        top: 9%;
-        left: 18%;
+
+    .heading {
+        font-size: 24px !important;
     }
+
 }
 
 @media only screen and (max-width: 400px) {
-    .laugh1{
+    .laugh1 {
         top: 7%;
         left: 5%;
     }
-    .laugh9{
-        top: 7%;
-        left: 18%;
+
+    .heading {
+        font-size: 22px !important;
+    }
+
+    .laughcontent {
+        gap: 0;
+        width: 90vw;
+        left: 20vw;
     }
 }

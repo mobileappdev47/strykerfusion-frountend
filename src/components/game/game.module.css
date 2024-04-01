@@ -6,31 +6,31 @@
     width: 100%;
     position: relative;
     z-index: -20;
-    top: 40px;
+    /* top: 40px; */
     /* margin-bottom: 6vh; */
 }
 
 .gamemain{
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
 .imgSection{
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    flex-direction: column;
-    height: 105vh;
+    flex-direction: column; */
+    height: 100%;
 }
 
 .gameimg{
-    height: 100vh;
+    height: calc(100vh - 100px);
     width: 100%;
     object-fit: cover;
 }
 
 .gamecontent{
     position: relative;
-    bottom: 89vh;
+    bottom: 72vh;
     display: flex;
     gap: 10px;
     flex-direction: column;
@@ -55,7 +55,7 @@
     top: 10vh;
     left: 2vw;
     width: 80vw;
-    height: 80vh;
+    height: 60vh;
 }
 
 .game2{
@@ -63,16 +63,16 @@
     top: 10vh;
     left: 15vw;
     width: 80vw;
-    height: 80vh;
+    height: 64vh;
 }
 @media only screen and (min-width: 1300px) {
     .gamebanner{
-        margin-bottom: 20px;
+        /* margin-bottom: 20px; */
     }
 }
 
 @media only screen and (max-width: 768px) {
     .gamebanner{
-        margin-bottom: 70px;
+        /* margin-bottom: 70px; */
     }
 }

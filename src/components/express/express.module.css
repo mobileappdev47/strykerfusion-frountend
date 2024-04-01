@@ -10,7 +10,7 @@
 }
 
 .express{
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    height: 105vh;
+    height: 100%;
 }
 
 .expressbg {
@@ -100,7 +100,7 @@
 
 @media only screen and (max-width: 768px) {
     .expressmain{
-        margin-bottom: 100px;
+        /* margin-bottom: 100px; */
     }
     .express1{
         position: absolute;

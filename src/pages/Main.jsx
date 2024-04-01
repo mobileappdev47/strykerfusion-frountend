@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/sidebar/Sidebar';
 import Header from '../components/header/Header';
-import Handcraft from '../components/handcraft/Handcraft';
 import Process from '../components/process/Process';
 import OurBrand from '../components/ourbrands/OurBrand';
 import Revolution from '../components/revolution/Revolution';
@@ -25,7 +24,6 @@ import Fly from '../components/fly/Fly';
 import Laugh from '../components/laugh/Laugh';
 import Live from '../components/live/Live';
 import Sky from '../components/sky/Sky';
-import skybg from '../assets/skybg.png'
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -96,8 +94,8 @@ const Main = () => {
             </div>
           </div>
         </div> */}
-        <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
-          <div className="carousel-inner">
+        <div id="carouselExampleControlsNoTouching" className={`carousel slide sliderimage`} data-bs-touch="false" data-bs-interval="false">
+          <div className="carousel-inner h-100">
             <div className="carousel-item active">
               <HeroBanner />
             </div>
