@@ -34,6 +34,14 @@ const Products = () => {
     useTransform(scrollYProgress, [0, 1], [4, 1])
   ];
 
+  const borderRadii = [
+    useTransform(scrollYProgress,[0, 1], ['50px', '10px']),
+    useTransform(scrollYProgress,[0, 1], ['50px', '10px']),
+    useTransform(scrollYProgress,[0, 1], ['50px', '10px']),
+    useTransform(scrollYProgress,[0, 1], ['50px', '10px']),
+    useTransform(scrollYProgress,[0, 1], ['50px', '10px'])
+  ];
+
   const tops = [
     useTransform(scrollYProgress, [0, 1], ['31%', '0%']),
     useTransform(scrollYProgress, [0, 1], ['50%', '0%']),
@@ -55,7 +63,7 @@ const Products = () => {
   ];
 
   const fontSizes = [
-    useTransform(scrollYProgress, [0, 1], ['10px', '10px']), // Adjust these values according to your font size needs
+    useTransform(scrollYProgress, [0, 1], ['10px', '10px']),
     useTransform(scrollYProgress, [0, 1], ['16px', '16px']),
     useTransform(scrollYProgress, [0, 1], ['16px', '16px']),
     useTransform(scrollYProgress, [0, 1], ['16px', '16px']),
@@ -77,6 +85,7 @@ const Products = () => {
                 key={index}
                 style={{
                   scale: scales[index],
+                  borderRadius: borderRadii[index],
                   opacity: opacities[index], top: tops[index], bottom: bottoms[index],
                   fontSize: fontSizes[index]
                 }}

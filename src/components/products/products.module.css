@@ -21,13 +21,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .productimage {
   height: 100%;
   width: 100%;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   object-fit: cover;
 }
 
@@ -77,7 +77,7 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 }
 
 .el .contentbox {
@@ -119,9 +119,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .container{
-    margin-top: 20px;
-  }
+  
   .imgsection {
       width: 85%;
   }

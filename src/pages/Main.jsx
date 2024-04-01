@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Sidebar from '../components/sidebar/Sidebar';
 import Header from '../components/header/Header';
-import Handcraft from '../components/handcraft/Handcraft';
 import Process from '../components/process/Process';
 import OurBrand from '../components/ourbrands/OurBrand';
 import Revolution from '../components/revolution/Revolution';
@@ -25,7 +24,7 @@ import Fly from '../components/fly/Fly';
 import Laugh from '../components/laugh/Laugh';
 import Live from '../components/live/Live';
 import Sky from '../components/sky/Sky';
-import skybg from '../assets/skybg.png'
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -59,7 +58,13 @@ const Main = () => {
     gsap.ticker.lagSmoothing(0);
   }, []);
 
-
+  // useEffect(() => {
+  //   const myCarousel = document.querySelector('#carouselExampleControlsNoTouching');
+  //   const carousel = new window.bootstrap.Carousel(myCarousel, {
+  //     interval: 5000, // Adjust interval time in milliseconds
+  //     wrap: true // Enable looping
+  //   });
+  // }, []);
 
   return (
     <div className=''>
@@ -96,27 +101,27 @@ const Main = () => {
             </div>
           </div>
         </div> */}
-        <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
+        <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
-            <div className="carousel-item active">
+            <div className="carousel-item active" data-bs-interval="3000">
               <HeroBanner />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Express />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Game />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Fly />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Laugh />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Live />
             </div>
-            <div className="carousel-item">
+            <div className="carousel-item" data-bs-interval="3000">
               <Sky />
             </div>
           </div>
