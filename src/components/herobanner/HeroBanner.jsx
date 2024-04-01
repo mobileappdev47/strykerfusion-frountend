@@ -37,7 +37,7 @@ const HeroBanner = () => {
             <div ref={ref} className={style.herobanner}>
                 <div className={`row ${style.heromain}`}>
                     <div className={`col-12 ${style.imgSection}`}>
-                        <div className="">
+                        <div className="h-100">
                             <img src={heroimg} alt="" className={style.heroimg} />
                         </div>
                         <motion.div

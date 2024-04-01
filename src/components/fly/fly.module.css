@@ -1,29 +1,29 @@
 .flybanner{
-    height: calc(100vh - 100px);
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     position: relative;
     z-index: -20;
-    top: 30px;
-    margin-bottom: 10vh;
+    /* top: 30px; */
+    /* margin-bottom: 10vh; */
 }
 
 .flymain{
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
 .imgSection{
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    flex-direction: column;
-    height: 100vh;
+    flex-direction: column; */
+    height: 100%;
 }
 
 .flyimg{
-    height: 100vh;
+    height: calc(100vh - 100px);
     width: 100%;
     object-fit: cover;
 }
@@ -44,13 +44,13 @@
 
 @media only screen and (min-width: 1300px) {
     .flybanner{
-        margin-bottom: 60px;
+        /* margin-bottom: 60px; */
     }
 }
 
 @media only screen and (max-width: 768px) {
     .flybanner{
-        margin-bottom: 70px;
+        /* margin-bottom: 70px; */
     }
     .flycontent{
         width: 70vw;
@@ -60,6 +60,6 @@
 
 @media only screen and (max-width: 510px) {
     .flybanner{
-        margin-bottom: 80px;
+        /* margin-bottom: 80px; */
     }
 }

@@ -24,9 +24,6 @@ const SingleProduct = () => {
 
         fetchData();
     }, []);
-    const totalContentHeight = 1000; 
-    const proportion = 0.2; 
-    const endValue = totalContentHeight * proportion;
     
     useEffect(() => {
         if (products.length > 0) {
