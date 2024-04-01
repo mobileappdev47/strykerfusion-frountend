@@ -25,6 +25,7 @@ import Fly from '../components/fly/Fly';
 import Laugh from '../components/laugh/Laugh';
 import Live from '../components/live/Live';
 import Sky from '../components/sky/Sky';
+import skybg from '../assets/skybg.png'
 
 const Main = () => {
   const [showNewSection, setShowNewSection] = useState(false);
@@ -63,13 +64,71 @@ const Main = () => {
   return (
     <div className=''>
       <section id="homepage">{showNewSection ? <Sidebar /> : <Header />}
-        <HeroBanner />
+        {/* <HeroBanner />
         <Express /> 
         <Game />
         <Fly />
         <Laugh />
         <Live />
-        <Sky />
+        <Sky /> */}
+        {/* <div className='slidermain' style={{  }}>
+          <div className='heroslider'>
+            <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img src={skybg} className="d-block w-100 sliderimg" alt="..." />
+                </div>
+                <div className="carousel-item">
+                  <img src={skybg} className="d-block w-100 sliderimg" alt="..." />
+                </div>
+                <div className="carousel-item">
+                  <img src={skybg} className="d-block w-100 sliderimg" alt="..." />
+                </div>
+              </div>
+              <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Previous</span>
+              </button>
+              <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+                <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                <span className="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div> */}
+        <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-touch="false" data-bs-interval="false">
+          <div className="carousel-inner">
+            <div className="carousel-item active">
+              <HeroBanner />
+            </div>
+            <div className="carousel-item">
+              <Express />
+            </div>
+            <div className="carousel-item">
+              <Game />
+            </div>
+            <div className="carousel-item">
+              <Fly />
+            </div>
+            <div className="carousel-item">
+              <Laugh />
+            </div>
+            <div className="carousel-item">
+              <Live />
+            </div>
+            <div className="carousel-item">
+              <Sky />
+            </div>
+          </div>
+          <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
+            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Previous</span>
+          </button>
+          <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
+            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+            <span className="visually-hidden">Next</span>
+          </button>
+        </div>
       </section>
       <section id="brandandprocess"><OurBrand /> <Process /></section>
       <section id="revolution" className="product-section"><Revolution /></section>

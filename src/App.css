@@ -168,6 +168,18 @@ p {
   position: sticky;
 }
 
+#homepage {
+  height: 90% !important; 
+}
+
+.homeslider{
+  width: 100%;
+  height: 100% !important;
+}
+
+.sliderimg{
+  object-fit: cover;
+}
 
 @media only screen and (max-width: 600px) {
   #map {

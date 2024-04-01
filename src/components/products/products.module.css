@@ -12,7 +12,7 @@
   overflow: hidden;
   top: 0;
   height: 100vh;
-  width: 98vw;
+  width: 99vw;
 }
 
 .el {
@@ -29,6 +29,7 @@
   height: 100%;
   width: 100%;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 .el .imageContainer {
