@@ -103,25 +103,25 @@ const Main = () => {
         </div> */}
         <div id="carouselExampleControlsNoTouching" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
-            <div className="carousel-item active" data-bs-interval="3000">
+            <div className="carousel-item active" data-bs-interval="4000">
               <HeroBanner />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Express />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Game />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Fly />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Laugh />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Live />
             </div>
-            <div className="carousel-item" data-bs-interval="3000">
+            <div className="carousel-item" data-bs-interval="4000">
               <Sky />
             </div>
           </div>

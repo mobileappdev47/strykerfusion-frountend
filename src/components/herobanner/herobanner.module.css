@@ -30,8 +30,9 @@
 }
 
 .herocontent {
-    position: relative;
-    bottom: 45%;
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
     display: flex;
     gap: 20px;
     flex-direction: column;
