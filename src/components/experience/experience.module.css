@@ -88,24 +88,34 @@
 }
 
 @media only screen and (min-width: 2000px) {
-    .cardbox {
-        height: 70%;
+    .card {
+        width: 600px !important;
     }
 
-    .card {
-        width: 500px !important;
+    .content {
+        font-size: 1vw;
     }
 
     .cardcontent {
-        font-size: 18px;
+        font-size: 0.7vw;
     }
 
-    .cardbtn {
-        font-size: 30px;
+    .headingfont {
+        font-size: 1.3vw;
+    }
+.learnmorebtn{
+    font-size: 0.75vw;
+}
+    .btntext {
+        font-size: 0.75vw;
     }
 
     .cardheading {
-        font-size: 24px;
+        font-size: 1vw;
+    }
+
+    .cardbox {
+        height: 70%;
     }
 
     .cardimg {
@@ -116,6 +126,7 @@
         height: 80%;
     }
 }
+
 
 @media only screen and (max-width: 2000px) {
     .cardbox {
