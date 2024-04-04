@@ -5,7 +5,6 @@
 
 .maindiv {
     height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 70px;
@@ -89,6 +88,36 @@
     position: absolute;
     right: 100px;
     top: 300px;
+}
+
+@media only screen and (max-width: 2000px) {
+    .maindiv {
+        display: flex;
+    }
+
+}
+
+@media only screen and (min-width: 2000px) {
+    .maindiv {
+        display: inline;
+    }
+
+    .contentbox1 {
+        top: 200px;
+    }
+
+    .contentbox2P {
+        bottom: 200px;
+
+    }
+
+    .contentbox3 {
+        top: 500px;
+    }
+
+    .imgwidth {
+        width: 40% !important;
+    }
 }
 
 @media only screen and (max-width: 1500px) {
