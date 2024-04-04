@@ -43,7 +43,7 @@
 .imagegradient {
     position: absolute;
     width: 13%;
-    height: 25%;
+    height: 100%;
     background: linear-gradient(270deg, #F2F2F2 17.6%, rgba(242, 242, 242, 0) 100%);
     border-radius: 8px;
     z-index: 2;
@@ -87,17 +87,56 @@
     font-weight: 500;
 }
 
+@media only screen and (min-width: 2000px) {
+    .cardbox {
+        height: 70%;
+    }
+
+    .card {
+        width: 500px !important;
+    }
+
+    .cardcontent {
+        font-size: 18px;
+    }
+
+    .cardbtn {
+        font-size: 30px;
+    }
+
+    .cardheading {
+        font-size: 24px;
+    }
+
+    .cardimg {
+        height: 35%;
+    }
+
+    .cardtext {
+        height: 80%;
+    }
+}
+
+@media only screen and (max-width: 2000px) {
+    .cardbox {
+        height: 100%;
+    }
+}
+
 @media only screen and (max-width: 768px) {
-    .maindiv{
+    .maindiv {
         position: relative;
         top: -20%;
     }
+
     .headingfont {
         font-size: 28px;
     }
-    .cardtext{
+
+    .cardtext {
         height: 80%;
     }
+
     .maindiv {
         padding-left: 10px;
         padding-right: 10px;
@@ -109,7 +148,7 @@
 }
 
 @media only screen and (max-width: 510px) {
-    .maindiv{
+    .maindiv {
         position: relative;
         top: -30%;
     }
@@ -119,9 +158,11 @@
     .card {
         width: 340px !important;
     }
-    .cardtext{
+
+    .cardtext {
         height: 60%;
     }
+
     .imagegradient {
         display: none;
     }

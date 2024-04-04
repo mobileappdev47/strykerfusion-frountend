@@ -118,9 +118,9 @@ const Experience = () => {
                                     transition={{ delay: index * 0.3 }}
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.5 }}
-                                    className={`h-100 w-100 px-3`}
+                                    className={`h-100 w-100 px-3 d-flex align-items-center`}
                                 >
-                                    <div className={`card h-100 ${style.cardbox}`}>
+                                    <div className={`card ${style.cardbox}`}>
                                         <div className={style.cardimg}>
                                             <img
                                                 src={`${process.env.REACT_APP_BASE_URL}/${item?.experienceImage}`}
