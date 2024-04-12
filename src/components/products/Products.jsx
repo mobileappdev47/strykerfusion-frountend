@@ -3,6 +3,7 @@ import style from './products.module.css';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import axios from 'axios';
 import SingleProduct from '../singleproduct/SingleProduct';
+import Product from '../product/Product';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -77,7 +78,7 @@ const Products = () => {
   return (
     <>
       <div>
-        <SingleProduct />
+        <Product />
         <div ref={container} className={style.container}>
           <div className={`row ${style.sticky}`}>
             {rearrangedProducts?.map(({ productImage, productTitle }, index) => (
